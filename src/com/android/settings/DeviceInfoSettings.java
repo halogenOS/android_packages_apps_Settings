@@ -131,7 +131,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
-        findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
+        setStringSummary(KEY_KERNEL_VERSION, getFormattedKernelVersion());
+        findPreference(KEY_KERNEL_VERSION).setEnabled(true);
+        setValueSummary(KEY_MOD_VERSION, "ro.mod.version");
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -209,6 +211,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        String prefKey = preference.getKey();
         if (preference.getKey().equals(KEY_FIRMWARE_VERSION)
                 || preference.getKey().equals(KEY_HALOGENOS_VERSION)) {
             System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
@@ -286,6 +289,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             if (b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
                 ciActionOnSysUpdate(b);
             }
+        } else if (prefKey.equals(KEY_KERNEL_VERSION)) {
+            setStringSummary(KEY_KERNEL_VERSION, getKernelVersion());
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -375,6 +381,20 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             return reader.readLine();
         } finally {
             reader.close();
+        }
+    }
+
+    private String getKernelVersion() {
+        String procVersionStr;
+        try {
+            procVersionStr = readLine(FILENAME_PROC_VERSION);
+            return procVersionStr;
+        } catch (IOException e) {
+            Log.e(LOG_TAG,
+                "IO Exception when getting kernel version for Device Info screen",
+                e);
+
+            return "Unavailable";
         }
     }
 
