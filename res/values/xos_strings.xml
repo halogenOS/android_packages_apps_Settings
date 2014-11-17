@@ -17,34 +17,20 @@
 
     <!-- Buttons -->
     <string name="button_settings">Buttons</string>
-
     <string name="long_press_home_button_assist_title">Long press home for assist</string>
-
     <string name="long_press_home_button_assist_summary"> Whether the assist intent 
         should be launched on long press of the home button</string>
-
     <string name="buttons_show_navbar_title">Navigation Bar</string>
-
     <string name="buttons_show_navbar_summary">Whether to show the Navigation Bar</string>
-
     <string name="buttons_hardware_buttons_category">Hardware buttons</string>
-
     <string name="buttons_button_backlight_title">Button backlight</string>
-
     <string name="buttons_button_backlight_summary">Whether to enable button backlight</string>
-
     <string name="buttons_button_backlight_status">Brightness: %s</string>
-
     <string name="buttons_hw_buttons_title">Hardware buttons</string>
-
     <string name="buttons_hw_buttons_summary">Whether to enable the hardware buttons.</string>
-
     <string name="buttons_backlight_enable_backlight">Enable backlight</string>
-
     <string name="general_brightness">Brightness</string>
-
     <string name="general_timeout">Timeout</string>
-
     <string name="general_on">On</string>
     <string name="general_off">Off</string>
     <string name="general_dimmed">Dimmed</string>
@@ -190,5 +176,19 @@
     <string name="usersettings_change_android_id_text">
         Enter your desired Android ID here or leave the field blank to generate a new one.
     </string>
+
+    <!-- Expanded desktop -->
+    <string name="power_menu_expanded_desktop">Expanded desktop</string>
+    <string name="expanded_hide_nothing">Hide nothing</string>
+    <string name="expanded_hide_status">Hide status bar</string>
+    <string name="expanded_hide_navigation">Hide navigation bar</string>
+    <string name="expanded_hide_both">Hide both</string>
+    <string name="expanded_nothing_to_show">To add a custom per-app configuration for expanded state, set "Enabled for all" to the off position</string>
+    <string name="expanded_desktop_state">Expanded state</string>
+    <string name="expanded_enabled_for_all">Enabled for all</string>
+    <string name="expanded_user_configurable">User configurable</string>
+    <string name="expanded_desktop_style">Expanded desktop style</string>
+    <string name="expanded_desktop_style_description">Choose a default expanded desktop style</string>
+    <string name="expanded_desktop_title">Expanded desktop options</string>
 
 </resources>
