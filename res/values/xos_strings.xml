@@ -34,4 +34,8 @@
     <!-- Help URI, Customizations [DO NOT TRANSLATE] -->
     <string name="help_uri_customizations" translatable="false"></string>
 
+    <!-- Menu label for reset the battery stats -->
+    <string name="menu_stats_reset">Reset stats</string>
+    <!-- Reset stats confirmation dialog's message -->
+    <string name="reset_stats_msg">Battery history stats are going to be reset</string>
 </resources>
