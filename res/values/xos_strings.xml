@@ -211,6 +211,10 @@
     <string name="battery_stats_message">Battery history stats are going to be reset</string>
     <string name="ok_string">Ok</string>
 
+    <!-- Volume button track change -->
+    <string name="volbtn_music_controls_title">Music control</string>
+    <string name="volbtn_music_controls_summary">With screen off, long pressing the volume keys will seek tracks</string>
+
     <!-- Pixel Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
     <string name="pixel_navbar_anim_summary">Enables the pixel navbar animation</string>

@@ -44,6 +44,11 @@
              android:title="@string/button_settings_title"
              android:summary="@string/button_settings_summary"
              android:fragment="com.android.settings.fragments.ButtonSettings"/>
+         <com.android.settings.preferences.SystemSettingSwitchPreference
+             android:key="volume_rocker_music_controls"
+             android:title="@string/volbtn_music_controls_title"
+             android:summary="@string/volbtn_music_controls_summary"
+             android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
