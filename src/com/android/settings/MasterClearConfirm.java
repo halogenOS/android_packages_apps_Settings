@@ -70,6 +70,13 @@ public class MasterClearConfirm extends InstrumentedFragment {
                 // if OEM unlock is enabled, this will be wiped during FR process. If disabled, it
                 // will be wiped here, unless the device is still being provisioned, in which case
                 // the persistent data block will be preserved.
+                final ProgressDialog progressDialog = getProgressDialog();
+                progressDialog.show();
+
+                // need to prevent orientation changes as we're about to go into
+                // a long IO request, so we won't be able to access inflate resources on flash
+                final int oldOrientation = getActivity().getRequestedOrientation();
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
                 new AsyncTask<Void, Void, Void>() {
                     int mOldOrientation;
                     ProgressDialog mProgressDialog;
