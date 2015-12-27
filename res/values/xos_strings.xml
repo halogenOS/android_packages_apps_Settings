@@ -18,7 +18,7 @@
     <!-- Buttons -->
     <string name="button_settings">Buttons</string>
     <string name="long_press_home_button_assist_title">Long press home for assist</string>
-    <string name="long_press_home_button_assist_summary"> Whether the assist intent 
+    <string name="long_press_home_button_assist_summary"> Whether the assist intent
         should be launched on long press of the home button</string>
     <string name="buttons_show_navbar_title">Navigation Bar</string>
     <string name="buttons_show_navbar_summary">Whether to show the Navigation Bar</string>
@@ -212,4 +212,27 @@
     <string name="security_settings_fingerprint_sensor_location_front">front</string>
     <string name="security_settings_fingerprint_sensor_location_left">left side</string>
     <string name="security_settings_fingerprint_sensor_location_right">right side</string>
+
+    <!-- HW Keys rebinding -->
+    <string name="hw_keys_rebinding_title">Hardware keys custom rebinding</string>
+    <string name="hw_keys_rebinding_summary">Change the default behaviour of your hardware keys</string>
+    <string name="home_key_title">Home button</string>
+    <string name="back_key_title">Back button</string>
+    <string name="menu_key_title">Menu button</string>
+    <string name="assist_key_title">Assist button</string>
+    <string name="app_switch_key_title">Recents button</string>
+    <string name="camera_key_title">Camera button</string>
+    <string name="short_press_title">Short press action</string>
+    <string name="long_press_title">Long press action</string>
+    <string name="double_tap_title">Double tap action</string>
+    <string name="action_nothing">No action</string>
+    <string name="action_menu">Open/close menu</string>
+    <string name="action_app_switch">Recents</string>
+    <string name="action_search">Search assistant</string>
+    <string name="action_voice_search">Voice search</string>
+    <string name="action_in_app_search">In-app search</string>
+    <string name="action_launch_camera">Open camera</string>
+    <string name="action_last_app">Launch last app</string>
+    <string name="action_splitscreen">Splitscreen</string>
+
 </resources>

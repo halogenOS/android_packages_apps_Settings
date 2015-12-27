@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 halogenOS
+<!-- Copyright (C) 2016-2017 The halogenOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<PreferenceScreen 
+<PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/button_settings"
@@ -42,17 +42,22 @@
 
     <PreferenceCategory
         android:title="@string/buttons_hardware_buttons_category">
-        
+
         <SwitchPreference
             android:key="buttons_enable_hw_buttons"
             android:title="@string/buttons_hw_buttons_title"
             android:summary="@string/buttons_hw_buttons_summary" />
-        
+
         <Preference
             android:key="buttons_hw_backlight"
             android:title="@string/buttons_button_backlight_title"
             android:summary="@string/buttons_button_backlight_status" />
-        
+
+        <PreferenceScreen
+            android:fragment="com.android.settings.fragments.HardwareKeyRebindingSettings"
+            android:title="@string/hw_keys_rebinding_title"
+            android:summary="@string/hw_keys_rebinding_summary"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
