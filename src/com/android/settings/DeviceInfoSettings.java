@@ -76,6 +76,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
+    private static final String KEY_HALOGENOS_VERSION = "halogenos_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
@@ -106,7 +107,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         addPreferencesFromResource(R.xml.device_info_settings);
 
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
+        setStringSummary(KEY_HALOGENOS_VERSION, System.getenv("ro.xos.version"));
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
+        findPreference(KEY_HALOGENOS_VERSION).setEnabled(true);
         String patch = Build.VERSION.SECURITY_PATCH;
         if (!"".equals(patch)) {
             try {
