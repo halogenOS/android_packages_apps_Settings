@@ -209,10 +209,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference.getKey().equals(KEY_FIRMWARE_VERSION)) {
-            System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
-            mHits[mHits.length-1] = SystemClock.uptimeMillis();
-            if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
+        if (preference.getKey().equals(KEY_FIRMWARE_VERSION)
+                || preference.getKey().equals(KEY_HALOGENOS_VERSION)) {
+            System.arraycopy(mHits, 1, mHits, 0, mHits.length - 1);
+            mHits[mHits.length - 1] = SystemClock.uptimeMillis();
+            if (mHits[0] >= (SystemClock.uptimeMillis() - 500)) {
                 UserManager um = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
                 if (um.hasUserRestriction(UserManager.DISALLOW_FUN)) {
                     Log.d(LOG_TAG, "Sorry, no fun for you!");
