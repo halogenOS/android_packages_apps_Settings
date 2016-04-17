@@ -1015,6 +1015,7 @@
     <string name="firmware_version" msgid="4801135784886859972">"Android-Version"</string>
     <string name="security_patch" msgid="8438384045870296634">"Stand der Sicherheitsupdates"</string>
     <string name="model_info" msgid="1952009518045740889">"Modell"</string>
+    <string name="halogenos_version">halogenOS version</string>
     <string name="fcc_equipment_id" msgid="149114368246356737">"Geräte-ID"</string>
     <string name="baseband_version" msgid="1848990160763524801">"Baseband-Version"</string>
     <string name="kernel_version" msgid="9192574954196167602">"Kernel-Version"</string>
