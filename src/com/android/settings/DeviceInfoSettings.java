@@ -107,7 +107,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         addPreferencesFromResource(R.xml.device_info_settings);
 
         setStringSummary(KEY_FIRMWARE_VERSION, Build.VERSION.RELEASE);
-        setStringSummary(KEY_HALOGENOS_VERSION, System.getenv("ro.xos.version"));
+        setStringSummary(KEY_HALOGENOS_VERSION, SystemProperties.get("ro.xos.version"));
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
         findPreference(KEY_HALOGENOS_VERSION).setEnabled(true);
         String patch = Build.VERSION.SECURITY_PATCH;
