@@ -52,6 +52,8 @@ import java.util.List;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
+import com.android.settings.R;
+
 public class DeviceInfoSettings extends SettingsPreferenceFragment implements Indexable {
 
     private static final String LOG_TAG = "DeviceInfoSettings";
@@ -81,6 +83,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String QGP_VERSION_PATH = "/persist/speccfg/qgpversion";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
+    private static final String KEY_MOD_VERSION = "mod_version";
+    private static final String KEY_XOS_SHARE = "share";
 
     long[] mHits = new long[3];
     int mDevHitCountdown;
@@ -332,6 +336,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             if (b != null && b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
                 ciActionOnSysUpdate(b);
             }
+        } else if (preference.getKey().equals(KEY_XOS_SHARE)) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, String.format(
+                getActivity().getString(R.string.share_message), Build.MODEL));
+        startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
+
         }
         return super.onPreferenceTreeClick(preference);
     }
