@@ -1,0 +1,25 @@
+
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--  Copyright (C) 2016 halogenOS
+ 
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the Apache License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   Apache Public License for more details.
+ 
+  -->
+ 
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Share halogenOS -->
+    <string name="share_xos_title">Share halogenOS</string>
+    <string name="share_xos_summary">Let others know about halogenOS</string>
+    <string name="share_message">Check out what #halogenOS is all about @ http://halogenOS.org/</string>
+    <string name="share_chooser_title">Share halogenOS</string>
+ 
+ </resources>
