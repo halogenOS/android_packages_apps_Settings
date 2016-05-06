@@ -75,6 +75,24 @@
                 android:title="@string/recents_settings_title"
                 settings:keywords="@string/recents_settings_title"
                 android:fragment="com.android.settings.xos.settings.RecentsViewSettings" />
+                
+        <PreferenceScreen
+                android:key="notification_panel_tweaks"
+                android:title="@string/notification_panel_tweaks_title"
+                settings:keywords="@string/notification_panel_tweaks_title"
+                android:fragment="com.android.settings.xos.settings.NotificationPanelTweaks" />
+
+        <SwitchPreference
+                android:key="camera_gesture"
+                android:title="@string/camera_gesture_title"
+                android:summary="@string/camera_gesture_desc"
+                android:persistent="false" />
+
+        <SwitchPreference
+                android:key="camera_double_tap_power_gesture"
+                android:title="@string/camera_double_tap_power_gesture_title"
+                android:summary="@string/camera_double_tap_power_gesture_desc"
+                android:persistent="false" />
 
         <PreferenceScreen
                 android:key="screensaver"
