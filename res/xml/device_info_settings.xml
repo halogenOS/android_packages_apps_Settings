@@ -77,7 +77,7 @@
                 android:title="@string/model_number"
                 android:summary="@string/device_info_default"/>
 
-        <!-- HalogenOS version -->
+        <!-- halogenOS version -->
         <Preference android:key="halogenos_version"
                     style="?android:preferenceInformationStyle"
                     android:title="@string/halogenos_version"
