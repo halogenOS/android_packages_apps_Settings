@@ -56,6 +56,13 @@
                 android:persistent="false"
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
+        
+        <ListPreference
+                android:key="screen_dpi"
+                android:title="@string/screen_dpi_title"
+                android:summary="@string/screen_dpi_summary"
+                android:entries="@array/screen_dpi_entries"
+                android:entryValues="@array/screen_dpi_entries" />
 
         <SwitchPreference
                 android:key="camera_gesture"

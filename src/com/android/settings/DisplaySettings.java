@@ -21,6 +21,7 @@ import com.android.internal.view.RotationPolicy;
 import com.android.settings.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.xos.toolbox.RootShellExecutor;
 
 import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
 import static android.provider.Settings.Secure.CAMERA_GESTURE_DISABLED;
@@ -79,6 +80,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_CAMERA_GESTURE = "camera_gesture";
     private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
             = "camera_double_tap_power_gesture";
+    private static final String KEY_SCREEN_DPI  = "screen_dpi";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -86,8 +88,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private final Configuration mCurConfig = new Configuration();
 
+    // You should add your preferences here
     private ListPreference mScreenTimeoutPreference;
     private ListPreference mNightModePreference;
+    private ListPreference mScreenDpiPreference; // Display -> Screen DPI
     private Preference mScreenSaverPreference;
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
@@ -127,6 +131,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref = (WarnedListPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
+        
+        // Display -> Screen DPI
+        mScreenDpiPreference = (ListPreference) findPreference(KEY_SCREEN_DPI);
+        mScreenDpiPreference.setOnPreferenceChangeListener(this);
+        
 
         if (isAutomaticBrightnessAvailable(getResources())) {
             mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
@@ -440,6 +449,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
+    /**
+     * Add you preference handlers here.
+     * Don't create custom ones.
+     */
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
@@ -490,6 +503,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 uiManager.setNightMode(value);
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist night mode setting", e);
+            }
+        }
+        if (preference == mScreenDpiPreference) {
+            try {
+                RootShellExecutor.execSuSafe("wm density " + ((String) objValue));
+                RootShellExecutor.execSuSafe("pkill systemui");
+            } catch(Exception ex) {
+                Log.e(TAG, "Failed setting DPI" + Integer.parseInt((String) objValue));
             }
         }
         return true;

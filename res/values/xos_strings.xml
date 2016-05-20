@@ -13,12 +13,24 @@
  
   -->
  
- <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
     <!-- Share halogenOS -->
     <string name="share_xos_title">Share halogenOS</string>
     <string name="share_xos_summary">Let others know about halogenOS</string>
     <string name="share_message">Check out what #halogenOS is all about @ http://halogenOS.org/</string>
     <string name="share_chooser_title">Share halogenOS</string>
- 
- </resources>
+    
+    <!-- XOS SETTINGS START -->
+    
+    <!-- Display -> Screen DPI -->
+    <string name="screen_dpi_title">Screen DPI</string>
+    <string name="screen_dpi_summary">
+        Change your LCD density to make various elements on your screen bigger 
+        or smaller, respectively
+    </string>
+  
+    
+    <!-- XOS SETTINGS END   -->
+
+</resources>
