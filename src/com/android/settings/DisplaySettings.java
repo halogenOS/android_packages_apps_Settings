@@ -21,7 +21,6 @@ import com.android.internal.view.RotationPolicy;
 import com.android.settings.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
-import com.android.settings.xos.toolbox.RootShellExecutor;
 
 import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
 import static android.provider.Settings.Secure.CAMERA_GESTURE_DISABLED;
@@ -60,6 +59,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.xdevs23.utils.root.RootShellExecutor;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
@@ -506,12 +507,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         if (preference == mScreenDpiPreference) {
-            try {
-                RootShellExecutor.execSuSafe("wm density " + ((String) objValue));
-                RootShellExecutor.execSuSafe("pkill systemui");
-            } catch(Exception ex) {
-                Log.e(TAG, "Failed setting DPI" + Integer.parseInt((String) objValue));
-            }
+            RootShellExecutor.execSuSafe(
+                "wm density " + ((String) objValue),
+                "wm density " + ((String) objValue),
+                "pkill systemui",
+                "wm density " + ((String) objValue)
+            );
         }
         return true;
     }
