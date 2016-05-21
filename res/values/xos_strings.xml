@@ -29,7 +29,9 @@
         Change your LCD density to make various elements on your screen bigger 
         or smaller, respectively
     </string>
-  
+        
+    <!-- Display -> Lockscreen Settings -->
+    <string name="lockscreen_settings_title">Lockscreen settings</string>
     
     <!-- XOS SETTINGS END   -->
 

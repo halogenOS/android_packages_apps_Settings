@@ -30,6 +30,9 @@
         größer bzw. kleiner anzuzeigen
     </string>
     
+    <!-- Display -> Lockscreen Settings -->
+    <string name="lockscreen_settings_title">Sperrbildschirm-Einstellungen</string>
+    
     <!-- XOS SETTINGS END   -->
 
 </resources>
