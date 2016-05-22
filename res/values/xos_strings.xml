@@ -39,6 +39,12 @@
         Decide whether the visualizer should be shown on the lockscreen or not
     </string>
     
+    <!-- Display -> Recents -->
+    <string name="recents_settings_title">Recents</string>
+        
+    <!-- Display -> Recents -> Search bar -->
+    <string name="enable_recents_searchbar_title">Show search bar</string>
+    
     <!-- XOS SETTINGS END   -->
 
 </resources>

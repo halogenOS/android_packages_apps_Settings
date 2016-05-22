@@ -69,6 +69,12 @@
                 android:title="@string/lockscreen_settings_title"
                 settings:keywords="@string/lockscreen_settings_title"
                 android:fragment="com.android.settings.xos.settings.LockscreenSettings" />
+        
+        <PreferenceScreen
+                android:key="recents_settings"
+                android:title="@string/recents_settings_title"
+                settings:keywords="@string/recents_settings_title"
+                android:fragment="com.android.settings.xos.settings.RecentsViewSettings" />
 
         <PreferenceScreen
                 android:key="screensaver"

@@ -39,6 +39,12 @@
         Entscheide, ob der Visualizer am Sperrbildschirm angezeigt werden soll
     </string>
     
+    <!-- Display -> Recents -->
+    <string name="recents_settings_title">Zuletzt geöffnete Apps-Ansicht</string>
+    
+    <!-- Display -> Recents -> Search bar -->
+    <string name="enable_recents_searchbar_title">Suchleiste anzeigen</string>
+    
     <!-- XOS SETTINGS END   -->
 
 </resources>
