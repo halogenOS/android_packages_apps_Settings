@@ -33,6 +33,12 @@
     <!-- Display -> Lockscreen Settings -->
     <string name="lockscreen_settings_title">Sperrbildschirm-Einstellungen</string>
     
+    <!-- Display -> Lockscreen settings -> Lockscreen visualizer -->
+    <string name="lockscreen_visualizer_title">Sperrbildschirm-Visualizer</string>
+    <string name="lockscreen_visualizer_summary">
+        Entscheide, ob der Visualizer am Sperrbildschirm angezeigt werden soll
+    </string>
+    
     <!-- XOS SETTINGS END   -->
 
 </resources>

@@ -26,6 +26,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.R;
 
+import static android.provider.Settings.Global.LOCKSCREEN_VISUALIZER_ENABLED;
 import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
 import static android.provider.Settings.Secure.CAMERA_GESTURE_DISABLED;
 import static android.provider.Settings.Secure.DOUBLE_TAP_TO_WAKE;
@@ -74,18 +75,19 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements
                 KEY_CAMERA_GESTURE = "camera_gesture",
                 KEY_LIFT_TO_WAKE = "lift_to_wake",
                 KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
-                    = "camera_double_tap_power_gesture"
+                    = "camera_double_tap_power_gesture",
+                KEY_LOCKSCREEN_VISUALIZER = "enable_lockscreen_visualizer"
                 ;
     
     private final Configuration mCurConfig = new Configuration();
-    
-    
     
     private SwitchPreference 
                 mCameraGesturePreference,
                 mCameraDoubleTapPowerGesturePreference,
                 mTapToWakePreference,
-                mLiftToWakePreference
+                mLiftToWakePreference,
+                // Display -> Lockscreen settings -> Lockscreen visualizer
+                mLockscreenVisualizerPreference
                 ;
     
     @Override
@@ -129,7 +131,11 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements
         } else {
             removePreference(KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE);
         }
-
+        
+        // Display -> Lockscreen settings -> Lockscreen visualizer
+        mLockscreenVisualizerPreference = 
+            (SwitchPreference) findPreference(KEY_LOCKSCREEN_VISUALIZER);
+        mLockscreenVisualizerPreference.setOnPreferenceChangeListener(this);
 
     }
 
@@ -190,6 +196,10 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements
             int value = Settings.Secure.getInt(getContentResolver(), WAKE_GESTURE_ENABLED, 0);
             mLiftToWakePreference.setChecked(value != 0);
         }
+        
+        mLockscreenVisualizerPreference.setChecked(
+            Settings.Global.getInt(getContentResolver(), LOCKSCREEN_VISUALIZER_ENABLED, 1) == 1
+        );
     }
 
     @Override
@@ -221,6 +231,11 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements
         if (preference == mLiftToWakePreference) {
             boolean value = (Boolean) objValue;
             Settings.Secure.putInt(getContentResolver(), WAKE_GESTURE_ENABLED, value ? 1 : 0);
+        }
+        // Display -> Lockscreen settings -> Lockscreen visualizer
+        if (preference == mLockscreenVisualizerPreference) {
+            Settings.Global.putInt(getContentResolver(), LOCKSCREEN_VISUALIZER_ENABLED,
+                ((Boolean)objValue));
         }
         return true;
     }

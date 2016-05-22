@@ -42,5 +42,10 @@
                 android:title="@string/tap_to_wake"
                 android:summary="@string/tap_to_wake_summary"
                 android:persistent="false" />
+        
+        <SwitchPreference
+                android:key="enable_lockscreen_visualizer"
+                android:title="@string/lockscreen_visualizer_title"
+                android:summary="@string/lockscreen_visualizer_summary" />
 
 </PreferenceScreen>

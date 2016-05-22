@@ -30,8 +30,14 @@
         or smaller, respectively
     </string>
         
-    <!-- Display -> Lockscreen Settings -->
+    <!-- Display -> Lockscreen settings -->
     <string name="lockscreen_settings_title">Lockscreen settings</string>
+    
+    <!-- Display -> Lockscreen settings -> Lockscreen visualizer -->
+    <string name="lockscreen_visualizer_title">Lockscreen visualizer</string>
+    <string name="lockscreen_visualizer_summary">
+        Decide whether the visualizer should be shown on the lockscreen or not
+    </string>
     
     <!-- XOS SETTINGS END   -->
 
