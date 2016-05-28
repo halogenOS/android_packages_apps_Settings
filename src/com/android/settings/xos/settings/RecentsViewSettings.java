@@ -124,7 +124,7 @@ public class RecentsViewSettings extends SettingsPreferenceFragment implements
 
     private void updateState() {
         mShowSearchbarPreference.setChecked(
-            Settings.Global.getInt(getContentResolver(), RECENTS_SEARCHBAR_ENABLED, 0) == 1
+            Settings.Global.getInt(getContentResolver(), RECENTS_SEARCHBAR_ENABLED, 1) == 1
         );
     }
 
