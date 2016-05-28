@@ -429,7 +429,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         if (preference == mScreenDpiPreference) {
-            RootShellExecutor.execSuSafe(
+            RootShellExecutor.execShell(
                 "wm density " + ((String) objValue),
                 "wm density " + ((String) objValue),
                 "pkill systemui",
