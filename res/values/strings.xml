@@ -5973,6 +5973,7 @@
     <string name="keywords_color_mode">vibrant rgb srgb color natural standard</string>
     <!-- Search keywords for different screen unlock modes : slide to unlock, password, pattern and PIN [CHAR LIMIT=none] -->
     <string name="keywords_lockscreen">slide password pattern pin</string>
+    <string name="keywords_screenshot_crop_and_share">screenshot crop share edit</string>
 
     <!-- NFC Wi-Fi pairing/setup strings-->
 
@@ -7067,4 +7068,10 @@
 
     <!-- Description of feature to change color setting for the display [CHAR LIMIT=NONE] -->
     <string name="picture_color_mode_desc">Use sRGB</string>
+
+    <string name="screenshot_crop_and_share_enable_title">Screenshot crop &amp; share</string>
+    <string name="screenshot_crop_and_share_enable_summary">Show an editor window after taking a screenshot in order to do some operations like cropping, saving or sharing it</string>
+    <string name="category_screenshot">Screenshot</string>
+    <string name="pref_crop_behavior_title">Crop behavior</string>
+    <string name="pref_crop_behavior_summary">Always use the cropped image inside the cropping area, even if the apply button hasn\'t been pressed</string>
 </resources>
