@@ -56,6 +56,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -430,10 +431,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         if (preference == mScreenDpiPreference) {
             RootShellExecutor.execShell(
-                "wm density " + ((String) objValue),
-                "wm density " + ((String) objValue),
-                "pkill systemui",
-                "wm density " + ((String) objValue)
+                "wm density " + ((String) objValue), // Set density
+                "wm density " + ((String) objValue)  // Just in case
+            );
+            Toast.makeText(getContext(),
+                    getString(R.string.requirement_root_restart_systemui),
+                    Toast.LENGTH_LONG);
+            RootShellExecutor.execSuSafe(
+                "pkill systemui"                     // Restart systemui
+            );
+            RootShellExecutor.execShell(
+                "wm density " + ((String) objValue)  // To fix glitches
             );
         }
         return true;

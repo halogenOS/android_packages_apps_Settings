@@ -46,5 +46,13 @@
     <string name="enable_recents_searchbar_title">Suchleiste anzeigen</string>
     
     <!-- XOS SETTINGS END   -->
+    
+    <!-- XOS GENERAL START -->
+    
+    <string name="requirement_root_restart_systemui">
+        Root-Zugriff ist erforderlich, um SystemUI neuzustarten.
+    </string>
+    
+    <!-- XOS GENERAL END -->
 
 </resources>

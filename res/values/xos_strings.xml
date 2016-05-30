@@ -54,5 +54,13 @@
     <string name="advanced_reboot_show_always">Show always</string>
 
     <!-- XOS SETTINGS END   -->
+    
+    <!-- XOS GENERAL START -->
+    
+    <string name="requirement_root_restart_systemui">
+        Root access is required to restart SystemUI.
+    </string>
+    
+    <!-- XOS GENERAL END -->
 
 </resources>
