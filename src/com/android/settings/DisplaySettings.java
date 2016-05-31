@@ -436,7 +436,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             );
             Toast.makeText(getContext(),
                     getString(R.string.requirement_root_restart_systemui),
-                    Toast.LENGTH_LONG);
+                    Toast.LENGTH_LONG).show();
             RootShellExecutor.execSuSafe(
                 "pkill systemui"                     // Restart systemui
             );
