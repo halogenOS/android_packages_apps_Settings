@@ -44,9 +44,6 @@
     
     <!-- Display -> Recents -> Search bar -->
     <string name="enable_recents_searchbar_title">Suchleiste anzeigen</string>
-    
-    <!-- Display -> Notification Panel -> Enable HeadsUp -->
-    <string name="notifpaneltweaks_enable_headsup">Enable Heads-Up notifications</string>
 
     <!-- Users -> Change Android ID -->
     <string name="usersettings_change_android_id">Android ID ändern</string>

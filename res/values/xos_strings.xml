@@ -40,8 +40,8 @@
     <string name="advanced_reboot_hide_on_keyguard">Hide on lock screen</string>
     <string name="advanced_reboot_show_always">Show always</string>
     
-    <!-- Display -> Notification Panel -> Enable HeadsUp -->
-    <string name="notifpaneltweaks_enable_headsup">Enable Heads-Up notifications</string>
+    <!-- Display -> Notification Panel -> Enable Heads-Up -->
+    <string name="notifpaneltweaks_enable_headsup" translatable="false">Heads-Up</string>
 
     <!-- XOS SETTINGS END   -->
  
