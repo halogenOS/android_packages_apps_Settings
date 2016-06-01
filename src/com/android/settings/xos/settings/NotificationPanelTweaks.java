@@ -82,6 +82,7 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
         addPreferencesFromResource(R.xml.notification_panel_tweaks_settings);
         
         mEnableHeadsUpPreference = (SwitchPreference) findPreference(KEY_ENABLE_HEADSUP);
+        mEnableHeadsUpPreference.setOnPreferenceChangeListener(this);
         
         updateState();
     }
