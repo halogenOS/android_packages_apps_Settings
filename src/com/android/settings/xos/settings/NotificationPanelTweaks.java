@@ -25,6 +25,8 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.R;
 
+import static android.provider.Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS;
+
 import android.app.Activity;
 import android.app.ActivityManagerNative;
 import android.app.Dialog;
@@ -58,7 +60,13 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
     private static final String TAG = "NotificationPanelTweaks";
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
     
+    private static final String 
+            KEY_ENABLE_HEADSUP = "enable_headsup"
+            ;
+    
     private final Configuration mCurConfig = new Configuration();
+    
+    private SwitchPreference mEnableHeadsUpPreference;
 
     @Override
     protected int getMetricsCategory() {
@@ -72,6 +80,10 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
         final ContentResolver resolver = activity.getContentResolver();
 
         addPreferencesFromResource(R.xml.notification_panel_tweaks_settings);
+        
+        mEnableHeadsUpPreference = (SwitchPreference) findPreference(KEY_ENABLE_HEADSUP);
+        
+        updateState();
     }
 
     int floatToIndex(float val) {
@@ -107,7 +119,9 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
     }
 
     private void updateState() {
-        
+        mEnableHeadsUpPreference.setChecked(
+            Settings.System.getInt(getContentResolver(),
+                KEY_ENABLE_HEADSUP_NOTIFICATIONS, 1) == 1);
     }
 
     @Override
@@ -118,6 +132,10 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
+        
+        if(preference == mEnableHeadsUpPreference)
+            Settings.System.putInt(getContentResolver(),
+                KEY_ENABLE_HEADSUP_NOTIFICATIONS, (Boolean)objValue);
         
         return true;
     }
