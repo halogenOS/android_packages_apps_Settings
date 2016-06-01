@@ -88,6 +88,10 @@
                 android:fragment="com.android.settings.DreamSettings" />
 
         <SwitchPreference
+                android:key="enable_headsup"
+                android:title="@string/notifpaneltweaks_enable_headsup" />
+
+        <SwitchPreference
                 android:key="lockscreen_visualizer"
                 android:title="@string/lockscreen_visualizer_title"
                 android:summary="@string/lockscreen_visualizer_summary" />

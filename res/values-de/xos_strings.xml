@@ -126,4 +126,7 @@
     <string name="double_tap_to_sleep_title">Doppeltippen zum Sperren</string>
     <string name="double_tap_to_sleep_summary">Statusleiste zum Sperren doppeltippen</string>
 
+    <!-- Display -> Heads-Up -->
+    <string name="notifpaneltweaks_enable_headsup">Heads-Up Benachrichtigungen</string>
+
 </resources>
