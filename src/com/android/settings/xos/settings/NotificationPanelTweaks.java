@@ -25,16 +25,6 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.R;
 
-import static android.provider.Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED;
-import static android.provider.Settings.Secure.CAMERA_GESTURE_DISABLED;
-import static android.provider.Settings.Secure.DOUBLE_TAP_TO_WAKE;
-import static android.provider.Settings.Secure.DOZE_ENABLED;
-import static android.provider.Settings.Secure.WAKE_GESTURE_ENABLED;
-import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE;
-import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
-import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL;
-import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
-
 import android.app.Activity;
 import android.app.ActivityManagerNative;
 import android.app.Dialog;
@@ -82,8 +72,6 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
         final ContentResolver resolver = activity.getContentResolver();
 
         addPreferencesFromResource(R.xml.notification_panel_tweaks_settings);
-
-      
     }
 
     int floatToIndex(float val) {
@@ -97,24 +85,6 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
             lastVal = thisVal;
         }
         return indices.length-1;
-    }
-
-    public void readFontSizePreference(ListPreference pref) {
-        try {
-            mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
-        } catch (RemoteException e) {
-            Log.w(TAG, "Unable to retrieve font size");
-        }
-
-        // mark the appropriate item in the preferences list
-        int index = floatToIndex(mCurConfig.fontScale);
-        pref.setValueIndex(index);
-
-        // report the current size in the summary text
-        final Resources res = getResources();
-        String[] fontSizeNames = res.getStringArray(R.array.entries_font_size);
-        pref.setSummary(String.format(res.getString(R.string.summary_font_size),
-                fontSizeNames[index]));
     }
 
     @Override
