@@ -32,6 +32,10 @@
             android:title="@string/ticker_and_headsup_settings_title"
             android:summary="@string/ticker_and_headsup_settings_summary"
             android:fragment="com.android.settings.fragments.TickerAndHeadsupSettings" />
+        <PreferenceScreen
+            android:title="@string/clock_settings_title"
+            android:summary="@string/clock_settings_summary"
+            android:fragment="com.android.settings.fragments.ClockSettings" />
      </PreferenceCategory>
 
      <PreferenceCategory
