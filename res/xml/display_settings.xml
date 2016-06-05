@@ -106,22 +106,11 @@
                 settings:keywords="@string/keywords_display_cast_screen"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
-	<PreferenceCategory
-            android:key="screenshot"
-            android:title="@string/category_screenshot">
+	<PreferenceScreen
+		android:key="screenshot"
+		android:title="@string/category_screenshot"
+		settings:keywords="@string/keywords_screenshot_crop_and_share"
 
-            <SwitchPreference
-                android:key="screenshot_crop_and_share"
-                android:title="@string/screenshot_crop_and_share_enable_title"
-                android:summary="@string/screenshot_crop_and_share_enable_summary"
-                settings:keywords="@string/keywords_screenshot_crop_and_share"
-                android:defaultValue="true" />
-
-	     <SwitchPreference
-    	        android:key="screenshot_crop_behavior"
-                android:title="@string/pref_crop_behavior_title"
-                android:summary="@string/pref_crop_behavior_summary" />
-
-         </PreferenceCategory>
+android:fragment="com.android.settings.xos.settings.ScreenshotSettings" />
 
 </PreferenceScreen>
