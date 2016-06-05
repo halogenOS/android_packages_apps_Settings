@@ -61,6 +61,10 @@
         Root access is required to restart SystemUI.
     </string>
     
+    <string name="requirement_configchanged_reboot_system">
+        A reboot is required to apply changes properly.
+    </string>
+    
     <!-- XOS GENERAL END -->
 
 </resources>

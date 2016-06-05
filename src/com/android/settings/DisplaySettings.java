@@ -39,6 +39,7 @@ import android.app.UiModeManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.hardware.Sensor;
@@ -55,12 +56,14 @@ import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.xdevs23.file.FileUtils;
 import org.xdevs23.utils.root.RootShellExecutor;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
@@ -431,18 +434,20 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         if (preference == mScreenDpiPreference) {
             RootShellExecutor.execShell(
-                "wm density " + ((String) objValue), // Set density
-                "wm density " + ((String) objValue)  // Just in case
+                // Explanation for qemu.sf.lcd_density:
+                // ro.sf.lcd_density is read-only and we don't want to touch it
+                // As a great alternative, we use qemu.sf.lcd_density, which
+                // overrides ro.sf.lcd_density.
+                // See android.util.DisplayMetrics.getDeviceIntensity()
+                "setprop qemu.sf.lcd_density " + ((String) objValue),
+                "wm density " + ((String) objValue),  // Set density
+                "wm density " + ((String) objValue),   // To fix glitches
+                "mkdir -p /data/xos/settings/",
+                "echo -n \"" + ((String) objValue) + "\">/data/xos/settings/dpi.setting"
             );
             Toast.makeText(getContext(),
-                    getString(R.string.requirement_root_restart_systemui),
+                    getString(R.string.requirement_configchanged_reboot_system),
                     Toast.LENGTH_LONG).show();
-            RootShellExecutor.execSuSafe(
-                "pkill systemui"                     // Restart systemui
-            );
-            RootShellExecutor.execShell(
-                "wm density " + ((String) objValue)  // To fix glitches
-            );
         }
         return true;
     }

@@ -52,6 +52,10 @@
     <string name="requirement_root_restart_systemui">
         Root-Zugriff ist erforderlich, um SystemUI neuzustarten.
     </string>
+        
+    <string name="requirement_configchanged_reboot_system">
+        Ein Neustart ist erforderlich, um die Änderungen ordnungsgemäß anzuwenden.
+    </string>
     
     <!-- XOS GENERAL END -->
 
