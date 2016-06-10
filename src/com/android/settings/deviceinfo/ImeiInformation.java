@@ -15,7 +15,7 @@
  */
 package com.android.settings.deviceinfo;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.telephony.ConfigResourceUtil;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
@@ -181,7 +181,8 @@ public class ImeiInformation extends InstrumentedPreferenceActivity {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVICEINFO_IMEI_INFORMATION;
+        return 0;
+
     }
 
     @Override

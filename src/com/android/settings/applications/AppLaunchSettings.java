@@ -32,7 +32,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.DropDownPreference;
 import com.android.settings.DropDownPreference.Callback;
 import com.android.settings.R;
@@ -210,6 +210,7 @@ public class AppLaunchSettings extends AppInfoWithHeader implements OnClickListe
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATIONS_APP_LAUNCH;
+        return 0;
+
     }
 }

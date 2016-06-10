@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
@@ -81,7 +81,8 @@ public class EncryptionInterstitial extends SettingsActivity {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsLogger.ENCRYPTION;
+        return 0;
+
         }
 
         @Override

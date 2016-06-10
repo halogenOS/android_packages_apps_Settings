@@ -24,7 +24,7 @@ import android.text.format.Formatter;
 import android.text.format.Formatter.BytesResult;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.applications.ProcStatsData.MemInfo;
@@ -106,7 +106,8 @@ public class ProcessStatsSummary extends ProcessStatsBase implements OnPreferenc
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.PROCESS_STATS_SUMMARY;
+        return 0;
+
     }
 
     @Override

@@ -48,7 +48,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.AppHeader;
 import com.android.settings.HelpUtils;
 import com.android.settings.InstrumentedFragment;
@@ -386,26 +386,7 @@ public class ManageApplications extends InstrumentedFragment
 
     @Override
     protected int getMetricsCategory() {
-        switch (mListType) {
-            case LIST_TYPE_MAIN:
-                return MetricsLogger.MANAGE_APPLICATIONS;
-            case LIST_TYPE_NOTIFICATION:
-                return MetricsLogger.MANAGE_APPLICATIONS_NOTIFICATIONS;
-            case LIST_TYPE_DOMAINS_URLS:
-                return MetricsLogger.MANAGE_DOMAIN_URLS;
-            case LIST_TYPE_STORAGE:
-                return MetricsLogger.APPLICATIONS_STORAGE_APPS;
-            case LIST_TYPE_USAGE_ACCESS:
-                return MetricsLogger.USAGE_ACCESS;
-            case LIST_TYPE_HIGH_POWER:
-                return MetricsLogger.APPLICATIONS_HIGH_POWER_APPS;
-            case LIST_TYPE_OVERLAY:
-                return MetricsLogger.SYSTEM_ALERT_WINDOW_APPS;
-            case LIST_TYPE_WRITE_SETTINGS:
-                return MetricsLogger.SYSTEM_ALERT_WINDOW_APPS;
-            default:
-                return MetricsLogger.VIEW_UNKNOWN;
-        }
+        return 0;
     }
 
     @Override

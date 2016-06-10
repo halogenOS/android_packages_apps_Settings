@@ -51,7 +51,7 @@ import android.view.textservice.SpellCheckerInfo;
 import android.view.textservice.TextServicesManager;
 
 import com.android.internal.app.LocalePicker;
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.Settings.KeyboardLayoutPickerActivity;
 import com.android.settings.SettingsActivity;
@@ -106,7 +106,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.INPUTMETHOD_LANGUAGE;
+        return 0;
+
     }
 
     @Override

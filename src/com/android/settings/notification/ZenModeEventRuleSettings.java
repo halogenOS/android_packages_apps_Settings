@@ -28,7 +28,7 @@ import android.service.notification.ZenModeConfig;
 import android.service.notification.ZenModeConfig.EventInfo;
 import android.service.notification.ZenModeConfig.ZenRule;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.DropDownPreference;
 import com.android.settings.R;
 
@@ -146,7 +146,8 @@ public class ZenModeEventRuleSettings extends ZenModeRuleSettingsBase {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_ZEN_MODE_EVENT_RULE;
+        return 0;
+
     }
 
     public static CalendarInfo findCalendar(Context context, EventInfo event) {

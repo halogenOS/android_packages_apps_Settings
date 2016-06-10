@@ -37,7 +37,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.HelpUtils;
 import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
@@ -74,7 +74,8 @@ public class DashboardSummary extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DASHBOARD_SUMMARY;
+        return 0;
+
     }
 
     @Override

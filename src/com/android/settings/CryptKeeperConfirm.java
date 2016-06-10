@@ -34,7 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 
 import java.util.Locale;
@@ -45,7 +45,8 @@ public class CryptKeeperConfirm extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.CRYPT_KEEPER_CONFIRM;
+        return 0;
+
     }
 
     public static class Blank extends Activity {

@@ -44,7 +44,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 
 public class ChooseLockGeneric extends SettingsActivity {
@@ -126,7 +126,8 @@ public class ChooseLockGeneric extends SettingsActivity {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsLogger.CHOOSE_LOCK_GENERIC;
+        return 0;
+
         }
 
         @Override

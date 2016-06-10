@@ -41,7 +41,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.android.internal.logging.MetricsLogger;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -253,7 +253,8 @@ public class ApnEditor extends InstrumentedPreferenceActivity
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APN_EDITOR;
+        return 0;
+
     }
 
     @Override

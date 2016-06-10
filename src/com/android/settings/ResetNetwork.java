@@ -44,7 +44,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.telephony.PhoneConstants;
 
 import java.util.ArrayList;
@@ -206,6 +206,7 @@ public class ResetNetwork extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.RESET_NETWORK;
+        return 0;
+
     }
 }

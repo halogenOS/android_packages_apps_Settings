@@ -51,7 +51,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.TrustAgentUtils.TrustAgentComponentInfo;
 import com.android.settings.fingerprint.FingerprintEnrollIntroduction;
@@ -141,7 +141,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.SECURITY;
+        return 0;
+
     }
 
     @Override

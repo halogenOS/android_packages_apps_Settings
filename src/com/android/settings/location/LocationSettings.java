@@ -33,7 +33,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Switch;
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
@@ -107,7 +107,8 @@ public class LocationSettings extends LocationSettingsBase
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.LOCATION;
+        return 0;
+
     }
 
     @Override

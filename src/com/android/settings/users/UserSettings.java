@@ -55,7 +55,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.SimpleAdapter;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.ChooseLockGeneric;
 import com.android.settings.OwnerInfoSettings;
@@ -185,7 +185,8 @@ public class UserSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.USER;
+        return 0;
+
     }
 
     @Override

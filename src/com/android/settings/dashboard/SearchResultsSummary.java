@@ -36,7 +36,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
@@ -83,8 +83,6 @@ public class SearchResultsSummary extends InstrumentedFragment {
         @Override
         protected void onPostExecute(Cursor cursor) {
             if (!isCancelled()) {
-                MetricsLogger.action(getContext(), MetricsLogger.ACTION_SEARCH_RESULTS,
-                        cursor.getCount());
                 setResultsCursor(cursor);
                 setResultsVisibility(cursor.getCount() > 0);
             } else if (cursor != null) {
@@ -249,7 +247,8 @@ public class SearchResultsSummary extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DASHBOARD_SEARCH_RESULTS;
+        return 0;
+
     }
 
     @Override

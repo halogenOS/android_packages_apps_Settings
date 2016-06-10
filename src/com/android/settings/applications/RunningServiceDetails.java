@@ -33,7 +33,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -536,7 +536,8 @@ public class RunningServiceDetails extends InstrumentedFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.RUNNING_SERVICE_DETAILS;
+        return 0;
+
     }
 
     @Override

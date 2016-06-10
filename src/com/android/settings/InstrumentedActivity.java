@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 
 import android.app.Activity;
 
@@ -27,7 +27,7 @@ public abstract class InstrumentedActivity extends Activity {
     /**
      * Declare the view of this category.
      *
-     * Categories are defined in {@link com.android.internal.logging.MetricsLogger}
+
      * or if there is no relevant existing category you may define one in
      * {@link com.android.settings.InstrumentedFragment}.
      */
@@ -36,12 +36,12 @@ public abstract class InstrumentedActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        MetricsLogger.visible(this, getMetricsCategory());
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        MetricsLogger.hidden(this, getMetricsCategory());
+
     }
 }

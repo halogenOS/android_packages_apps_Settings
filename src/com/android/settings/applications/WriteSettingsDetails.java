@@ -32,7 +32,7 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 import com.android.settings.applications.AppStateAppOpsBridge.PermissionState;
@@ -157,7 +157,8 @@ public class WriteSettingsDetails extends AppInfoWithHeader implements OnPrefere
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.SYSTEM_ALERT_WINDOW_APPS;
+        return 0;
+
     }
 
     public static CharSequence getSummary(Context context, AppEntry entry) {

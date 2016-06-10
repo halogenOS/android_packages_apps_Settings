@@ -37,7 +37,7 @@ import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.util.CharSequences;
 import com.android.settings.InstrumentedPreferenceActivity;
 import com.android.settings.R;
@@ -95,7 +95,8 @@ public class ChooseAccountActivity extends InstrumentedPreferenceActivity {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.ACCOUNTS_CHOOSE_ACCOUNT_ACTIVITY;
+        return 0;
+
     }
 
     @Override

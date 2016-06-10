@@ -56,7 +56,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.ChooseLockGeneric;
 import com.android.settings.ChooseLockSettingsHelper;
 import com.android.settings.HelpUtils;
@@ -261,7 +261,8 @@ public class FingerprintSettings extends SubSettings {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsLogger.FINGERPRINT;
+        return 0;
+
         }
 
         @Override
@@ -578,9 +579,7 @@ public class FingerprintSettings extends SubSettings {
                                             if (DEBUG) {
                                                 Log.v(TAG, "rename " + name + " to " + newName);
                                             }
-                                            MetricsLogger.action(getContext(),
-                                                    MetricsLogger.ACTION_FINGERPRINT_RENAME,
-                                                    mFp.getFingerId());
+
                                             FingerprintSettingsFragment parent
                                                     = (FingerprintSettingsFragment)
                                                     getTargetFragment();
@@ -623,8 +622,7 @@ public class FingerprintSettings extends SubSettings {
 
             private void onDeleteClick(DialogInterface dialog) {
                 if (DEBUG) Log.v(TAG, "Removing fpId=" + mFp.getFingerId());
-                MetricsLogger.action(getContext(), MetricsLogger.ACTION_FINGERPRINT_DELETE,
-                        mFp.getFingerId());
+
                 FingerprintSettingsFragment parent
                         = (FingerprintSettingsFragment) getTargetFragment();
                 if (parent.mFingerprintManager.getEnrolledFingerprints().size() > 1) {

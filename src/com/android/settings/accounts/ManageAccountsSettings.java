@@ -47,7 +47,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.AccountPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
@@ -89,7 +89,8 @@ public class ManageAccountsSettings extends AccountPreferenceBase
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.ACCOUNTS_MANAGE_ACCOUNTS;
+        return 0;
+
     }
 
     @Override

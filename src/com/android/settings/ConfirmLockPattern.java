@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.LockPatternView;
 import com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient;
@@ -201,7 +201,8 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsLogger.CONFIRM_LOCK_PATTERN;
+        return 0;
+
         }
 
         @Override

@@ -31,7 +31,7 @@ import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -55,7 +55,8 @@ public class InputMethodAndSubtypeEnabler extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.INPUTMETHOD_SUBTYPE_ENABLER;
+        return 0;
+
     }
 
     @Override

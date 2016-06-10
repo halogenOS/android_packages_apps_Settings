@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.widget.PasswordEntryKeyboardHelper;
 import com.android.internal.widget.PasswordEntryKeyboardView;
@@ -319,7 +319,8 @@ public class ChooseLockPassword extends SettingsActivity {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsLogger.CHOOSE_LOCK_PASSWORD;
+        return 0;
+
         }
 
         @Override

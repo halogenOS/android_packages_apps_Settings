@@ -38,7 +38,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.DropDownPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
@@ -155,7 +155,7 @@ public abstract class ZenModeRuleSettingsBase extends ZenModeSettingsBase
         if (mDisableListeners) return;
         final boolean enabled = isChecked;
         if (enabled == mRule.enabled) return;
-        MetricsLogger.action(mContext, MetricsLogger.ACTION_ZEN_ENABLE_RULE, enabled);
+
         if (DEBUG) Log.d(TAG, "onSwitchChanged enabled=" + enabled);
         mRule.enabled = enabled;
         mRule.snoozing = false;
@@ -202,7 +202,7 @@ public abstract class ZenModeRuleSettingsBase extends ZenModeSettingsBase
     public boolean onOptionsItemSelected(MenuItem item) {
         if (DEBUG) Log.d(TAG, "onOptionsItemSelected " + item.getItemId());
         if (item.getItemId() == R.id.delete) {
-            MetricsLogger.action(mContext, MetricsLogger.ACTION_ZEN_DELETE_RULE);
+
             showDeleteRuleDialog();
             return true;
         }
@@ -239,7 +239,7 @@ public abstract class ZenModeRuleSettingsBase extends ZenModeSettingsBase
                 .setPositiveButton(R.string.zen_mode_delete_rule_button, new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        MetricsLogger.action(mContext, MetricsLogger.ACTION_ZEN_DELETE_RULE_OK);
+
                         mDeleting = true;
                         mConfig.automaticRules.remove(mRuleId);
                         setZenModeConfig(mConfig);

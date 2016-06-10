@@ -28,7 +28,7 @@ import android.provider.Settings;
 import android.service.notification.ZenModeConfig.ZenRule;
 import android.util.Log;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.notification.ZenRuleNameDialog.RuleInfo;
 
@@ -132,7 +132,8 @@ public class ZenModeExternalRuleSettings extends ZenModeRuleSettingsBase {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_ZEN_MODE_EXTERNAL_RULE;
+        return 0;
+
     }
 
 }

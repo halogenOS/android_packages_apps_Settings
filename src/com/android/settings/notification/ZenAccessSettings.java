@@ -43,7 +43,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -62,7 +62,8 @@ public class ZenAccessSettings extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_ZEN_MODE_ACCESS;
+        return 0;
+
     }
 
     @Override

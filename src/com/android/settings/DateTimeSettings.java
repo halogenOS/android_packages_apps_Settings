@@ -38,7 +38,7 @@ import android.text.format.DateFormat;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settingslib.datetime.ZoneGetter;
 
 import java.util.Calendar;
@@ -73,7 +73,8 @@ public class DateTimeSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DATE_TIME;
+        return 0;
+
     }
 
     @Override

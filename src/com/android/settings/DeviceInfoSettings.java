@@ -41,7 +41,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
@@ -96,7 +96,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVICEINFO;
+        return 0;
+
     }
 
     @Override

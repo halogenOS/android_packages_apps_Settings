@@ -19,7 +19,7 @@ package com.android.settings.location;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 
 /**
@@ -44,7 +44,8 @@ public class LocationMode extends LocationSettingsBase
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.LOCATION_MODE;
+        return 0;
+
     }
 
     @Override

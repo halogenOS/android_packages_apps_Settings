@@ -73,7 +73,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.fuelgauge.InactiveApps;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -283,7 +283,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVELOPMENT;
+        return 0;
+
     }
 
     @Override

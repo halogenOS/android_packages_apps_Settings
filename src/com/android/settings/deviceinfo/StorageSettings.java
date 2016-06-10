@@ -41,7 +41,7 @@ import android.text.format.Formatter.BytesResult;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -83,7 +83,8 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVICEINFO_STORAGE;
+        return 0;
+
     }
 
     @Override

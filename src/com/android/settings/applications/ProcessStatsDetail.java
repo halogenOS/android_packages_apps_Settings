@@ -42,7 +42,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.AppHeader;
 import com.android.settings.CancellablePreference;
 import com.android.settings.CancellablePreference.OnCancelListener;
@@ -127,7 +127,8 @@ public class ProcessStatsDetail extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATIONS_PROCESS_STATS_DETAIL;
+        return 0;
+
     }
 
     @Override

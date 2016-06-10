@@ -29,7 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 
@@ -39,7 +39,8 @@ public class PrivateVolumeFormat extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVICEINFO_STORAGE;
+        return 0;
+
     }
 
     @Override

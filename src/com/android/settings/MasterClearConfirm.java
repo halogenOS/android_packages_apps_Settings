@@ -23,7 +23,7 @@ import android.os.AsyncTask;
 import android.provider.Settings;
 import android.service.persistentdata.PersistentDataBlockManager;
 
-import com.android.internal.logging.MetricsLogger;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -167,6 +167,7 @@ public class MasterClearConfirm extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.MASTER_CLEAR_CONFIRM;
+        return 0;
+
     }
 }

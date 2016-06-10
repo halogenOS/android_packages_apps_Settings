@@ -24,7 +24,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
@@ -36,7 +36,8 @@ public class WallpaperTypeSettings extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.WALLPAPER_TYPE;
+        return 0;
+
     }
 
     @Override

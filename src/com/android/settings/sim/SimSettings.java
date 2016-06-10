@@ -52,7 +52,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.telephony.PhoneConstants;
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settings.Utils;
@@ -127,7 +127,8 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.SIM;
+        return 0;
+
     }
 
     @Override

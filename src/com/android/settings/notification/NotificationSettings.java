@@ -51,7 +51,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.DropDownPreference;
 import com.android.settings.R;
@@ -124,7 +124,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION;
+        return 0;
+
     }
 
     @Override

@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.SettingsPreferenceFragment.SettingsDialogFragment;
 
 import android.app.Activity;
@@ -274,6 +274,7 @@ public class ProxySelector extends InstrumentedFragment implements DialogCreatab
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.PROXY_SELECTOR;
+        return 0;
+
     }
 }

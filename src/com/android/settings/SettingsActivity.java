@@ -64,7 +64,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.XmlUtils;
 import com.android.settings.accessibility.AccessibilitySettings;
@@ -809,7 +809,7 @@ public class SettingsActivity extends Activity
     public void onResume() {
         super.onResume();
         if (mIsShowingDashboard) {
-            MetricsLogger.visible(this, MetricsLogger.MAIN_SETTINGS);
+
         }
 
         final int newHomeActivityCount = getHomeActivitiesCount();
@@ -840,7 +840,7 @@ public class SettingsActivity extends Activity
     public void onPause() {
         super.onPause();
         if (mIsShowingDashboard) {
-            MetricsLogger.hidden(this, MetricsLogger.MAIN_SETTINGS);
+
         }
         unregisterReceiver(mBatteryInfoReceiver);
         mDynamicIndexableContentMonitor.unregister();

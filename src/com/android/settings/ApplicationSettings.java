@@ -24,7 +24,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import com.android.internal.logging.MetricsLogger;
+
 
 public class ApplicationSettings extends SettingsPreferenceFragment {
     
@@ -45,7 +45,8 @@ public class ApplicationSettings extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APPLICATION;
+        return 0;
+
     }
 
     @Override

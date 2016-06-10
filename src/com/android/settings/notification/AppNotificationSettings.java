@@ -37,7 +37,7 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.AppHeader;
 import com.android.settings.R;
@@ -92,7 +92,8 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_APP_NOTIFICATION;
+        return 0;
+
     }
 
     @Override
@@ -156,7 +157,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 final boolean banned = (Boolean) newValue;
                 if (banned) {
-                    MetricsLogger.action(getActivity(), MetricsLogger.ACTION_BAN_APP_NOTES, pkg);
+
                 }
                 final boolean success =  mBackend.setNotificationsBanned(pkg, mUid, banned);
                 if (success) {

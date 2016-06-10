@@ -51,7 +51,7 @@ import android.widget.Switch;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.util.ParcelableString;
 
 import java.security.cert.CertificateEncodingException;
@@ -71,7 +71,8 @@ public class TrustedCredentialsSettings extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.TRUSTED_CREDENTIALS;
+        return 0;
+
     }
 
     private enum Tab {

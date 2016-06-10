@@ -16,7 +16,7 @@
 
 package com.android.settings.notification;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
@@ -89,7 +89,8 @@ public class RedactionInterstitial extends SettingsActivity {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsLogger.NOTIFICATION_REDACTION;
+        return 0;
+
         }
 
         @Override

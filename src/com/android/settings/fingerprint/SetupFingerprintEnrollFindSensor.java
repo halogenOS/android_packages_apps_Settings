@@ -21,7 +21,7 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.ChooseLockSettingsHelper;
 import com.android.settings.R;
 import com.android.settings.SetupWizardUtils;
@@ -74,6 +74,7 @@ public class SetupFingerprintEnrollFindSensor extends FingerprintEnrollFindSenso
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.FINGERPRINT_FIND_SENSOR_SETUP;
+        return 0;
+
     }
 }

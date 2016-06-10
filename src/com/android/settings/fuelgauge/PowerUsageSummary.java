@@ -35,7 +35,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.os.BatterySipper;
 import com.android.internal.os.BatterySipper.DrainType;
 import com.android.internal.os.PowerProfile;
@@ -91,7 +91,8 @@ public class PowerUsageSummary extends PowerUsageBase {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.FUELGAUGE_POWER_USAGE_SUMMARY;
+        return 0;
+
     }
 
     @Override

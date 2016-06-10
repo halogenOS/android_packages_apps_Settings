@@ -16,7 +16,7 @@
 
 package com.android.settings.xos.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -72,7 +72,8 @@ public class RecentsViewSettings extends SettingsPreferenceFragment implements
     
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DISPLAY;
+        return 0;
+
     }
 
     @Override

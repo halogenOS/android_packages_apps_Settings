@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -99,7 +99,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DISPLAY;
+        return 0;
+
     }
 
     @Override
@@ -177,8 +178,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 @Override
                 public boolean onItemSelected(int pos, Object value) {
                     final boolean locked = (Boolean) value;
-                    MetricsLogger.action(getActivity(), MetricsLogger.ACTION_ROTATION_LOCK,
-                            locked);
                     RotationPolicy.setRotationLock(activity, locked);
                     return true;
                 }

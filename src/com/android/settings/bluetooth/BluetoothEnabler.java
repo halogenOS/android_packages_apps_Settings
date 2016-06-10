@@ -27,7 +27,7 @@ import android.provider.Settings;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.search.Index;
 import com.android.settings.widget.SwitchBar;
@@ -186,7 +186,7 @@ public final class BluetoothEnabler implements SwitchBar.OnSwitchChangeListener 
             switchView.setChecked(false);
         }
 
-        MetricsLogger.action(mContext, MetricsLogger.ACTION_BLUETOOTH_TOGGLE, isChecked);
+
 
         if (mLocalAdapter != null) {
             mLocalAdapter.setBluetoothEnabled(isChecked);

@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.google.android.collect.Lists;
 import com.android.internal.widget.LinearLayoutWithDefaultTouchRecepient;
 import com.android.internal.widget.LockPatternUtils;
@@ -238,7 +238,8 @@ public class ChooseLockPattern extends SettingsActivity {
 
         @Override
         protected int getMetricsCategory() {
-            return MetricsLogger.CHOOSE_LOCK_PATTERN;
+        return 0;
+
         }
 
 

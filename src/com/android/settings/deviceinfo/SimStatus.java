@@ -40,7 +40,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.util.Log;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.telephony.DefaultPhoneNotifier;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
@@ -182,7 +182,8 @@ public class SimStatus extends InstrumentedPreferenceActivity {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVICEINFO_SIM_STATUS;
+        return 0;
+
     }
 
     @Override

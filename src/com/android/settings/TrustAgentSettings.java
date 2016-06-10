@@ -34,7 +34,7 @@ import android.service.trust.TrustAgentService;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.widget.LockPatternUtils;
 
 public class TrustAgentSettings extends SettingsPreferenceFragment implements
@@ -67,7 +67,8 @@ public class TrustAgentSettings extends SettingsPreferenceFragment implements
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.TRUST_AGENT;
+        return 0;
+
     }
 
     @Override

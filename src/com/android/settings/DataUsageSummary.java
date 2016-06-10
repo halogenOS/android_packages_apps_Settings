@@ -128,7 +128,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.telephony.PhoneConstants;
 import com.android.settings.drawable.InsetBoundsDrawable;
 import com.android.settings.net.ChartData;
@@ -294,7 +294,8 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DATA_USAGE_SUMMARY;
+        return 0;
+
     }
 
     @Override
@@ -1267,7 +1268,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             final boolean enabled = !mDataEnabled.isChecked();
             final String currentTab = mCurrentTab;
             if (isMobileTab(currentTab)) {
-                MetricsLogger.action(getContext(), MetricsLogger.ACTION_CELL_DATA_TOGGLE, enabled);
+
                 if (enabled) {
                     setMobileDataEnabled(getSubId(currentTab), true);
                 } else {

@@ -23,7 +23,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.util.SparseArray;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -59,7 +59,8 @@ public class ZenModeSettings extends ZenModeSettingsBase implements Indexable {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.NOTIFICATION_ZEN_MODE;
+        return 0;
+
     }
 
     @Override

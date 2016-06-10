@@ -17,7 +17,7 @@
 package com.android.settings;
 
 import android.preference.PreferenceActivity;
-import com.android.internal.logging.MetricsLogger;
+
 
 /**
  * Instrumented activity that logs visibility state.
@@ -26,7 +26,7 @@ public abstract class InstrumentedPreferenceActivity extends PreferenceActivity 
     /**
      * Declare the view of this category.
      *
-     * Categories are defined in {@link com.android.internal.logging.MetricsLogger}
+
      * or if there is no relevant existing category you may define one in
      * {@link com.android.settings.InstrumentedFragment}.
      */
@@ -35,12 +35,12 @@ public abstract class InstrumentedPreferenceActivity extends PreferenceActivity 
     @Override
     protected void onResume() {
         super.onResume();
-        MetricsLogger.visible(this, getMetricsCategory());
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        MetricsLogger.hidden(this, getMetricsCategory());
+
     }
 }

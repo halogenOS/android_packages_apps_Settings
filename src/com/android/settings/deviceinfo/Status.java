@@ -44,7 +44,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.InstrumentedPreferenceActivity;
 import com.android.settings.R;
@@ -246,7 +246,8 @@ public class Status extends InstrumentedPreferenceActivity {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVICEINFO_STATUS;
+        return 0;
+
     }
 
     @Override

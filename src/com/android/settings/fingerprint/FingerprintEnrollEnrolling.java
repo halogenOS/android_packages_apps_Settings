@@ -40,7 +40,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.ChooseLockSettingsHelper;
 import com.android.settings.R;
 
@@ -403,7 +403,8 @@ public class FingerprintEnrollEnrolling extends FingerprintEnrollBase
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.FINGERPRINT_ENROLLING;
+        return 0;
+
     }
 
     public static class IconTouchDialog extends DialogFragment {

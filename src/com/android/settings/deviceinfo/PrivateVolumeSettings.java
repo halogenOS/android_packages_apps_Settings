@@ -54,7 +54,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.R;
 import com.android.settings.Settings.StorageUseActivity;
 import com.android.settings.SettingsPreferenceFragment;
@@ -124,7 +124,8 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DEVICEINFO_STORAGE;
+        return 0;
+
     }
 
     @Override

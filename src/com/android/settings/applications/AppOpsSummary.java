@@ -28,7 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.internal.logging.MetricsLogger;
+
 import com.android.settings.InstrumentedFragment;
 import com.android.settings.R;
 
@@ -53,7 +53,8 @@ public class AppOpsSummary extends InstrumentedFragment {
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.APP_OPS_SUMMARY;
+        return 0;
+
     }
 
     class MyPagerAdapter extends FragmentPagerAdapter implements ViewPager.OnPageChangeListener {
