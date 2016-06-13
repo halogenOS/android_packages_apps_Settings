@@ -56,6 +56,7 @@ import android.os.UserManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
@@ -83,12 +84,16 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+import org.xdevs23.crypto.hashing.HashUtils;
+import org.xdevs23.ui.dialog.EditTextDialog;
+
 /*
  * Displays preferences for application developers.
  */
 public class DevelopmentSettings extends SettingsPreferenceFragment
         implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener,
-                OnPreferenceChangeListener, SwitchBar.OnSwitchChangeListener, Indexable {
+                OnPreferenceChangeListener, OnPreferenceClickListener,
+                SwitchBar.OnSwitchChangeListener, Indexable {
     private static final String TAG = "DevelopmentSettings";
 
     /**
@@ -172,6 +177,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
     private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
+    
+    private static final String KEY_CHANGE_ANDROID_ID = "change_android_id";
 
     private static final int RESULT_DEBUG_APP = 1000;
     private static final int RESULT_MOCK_LOCATION_APP = 1001;
@@ -245,6 +252,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private ListPreference mAnimatorDurationScale;
     private ListPreference mOverlayDisplayDevices;
     private ListPreference mOpenGLTraces;
+    private Preference mChangeAndroidIdPreference;
 
     private ListPreference mSimulateColorSpace;
 
@@ -428,6 +436,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             removePreference(KEY_COLOR_MODE);
             mColorModePreference = null;
         }
+        
+        mChangeAndroidIdPreference = findPreference(KEY_CHANGE_ANDROID_ID);
+        mChangeAndroidIdPreference.setOnPreferenceClickListener(this);
     }
 
     private ListPreference addListPreference(String prefKey) {
@@ -1803,6 +1814,42 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+    
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        switch(preference.getKey()) {
+            case KEY_CHANGE_ANDROID_ID:
+                final EditTextDialog dialog = new EditTextDialog(
+                        getContext(),
+                        getActivity(),
+                        getString(R.string.usersettings_change_android_id),
+                        Settings.Secure.getString(getContentResolver(),
+                            Settings.Secure.ANDROID_ID),
+                        getString(R.string.usersettings_change_android_id_text)
+                );
+                dialog.setOnClickListener(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface ddialog, int which) {
+                        Settings.Secure.putString(getContentResolver(),
+                            Settings.Secure.ANDROID_ID,
+                            // Check if field is empty or length is < 16
+                            dialog.getEnteredText().isEmpty() ||
+                                dialog.getEnteredText().length() < 16 ?
+                                // Generate a random android id if check is true
+                                HashUtils.hash(java.util.UUID.randomUUID().toString(),
+                                    HashUtils.HashTypes.MD5).substring(0, 15)
+                                :
+                                // Make sure that the android id has only 16 chars
+                                dialog.getEnteredText().substring(0, 15)
+                        );
+                        ddialog.dismiss();
+                    }
+                }).showDialog();
+                break;
+            default: break;
+        }
+        return true;
     }
 
     private void dismissDialogs() {

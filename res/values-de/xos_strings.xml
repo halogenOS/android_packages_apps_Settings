@@ -45,6 +45,13 @@
     <!-- Display -> Recents -> Search bar -->
     <string name="enable_recents_searchbar_title">Suchleiste anzeigen</string>
     
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Android ID ändern</string>
+    <string name="usersettings_change_android_id_text">
+        Gebe hier deine gewünschte Android ID ein oder lasse das Feld leer,
+        um eine ID zu generieren.
+    </string>
+    
     <!-- XOS SETTINGS END   -->
     
     <!-- XOS GENERAL START -->

@@ -53,6 +53,12 @@
     <string name="advanced_reboot_hide_on_keyguard">Hide on lock screen</string>
     <string name="advanced_reboot_show_always">Show always</string>
 
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Change Android ID</string>
+    <string name="usersettings_change_android_id_text">
+        Enter here your desired Android ID or leave blank to generate one.
+    </string>
+
     <!-- XOS SETTINGS END   -->
     
     <!-- XOS GENERAL START -->

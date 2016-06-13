@@ -329,6 +329,10 @@
             android:key="allow_signature_fake"
             android:title="@string/allow_signature_fake"
             android:summary="@string/allow_signature_fake_summary"/>
+            
+        <Preference
+            android:key="change_android_id"
+            android:title="@string/usersettings_change_android_id" />
 
         <ListPreference
             android:key="app_process_limit"
