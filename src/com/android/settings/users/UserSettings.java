@@ -74,6 +74,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import org.xdevs23.crypto.hashing.HashUtils;
+import org.xdevs23.ui.dialog.EditTextDialog;
+
 /**
  * Screen that manages the list of users on the device.
  * Guest user is an always visible entry, even if the guest is not currently
@@ -89,14 +92,17 @@ public class UserSettings extends SettingsPreferenceFragment
 
     private static final String TAG = "UserSettings";
 
-    /** UserId of the user being removed */
-    private static final String SAVE_REMOVING_USER = "removing_user";
-    /** UserId of the user that was just added */
-    private static final String SAVE_ADDING_USER = "adding_user";
-
-    private static final String KEY_USER_LIST = "user_list";
-    private static final String KEY_USER_ME = "user_me";
-    private static final String KEY_ADD_USER = "user_add";
+    private static final String
+        /** UserId of the user being removed */
+        SAVE_REMOVING_USER      = "removing_user",
+        /** UserId of the user that was just added */
+        SAVE_ADDING_USER        = "adding_user",
+        
+        KEY_USER_LIST           = "user_list",
+        KEY_USER_ME             = "user_me",
+        KEY_ADD_USER            = "user_add"
+        
+        ;
 
     private static final int MENU_REMOVE_USER = Menu.FIRST;
     private static final int MENU_ADD_ON_LOCKSCREEN = Menu.FIRST + 1;
@@ -223,6 +229,7 @@ public class UserSettings extends SettingsPreferenceFragment
                 mAddUser.setTitle(R.string.user_add_user_menu);
             }
         }
+        
         loadProfile();
         setHasOptionsMenu(true);
         IntentFilter filter = new IntentFilter(Intent.ACTION_USER_REMOVED);
