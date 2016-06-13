@@ -185,4 +185,10 @@
     <string name="one_handed_mode_title">One Handed mode</string>
     <string name="one_handed_mode_summary">Allows swiping on the navigation bar to enable one handed mode</string>
 
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Change Android ID</string>
+    <string name="usersettings_change_android_id_text">
+        Enter your desired Android ID here or leave the field blank to generate a new one.
+    </string>
+
 </resources>

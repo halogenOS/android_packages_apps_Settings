@@ -140,4 +140,11 @@
     <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
     <string name="wifi_setting_countrycode_error">Fehler beim Festlegen der Einstellung</string>
 
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Android ID ändern</string>
+    <string name="usersettings_change_android_id_text">
+        Gebe hier deine gewünschte Android ID ein oder lasse das Feld leer,
+        um eine ID zu generieren.
+    </string>
+
 </resources>

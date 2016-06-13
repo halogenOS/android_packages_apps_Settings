@@ -344,6 +344,10 @@
     <PreferenceCategory android:key="debug_applications_category"
             android:title="@string/debug_applications_category">
 
+        <EditTextPreference
+            android:key="change_android_id"
+            android:title="@string/usersettings_change_android_id" />
+
         <SwitchPreference
             android:key="immediately_destroy_activities"
             android:title="@string/immediately_destroy_activities"
