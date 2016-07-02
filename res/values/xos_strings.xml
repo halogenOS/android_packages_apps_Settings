@@ -148,4 +148,7 @@
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
 
+   <!-- App details: open play store link if app is user installed -->
+   <string name="app_play_store">Google Play</string>
+
 </resources>
