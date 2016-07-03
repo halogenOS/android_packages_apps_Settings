@@ -13,8 +13,8 @@
  
   -->
  
- <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
     <!-- Share halogenOS -->
     <string name="share_xos_title">Share halogenOS</string>
     <string name="share_xos_summary">Let others know about halogenOS</string>
@@ -25,6 +25,22 @@
     
     <!-- Display -> Notification Panel -->
     <string name="notification_panel_tweaks_title">Notification Panel</string>
+    
+    <!-- Display -> Screen DPI -->
+    <string name="screen_dpi_title">Screen DPI</string>
+    <string name="screen_dpi_summary">
+        Change your LCD density to make various elements on your screen bigger 
+        or smaller, respectively
+    </string>
+        
+    <!-- Display -> Lockscreen settings -->
+    <string name="lockscreen_settings_title">Lockscreen settings</string>
+    
+    <!-- Display -> Lockscreen settings -> Lockscreen visualizer -->
+    <string name="lockscreen_visualizer_title">Lockscreen visualizer</string>
+    <string name="lockscreen_visualizer_summary">
+        Decide whether the visualizer should be shown on the lockscreen or not
+    </string>
     
     <!-- Display -> Recents -->
     <string name="recents_settings_title">Recents</string>
@@ -42,7 +58,25 @@
     
     <!-- Display -> Notification Panel -> Enable Heads-Up -->
     <string name="notifpaneltweaks_enable_headsup" translatable="false">Heads-Up</string>
+    
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Change Android ID</string>
+    <string name="usersettings_change_android_id_text">
+        Enter here your desired Android ID or leave blank to generate one.
+    </string>
 
     <!-- XOS SETTINGS END   -->
- 
- </resources>
+    
+    <!-- XOS GENERAL START -->
+    
+    <string name="requirement_root_restart_systemui">
+        Root access is required to restart SystemUI.
+    </string>
+    
+    <string name="requirement_configchanged_reboot_system">
+        A reboot is required to apply changes properly.
+    </string>
+    
+    <!-- XOS GENERAL END -->
+
+</resources>

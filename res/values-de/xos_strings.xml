@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
- <!--  Copyright (C) 2016 halogenOS
- 
-   This program is free software: you can redistribute it and/or modify
-   it under the terms of the Apache License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
- 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   Apache Public License for more details.
- 
-  -->
- 
- <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<!--  Copyright (C) 2016 halogenOS
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the Apache License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  Apache Public License for more details.
+
+ -->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Share halogenOS -->
     <string name="share_xos_title">halogenOS teilen</string>
@@ -22,6 +22,9 @@
     <string name="share_chooser_title">@string/share_xos_title</string>
     
     <!-- XOS SETTINGS START -->
+    
+    <!-- Display -> Notification Panel -->
+    <string name="notification_panel_tweaks_title">Benachrichtigungsleiste</string>
     
     <!-- Display -> Screen DPI -->
     <string name="screen_dpi_title">Display DPI</string>
@@ -44,16 +47,13 @@
     
     <!-- Display -> Recents -> Search bar -->
     <string name="enable_recents_searchbar_title">Suchleiste anzeigen</string>
-
+    
     <!-- Users -> Change Android ID -->
     <string name="usersettings_change_android_id">Android ID ändern</string>
     <string name="usersettings_change_android_id_text">
         Gebe hier deine gewünschte Android ID ein oder lasse das Feld leer,
         um eine ID zu generieren.
     </string>
-    
-    <!-- Display -> Notification Panel -->
-    <string name="notification_panel_tweaks_title">Benachrichtigungsleiste</string>
     
     <!-- XOS SETTINGS END   -->
     
@@ -69,4 +69,4 @@
     
     <!-- XOS GENERAL END -->
 
- </resources>
+</resources>
