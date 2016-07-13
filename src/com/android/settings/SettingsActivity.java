@@ -1358,6 +1358,11 @@ public class SettingsActivity extends Activity
             }
             Pair<String, String> key = new Pair<String, String>(activityInfo.packageName,
                     activityInfo.name);
+                    
+            // Skip System UI Tuner
+            if (activityInfo.name.contains(".tuner.TunerActivity"))
+                continue;
+            
             DashboardTile tile = addedCache.get(key);
             if (tile == null) {
                 tile = new DashboardTile();
