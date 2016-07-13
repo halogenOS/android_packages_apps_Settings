@@ -40,6 +40,8 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.hardware.Sensor;
@@ -81,6 +83,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
     private static final String KEY_NIGHT_MODE = "night_mode";
     private static final String KEY_SCREEN_DPI  = "screen_dpi";
+    private static final String KEY_SYSTEM_UI_TUNER = "system_ui_tuner_settings";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -95,12 +98,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mScreenSaverPreference;
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
-
-
+    private Preference mSystemUiTunerPreference; // Display -> System UI Tuner
+    
+    
     @Override
     protected int getMetricsCategory() {
         return 0;
-
     }
 
     @Override
@@ -134,6 +137,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mScreenDpiPreference = (ListPreference) findPreference(KEY_SCREEN_DPI);
         mScreenDpiPreference.setOnPreferenceChangeListener(this);
         
+        // Display -> System UI Tuner
+        mSystemUiTunerPreference = findPreference(KEY_SYSTEM_UI_TUNER);
+        mSystemUiTunerPreference.setOnPreferenceClickListener(this);
 
         if (isAutomaticBrightnessAvailable(getResources())) {
             mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
@@ -460,6 +466,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } else {
                 mFontSizePref.click();
             }
+        }
+        if (preference == mSystemUiTunerPreference) {
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName("com.android.systemui",
+                                    "com.android.systemui.tuner.TunerActivity"));
+            startActivity(intent);
         }
         return false;
     }

@@ -7074,4 +7074,7 @@
     <string name="category_screenshot">Screenshot</string>
     <string name="pref_crop_behavior_title">Crop behavior</string>
     <string name="pref_crop_behavior_summary">Always use the cropped image inside the cropping area, even if the apply button hasn\'t been pressed</string>
+    
+    <!-- System UI Tuner -->
+    <string name="system_ui_tuner">System UI Tuner</string>
 </resources>

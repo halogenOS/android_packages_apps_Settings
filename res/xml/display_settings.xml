@@ -63,6 +63,10 @@
                 android:summary="@string/screen_dpi_summary"
                 android:entries="@array/screen_dpi_entries"
                 android:entryValues="@array/screen_dpi_entries" />
+        
+        <Preference
+                android:key="system_ui_tuner_settings"
+                android:title="@string/system_ui_tuner" />
                 
         <PreferenceScreen
                 android:key="lockscreen_settings"
