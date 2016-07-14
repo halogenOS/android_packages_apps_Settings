@@ -85,12 +85,6 @@
                 android:title="@string/notification_panel_tweaks_title"
                 settings:keywords="@string/notification_panel_tweaks_title"
                 android:fragment="com.android.settings.xos.settings.NotificationPanelTweaks" />
-
-        <SwitchPreference
-                android:key="camera_gesture"
-                android:title="@string/camera_gesture_title"
-                android:summary="@string/camera_gesture_desc"
-                android:persistent="false" />
         
         <PreferenceScreen
                 android:key="screensaver"
