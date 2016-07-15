@@ -64,6 +64,12 @@
     <string name="usersettings_change_android_id_text">
         Enter here your desired Android ID or leave blank to generate one.
     </string>
+    
+    <!-- Buttons -> Navigation Bar -->
+    <string name="buttons_navbar_switch_title">Navigation Bar</string>
+    <string name="buttons_navbar_switch_summary">
+        Decide whether the software buttons should be shown or not.
+    </string>
 
     <!-- XOS SETTINGS END   -->
     

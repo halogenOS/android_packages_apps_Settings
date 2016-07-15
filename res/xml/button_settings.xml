@@ -16,6 +16,11 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    
+    <SwitchPreference
+        android:key="navigationbar_switch"
+        android:title="@string/buttons_navbar_switch_title"
+        android:summary="@string/buttons_navbar_switch_summary" />
 
     <com.android.settings.button.ButtonBacklightBrightness
         android:key="button_backlight"

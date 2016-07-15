@@ -54,6 +54,12 @@
         Gebe hier deine gewünschte Android ID ein oder lasse das Feld leer,
         um eine ID zu generieren.
     </string>
+        
+    <!-- Buttons -> Navigation Bar -->
+    <string name="buttons_navbar_switch_title">Navigationsleiste</string>
+    <string name="buttons_navbar_switch_summary">
+        Entscheide, ob die Software-Buttons angezeigt werden sollen.
+    </string>
     
     <!-- XOS SETTINGS END   -->
     
