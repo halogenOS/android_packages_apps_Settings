@@ -185,7 +185,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 hasNavbarByDefault(getContext()) ? 1 : 0) == 1
         );
     }
-    
+
     private void reloadPreference(String key) {
         switch(key) {
             default: break;
@@ -211,7 +211,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     @Override
     protected int getMetricsCategory() {
         return 0;
-
     }
 
     @Override
