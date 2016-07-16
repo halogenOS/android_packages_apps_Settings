@@ -177,7 +177,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(backlight);
         }
         
-
+        loadPreferences();
+    }
+    
+    private void loadPreferences() {
+        // Add new preferences here
+        String[] prefs = new String[] {
+            KEY_NAVBAR_SWITCH,
+        };
+        
+        // Load all preferences
+        for ( String pref : prefs )
+            reloadPreference(pref);
     }
 
     private void reloadPreference(String key) {
