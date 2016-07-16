@@ -251,6 +251,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 Settings.System.putInt(getContentResolver(),
                     Settings.System.DEV_FORCE_SHOW_NAVBAR,
                     (Boolean)newValue ? 1 : 0);
+                reloadPreference(KEY_NAVBAR_SWITCH);
                 break;
             default: break;
         }
