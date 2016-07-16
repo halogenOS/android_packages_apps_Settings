@@ -185,6 +185,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 hasNavbarByDefault(getContext()) ? 1 : 0) == 1
         );
     }
+    
+    private void reloadPreference(String key) {
+        switch(key) {
+            default: break;
+        }
+    }
 
     private ListPreference initActionList(String key, int value) {
         ListPreference list = (ListPreference) getPreferenceScreen().findPreference(key);
