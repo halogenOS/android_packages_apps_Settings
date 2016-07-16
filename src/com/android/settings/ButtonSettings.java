@@ -177,17 +177,20 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(backlight);
         }
         
-        mNavbarPreference = (SwitchPreference) findPreference(KEY_NAVBAR_SWITCH);
-        mNavbarPreference.setOnPreferenceChangeListener(this);
-        mNavbarPreference.setChecked(
-            Settings.System.getInt(getContentResolver(),
-                Settings.System.DEV_FORCE_SHOW_NAVBAR,
-                hasNavbarByDefault(getContext()) ? 1 : 0) == 1
-        );
+
     }
 
     private void reloadPreference(String key) {
         switch(key) {
+            case KEY_NAVBAR_SWITCH:
+                mNavbarPreference = (SwitchPreference) findPreference(KEY_NAVBAR_SWITCH);
+                mNavbarPreference.setOnPreferenceChangeListener(this);
+                mNavbarPreference.setChecked(
+                    Settings.System.getInt(getContentResolver(),
+                        Settings.System.DEV_FORCE_SHOW_NAVBAR,
+                        hasNavbarByDefault(getContext()) ? 1 : 0) == 1
+                );
+                break;
             default: break;
         }
     }
