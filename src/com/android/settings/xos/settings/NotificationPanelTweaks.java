@@ -133,12 +133,13 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
-        
-        if(preference == mEnableHeadsUpPreference)
-            Settings.System.putInt(getContentResolver(),
-                KEY_ENABLE_HEADSUP_NOTIFICATIONS, (Boolean)objValue);
-        
+        switch(preference.getKey()) {
+            case KEY_ENABLE_HEADSUP:
+                Settings.System.putInt(getContentResolver(),
+                    KEY_ENABLE_HEADSUP_NOTIFICATIONS, (Boolean)objValue);
+                break;
+            default:break;
+        }
         return true;
     }
 
