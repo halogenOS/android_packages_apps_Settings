@@ -61,6 +61,13 @@
         Entscheide, ob die Software-Buttons angezeigt werden sollen.
     </string>
     
+    <!-- Display -> Notification Panel -> Heads-Up Switch Button -->
+    <string name="notifpaneltweaks_enable_headsup_button_title">Heads-Up Umschalt-Button</string>
+    <string name="notifpaneltweaks_enable_headsup_button_summary">
+        Zeige die Schaltfläche zum Umschalten von Heads-Up neben der &quot;Alle löschen&quot;-Schaltfläche
+        in der Benachrichtigungsleiste
+    </string>
+    
     <!-- XOS SETTINGS END   -->
     
     <!-- XOS GENERAL START -->

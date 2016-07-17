@@ -23,5 +23,10 @@
     <SwitchPreference
         android:title="@string/notifpaneltweaks_enable_headsup"
         android:key="enable_headsup" />
+    
+    <SwitchPreference
+        android:title="@string/notifpaneltweaks_enable_headsup_button_title"
+        android:summary="@string/notifpaneltweaks_enable_headsup_button_summary"
+        android:key="enable_headsup_switch_button" />
 
 </PreferenceScreen>

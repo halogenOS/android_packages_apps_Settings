@@ -26,6 +26,7 @@ import com.android.settings.Utils;
 import com.android.settings.R;
 
 import static android.provider.Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS;
+import static android.provider.Settings.Global.HEADSUP_SWITCH_BUTTON_ENABLED;
 
 import android.app.Activity;
 import android.app.ActivityManagerNative;
@@ -61,17 +62,19 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
     
     private static final String 
-            KEY_ENABLE_HEADSUP = "enable_headsup"
+            KEY_ENABLE_HEADSUP = "enable_headsup",
+            KEY_ENABLE_HEADSUP_BUTTON = "enable_headsup_switch_button"
             ;
     
     private final Configuration mCurConfig = new Configuration();
     
-    private SwitchPreference mEnableHeadsUpPreference;
+    private SwitchPreference
+            mEnableHeadsUpPreference,
+            mEnableHeadsUpButtonPreference;
 
     @Override
     protected int getMetricsCategory() {
         return 0;
-
     }
 
     @Override
@@ -84,6 +87,10 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
         
         mEnableHeadsUpPreference = (SwitchPreference) findPreference(KEY_ENABLE_HEADSUP);
         mEnableHeadsUpPreference.setOnPreferenceChangeListener(this);
+        
+        mEnableHeadsUpButtonPreference =
+            (SwitchPreference) findPreference(KEY_ENABLE_HEADSUP_BUTTON);
+        mEnableHeadsUpButtonPreference.setOnPreferenceChangeListener(this);
         
         updateState();
     }
@@ -124,6 +131,9 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
         mEnableHeadsUpPreference.setChecked(
             Settings.System.getInt(getContentResolver(),
                 KEY_ENABLE_HEADSUP_NOTIFICATIONS, 1) == 1);
+        mEnableHeadsUpButtonPreference.setChecked(
+            Settings.Global.getInt(getContentResolver(),
+                HEADSUP_SWITCH_BUTTON_ENABLED, 1) == 1);
     }
 
     @Override
@@ -138,8 +148,13 @@ public class NotificationPanelTweaks extends SettingsPreferenceFragment implemen
                 Settings.System.putInt(getContentResolver(),
                     KEY_ENABLE_HEADSUP_NOTIFICATIONS, (Boolean)objValue);
                 break;
-            default:break;
+            case KEY_ENABLE_HEADSUP_BUTTON:
+                Settings.Global.putInt(getContentResolver(),
+                    HEADSUP_SWITCH_BUTTON_ENABLED, (Boolean)objValue);
+                break;
+            default: break;
         }
+        updateState();
         return true;
     }
 
