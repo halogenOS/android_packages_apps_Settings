@@ -60,6 +60,12 @@
     <string name="buttons_navbar_switch_summary">
         Entscheide, ob die Software-Buttons angezeigt werden sollen.
     </string>
+        
+    <!-- Buttons -> Hardware buttons -->
+    <string name="buttons_hwkeys_switch_title">Hardware-Tasten</string>
+    <string name="buttons_hwkeys_switch_summary">
+        Aktiviere oder deaktiviere die Hardware-Tasten
+    </string>
     
     <!-- Display -> Notification Panel -> Heads-Up Switch Button -->
     <string name="notifpaneltweaks_enable_headsup_button_title">Heads-Up Umschalt-Button</string>

@@ -77,6 +77,12 @@
     <string name="buttons_navbar_switch_summary">
         Decide whether the software buttons should be shown or not.
     </string>
+    
+    <!-- Buttons -> Hardware buttons -->
+    <string name="buttons_hwkeys_switch_title">Hardware buttons</string>
+    <string name="buttons_hwkeys_switch_summary">
+        Enable or disable the hardware keys
+    </string>
 
     <!-- XOS SETTINGS END   -->
     

@@ -21,6 +21,11 @@
         android:key="navigationbar_switch"
         android:title="@string/buttons_navbar_switch_title"
         android:summary="@string/buttons_navbar_switch_summary" />
+    
+    <SwitchPreference
+        android:key="hwkeys_switch"
+        android:title="@string/buttons_hwkeys_switch_title"
+        android:summary="@string/buttons_hwkeys_switch_summary" />
 
     <com.android.settings.button.ButtonBacklightBrightness
         android:key="button_backlight"

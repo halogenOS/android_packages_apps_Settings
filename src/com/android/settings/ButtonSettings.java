@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.Handler;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -38,8 +39,8 @@ import android.util.Log;
 import android.view.IWindowManager;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManagerGlobal;
-
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -55,7 +56,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HOME_DOUBLE_TAP = "hardware_keys_home_double_tap";
     private static final String KEY_MENU_PRESS = "hardware_keys_menu_press";
     private static final String KEY_MENU_LONG_PRESS = "hardware_keys_menu_long_press";
-    private static final String KEY_NAVBAR_SWITCH = "navigationbar_switch";
+    private static final String 
+                KEY_NAVBAR_SWITCH = "navigationbar_switch",
+                KEY_HWKEYS_SWITCH = "hwkeys_switch"
+                ;
 
     private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
@@ -94,7 +98,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mMenuPressAction;
     private ListPreference mMenuLongPressAction;
     
-    private SwitchPreference mNavbarPreference;
+    private SwitchPreference
+                mNavbarPreference,
+                mHwKeysPreference
+                ;
 
     private PreferenceCategory mNavigationPreferencesCat;
 
@@ -184,6 +191,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // Add new preferences here
         String[] prefs = new String[] {
             KEY_NAVBAR_SWITCH,
+            KEY_HWKEYS_SWITCH
         };
         
         // Load all preferences
@@ -197,9 +205,24 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mNavbarPreference = (SwitchPreference) findPreference(KEY_NAVBAR_SWITCH);
                 mNavbarPreference.setOnPreferenceChangeListener(this);
                 mNavbarPreference.setChecked(
-                    Settings.System.getInt(getContentResolver(),
+                    Settings.System.getIntForUser(getContentResolver(),
                         Settings.System.DEV_FORCE_SHOW_NAVBAR,
-                        hasNavbarByDefault(getContext()) ? 1 : 0) == 1
+                        hasNavbarByDefault(getContext()) ? 1 : 0,
+                        UserHandle.USER_CURRENT) == 1
+                );
+                break;
+            case KEY_HWKEYS_SWITCH:
+                mHwKeysPreference = (SwitchPreference) findPreference(KEY_HWKEYS_SWITCH);
+                mHwKeysPreference.setOnPreferenceChangeListener(this);
+                if(Settings.System.getInt(getContentResolver(),
+                        Settings.System.HARDWARE_BUTTONS_SUPPORTED,
+                            0) == 0) removePreference(KEY_HWKEYS_SWITCH);
+
+                mHwKeysPreference.setChecked(
+                    Settings.System.getIntForUser(getContentResolver(),
+                        Settings.System.HARDWARE_BUTTONS_ENABLED,
+                        hasNavbarByDefault(getContext()) ? 0 : 1,
+                        UserHandle.USER_CURRENT) == 1
                 );
                 break;
             default: break;
@@ -248,13 +271,24 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
         switch(preference.getKey()) {
             case KEY_NAVBAR_SWITCH:
-                Settings.System.putInt(getContentResolver(),
+                Log.d(TAG, "Navbar switch toggled: " + ((Boolean)newValue));
+                Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.DEV_FORCE_SHOW_NAVBAR,
-                    (Boolean)newValue ? 1 : 0);
-                reloadPreference(KEY_NAVBAR_SWITCH);
+                    (Boolean)newValue ? 1 : 0, UserHandle.USER_CURRENT);
+                Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.HARDWARE_BUTTONS_ENABLED,
+                    (Boolean)newValue ? 0 : 1, UserHandle.USER_CURRENT);
+                mHwKeysPreference.setChecked(!(Boolean)newValue);
+                break;
+            case KEY_HWKEYS_SWITCH:
+                Log.d(TAG, "Hw keys switch toggled: " + ((Boolean)newValue));
+                Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.HARDWARE_BUTTONS_ENABLED,
+                    (Boolean)newValue ? 1 : 0, UserHandle.USER_CURRENT);
                 break;
             default: break;
         }
+        reloadPreference(preference.getKey());
         return false;
     }
     
