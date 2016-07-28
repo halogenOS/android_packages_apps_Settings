@@ -93,6 +93,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public static final int KEY_MASK_APP_SWITCH = 0x10;
     public static final int KEY_MASK_CAMERA = 0x20;
 
+    private ButtonBacklightBrightness mBacklight;
+
     private ListPreference mHomeLongPressAction;
     private ListPreference mHomeDoubleTapAction;
     private ListPreference mMenuPressAction;
@@ -178,10 +180,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(menuCategory);
         }
 
-        final ButtonBacklightBrightness backlight =
+        mBacklight =
                 (ButtonBacklightBrightness) findPreference(KEY_BUTTON_BACKLIGHT);
-        if (!backlight.isButtonSupported()) {
-            prefScreen.removePreference(backlight);
+        if (!mBacklight.isButtonSupported()) {
+            prefScreen.removePreference(mBacklight);
         }
         
         loadPreferences();
@@ -250,6 +252,19 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         return 0;
     }
 
+    private void handleButtonBacklight(boolean hwKeysEnabled) {
+        try {
+            if(mBacklight.isButtonSupported()) {
+                Settings.System.putInt(getContentResolver(),
+                    Settings.System.BUTTON_BRIGHTNESS, hwKeysEnabled ? 255 : 0);
+                mBacklight.applyTimeout(2 /* seconds */);
+                mBacklight.updateSummary();
+            }
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mHomeLongPressAction) {
@@ -279,12 +294,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     Settings.System.HARDWARE_BUTTONS_ENABLED,
                     (Boolean)newValue ? 0 : 1, UserHandle.USER_CURRENT);
                 mHwKeysPreference.setChecked(!(Boolean)newValue);
+                handleButtonBacklight(!(boolean)newValue);
                 break;
             case KEY_HWKEYS_SWITCH:
                 Log.d(TAG, "Hw keys switch toggled: " + ((Boolean)newValue));
                 Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.HARDWARE_BUTTONS_ENABLED,
                     (Boolean)newValue ? 1 : 0, UserHandle.USER_CURRENT);
+                handleButtonBacklight((boolean)newValue);
                 break;
             default: break;
         }

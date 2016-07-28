@@ -44,9 +44,10 @@ public class ButtonBacklightBrightness extends DialogPreference implements
     private static final int DEFAULT_BUTTON_TIMEOUT = 5;
 
     private Window mWindow;
+    private Context mContext;
 
-    private BrightnessControl mButtonBrightness;
-    private BrightnessControl mActiveControl;
+    public BrightnessControl mButtonBrightness;
+    public BrightnessControl mActiveControl;
 
     private ViewGroup mTimeoutContainer;
     private SeekBar mTimeoutBar;
@@ -56,24 +57,29 @@ public class ButtonBacklightBrightness extends DialogPreference implements
 
     public ButtonBacklightBrightness(Context context, AttributeSet attrs) {
         super(context, attrs);
+        
+        mContext = context;
 
         mResolver = context.getContentResolver();
 
         setDialogLayoutResource(R.layout.button_backlight);
 
-        if (isButtonSupported()) {
-            boolean isSingleValue = !context.getResources().getBoolean(
-                    com.android.internal.R.bool.config_deviceHasVariableButtonBrightness);
-
-            int defaultBrightness = context.getResources().getInteger(
-                    com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
-
-            mButtonBrightness = new BrightnessControl(
-                    Settings.System.BUTTON_BRIGHTNESS, isSingleValue, defaultBrightness);
-            mActiveControl = mButtonBrightness;
-        }
+        if (isButtonSupported())
+            initBrightnessControl();
 
         updateSummary();
+    }
+    
+    public void initBrightnessControl() {
+        final Context context = mContext;
+        boolean isSingleValue = !context.getResources().getBoolean(
+                com.android.internal.R.bool.config_deviceHasVariableButtonBrightness);
+
+        int defaultBrightness = context.getResources().getInteger(
+                com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
+        mButtonBrightness = new BrightnessControl(
+                Settings.System.BUTTON_BRIGHTNESS, isSingleValue, defaultBrightness);
+        mActiveControl = mButtonBrightness;
     }
 
     @Override
@@ -205,7 +211,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
                 setSummary(getContext().getString(R.string.backlight_summary_enabled_with_timeout,
                         getTimeoutString(timeout)));
             }
-            } else {
+        } else {
             setSummary(R.string.backlight_summary_disabled);
         }
     }
@@ -220,7 +226,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
                 Settings.System.BUTTON_BACKLIGHT_TIMEOUT, DEFAULT_BUTTON_TIMEOUT * 1000) / 1000;
     }
 
-    private void applyTimeout(int timeout) {
+    public void applyTimeout(int timeout) {
         Settings.System.putInt(mResolver,
                 Settings.System.BUTTON_BACKLIGHT_TIMEOUT, timeout * 1000);
     }
@@ -303,7 +309,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
         };
     }
 
-    private class BrightnessControl implements
+    public class BrightnessControl implements
             SeekBar.OnSeekBarChangeListener, CheckBox.OnCheckedChangeListener {
         private String mSetting;
         private boolean mIsSingleValue;
@@ -392,7 +398,7 @@ public class ButtonBacklightBrightness extends DialogPreference implements
             setBrightness(mDefaultBrightness);
         }
 
-        private void handleBrightnessUpdate(int brightness) {
+        public void handleBrightnessUpdate(int brightness) {
             updateBrightnessPreview();
             if (mValue != null) {
                 mValue.setText(String.format("%d%%", (int)((brightness * 100) / 255)));
