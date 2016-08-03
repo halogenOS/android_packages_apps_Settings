@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!--  Copyright (C) 2016 halogenOS
+ 
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the Apache License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+ 
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   Apache Public License for more details.
+ 
+  -->
+ 
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <!-- Share halogenOS -->
+    <string name="share_xos_title">Compartir halogenOS</string>
+    <string name="share_xos_summary">Permite que otros conozcan HalogenOS</string>
+    <string name="share_message">Comprueba lo que es #halogenOS en @ http://halogenOS.org/</string>
+    <string name="share_chooser_title">Compartir halogenOS</string>
+    
+    <!-- XOS SETTINGS START -->
+    
+    <!-- Display -> Notification Panel -->
+    <string name="notification_panel_tweaks_title">Panel de notificationes</string>
+    
+    <!-- Display -> Screen DPI -->
+    <string name="screen_dpi_title">DPI</string>
+    <string name="screen_dpi_summary">Modifica la densidad de tu LCD para hacer varios elementos en tu pantalla más grandes o pequeños </string>
+        
+    <!-- Display -> Lockscreen settings -->
+    <string name="lockscreen_settings_title">Ajustes de la pantalla de bloqueo</string>
+    
+    <!-- Display -> Lockscreen settings -> Lockscreen visualizer -->
+    <string name="lockscreen_visualizer_title">Visualizador de la Pantalla de bloqueo</string>
+    <string name="lockscreen_visualizer_summary">
+        Decide lo que quieres mostrar en la Pantalla de bloqueo
+    </string>
+    
+    <!-- Display -> Recents -->
+    <string name="recents_settings_title">Recientes</string>
+        
+    <!-- Display -> Recents -> Search bar -->
+    <string name="enable_recents_searchbar_title">Mostrar barra de búsqueda</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Reinicio avanzado</string>
+    <string name="advanced_reboot_summary">Incluir en el menú de encendido las opciones de reinicio, recovery y bootloader</string>
+    <string name="advanced_reboot_dialog_title">Menú de reincio avanzado</string>
+    <string name="advanced_reboot_disabled">Deshabilitado</string>
+    <string name="advanced_reboot_hide_on_keyguard">Ocultar en la pantalla de bloqueo</string>
+    <string name="advanced_reboot_show_always">Mostrar siempre</string>
+    
+    <!-- Display -> Notification Panel -> Enable Heads-Up -->
+    <string name="notifpaneltweaks_enable_headsup" translatable="false">Heads-Up (notificaciones emergentes)</string>
+    
+    <!-- Display -> Notification Panel -> Heads-Up Switch Button -->
+    <string name="notifpaneltweaks_enable_headsup_button_title">Boton para habilitar o deshabilitar Heads-Up</string>
+    <string name="notifpaneltweaks_enable_headsup_button_summary">
+        		Muestra un botón para habilitar o deshabilitar Heads-Up además del botón de limpieza en el panel de notificaciones
+    </string>
+    
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Modificar el ID de Android</string>
+    <string name="usersettings_change_android_id_text">
+        Introduce el ID de Android que deseas utilizar, o déjalo en blanco para generar uno.
+    </string>
+    
+    <!-- Buttons -> Navigation Bar -->
+    <string name="buttons_navbar_switch_title">Barrra de navegación</string>
+    <string name="buttons_navbar_switch_summary">
+        Decide si los botones de software deben ser mostrados o no.
+    </string>
+    
+    <!-- Buttons -> Hardware buttons -->
+    <string name="buttons_hwkeys_switch_title">Botones de Hardware</string>
+    <string name="buttons_hwkeys_switch_summary">
+        Habilita o deshabilita los botones de hardware
+    </string>
+
+    <!-- XOS SETTINGS END   -->
+    
+    <!-- XOS GENERAL START -->
+    
+    <string name="requirement_root_restart_systemui">
+        El acceso Root requiere reiniciar SystemUI.
+    </string>
+    
+    <string name="requirement_configchanged_reboot_system">
+        Se requiere un reinicio para aplicar los cambios.
+    </string>
+    
+    <!-- XOS GENERAL END -->
+
+</resources>
