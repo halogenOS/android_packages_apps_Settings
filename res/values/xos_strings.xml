@@ -57,7 +57,7 @@
     <string name="advanced_reboot_show_always">Show always</string>
     
     <!-- Display -> Notification Panel -> Enable Heads-Up -->
-    <string name="notifpaneltweaks_enable_headsup" translatable="false">Heads-Up</string>
+    <string name="notifpaneltweaks_enable_headsup">Heads-Up</string>
     
     <!-- Display -> Notification Panel -> Heads-Up Switch Button -->
     <string name="notifpaneltweaks_enable_headsup_button_title">Heads-Up Switch Button</string>

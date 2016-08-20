@@ -54,7 +54,7 @@
     <string name="advanced_reboot_show_always">Mostrar siempre</string>
     
     <!-- Display -> Notification Panel -> Enable Heads-Up -->
-    <string name="notifpaneltweaks_enable_headsup" translatable="false">Heads-Up (notificaciones emergentes)</string>
+    <string name="notifpaneltweaks_enable_headsup">Heads-Up (notificaciones emergentes)</string>
     
     <!-- Display -> Notification Panel -> Heads-Up Switch Button -->
     <string name="notifpaneltweaks_enable_headsup_button_title">Boton para habilitar o deshabilitar Heads-Up</string>
