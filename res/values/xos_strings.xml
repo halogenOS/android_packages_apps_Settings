@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016-2017 halogenOS
+<!-- Copyright (C) 2016-2017 The halogenOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -290,4 +290,12 @@
     <!-- Development Settings summary-->
     <string name="adb_enabled">ADB Enabled</string>
     <string name="adb_disabled">ADB Disabled</string>
+
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (1). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_wifi_preferred_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is not available, use cellular network.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (2). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Call over the cellular network. If cellular network is not available, use Wi-Fi.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
+    <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is lost, call ended.</string>
+
 </resources>
