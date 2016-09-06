@@ -48,7 +48,7 @@ import java.util.List;
 import static com.android.settings.notification.SettingPref.TYPE_GLOBAL;
 import static com.android.settings.notification.SettingPref.TYPE_SYSTEM;
 
-public class OtherSoundSettings extends SettingsPreferenceFragment implements Indexable {
+public class OtherSoundSettings extends SettingsPreferenceFragment implements Indexable, Preference.OnPreferenceChangeListener {
     private static final String TAG = "OtherSoundSettings";
 
     private static final int DEFAULT_ON = 1;
@@ -66,6 +66,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SCREEN_LOCKING_SOUNDS = "screen_locking_sounds";
     private static final String KEY_CHARGING_SOUNDS = "charging_sounds";
     private static final String KEY_DOCKING_SOUNDS = "docking_sounds";
+    private static final String KEY_CAMERA_SOUNDS = "camera_sounds";
+    private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
     private static final String KEY_TOUCH_SOUNDS = "touch_sounds";
     private static final String KEY_VIBRATE_ON_TOUCH = "vibrate_on_touch";
     private static final String KEY_DOCK_AUDIO_MEDIA = "dock_audio_media";
@@ -74,6 +76,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     // Boot Sounds needs to be a system property so it can be accessed during boot.
     private static final String KEY_BOOT_SOUNDS = "boot_sounds";
     private static final String PROPERTY_BOOT_SOUNDS = "persist.sys.bootanim.play_sound";
+
+    private SwitchPreference mCameraSounds;
 
     private static final SettingPref PREF_DIAL_PAD_TONES = new SettingPref(
             TYPE_SYSTEM, KEY_DIAL_PAD_TONES, System.DTMF_TONE_WHEN_DIALING, DEFAULT_ON) {
@@ -215,6 +219,10 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
         } else {
             removePreference(KEY_BOOT_SOUNDS);
         }
+
+        mCameraSounds = (SwitchPreference) findPreference(KEY_CAMERA_SOUNDS);
+        mCameraSounds.setChecked(SystemProperties.getBoolean(PROP_CAMERA_SOUND, true));
+        mCameraSounds.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -239,6 +247,15 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
         }
     }
 
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        if (KEY_CAMERA_SOUNDS.equals(key)) {
+            SystemProperties.set(PROP_CAMERA_SOUND, (Boolean) objValue ? "1" : "0");
+            return true;
+        }
+        return false;
+    }
+    
     private static boolean hasDockSettings(Context context) {
         return context.getResources().getBoolean(R.bool.has_dock_settings);
     }

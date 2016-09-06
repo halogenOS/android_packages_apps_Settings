@@ -106,5 +106,8 @@
     <string name="build_date">Build-Datum</string>
     
     <string name="xos_version">halogenOS-Version</string>
+    
+     <!-- Camera sound switch -->
+     <string name="camera_sounds_title">Kamera-Knips-Sound</string>
 
 </resources>

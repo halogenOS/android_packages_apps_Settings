@@ -24,6 +24,12 @@
             android:key="dial_pad_tones"
             android:title="@string/dial_pad_tones_title" />
 
+    <!-- Camera sounds -->
+    <SwitchPreference
+            android:key="camera_sounds"
+            android:title="@string/camera_sounds_title"
+            android:defaultValue="true" />
+
     <!-- Screen locking sounds -->
     <SwitchPreference
             android:key="screen_locking_sounds"
