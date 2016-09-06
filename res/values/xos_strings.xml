@@ -110,5 +110,8 @@
     </string>
     
     <string name="xos_version">halogenOS version</string>
+    
+     <!-- Camera sound switch -->
+     <string name="camera_sounds_title">Camera shutter sound</string>
  
 </resources>
