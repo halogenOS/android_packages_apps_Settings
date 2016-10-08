@@ -97,6 +97,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_LOCKSCREEN_VISUALIZER = "lockscreen_visualizer";
     private static final String KEY_DOUBLE_TAP_SLEEP = "double_tap_sleep_gesture";
     private static final String KEY_HEADSUP = "enable_headsup";
+    private static final String KEY_PROXIMITY_ON_WAKE =
+                    Settings.System.PROXIMITY_ON_WAKE;
     private static final int SHOW_NETWORK_NAME_ON = 1;
     private static final int SHOW_NETWORK_NAME_OFF = 0;
 
@@ -115,6 +117,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mLockscreenVisualizerPreference;
     private SwitchPreference mDoubleTapSleepPreference;
     private SwitchPreference mHeadsupPreference;
+    private SwitchPreference mProximityWakePreference;
 
     @Override
     protected int getMetricsCategory() {
@@ -286,6 +289,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mHeadsupPreference = (SwitchPreference) findPreference(KEY_HEADSUP);
         mHeadsupPreference.setOnPreferenceChangeListener(this);
+
+        mProximityWakePreference = (SwitchPreference)
+                            findPreference(KEY_PROXIMITY_ON_WAKE);
+
+        if (!getContext().getResources().getBoolean(
+                com.android.internal.R.bool.config_proximityCheckOnWake)) {
+            mProximityWakePreference = null;
+            removePreference(KEY_PROXIMITY_ON_WAKE);
+        } else mProximityWakePreference.setOnPreferenceChangeListener(this);
     }
 
     private static boolean allowAllRotations(Context context) {
@@ -448,6 +460,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Settings.System.getIntForUser(getContentResolver(),
                     Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
                     1, UserHandle.USER_CURRENT) == 1);
+
+        if (mProximityWakePreference != null)
+            mProximityWakePreference.setChecked(
+                Settings.System.getIntForUser(getContentResolver(),
+                    KEY_PROXIMITY_ON_WAKE, getContext().getResources()
+                    .getBoolean(com.android.internal.R.bool.
+                        config_proximityCheckOnWakeEnabledByDefault) ? 1 : 0,
+                    UserHandle.USER_CURRENT) == 1);
     }
 
     private void updateScreenSaverSummary() {
@@ -536,6 +556,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                 Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
                 (boolean)objValue ? 1 : 0, UserHandle.USER_CURRENT);
+        }
+        if (preference == mProximityWakePreference) {
+            Settings.System.putIntForUser(getContentResolver(),
+                KEY_PROXIMITY_ON_WAKE, (boolean)objValue ? 1 : 0,
+                UserHandle.USER_CURRENT);
         }
         return true;
     }
@@ -637,6 +662,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isVrDisplayModeAvailable(context)) {
                         result.add(KEY_VR_DISPLAY_PREF);
+                    }
+                    if (!context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_proximityCheckOnWake)) {
+                        result.add(KEY_PROXIMITY_ON_WAKE);
                     }
                     return result;
                 }
