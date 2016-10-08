@@ -129,4 +129,8 @@
     <!-- Display -> Heads-Up -->
     <string name="notifpaneltweaks_enable_headsup">Heads-Up Benachrichtigungen</string>
 
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Versehentliches Aufwecken verhindern</string>
+    <string name="proximity_wake_summary">Näherungssensor vor dem Aufwecken prüfen</string>
+
 </resources>
