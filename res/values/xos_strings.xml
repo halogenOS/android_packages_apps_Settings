@@ -111,6 +111,9 @@
     
     <string name="xos_version">halogenOS version</string>
     
+     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>
+    
      <!-- Camera sound switch -->
      <string name="camera_sounds_title">Camera shutter sound</string>
  
