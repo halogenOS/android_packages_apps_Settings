@@ -20,4 +20,10 @@
     android:title="@string/button_settings"
     settings:keywords="@string/button_settings">
 
+    <SwitchPreference
+        android:key="long_press_home_button_assist"
+        android:title="@string/long_press_home_button_assist_title"
+        settings:keywords="@string/long_press_home_button_assist_title"
+        android:summary="@string/long_press_home_button_assist_summary" />
+
 </PreferenceScreen>

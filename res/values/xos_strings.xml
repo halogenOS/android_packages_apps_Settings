@@ -20,4 +20,13 @@
           Buttons
      </string>
      
+     <string name="long_press_home_button_assist_title">
+          Long press home for assist
+     </string>
+     
+     <string name="long_press_home_button_assist_summary">
+          Whether the assist intent should be launched on long press of
+          the home button
+     </string>
+     
 </resources>

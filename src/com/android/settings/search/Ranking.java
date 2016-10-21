@@ -16,6 +16,7 @@
 
 package com.android.settings.search;
 
+import com.android.settings.ButtonSettings;
 import com.android.settings.ChooseLockGeneric;
 import com.android.settings.DateTimeSettings;
 import com.android.settings.DevelopmentSettings;
@@ -67,6 +68,7 @@ public final class Ranking {
     public static final int RANK_SIM = 3;
     public static final int RANK_DATA_USAGE = 4;
     public static final int RANK_WIRELESS = 5;
+    public static final int RANK_BUTTONS = 24;
     public static final int RANK_DISPLAY = 6;
     public static final int RANK_WALLPAPER = 7;
     public static final int RANK_NOTIFICATIONS = 8;
@@ -117,6 +119,9 @@ public final class Ranking {
         // Display
         sRankMap.put(DisplaySettings.class.getName(), RANK_DISPLAY);
         sRankMap.put(ScreenZoomSettings.class.getName(), RANK_WIFI);
+        
+        // Buttons
+        sRankMap.put(ButtonSettings.class.getName(), RANK_BUTTONS);
 
         // Wallpapers
         sRankMap.put(WallpaperTypeSettings.class.getName(), RANK_WALLPAPER);
