@@ -58,14 +58,22 @@ import java.util.List;
 
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+        Preference.OnPreferenceChangeListener,
+        Preference.OnPreferenceClickListener,
+        Indexable {
     private static final String TAG = ButtonSettings.class.getSimpleName();
 
+    private static final String
+        KEY_LONG_PRESS_HOME_BUTTON_ASSIST =
+                    "long_press_home_button_assist";
 
+    private SwitchPreference
+        mLongPressHomeButtonAssistPreference
+        ;
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsEvent.VIEW_UNKNOWN;
+        return MetricsEvent.DISPLAY;
     }
 
     @Override
@@ -74,6 +82,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.button_settings);
 
+        mLongPressHomeButtonAssistPreference = (SwitchPreference)
+                findPreference(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
+        mLongPressHomeButtonAssistPreference.setOnPreferenceChangeListener(this);
+        
+        
+        updateState();
     }
 
     @Override
@@ -83,18 +97,33 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateState() {
-
+        updateState(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
     }
 
     private void updateState(String key) {
         switch(key) {
+            case KEY_LONG_PRESS_HOME_BUTTON_ASSIST:
+                mLongPressHomeButtonAssistPreference.setChecked(
+                    Settings.System.getInt(getContentResolver(),
+                        Settings.System.LONG_PRESS_HOME_BUTTON_BEHAVIOR, 0) == 2);
+                break;
             default: break;
         }
+    }
+    
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+        return onPreferenceChange(preference, null);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         switch(preference.getKey()) {
+            case KEY_LONG_PRESS_HOME_BUTTON_ASSIST:
+                Settings.System.putInt(getContentResolver(),
+                    Settings.System.LONG_PRESS_HOME_BUTTON_BEHAVIOR,
+                        ((Boolean)objValue) ? 2 : 0);
+                break;
             default: break;
         }
         updateState(preference.getKey());
