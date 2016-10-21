@@ -5573,6 +5573,8 @@
     <string name="help_uri_beam" translatable="false"></string>
     <!-- Help URI, Display [DO NOT TRANSLATE] -->
     <string name="help_uri_display" translatable="false"></string>
+    <!-- Help URI, Buttons [DO NOT TRANSLATE] -->
+    <string name="help_uri_buttons" translatable="false"></string>
     <!-- Help URI, Wallpaper [DO NOT TRANSLATE] -->
     <string name="help_uri_wallpaper" translatable="false"></string>
     <!-- Help URI, Interruptions [DO NOT TRANSLATE] -->
