@@ -17,10 +17,13 @@
 
 package com.android.settings;
 
+import android.content.ContentResolver;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
+import android.support.v14.preference.SwitchPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -34,7 +37,8 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
         Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener,
         Indexable {
     private static final String TAG = CustomizationsActivity.class.getSimpleName();
-
+    private static final String PREF_SHOW_TICKER = "status_bar_show_ticker";
+    private SwitchPreference mShowTicker;
 
 
     @Override
@@ -47,7 +51,13 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.customizations);
+        PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
 
+        mShowTicker = (SwitchPreference) prefSet.findPreference(PREF_SHOW_TICKER);
+        mShowTicker.setChecked(Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_SHOW_TICKER, 0) != 0);
+        mShowTicker.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -70,6 +80,15 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mShowTicker) {
+            int enabled = ((Boolean) objValue) ? 1 : 0;
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_SHOW_TICKER, enabled);
+            Settings.System.putInt(resolver,
+                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS, ((Boolean) objValue) ? 0 : 1);
+            return true;
+        }
         updateState(preference.getKey());
         return true;
     }

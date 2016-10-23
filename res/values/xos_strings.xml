@@ -202,4 +202,8 @@
     <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
     <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
 
+    <!-- Status Bar Ticker -->
+    <string name="ticker_title">Status Bar Ticker</string>
+    <string name="ticker_summary">Enable the old status bar ticker</string>
+
 </resources>
