@@ -28,4 +28,10 @@
         Starte den Assistenten durch langes Drücken des Home-Buttons
     </string>
 
+    <!-- Share halogenOS -->
+    <string name="share_xos_title">halogenOS teilen</string>
+    <string name="share_xos_summary">Lasse andere über halogenOS erfahren</string>
+    <string name="share_message">Erfahre, was #halogenOS so ist auf http://halogenOS.org/</string>
+    <string name="share_chooser_title">@string/share_xos_title</string>
+
 </resources>
