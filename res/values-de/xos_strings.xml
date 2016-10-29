@@ -14,18 +14,18 @@
      limitations under the License.
 -->
 <resources>
-     
-     <!-- Buttons -->
-     <string name="button_settings">
-          Buttons
-     </string>
-     
-     <string name="long_press_home_button_assist_title">
-          Home gedrückt halten für Assistent
-     </string>
-     
-     <string name="long_press_home_button_assist_summary">
-          Starte den Assistenten durch langes Drücken des Home-Buttons
-     </string>
-     
+
+    <!-- Buttons -->
+    <string name="button_settings">
+        Buttons
+    </string>
+
+    <string name="long_press_home_button_assist_title">
+        Home gedrückt halten für Assistent
+    </string>
+
+    <string name="long_press_home_button_assist_summary">
+        Starte den Assistenten durch langes Drücken des Home-Buttons
+    </string>
+
 </resources>
