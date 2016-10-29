@@ -25,5 +25,11 @@
         android:title="@string/long_press_home_button_assist_title"
         settings:keywords="@string/long_press_home_button_assist_title"
         android:summary="@string/long_press_home_button_assist_summary" />
+    
+    <SwitchPreference
+        android:key="buttons_show_navbar"
+        android:title="@string/buttons_show_navbar_title"
+        settings:keywords="@string/buttons_show_navbar_title"
+        android:summary="@string/buttons_show_navbar_summary" />
 
 </PreferenceScreen>

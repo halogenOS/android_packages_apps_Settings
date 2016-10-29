@@ -32,6 +32,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -62,14 +63,33 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceClickListener,
         Indexable {
     private static final String TAG = ButtonSettings.class.getSimpleName();
+    private static final boolean DEBUG = false;
 
     private static final String
         KEY_LONG_PRESS_HOME_BUTTON_ASSIST =
-                    "long_press_home_button_assist";
+                    "long_press_home_button_assist",
+        KEY_SHOW_NAVBAR =
+                    "buttons_show_navbar";
+    
+    private static final int
+        NAVBAR_MUST_SHOW = -2,
+        NAVBAR_NOT_SET = -1,
+        NAVBAR_DONT_SHOW = 0,
+        NAVBAR_SHOW = 1
+        ;
 
     private SwitchPreference
-        mLongPressHomeButtonAssistPreference
+        mLongPressHomeButtonAssistPreference,
+        mShowNavbarPreference
         ;
+    
+    private Handler mHandler;
+    private final Runnable resetNavbarToggle = new Runnable() {
+        @Override
+        public void run() {
+            mShowNavbarPreference.setEnabled(true);
+        }
+    };
 
     @Override
     protected int getMetricsCategory() {
@@ -79,6 +99,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        mHandler = new Handler();
 
         addPreferencesFromResource(R.xml.button_settings);
 
@@ -86,6 +108,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 findPreference(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
         mLongPressHomeButtonAssistPreference.setOnPreferenceChangeListener(this);
         
+        mShowNavbarPreference = (SwitchPreference)
+                findPreference(KEY_SHOW_NAVBAR);
+        
+        int nav = Settings.System.getIntForUser(getContentResolver(),
+                    Settings.System.SHOW_NAVBAR, -1, UserHandle.USER_CURRENT);
+        if(nav == NAVBAR_MUST_SHOW)
+            removePreference(KEY_SHOW_NAVBAR);
+        else mShowNavbarPreference.setOnPreferenceChangeListener(this);
         
         updateState();
     }
@@ -98,14 +128,21 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private void updateState() {
         updateState(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
+        updateState(KEY_SHOW_NAVBAR);
     }
 
     private void updateState(String key) {
+        if(DEBUG) Log.d(TAG, "Updating state for " + key);
         switch(key) {
             case KEY_LONG_PRESS_HOME_BUTTON_ASSIST:
                 mLongPressHomeButtonAssistPreference.setChecked(
                     Settings.System.getInt(getContentResolver(),
                         Settings.System.LONG_PRESS_HOME_BUTTON_BEHAVIOR, 0) == 2);
+                break;
+            case KEY_SHOW_NAVBAR:
+                int nav = Settings.System.getIntForUser(getContentResolver(),
+                    Settings.System.SHOW_NAVBAR, -1, UserHandle.USER_CURRENT);
+                mShowNavbarPreference.setChecked(nav == NAVBAR_SHOW);
                 break;
             default: break;
         }
@@ -115,14 +152,27 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceClick(Preference preference) {
         return onPreferenceChange(preference, null);
     }
+    
+    private void applyNavbarSetting(boolean enable) {
+        Settings.System.putIntForUser(getContentResolver(),
+            Settings.System.SHOW_NAVBAR, enable ? 1 : 0,
+            UserHandle.USER_CURRENT);
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if(DEBUG) Log.d(TAG, "onPreferenceChange: " + preference.getKey() +
+                    " : " + objValue);
         switch(preference.getKey()) {
             case KEY_LONG_PRESS_HOME_BUTTON_ASSIST:
                 Settings.System.putInt(getContentResolver(),
                     Settings.System.LONG_PRESS_HOME_BUTTON_BEHAVIOR,
                         ((Boolean)objValue) ? 2 : 0);
+                break;
+            case KEY_SHOW_NAVBAR:
+                applyNavbarSetting((boolean)objValue);
+                mShowNavbarPreference.setEnabled(false);
+                mHandler.postDelayed(resetNavbarToggle, 480);
                 break;
             default: break;
         }
