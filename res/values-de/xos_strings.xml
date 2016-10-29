@@ -28,6 +28,14 @@
         Starte den Assistenten durch langes Drücken des Home-Buttons
     </string>
 
+    <string name="buttons_show_navbar_title">
+        Navigationsleiste
+    </string>
+
+    <string name="buttons_show_navbar_summary">
+        Zeigt die Navigationsleiste
+    </string>
+
     <!-- Share halogenOS -->
     <string name="share_xos_title">halogenOS teilen</string>
     <string name="share_xos_summary">Lasse andere über halogenOS erfahren</string>
