@@ -36,6 +36,19 @@
     <string name="buttons_show_navbar_summary">
         Whether to show the Navigation Bar
     </string>
+    
+    <string name="buttons_hardware_buttons_category">
+        Hardware buttons
+    </string>
+    
+    <string name="buttons_hw_buttons_title">
+        Hardware buttons
+    </string>
+    
+    <string name="buttons_hw_buttons_summary">
+        Whether to enable the hardware buttons.
+    </string>
+    
 
     <!-- Allow fake signature checkbox in developer settings -->
     <string name="allow_signature_fake">Allow signature spoofing</string>

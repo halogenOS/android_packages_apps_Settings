@@ -35,6 +35,19 @@
     <string name="buttons_show_navbar_summary">
         Zeigt die Navigationsleiste
     </string>
+    
+    <string name="buttons_hardware_buttons_category">
+        Hardwaretasten
+    </string>
+    
+    <string name="buttons_hw_buttons_title">
+        Hardwaretasten
+    </string>
+    
+    <string name="buttons_hw_buttons_summary">
+        Aktiviert die Hardwaretasten
+    </string>
+    
 
     <!-- Share halogenOS -->
     <string name="share_xos_title">halogenOS teilen</string>

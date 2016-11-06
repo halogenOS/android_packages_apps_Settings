@@ -31,5 +31,15 @@
         android:title="@string/buttons_show_navbar_title"
         settings:keywords="@string/buttons_show_navbar_title"
         android:summary="@string/buttons_show_navbar_summary" />
+    
+    <PreferenceCategory
+        android:title="@string/buttons_hardware_buttons_category">
+        
+        <SwitchPreference
+            android:key="buttons_enable_hw_buttons"
+            android:title="@string/buttons_hw_buttons_title"
+            android:summary="@string/buttons_hw_buttons_summary" />
+        
+    </PreferenceCategory>
 
 </PreferenceScreen>
