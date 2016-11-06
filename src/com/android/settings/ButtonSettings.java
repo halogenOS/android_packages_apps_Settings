@@ -57,6 +57,7 @@ import com.android.settings.search.Indexable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.halogenos.hardware.buttons.KeyDisablerUtils;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener,
@@ -69,7 +70,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         KEY_LONG_PRESS_HOME_BUTTON_ASSIST =
                     "long_press_home_button_assist",
         KEY_SHOW_NAVBAR =
-                    "buttons_show_navbar";
+                    "buttons_show_navbar",
+        KEY_HW_BUTTONS =
+                    "buttons_enable_hw_buttons"
+                    ;
     
     private static final int
         NAVBAR_MUST_SHOW = -2,
@@ -80,7 +84,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private SwitchPreference
         mLongPressHomeButtonAssistPreference,
-        mShowNavbarPreference
+        mShowNavbarPreference,
+        mEnableHwButtonsPreference
         ;
     
     private Handler mHandler;
@@ -117,6 +122,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             removePreference(KEY_SHOW_NAVBAR);
         else mShowNavbarPreference.setOnPreferenceChangeListener(this);
         
+        if(KeyDisablerUtils.areHwKeysSupportedInSettings(getContext())) {
+            mEnableHwButtonsPreference = (SwitchPreference)
+                findPreference(KEY_HW_BUTTONS);
+            mEnableHwButtonsPreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(KEY_HW_BUTTONS);
+        }
+        
         updateState();
     }
 
@@ -129,6 +142,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private void updateState() {
         updateState(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
         updateState(KEY_SHOW_NAVBAR);
+        if(mEnableHwButtonsPreference != null)
+            updateState(KEY_HW_BUTTONS);
     }
 
     private void updateState(String key) {
@@ -143,6 +158,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 int nav = Settings.System.getIntForUser(getContentResolver(),
                     Settings.System.SHOW_NAVBAR, -1, UserHandle.USER_CURRENT);
                 mShowNavbarPreference.setChecked(nav == NAVBAR_SHOW);
+            case KEY_HW_BUTTONS:
+                if(mEnableHwButtonsPreference == null) break;
+                mEnableHwButtonsPreference.setChecked(
+                    Settings.System.getIntForUser(getContentResolver(),
+                        Settings.System.HARDWARE_BUTTONS_ENABLED, 0,
+                        UserHandle.USER_CURRENT) == 1
+                );
                 break;
             default: break;
         }
@@ -163,7 +185,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if(DEBUG) Log.d(TAG, "onPreferenceChange: " + preference.getKey() +
                     " : " + objValue);
-        switch(preference.getKey()) {
+        String key = preference.getKey();
+        switch(key) {
             case KEY_LONG_PRESS_HOME_BUTTON_ASSIST:
                 Settings.System.putInt(getContentResolver(),
                     Settings.System.LONG_PRESS_HOME_BUTTON_BEHAVIOR,
@@ -173,6 +196,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 applyNavbarSetting((boolean)objValue);
                 mShowNavbarPreference.setEnabled(false);
                 mHandler.postDelayed(resetNavbarToggle, 480);
+            case KEY_HW_BUTTONS:
+                boolean newSetting = (key.equals(KEY_HW_BUTTONS) 
+                    ? (boolean)objValue : !(boolean)objValue);
+                if(mEnableHwButtonsPreference == null) break;
+                Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.HARDWARE_BUTTONS_ENABLED,
+                        newSetting ? 1 : 0,
+                    UserHandle.USER_CURRENT);
                 break;
             default: break;
         }
