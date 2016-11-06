@@ -40,6 +40,11 @@
             android:title="@string/buttons_hw_buttons_title"
             android:summary="@string/buttons_hw_buttons_summary" />
         
+        <Preference
+            android:key="buttons_hw_backlight"
+            android:title="@string/buttons_button_backlight_title"
+            android:summary="@string/buttons_button_backlight_status" />
+        
     </PreferenceCategory>
 
 </PreferenceScreen>
