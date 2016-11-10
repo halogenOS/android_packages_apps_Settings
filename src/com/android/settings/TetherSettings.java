@@ -95,7 +95,6 @@ public class TetherSettings extends RestrictedSettingsFragment
     private static final String ACTION_HOTSPOT_CONFIGURE_RRSPONSE =
             "Hotspot_PreConfigure_Response";
 
-
     private static final int DIALOG_AP_SETTINGS = 1;
 
     private static final String TAG = "TetheringSettings";
@@ -140,6 +139,7 @@ public class TetherSettings extends RestrictedSettingsFragment
 
     /* One of INVALID, WIFI_TETHERING, USB_TETHERING or BLUETOOTH_TETHERING */
     private int mTetherChoice = -1;
+    private static final int USB_TETHERING = 1;
 
     /* Stores the package name and the class name of the provisioning app */
     private String[] mProvisionApp;
@@ -374,7 +374,7 @@ public class TetherSettings extends RestrictedSettingsFragment
                 mMassStorageActive = Environment.MEDIA_SHARED.equals(
                         Environment.getExternalStorageState());
                 boolean usbAvailable = mUsbConnected && !mMassStorageActive;
-                if(!usbAvailable && mIsWifiEnabled && mUsbEnable){
+                if (!usbAvailable && mIsWifiEnabled && mUsbEnable) {
                     mWifiManager.setWifiEnabled(true);
                 }
                 updateState();
@@ -787,6 +787,43 @@ public class TetherSettings extends RestrictedSettingsFragment
             editor.commit();
         }
         return isFirstUse;
+    }
+
+    private boolean isFirstUseUSBTethering(final Context ctx) {
+        SharedPreferences sharedPereference = ctx.getSharedPreferences(
+                SHAREPREFERENCE_FIFE_NAME, Activity.MODE_PRIVATE);
+        boolean isNeed = sharedPereference.getBoolean(KEY_FIRST_LAUNCH_USE_TETHERING, true);
+        if(isNeed) {
+            Editor editor = sharedPereference.edit();
+            editor.putBoolean(KEY_FIRST_LAUNCH_USE_TETHERING, false);
+            editor.apply();
+        }
+        return isNeed;
+    }
+
+    private void showFirstUseUSBTetheringDialog(final Context ctx) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+        builder.setTitle(ctx.getResources().getString(R.string.learn_usb_dialog_title));
+        builder.setMessage(ctx.getResources().getString(R.string.learn_usb_dialog_text));
+        builder.setPositiveButton(ctx.getResources().getString(R.string.yes),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        showUSBTetheringLearning(ctx);
+                    }
+                });
+        builder.setNegativeButton(ctx.getResources().getString(R.string.skip_label), null);
+        builder.setCancelable(false);
+        builder.show();
+    }
+
+    private void showUSBTetheringLearning(final Context ctx) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+        builder.setTitle(ctx.getResources().getString(R.string.mobile_tether_help_dialog_title));
+        builder.setMessage(ctx.getResources().getString(R.string.mobile_usb_help_dialog_text));
+        builder.setPositiveButton(ctx.getResources().getString(R.string.yes), null);
+        builder.setCancelable(false);
+        builder.show();
     }
 
     private void checkDefaultValue(Context ctx) {
