@@ -789,43 +789,6 @@ public class TetherSettings extends RestrictedSettingsFragment
         return isFirstUse;
     }
 
-    private boolean isFirstUseUSBTethering(final Context ctx) {
-        SharedPreferences sharedPereference = ctx.getSharedPreferences(
-                SHAREPREFERENCE_FIFE_NAME, Activity.MODE_PRIVATE);
-        boolean isNeed = sharedPereference.getBoolean(KEY_FIRST_LAUNCH_USE_TETHERING, true);
-        if(isNeed) {
-            Editor editor = sharedPereference.edit();
-            editor.putBoolean(KEY_FIRST_LAUNCH_USE_TETHERING, false);
-            editor.apply();
-        }
-        return isNeed;
-    }
-
-    private void showFirstUseUSBTetheringDialog(final Context ctx) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-        builder.setTitle(ctx.getResources().getString(R.string.learn_usb_dialog_title));
-        builder.setMessage(ctx.getResources().getString(R.string.learn_usb_dialog_text));
-        builder.setPositiveButton(ctx.getResources().getString(R.string.yes),
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        showUSBTetheringLearning(ctx);
-                    }
-                });
-        builder.setNegativeButton(ctx.getResources().getString(R.string.skip_label), null);
-        builder.setCancelable(false);
-        builder.show();
-    }
-
-    private void showUSBTetheringLearning(final Context ctx) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-        builder.setTitle(ctx.getResources().getString(R.string.mobile_tether_help_dialog_title));
-        builder.setMessage(ctx.getResources().getString(R.string.mobile_usb_help_dialog_text));
-        builder.setPositiveButton(ctx.getResources().getString(R.string.yes), null);
-        builder.setCancelable(false);
-        builder.show();
-    }
-
     private void checkDefaultValue(Context ctx) {
         boolean def_ssid = ctx.getResources().getBoolean(
                 R.bool.hotspot_default_ssid_with_imei_enable);
