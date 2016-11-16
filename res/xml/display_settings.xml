@@ -83,6 +83,11 @@
                 android:fragment="com.android.settings.DreamSettings" />
 
         <SwitchPreference
+                android:key="lockscreen_visualizer"
+                android:title="@string/lockscreen_visualizer_title"
+                android:summary="@string/lockscreen_visualizer_summary" />
+
+        <SwitchPreference
                 android:key="lift_to_wake"
                 android:title="@string/lift_to_wake_title" />
 

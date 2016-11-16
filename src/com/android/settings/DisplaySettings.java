@@ -76,6 +76,8 @@ import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
 import static android.provider.Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL;
 import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
+import static android.provider.Settings.System.SHOW_LOCKSCREEN_VISUALIZER;
+import static android.provider.Settings.System.SHOW_LOCKSCREEN_VISUALIZER_DEFAULT;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
@@ -113,6 +115,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_NETWORK_NAME_DISPLAYED = "network_operator_display";
     private static final String SHOW_NETWORK_NAME_MODE = "show_network_name_mode";
+    private static final String KEY_LOCKSCREEN_VISUALIZER = "lockscreen_visualizer";
     private static final int SHOW_NETWORK_NAME_ON = 1;
     private static final int SHOW_NETWORK_NAME_OFF = 0;
 
@@ -136,6 +139,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
     private SwitchPreference mNetworkNameDisplayedPreference = null;
+    private SwitchPreference mLockscreenVisualizerPreference;
 
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
@@ -309,6 +313,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mNightModePreference.setValue(String.valueOf(currentNightMode));
             mNightModePreference.setOnPreferenceChangeListener(this);
         }
+        
+        mLockscreenVisualizerPreference = (SwitchPreference)
+                            findPreference(KEY_LOCKSCREEN_VISUALIZER);
+        mLockscreenVisualizerPreference.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -489,6 +497,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             int value = Settings.Secure.getInt(getContentResolver(), CAMERA_GESTURE_DISABLED, 0);
             mCameraGesturePreference.setChecked(value == 0);
         }
+        
+        if(mLockscreenVisualizerPreference != null) {
+            mLockscreenVisualizerPreference.setChecked(
+                Settings.System.getInt(getContentResolver(), SHOW_LOCKSCREEN_VISUALIZER,
+                    SHOW_LOCKSCREEN_VISUALIZER_DEFAULT) == 1);
+        }
     }
 
     private void updateScreenSaverSummary() {
@@ -569,6 +583,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist night mode setting", e);
             }
+        }
+        if(preference == mLockscreenVisualizerPreference) {
+            Settings.System.putInt(getContentResolver(), SHOW_LOCKSCREEN_VISUALIZER,
+                    ((boolean)objValue) ? 1 : 0);
         }
         return true;
     }

@@ -75,7 +75,13 @@
     <string name="general_on">An</string>
     <string name="general_off">Aus</string>
     <string name="general_dimmed">Verdunkelt</string>
-
+    
+    <!-- Display -> Lockscreen Visualizer -->
+    <string name="lockscreen_visualizer_title">Lockscreen-Visualizer</string>
+    <string name="lockscreen_visualizer_summary">
+        Zeigt den Musik-Visualizer auf dem Sperrbildschirm
+    </string>
+    
     <!-- Share halogenOS -->
     <string name="share_xos_title">halogenOS teilen</string>
     <string name="share_xos_summary">Lasse andere über halogenOS erfahren</string>
