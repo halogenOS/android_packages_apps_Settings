@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2016 halogenOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+     
+    <!-- Buttons -->
+    <string name="button_settings">
+        Botones
+    </string>
+    
+    <string name="long_press_home_button_assist_title">
+        Pulsación larga en inicio para el asistente
+    </string>
+    
+    <string name="long_press_home_button_assist_summary">
+        El asistente se activa con una pulsación larga del botón de inicio
+    </string>
+
+    <string name="buttons_show_navbar_title">
+        Barra de navegación
+    </string>
+
+    <string name="buttons_show_navbar_summary">
+        Mostrar la barra de navegación
+    </string>
+    
+    <string name="buttons_hardware_buttons_category">
+        Botones físicos
+    </string>
+    
+    <string name="buttons_button_backlight_title">
+        Iluminación de los botones
+    </string>
+    
+    <string name="buttons_button_backlight_summary">
+        Activar la iluminación de los botones
+    </string>
+    
+    <string name="buttons_button_backlight_status">
+        Brillo: %s
+    </string>
+    
+    <string name="buttons_hw_buttons_title">
+        Botones físicos
+    </string>
+    
+    <string name="buttons_hw_buttons_summary">
+        Activar los botones físicos
+    </string>
+    
+    <string name="buttons_backlight_enable_backlight">
+        Activar retroiluminación
+    </string>
+    
+    <string name="general_brightness">
+        Brillo
+    </string>
+    
+    <string name="general_timeout">
+        Tiempo de espera
+    </string>
+    
+    <string name="general_on">On</string>
+    <string name="general_off">Off</string>
+    <string name="general_dimmed">Dimmed</string>
+    
+    <!-- Display -> Lockscreen Visualizer -->
+    <string name="lockscreen_visualizer_title">Lockscreen Visualizer</string>
+    <string name="lockscreen_visualizer_summary">
+        Mostrar el visualizador de música en la pantalla de bloqueo
+    </string>
+
+    <!-- Allow fake signature checkbox in developer settings -->
+    <string name="allow_signature_fake">Permitir firmas falsas</string>
+    <string name="allow_signature_fake_summary">Permitir a las aplicaciones sobrepasar la seguridad del sistema si pretenden identificarse como otra app</string>
+    <string name="allow_signature_fake_warning">¡Permitir a las aplicaciones sobrepasar la seguridad del sistema supone serios problemas de seguridad y privacidad! Comprueba las aplicaciones que usan el permiso.</string>
+
+    <!-- Share halogenOS -->
+    <string name="share_xos_title">Compartir halogenOS</string>
+    <string name="share_xos_summary">Cuenta a otros sobre halogenOS</string>
+    <string name="share_message">Comprueba lo que es #halogenOS  @ http://halogenOS.org/</string>
+    <string name="share_chooser_title">Comparte halogenOS</string>
+ 
+</resources>
