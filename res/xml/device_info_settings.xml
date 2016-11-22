@@ -92,6 +92,13 @@
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
 
+        <!-- CAF Branch -->
+        <Preference android:key="caf_branch"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:title="@string/caf_branch"
+                android:summary="@string/device_info_default" />
+
         <!-- Security patch level -->
         <Preference android:key="security_patch"
                 android:enabled="false"

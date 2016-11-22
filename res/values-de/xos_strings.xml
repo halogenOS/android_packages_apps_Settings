@@ -109,5 +109,8 @@
     
      <!-- Camera sound switch -->
      <string name="camera_sounds_title">Kamera-Knips-Sound</string>
+    
+    <!--CAF Branch-->
+    <string name="caf_branch">CAF-Revision</string>
 
 </resources>
