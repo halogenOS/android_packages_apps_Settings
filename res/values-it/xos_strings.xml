@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2016 halogenOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+     
+    <!-- Buttons -->
+    <string name="button_settings">
+        Tasti
+    </string>
+    
+    <string name="long_press_home_button_assist_title">
+        Pressione prolungata home per assistente
+    </string>
+    
+    <string name="long_press_home_button_assist_summary">
+        Avvia l'assistente di ricerca alla pressione prolungata
+        del tasto home
+    </string>
+
+    <string name="buttons_show_navbar_title">
+        Barra di navigazione
+    </string>
+
+    <string name="buttons_show_navbar_summary">
+        Mostra la barra di navigazione a schermo
+    </string>
+    
+    <string name="buttons_hardware_buttons_category">
+        Tasti fisici
+    </string>
+    
+    <string name="buttons_button_backlight_title">
+        Retroilluminazione tasti
+    </string>
+    
+    <string name="buttons_button_backlight_summary">
+        Abilita la retroilluminazione dei tasti fisici
+    </string>
+    
+    <string name="buttons_button_backlight_status">
+        Luminosità: %s
+    </string>
+    
+    <string name="buttons_hw_buttons_title">
+        Tasti fisici
+    </string>
+    
+    <string name="buttons_hw_buttons_summary">
+        Abilita i tasti fisici del dispositivo
+    </string>
+    
+    <string name="buttons_backlight_enable_backlight">
+        Abilita retroilluminazione
+    </string>
+    
+    <string name="general_brightness">
+        Luminosità
+    </string>
+    
+    <string name="general_timeout">
+        Timeout
+    </string>
+    
+    <string name="general_on">On</string>
+    <string name="general_off">Off</string>
+    <string name="general_dimmed">Smorzato</string>
+    
+    <!-- Display -> Lockscreen Visualizer -->
+    <string name="lockscreen_visualizer_title">Visualizzatore schermata di blocco</string>
+    <string name="lockscreen_visualizer_summary">
+        Mostra il visualizzatore della musica nella schermata di blocco
+    </string>
+
+    <!-- Allow fake signature checkbox in developer settings -->
+    <string name="allow_signature_fake">Consenti firme falsificate</string>
+    <string name="allow_signature_fake_summary">Permette alle app di aggirare le misure di protezione fingendo di essere un'altra app</string>
+    <string name="allow_signature_fake_warning">Permettere alle app di aggirare le misure di protezione può portare a grossi problemi di sicurezza e privacy! Assicurarsi che solo le app benigne utilizzino il permesso corrispondente quando questa impostazione è attiva.</string>
+
+    <!-- Share halogenOS -->
+    <string name="share_xos_title">Condividi halogenOS</string>
+    <string name="share_xos_summary">Fai conoscere halogenOS ad altri</string>
+    <string name="share_message">Scopri di più su #halogenOS @ http://halogenOS.org/</string>
+    <string name="share_chooser_title">Condividi halogenOS</string>
+ 
+</resources>
