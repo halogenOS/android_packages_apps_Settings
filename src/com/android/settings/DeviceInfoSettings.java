@@ -82,6 +82,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_QGP_VERSION = "persist.qgp.version";
     private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
     private static final String QGP_VERSION_PATH = "/persist/speccfg/qgpversion";
+    private static final String KEY_CAF_BRANCH = "caf_branch";
+    private static final String PROPERTY_CAF_BRANCH = "ro.caf.branch";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     private static final String KEY_MOD_VERSION = "mod_version";
@@ -153,6 +155,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             String status = getResources().getString(R.string.selinux_status_permissive);
             setStringSummary(KEY_SELINUX_STATUS, status);
         }
+
+        setValueSummary(KEY_CAF_BRANCH, PROPERTY_CAF_BRANCH);
+        // Remove CAF Branch preference if property is not present
+        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_CAF_BRANCH,
+                PROPERTY_CAF_BRANCH);
 
         // Remove selinux information if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
