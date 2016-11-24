@@ -25,7 +25,7 @@
     </string>
     
     <string name="long_press_home_button_assist_summary">
-        Avvia l'assistente di ricerca alla pressione prolungata
+        Avvia l\'assistente di ricerca alla pressione prolungata
         del tasto home
     </string>
 
@@ -85,7 +85,7 @@
 
     <!-- Allow fake signature checkbox in developer settings -->
     <string name="allow_signature_fake">Consenti firme falsificate</string>
-    <string name="allow_signature_fake_summary">Permette alle app di aggirare le misure di protezione fingendo di essere un'altra app</string>
+    <string name="allow_signature_fake_summary">Permette alle app di aggirare le misure di protezione fingendo di essere un\'altra app</string>
     <string name="allow_signature_fake_warning">Permettere alle app di aggirare le misure di protezione può portare a grossi problemi di sicurezza e privacy! Assicurarsi che solo le app benigne utilizzino il permesso corrispondente quando questa impostazione è attiva.</string>
 
     <!-- Share halogenOS -->
