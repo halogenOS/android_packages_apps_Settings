@@ -43,6 +43,8 @@ import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.RestrictedLockUtils;
+import com.android.internal.os.RegionalizationEnvironment;
+import com.android.internal.os.IRegionalizationService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,8 +76,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
     private static final String KEY_DEVICE_FEEDBACK = "device_feedback";
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
-    private static final String KEY_MBN_VERSION = "mbn_version";
-    private static final String PROPERTY_MBN_VERSION = "persist.mbn.version";
     private static final String KEY_QGP_VERSION = "qgp_version";
     private static final String PROPERTY_QGP_VERSION = "persist.qgp.version";
 
@@ -93,6 +93,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private boolean mFunDisallowedBySystem;
     private EnforcedAdmin mDebuggingFeaturesDisallowedAdmin;
     private boolean mDebuggingFeaturesDisallowedBySystem;
+    private IRegionalizationService mRegionalizationService = null;
 
     @Override
     protected int getMetricsCategory() {
@@ -135,9 +136,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 PROPERTY_QGP_VERSION);
         findPreference(KEY_KERNEL_VERSION).setSummary(DeviceInfoUtils.customizeFormatKernelVersion(
                 getResources().getBoolean(R.bool.def_hide_kernel_version_name)));
-        setValueSummary(KEY_MBN_VERSION, PROPERTY_MBN_VERSION);
-        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_MBN_VERSION,
-                PROPERTY_MBN_VERSION);
+
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
             setStringSummary(KEY_SELINUX_STATUS, status);
