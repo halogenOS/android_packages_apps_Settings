@@ -93,5 +93,12 @@
     <string name="share_xos_summary">Let others know about halogenOS</string>
     <string name="share_message">Check out what #halogenOS is all about @ http://halogenOS.org/</string>
     <string name="share_chooser_title">Share halogenOS</string>
+    
+    <!-- Modern services -->
+    <string name="modern_services_title">Modern Services</string>
+    <string name="modern_services_summary">Enable some exclusive modern services</string>
+    <string name="modern_services_cleardata">
+        You may need to clear the data of Google and Google Photos app for this setting to take effect
+    </string>
  
 </resources>

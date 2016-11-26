@@ -87,5 +87,12 @@
     <string name="share_xos_summary">Lasse andere über halogenOS erfahren</string>
     <string name="share_message">Erfahre, was #halogenOS so ist auf http://halogenOS.org/</string>
     <string name="share_chooser_title">@string/share_xos_title</string>
+    
+    <!-- Modern services -->
+    <string name="modern_services_title">Moderne Dienste</string>
+    <string name="modern_services_summary">Aktiviert einige moderne Dienste</string>
+    <string name="modern_services_cleardata">
+        Evtl. müssen die Daten der Google- und Google Fotos-App gelöscht werden, um die Änderungen zu übernehmen
+    </string>
 
 </resources>
