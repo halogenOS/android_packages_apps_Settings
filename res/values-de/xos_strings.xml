@@ -94,5 +94,13 @@
     <string name="modern_services_cleardata">
         Evtl. müssen die Daten der Google- und Google Fotos-App gelöscht werden, um die Änderungen zu übernehmen
     </string>
+    
+    <!-- Developer options -> Disable dropbox -->
+    <string name="debug_disable_dropbox_title">Deaktiviere dropbox</string>
+    <string name="debug_disable_dropbox_summary">
+        Verhindert, dass das System Log-Dateien zu Fehlern/Abstürzen in die Dropbox wirft.
+        Dies hat keine Auswirkung auf Logcat und andere Logging-Mechanismen.
+        Diese Einstellung hat NICHTS mit dem Cloud-Dienst Dropbox zu tun!
+    </string>
 
 </resources>
