@@ -100,5 +100,13 @@
     <string name="modern_services_cleardata">
         You may need to clear the data of Google and Google Photos app for this setting to take effect
     </string>
+        
+    <!-- Developer options -> Disable dropbox -->
+    <string name="debug_disable_dropbox_title">Disable dropbox</string>
+    <string name="debug_disable_dropbox_summary">
+        Prevent the system from adding debug logs of exceptions to the dropbox.
+        This does not affect Logcat and other logging mechanisms.
+        This setting is NOT related to the cloud service Dropbox!
+    </string>
  
 </resources>
