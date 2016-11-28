@@ -103,4 +103,6 @@
         Diese Einstellung hat NICHTS mit dem Cloud-Dienst Dropbox zu tun!
     </string>
 
+    <string name="build_date">Build-Datum</string>
+
 </resources>
