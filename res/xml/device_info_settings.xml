@@ -87,6 +87,13 @@
                 settings:allowDividerAbove="true"
                 settings:allowDividerBelow="true"/>
 
+        <Preference
+                android:key="mod_version"
+                android:enabled="false"
+                android:shouldDisableView="false"
+                android:title="@string/xos_version"
+                android:summary="@string/device_info_default" />
+
         <!-- Device firmware version -->
         <Preference android:key="firmware_version"
                 android:enabled="false"
