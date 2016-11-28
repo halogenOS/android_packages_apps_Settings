@@ -104,5 +104,7 @@
     </string>
 
     <string name="build_date">Build-Datum</string>
+    
+    <string name="xos_version">halogenOS-Version</string>
 
 </resources>

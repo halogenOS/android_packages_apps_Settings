@@ -130,6 +130,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         setValueSummary(KEY_BUILD_DATE, "ro.build.date");
         setValueSummary(KEY_QGP_VERSION, PROPERTY_QGP_VERSION);
+        setValueSummary(KEY_MOD_VERSION, "ro.xos.version");
 
         // Remove QGP Version if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_QGP_VERSION,

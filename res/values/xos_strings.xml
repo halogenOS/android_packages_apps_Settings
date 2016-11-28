@@ -108,5 +108,7 @@
         This does not affect Logcat and other logging mechanisms.
         This setting is NOT related to the cloud service Dropbox!
     </string>
+    
+    <string name="xos_version">halogenOS version</string>
  
 </resources>
