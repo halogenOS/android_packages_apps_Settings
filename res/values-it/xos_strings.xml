@@ -73,9 +73,9 @@
         Timeout
     </string>
     
-    <string name="general_on">On</string>
+    <string name="general_on">Bassa</string>
     <string name="general_off">Off</string>
-    <string name="general_dimmed">Smorzato</string>
+    <string name="general_dimmed">Alta</string>
     
     <!-- Display -> Lockscreen Visualizer -->
     <string name="lockscreen_visualizer_title">Visualizzatore schermata di blocco</string>
@@ -94,4 +94,27 @@
     <string name="share_message">Scopri di più su #halogenOS @ http://halogenOS.org/</string>
     <string name="share_chooser_title">Condividi halogenOS</string>
  
+    <!-- Modern services -->
+    <string name="modern_services_title">Servizi Moderni</string>
+    <string name="modern_services_summary">Abilita alcuni servizi moderni esclusivi</string>
+    <string name="modern_services_cleardata">
+        Potrebbe essere necessario cancellare i dati delle app Google e Google Foto affinché questa impostazione abbia effetto
+    </string>
+        
+    <!-- Developer options -> Disable dropbox -->
+    <string name="debug_disable_dropbox_title">Disabilita dropbox</string>
+    <string name="debug_disable_dropbox_summary">
+        Impedisce al sistema di aggiungere debug logs di eccezioni nel dropbox.
+        Questo non ha effetto su Logcat e altri meccanismi di logging.
+        Questa impostazione NON è correlata al servizio cloud Dropbox!
+    </string>
+    
+    <string name="xos_version">Versione halogenOS</string>
+    
+     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <string name="notification_importance_very_low">Nessuna interruzione, peek, suono, o vibrazione. Mostra come ultima notifica. Nascondi da schermata di blocco.</string>
+    
+     <!-- Camera sound switch -->
+     <string name="camera_sounds_title">Suono otturatore fotocamera</string>
+     
 </resources>
