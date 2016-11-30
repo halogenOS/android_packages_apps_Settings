@@ -73,9 +73,9 @@
         Timeout
     </string>
     
-    <string name="general_on">Bassa</string>
+    <string name="general_on">Alta</string>
     <string name="general_off">Off</string>
-    <string name="general_dimmed">Alta</string>
+    <string name="general_dimmed">Bassa</string>
     
     <!-- Display -> Lockscreen Visualizer -->
     <string name="lockscreen_visualizer_title">Visualizzatore schermata di blocco</string>
