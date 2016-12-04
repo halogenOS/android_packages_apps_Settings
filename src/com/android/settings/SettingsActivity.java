@@ -231,7 +231,7 @@ public class SettingsActivity extends SettingsDrawerActivity
 
 
     private static final String ACTION_TIMER_SWITCH = "qualcomm.intent.action.TIMER_SWITCH";
-    private static final String SUPERUSER_FRAGMENT = "com.android.settings.SuperUser";
+    private static final String SUPERSU_FRAGMENT = "com.android.settings.SuperSU";
 
     private static final String LTE_4G_FRAGMENT = "com.android.settings.Lte4GEnableSetting";
     private static final String PROFILEMGR_MAIN_FRAGMENT = "com.android.settings.ProfileMgrMain";
@@ -1087,10 +1087,10 @@ public class SettingsActivity extends SettingsDrawerActivity
 
 
 
-        if (SUPERUSER_FRAGMENT.equals(fragmentName)) {
-            Intent superuserIntent = new Intent();
-            superuserIntent.setClassName("me.phh.superuser", "com.koushikdutta.superuser.MainActivity");
-            startActivity(superuserIntent);
+        if (SUPERSU_FRAGMENT.equals(fragmentName)) {
+            Intent supersuIntent = new Intent();
+            supersuIntent.setClassName("eu.chainfire.supersu", "eu.chainfire.supersu.MainActivity");
+            startActivity(supersuIntent);
             finish();
             return null;
         }
@@ -1256,15 +1256,15 @@ public class SettingsActivity extends SettingsDrawerActivity
                         Settings.DevelopmentSettingsActivity.class.getName()),
                 showDev, isAdmin, pm);
 
-        // SuperUser
-        boolean phhSupported = false;
+        // SuperSU
+        boolean SUSupported = false;
         try {
-            phhSupported = (getPackageManager().getPackageInfo("me.phh.superuser", 0).versionCode > 0);
+            SUSupported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode > 0);
         } catch (PackageManager.NameNotFoundException e) {
         }
         setTileEnabled(new ComponentName(packageName,
-                        Settings.SuperUserActivity.class.getName()),
-                phhSupported, isAdmin, pm);
+                        Settings.SuperSUActivity.class.getName()),
+                SUSupported, isAdmin, pm);
 
         // Reveal development-only quick settings tiles
         DevelopmentTiles.setTilesEnabled(this, showDev);

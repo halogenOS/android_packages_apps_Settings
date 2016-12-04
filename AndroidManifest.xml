@@ -2081,9 +2081,9 @@
                 android:value="true" />
         </activity>
 
-        <activity android:name="Settings$SuperUserActivity"
-            android:label="@string/superuser_title"
-            android:icon="@drawable/ic_settings_superuser"
+        <activity android:name="Settings$SuperSUActivity"
+            android:label="@string/supersu_title"
+            android:icon="@drawable/ic_settings_supersu"
             android:taskAffinity="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -2097,7 +2097,7 @@
             <meta-data android:name="com.android.settings.category"
                 android:value="com.android.settings.category.system" />
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.SuperUser" />
+                android:value="com.android.settings.SuperSU" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
