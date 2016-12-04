@@ -7999,5 +7999,5 @@
     <!-- Warning when activating the automatic storage manager on legacy devices. [CHAR LIMIT=NONE] -->
     <string name="automatic_storage_manager_activation_warning">Your storage is now being managed by the storage manager</string>
 
-    <string name="superuser_title">Superuser</string>
+    <string name="supersu_title">SuperSU</string>
 </resources>
