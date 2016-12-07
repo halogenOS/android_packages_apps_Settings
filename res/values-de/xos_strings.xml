@@ -113,4 +113,8 @@
     <!--CAF Branch-->
     <string name="caf_branch">CAF-Revision</string>
 
+    <!-- Display -> Double tap to sleep -->
+    <string name="double_tap_to_sleep_title">Doppeltippen zum Sperren</string>
+    <string name="double_tap_to_sleep_summary">Statusleiste zum Sperren doppeltippen</string>
+
 </resources>

@@ -73,6 +73,11 @@
                 android:entryValues="@array/screen_timeout_values" />
 
         <SwitchPreference
+                android:key="double_tap_sleep_gesture"
+                android:title="@string/double_tap_to_sleep_title"
+                android:summary="@string/double_tap_to_sleep_summary" />
+
+        <SwitchPreference
                 android:key="camera_gesture"
                 android:title="@string/camera_gesture_title"
                 android:summary="@string/camera_gesture_desc" />
