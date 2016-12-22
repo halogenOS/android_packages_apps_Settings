@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2016 halogenOS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+     
+    <!-- Buttons -->
+    <string name="button_settings">
+        Кнопки
+    </string>
+    
+    <string name="long_press_home_button_assist_title">
+        Долгое нажатие кнопки Домой вызывает ассистента
+    </string>
+    
+    <string name="long_press_home_button_assist_summary">
+        Имеющийся ассистент будет запущен по долгому нажатию кнопки домой
+    </string>
+
+    <string name="buttons_show_navbar_title">
+        Панель навигации
+    </string>
+
+    <string name="buttons_show_navbar_summary">
+        Показать панель навигации
+    </string>
+    
+    <string name="buttons_hardware_buttons_category">
+        Аппаратные кнопки
+    </string>
+    
+    <string name="buttons_button_backlight_title">
+        Подсветка кнопок
+    </string>
+    
+    <string name="buttons_button_backlight_summary">
+        Изменение подсветки аппаратных кнопок
+    </string>
+    
+    <string name="buttons_button_backlight_status">
+        Подсветка: %s
+    </string>
+    
+    <string name="buttons_hw_buttons_title">
+        Аппаратные кнопки
+    </string>
+    
+    <string name="buttons_hw_buttons_summary">
+        Вкл/Выкл аппаратных кнопок
+    </string>
+    
+    <string name="buttons_backlight_enable_backlight">
+        Вкл/Выкл кнопок
+    </string>
+    
+    <string name="general_brightness">
+        Подсветка
+    </string>
+    
+    <string name="general_timeout">
+        Время выкл.
+    </string>
+    
+    <string name="general_on">Вкл.</string>
+    <string name="general_off">Выкл.</string>
+    <string name="general_dimmed">Dimmed</string>
+    
+    <!-- Display -> Lockscreen Visualizer -->
+    <string name="lockscreen_visualizer_title">Визуализация на экране блокировки</string>
+    <string name="lockscreen_visualizer_summary">
+        Показывает визуализацию музыки на экране блокировки
+    </string>
+
+    <!-- Allow fake signature checkbox in developer settings -->
+    <string name="allow_signature_fake">Allow signature spoofing</string>
+    <string name="allow_signature_fake_summary">Allow apps to bypass security systems by pretending to be a different app</string>
+    <string name="allow_signature_fake_warning">Allowing apps to bypass security systems can lead to serious security and privacy problems! Check that only benign apps use the corresponding permission when this is active.</string>
+
+    <!-- Share halogenOS -->
+    <string name="share_xos_title">Рассказать о halogenOS</string>
+    <string name="share_xos_summary">Рассказать другим, что Вы используете halogenOS</string>
+    <string name="share_message">Check out what #halogenOS is all about @ http://halogenOS.org/</string>
+    <string name="share_chooser_title">Рассказать о halogenOS</string>
+    
+    <!-- Modern services -->
+    <string name="modern_services_title">Modern Services</string>
+    <string name="modern_services_summary">Enable some exclusive modern services</string>
+    <string name="modern_services_cleardata">
+        You may need to clear the data of Google and Google Photos app for this setting to take effect
+    </string>
+        
+    <!-- Developer options -> Disable dropbox -->
+    <string name="debug_disable_dropbox_title">Disable dropbox</string>
+    <string name="debug_disable_dropbox_summary">
+        Prevent the system from adding debug logs of exceptions to the dropbox.
+        This does not affect Logcat and other logging mechanisms.
+        This setting is NOT related to the cloud service Dropbox!
+    </string>
+    
+    <string name="xos_version">halogenOS version</string>
+    
+     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>
+    
+     <!-- Camera sound switch -->
+     <string name="camera_sounds_title">Звук затвора камеры</string>
+     
+    <!--CAF Branch-->
+    <string name="caf_branch">ревизия CAF</string>
+
+    <!-- Display -> Double tap to sleep -->
+    <string name="double_tap_to_sleep_title">DT2S</string>
+    <string name="double_tap_to_sleep_summary">DT2S на статус-баре</string>
+
+     <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Расширенная перезагрузка</string>
+    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
+
+</resources>
+
