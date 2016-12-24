@@ -21,7 +21,7 @@
             android:key="bugreport"
             android:title="@*android:string/bugreport_title"
             android:dialogTitle="@*android:string/bugreport_title" />
-            
+
     <SwitchPreference
             android:key="advanced_reboot"
             android:title="@string/advanced_reboot_title"
@@ -43,7 +43,7 @@
         android:title="@string/keep_screen_on"
         android:summary="@string/keep_screen_on_summary"
         settings:useAdditionalSummary="true" />
-    
+
     <SwitchPreference
         android:key="modern_services"
         android:title="@string/modern_services_title"

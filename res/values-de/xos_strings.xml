@@ -35,66 +35,66 @@
     <string name="buttons_show_navbar_summary">
         Zeigt die Navigationsleiste
     </string>
-    
+
     <string name="buttons_hardware_buttons_category">
         Hardwaretasten
     </string>
-    
+
     <string name="buttons_button_backlight_title">
         Tastenbeleuchtung
     </string>
-    
+
     <string name="buttons_button_backlight_summary">
         Beleuchtet die Hardwaretasten
     </string>
-    
+
     <string name="buttons_button_backlight_status">
         Helligkeit: %s
     </string>
-    
+
     <string name="buttons_hw_buttons_title">
         Hardwaretasten
     </string>
-    
+
     <string name="buttons_hw_buttons_summary">
         Aktiviert die Hardwaretasten
     </string>
-    
+
     <string name="buttons_backlight_enable_backlight">
         Beleuchtung
     </string>
-    
+
     <string name="general_brightness">
         Helligkeit
     </string>
-    
+
     <string name="general_timeout">
         Beleuchtungszeit
     </string>
-    
+
     <string name="general_on">An</string>
     <string name="general_off">Aus</string>
     <string name="general_dimmed">Verdunkelt</string>
-    
+
     <!-- Display -> Lockscreen Visualizer -->
     <string name="lockscreen_visualizer_title">Lockscreen-Visualizer</string>
     <string name="lockscreen_visualizer_summary">
         Zeigt den Musik-Visualizer auf dem Sperrbildschirm
     </string>
-    
+
     <!-- Share halogenOS -->
     <string name="share_xos_title">halogenOS teilen</string>
     <string name="share_xos_summary">Lasse andere über halogenOS erfahren</string>
     <string name="share_message">Erfahre, was #halogenOS so ist auf http://halogenOS.org/</string>
     <string name="share_chooser_title">@string/share_xos_title</string>
-    
+
     <!-- Modern services -->
     <string name="modern_services_title">Moderne Dienste</string>
     <string name="modern_services_summary">Aktiviert einige moderne Dienste</string>
     <string name="modern_services_cleardata">
         Evtl. müssen die Daten der Google- und Google Fotos-App gelöscht werden, um die Änderungen zu übernehmen
     </string>
-    
+
     <!-- Developer options -> Disable dropbox -->
     <string name="debug_disable_dropbox_title">Deaktiviere dropbox</string>
     <string name="debug_disable_dropbox_summary">
@@ -113,12 +113,12 @@
     </string>
 
     <string name="build_date">Build-Datum</string>
-    
+
     <string name="xos_version">halogenOS-Version</string>
-    
-     <!-- Camera sound switch -->
-     <string name="camera_sounds_title">Kamera-Knips-Sound</string>
-    
+
+    <!-- Camera sound switch -->
+    <string name="camera_sounds_title">Kamera-Knips-Sound</string>
+
     <!--CAF Branch-->
     <string name="caf_branch">CAF-Revision</string>
 
