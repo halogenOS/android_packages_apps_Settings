@@ -14,16 +14,16 @@
      limitations under the License.
 -->
 <resources>
-     
+
     <!-- Buttons -->
     <string name="button_settings">
         Buttons
     </string>
-    
+
     <string name="long_press_home_button_assist_title">
         Long press home for assist
     </string>
-    
+
     <string name="long_press_home_button_assist_summary">
         Whether the assist intent should be launched on long press of
         the home button
@@ -36,47 +36,47 @@
     <string name="buttons_show_navbar_summary">
         Whether to show the Navigation Bar
     </string>
-    
+
     <string name="buttons_hardware_buttons_category">
         Hardware buttons
     </string>
-    
+
     <string name="buttons_button_backlight_title">
         Button backlight
     </string>
-    
+
     <string name="buttons_button_backlight_summary">
         Whether to enable button backlight
     </string>
-    
+
     <string name="buttons_button_backlight_status">
         Brightness: %s
     </string>
-    
+
     <string name="buttons_hw_buttons_title">
         Hardware buttons
     </string>
-    
+
     <string name="buttons_hw_buttons_summary">
         Whether to enable the hardware buttons.
     </string>
-    
+
     <string name="buttons_backlight_enable_backlight">
         Enable backlight
     </string>
-    
+
     <string name="general_brightness">
         Brightness
     </string>
-    
+
     <string name="general_timeout">
         Timeout
     </string>
-    
+
     <string name="general_on">On</string>
     <string name="general_off">Off</string>
     <string name="general_dimmed">Dimmed</string>
-    
+
     <!-- Display -> Lockscreen Visualizer -->
     <string name="lockscreen_visualizer_title">Lockscreen Visualizer</string>
     <string name="lockscreen_visualizer_summary">
@@ -93,14 +93,14 @@
     <string name="share_xos_summary">Let others know about halogenOS</string>
     <string name="share_message">Check out what #halogenOS is all about @ http://halogenOS.org/</string>
     <string name="share_chooser_title">Share halogenOS</string>
-    
+
     <!-- Modern services -->
     <string name="modern_services_title">Modern Services</string>
     <string name="modern_services_summary">Enable some exclusive modern services</string>
     <string name="modern_services_cleardata">
         You may need to clear the data of Google and Google Photos app for this setting to take effect
     </string>
-        
+
     <!-- Developer options -> Disable dropbox -->
     <string name="debug_disable_dropbox_title">Disable dropbox</string>
     <string name="debug_disable_dropbox_summary">
@@ -119,13 +119,13 @@
     </string>
 
     <string name="xos_version">halogenOS version</string>
-    
-     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+
+    <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
     <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>
-    
-     <!-- Camera sound switch -->
-     <string name="camera_sounds_title">Camera shutter sound</string>
-     
+
+    <!-- Camera sound switch -->
+    <string name="camera_sounds_title">Camera shutter sound</string>
+
     <!--CAF Branch-->
     <string name="caf_branch">CAF revision</string>
 

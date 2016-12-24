@@ -217,7 +217,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String KEY_CONVERT_FBE = "convert_to_file_encryption";
 
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
-    
+
     private static final String KEY_ENABLE_MODERN_SERVICES = "modern_services",
                                 KEY_DISABLE_DROPBOX        = "disable_dropbox",
                                 KEY_DISABLE_TOMBSTONES     = "disable_tombstones";
@@ -537,7 +537,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             removePreference(COLOR_TEMPERATURE_KEY);
             mColorTemperaturePreference = null;
         }
-        
+
         mEnableModernServicesPreference = (SwitchPreference)
                     findPreference(KEY_ENABLE_MODERN_SERVICES);
         mEnableModernServicesPreference.setOnPreferenceChangeListener(this);
