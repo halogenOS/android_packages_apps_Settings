@@ -210,7 +210,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
     
     private static final String KEY_ENABLE_MODERN_SERVICES = "modern_services",
-                                KEY_DISABLE_DROPBOX        = "disable_dropbox";
+                                KEY_DISABLE_DROPBOX        = "disable_dropbox",
+                                KEY_DISABLE_TOMBSTONES     = "disable_tombstones";
 
     private static final int RESULT_DEBUG_APP = 1000;
     private static final int RESULT_MOCK_LOCATION_APP = 1001;
@@ -305,11 +306,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mForceResizable;
 
     private SwitchPreference mColorTemperaturePreference;
-    
+
     private SwitchPreference mAdvancedReboot;
 
     private SwitchPreference mEnableModernServicesPreference,
-                             mDisableDropboxPreference;
+                             mDisableDropboxPreference,
+                             mDisableTombstonesPreference;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
@@ -523,6 +525,13 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mDisableDropboxPreference.setChecked(
             Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.DISABLE_DROPBOX, 0) == 1);
+
+        mDisableTombstonesPreference = (SwitchPreference)
+                    findPreference(KEY_DISABLE_TOMBSTONES);
+        mDisableTombstonesPreference.setOnPreferenceChangeListener(this);
+        mDisableTombstonesPreference.setChecked(
+            SystemProperties.get("persist.debug.no_tombstones", "0")
+                .equals("0"));
     }
 
     private ListPreference addListPreference(String prefKey) {
@@ -2061,6 +2070,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } else if (preference == mDisableDropboxPreference) {
             Settings.Secure.putInt(getContentResolver(),
                 Settings.Secure.DISABLE_DROPBOX, (boolean)newValue ? 1 : 0);
+            return true;
+        } else if (preference == mDisableTombstonesPreference) {
+            SystemProperties.set("persist.debug.no_tombstones",
+                        (boolean)newValue ? "1" : "0");
             return true;
         }
         return false;

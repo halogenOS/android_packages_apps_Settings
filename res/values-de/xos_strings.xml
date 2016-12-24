@@ -103,6 +103,15 @@
         Diese Einstellung hat NICHTS mit dem Cloud-Dienst Dropbox zu tun!
     </string>
 
+    <!-- Developer options -> Disable tombstones -->
+    <string name="debug_disable_tombstones_title">Deaktiviere tombstones</string>
+    <string name="debug_disable_tombstones_summary">
+        Verhindert, dass das System sogenannte Tombstones einzugraben. Tombstones
+        sind native Absturzberichte mit vielen Debug-Informationen. Normalerweise
+        werden sie nicht benötigt, doch Entwickler könnten nach Tombstones fragen,
+        daher aktiviere es, wenn notwendig.
+    </string>
+
     <string name="build_date">Build-Datum</string>
     
     <string name="xos_version">halogenOS-Version</string>

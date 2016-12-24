@@ -108,7 +108,16 @@
         This does not affect Logcat and other logging mechanisms.
         This setting is NOT related to the cloud service Dropbox!
     </string>
-    
+
+    <!-- Developer options -> Disable tombstones -->
+    <string name="debug_disable_tombstones_title">Disable tombstones</string>
+    <string name="debug_disable_tombstones_summary">
+        Prevent the system from engraving tombstones. Tombstones are native crash
+        reports with lots of debug information. Usually they are not needed,
+        but sometimes a developer might ask you for a tombstone, so enable it
+        when needed.
+    </string>
+
     <string name="xos_version">halogenOS version</string>
     
      <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
