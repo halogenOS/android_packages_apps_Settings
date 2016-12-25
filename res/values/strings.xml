@@ -8360,7 +8360,7 @@
     <string name="deletion_helper_preference_title">Free up space now</string>
 
     <!-- Preference title for gesture settings [CHAR LIMIT=25]-->
-    <string name="gesture_preference_title">Gestures</string>
+    <string name="gesture_preference_title">Moves</string>
 
     <!-- Preference summary for gesture settings (phone) [CHAR LIMIT=NONE]-->
     <string name="gesture_preference_summary" product="default">Quick gestures to control your phone</string>
