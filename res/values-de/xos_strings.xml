@@ -106,7 +106,7 @@
     <!-- Developer options -> Disable tombstones -->
     <string name="debug_disable_tombstones_title">Deaktiviere tombstones</string>
     <string name="debug_disable_tombstones_summary">
-        Verhindert, dass das System sogenannte Tombstones einzugraben. Tombstones
+        Verhindert, dass das System sogenannte Tombstones eingräbt. Tombstones
         sind native Absturzberichte mit vielen Debug-Informationen. Normalerweise
         werden sie nicht benötigt, doch Entwickler könnten nach Tombstones fragen,
         daher aktiviere es, wenn notwendig.
