@@ -74,7 +74,7 @@
     
     <string name="general_on">Вкл.</string>
     <string name="general_off">Выкл.</string>
-    <string name="general_dimmed">Dimmed</string>
+    <string name="general_dimmed">Затемнен</string>
     
     <!-- Display -> Lockscreen Visualizer -->
     <string name="lockscreen_visualizer_title">Визуализация на экране блокировки</string>
@@ -83,9 +83,9 @@
     </string>
 
     <!-- Allow fake signature checkbox in developer settings -->
-    <string name="allow_signature_fake">Allow signature spoofing</string>
-    <string name="allow_signature_fake_summary">Allow apps to bypass security systems by pretending to be a different app</string>
-    <string name="allow_signature_fake_warning">Allowing apps to bypass security systems can lead to serious security and privacy problems! Check that only benign apps use the corresponding permission when this is active.</string>
+    <string name="allow_signature_fake">Разрешить подмену подписи</string>
+    <string name="allow_signature_fake_summary">Разрешить приложениям обходить систему безопасности, принимая вид другого приложения</string>
+    <string name="allow_signature_fake_warning">Разрешение приложениям обходить систему безопасности может привести к серьезным проблемам безопасности и конфиденциальности! Убедитесь, что только безвредные приложения используют соответствующее разрешение.</string>
 
     <!-- Share halogenOS -->
     <string name="share_xos_title">Рассказать о halogenOS</string>
@@ -95,20 +95,29 @@
     
     <!-- Modern services -->
     <string name="modern_services_title">Modern Services</string>
-    <string name="modern_services_summary">Enable some exclusive modern services</string>
+    <string name="modern_services_summary">Включить некоторые эксклюзивные современные услуги</string>
     <string name="modern_services_cleardata">
-        You may need to clear the data of Google and Google Photos app for this setting to take effect
+		Вам может понадобиться очистить данные Google и Google Photos, чтобы изменения вступили в силу
     </string>
         
     <!-- Developer options -> Disable dropbox -->
-    <string name="debug_disable_dropbox_title">Disable dropbox</string>
+    <string name="debug_disable_dropbox_title">Отключение dropbox</string>
     <string name="debug_disable_dropbox_summary">
-        Prevent the system from adding debug logs of exceptions to the dropbox.
-        This does not affect Logcat and other logging mechanisms.
-        This setting is NOT related to the cloud service Dropbox!
+		Предотвратить системой добавление в журнал отладки исключений от Dropbox.
+        Это не влияет на LogCat и другие механизмы регистрации.
+        Этот параметр не имеет отношения к облачной службе Dropbox!
+    </string>
+
+    <!-- Developer options -> Disable tombstones -->
+    <string name="debug_disable_tombstones_title">Отключение tombstones</string>
+    <string name="debug_disable_tombstones_summary">
+		Предотвратить системой генерирования tombstones. Tombstones являются встроенными
+        отчетами об ошибке с большим количеством информации отладки. Как правило, они не нужны,
+        но иногда разработчик может попросить вас включить tombstones, поэтому включите
+        при необходимости.
     </string>
     
-    <string name="xos_version">halogenOS version</string>
+    <string name="xos_version">Версия halogenOS</string>
     
      <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
     <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>
@@ -117,15 +126,22 @@
      <string name="camera_sounds_title">Звук затвора камеры</string>
      
     <!--CAF Branch-->
-    <string name="caf_branch">ревизия CAF</string>
+    <string name="caf_branch">Ревизия CAF</string>
 
     <!-- Display -> Double tap to sleep -->
-    <string name="double_tap_to_sleep_title">DT2S</string>
+    <string name="double_tap_to_sleep_title">Двойное нажатие для блокировки экрана (DT2S)</string>
     <string name="double_tap_to_sleep_summary">DT2S на статус-баре</string>
 
      <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Расширенная перезагрузка</string>
-    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
+    <string name="advanced_reboot_summary">Когда разблокирована, появится возможность загрузится в: рекавери, загрузчик, а так же выполнить мягкую перезагрузку</string>
 
+	    <!-- Display -> Heads-Up -->
+    <string name="notifpaneltweaks_enable_headsup">Всплывающие уведомления</string>
+
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Предотвратить случайное пробуждение</string>
+    <string name="proximity_wake_summary">Проверка датчика приближения, прежде чем включить дисплей</string>
+	
 </resources>
 
