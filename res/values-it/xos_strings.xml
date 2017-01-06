@@ -108,21 +108,40 @@
         Questo non ha effetto su Logcat e altri meccanismi di logging.
         Questa impostazione NON è correlata al servizio cloud Dropbox!
     </string>
-    
-    <string name="build_date">Data build</string>
 
-    <string name="xos_version">Versione halogenOS</string>
+    <!-- Developer options -> Disable tombstones -->
+    <string name="debug_disable_tombstones_title">Disabilita tombstones</string>
+    <string name="debug_disable_tombstones_summary">
+        Impedisce al sistema di generare tombstones. Le tombstones sono dei crash
+        report nativi contenenti numerose informazioni di debug. Solitamente non servono,
+        tuttavia uno sviluppatore potrebbe richiederne una, quindi abilitatela
+        quando necessario.
+    </string>
+
+    <string name="xos_version">Versione di halogenOS</string>
     
-     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
     <string name="notification_importance_very_low">Nessun suono, vibrazione, visualizz. o interruz. a schermo intero. Mostra in fondo a elenco notifiche. Nascondi da schermata blocco.</string>
     
-     <!-- Camera sound switch -->
-     <string name="camera_sounds_title">Suono otturatore fotocamera</string>
+    <!-- Camera sound switch -->
+    <string name="camera_sounds_title">Suono otturatore fotocamera</string>
 
-     <!--CAF Branch-->
-     <string name="caf_branch">Revisione CAF</string>
+    <!--CAF Branch-->
+    <string name="caf_branch">Revisione CAF</string>
  
-     <!-- Advanced reboot options -->
-     <string name="advanced_reboot_title">Riavvio avanzato</string>
-     <string name="advanced_reboot_summary">Quando sbloccato, mostra opzioni nel menu di spegnimento per riavviare in modalità recovery, bootloader o per effettuare un soft reboot</string>
+    <!-- Display -> Double tap to sleep -->
+    <string name="double_tap_to_sleep_title">Doppio tocco per bloccare</string>
+    <string name="double_tap_to_sleep_summary">Doppio tocco sulla barra di stato per bloccare il dispositivo</string>
+
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Riavvio avanzato</string>
+    <string name="advanced_reboot_summary">Quando sbloccato, mostra opzioni nel menu di spegnimento per riavviare in modalità recovery, bootloader o per effettuare un soft reboot</string>
+
+    <!-- Display -> Heads-Up -->
+    <string name="notifpaneltweaks_enable_headsup">Notifiche Heads-Up</string>
+
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Previeni risveglio accidentale</string>
+    <string name="proximity_wake_summary">Controlla il sensore di prossimità prima di accendere lo schermo</string>
+
 </resources>
