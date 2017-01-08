@@ -92,6 +92,12 @@
                 android:title="@string/notifpaneltweaks_enable_headsup" />
 
         <SwitchPreference
+                android:key="status_bar_notif_count"
+                android:title="@string/status_bar_notif_count_title"
+                android:summary="@string/status_bar_notif_count_summary"
+                android:defaultValue="true" />
+
+        <SwitchPreference
                 android:key="lockscreen_visualizer"
                 android:title="@string/lockscreen_visualizer_title"
                 android:summary="@string/lockscreen_visualizer_summary" />
