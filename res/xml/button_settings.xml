@@ -38,6 +38,13 @@
             android:summary="@string/pixel_navbar_anim_summary"
             android:defaultValue="false" />
 
+    <com.android.settings.preferences.SecureSettingSwitchPreference
+            android:dependency="buttons_show_navbar"
+            android:key="one_handed_mode_ui"
+            android:title="@string/one_handed_mode_title"
+            android:summary="@string/one_handed_mode_summary"
+            android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/buttons_hardware_buttons_category">
         
