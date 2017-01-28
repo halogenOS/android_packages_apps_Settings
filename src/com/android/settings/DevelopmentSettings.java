@@ -2454,6 +2454,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     /** Returns {@code true} if the device is SIM-locked. Otherwise, returns {@code false}. */
     private boolean isSimLockedDevice() {
+        if(SystemProperties.get("ro.telephony.sim_unlocked", "0").equals("1"))
+            return false;
         int phoneCount = mTelephonyManager.getPhoneCount();
         for (int i = 0; i < phoneCount; i++) {
             if (mTelephonyManager.getAllowedCarriers(i).size() > 0) {
