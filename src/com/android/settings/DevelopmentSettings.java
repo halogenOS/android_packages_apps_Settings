@@ -560,7 +560,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mDisableTombstonesPreference.setOnPreferenceChangeListener(this);
         mDisableTombstonesPreference.setChecked(
             SystemProperties.get("persist.debug.no_tombstones", "0")
-                .equals("0"));
+                .equals("1"));
     }
 
     private ListPreference addListPreference(String prefKey) {
