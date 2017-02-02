@@ -118,7 +118,8 @@
         quando necessario.
     </string>
 
-    <string name="xos_version">Versione di halogenOS</string>
+    <string name="xos_version">Versione di halogenOS</string>    
+    <string name="build_date">Data di compilazione</string>
     
     <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
     <string name="notification_importance_very_low">Nessun suono, vibrazione, visualizz. o interruz. a schermo intero. Mostra in fondo a elenco notifiche. Nascondi da schermata blocco.</string>
@@ -138,10 +139,14 @@
     <string name="advanced_reboot_summary">Quando sbloccato, mostra opzioni nel menu di spegnimento per riavviare in modalità recovery, bootloader o per effettuare un soft reboot</string>
 
     <!-- Display -> Heads-Up -->
-    <string name="notifpaneltweaks_enable_headsup">Notifiche Heads-Up</string>
+    <string name="notifpaneltweaks_enable_headsup">Notifiche Heads-Up</string> 
 
     <!-- Proximity wake -->
     <string name="proximity_wake_title">Previeni risveglio accidentale</string>
     <string name="proximity_wake_summary">Controlla il sensore di prossimità prima di accendere lo schermo</string>
+    
+    <!-- Status bar notif count -->
+    <string name="status_bar_notif_count_title">Mostra conteggio notifiche</string>
+    <string name="status_bar_notif_count_summary">Mostra il numero di notifiche in sospeso</string>
 
 </resources>
