@@ -55,6 +55,8 @@ import com.android.settings.users.UserSettings;
 import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
+import com.android.settings.ButtonSettings;
+import com.android.settings.CustomizationsActivity;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -326,6 +328,19 @@ public final class SearchIndexableResources {
                         R.xml.zen_mode_visual_interruptions_settings,
                         ZenModeVisualInterruptionSettings.class.getName(),
                         R.drawable.ic_settings_notifications));
+
+        sResMap.put(ButtonSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(ButtonSettings.class.getName()),
+                        NO_DATA_RES_ID,
+                        ButtonSettings.class.getName(),
+                        R.drawable.ic_settings_buttons));
+        sResMap.put(LegalSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(CustomizationsActivity.class.getName()),
+                        NO_DATA_RES_ID,
+                        CustomizationsActivity.class.getName(),
+                        R.drawable.ic_customizations));
     }
 
     private SearchIndexableResources() {

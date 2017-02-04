@@ -150,6 +150,9 @@
 
    <!-- App details: open play store link if app is user installed -->
    <string name="app_play_store">Google Play</string>
+   
+   <!-- Customizations fragment title -->
+   <string name="customizations_title">Customizations</string>
 
     <!-- Pixel Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
