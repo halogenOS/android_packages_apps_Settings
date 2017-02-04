@@ -26,4 +26,12 @@
 
     <string name="rom_version_title">halogenOS version</string>
     <string name="rom_revisions_title">Revisions</string>
+
+    <!-- halogenOS Settings -->
+    <string name="halogenos_settings_activity">Customizations</string>
+    <string name="customizations_title">@string/halogenos_settings_activity</string>
+    <string name="halogenos_settings_activity_summary">Some stuff I haz no real words for</string>
+    <!-- Help URI, Customizations [DO NOT TRANSLATE] -->
+    <string name="help_uri_customizations" translatable="false"></string>
+
 </resources>
