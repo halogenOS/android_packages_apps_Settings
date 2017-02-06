@@ -150,12 +150,30 @@
 
    <!-- App details: open play store link if app is user installed -->
    <string name="app_play_store">Google Play</string>
-   
+
    <!-- Customizations fragment title -->
    <string name="customizations_title">Customizations</string>
 
     <!-- Pixel Navbar Animation -->
     <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
     <string name="pixel_navbar_anim_summary">Enables the pixel navbar animation</string>
+
+   <!-- Statusbar customisations title -->
+   <string name="statusbar_customisations_title">
+       Statusbar Customizations
+   </string>
+   
+   <!-- Battery customizations -->
+    <string name="status_bar_battery_style_category">Battery</string>
+    <string name="status_bar_battery_style_title">Battery status style</string>
+    <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
+    <string name="status_bar_battery_style_icon_landscape">Icon landscape</string>
+    <string name="status_bar_battery_style_circle">Circle</string>
+    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_hidden">Hidden</string>
+    <string name="status_bar_battery_percentage_title">Battery percentage</string>
+    <string name="status_bar_battery_percentage_default">Hidden</string>
+    <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
+    <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
 
 </resources>
