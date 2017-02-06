@@ -53,6 +53,7 @@ public class StatusbarBatteryStyle extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_BATTERY_STYLE_TILE = "status_bar_battery_style_tile";
+    private static final String FORCE_CHARGE_BATTERY_TEXT = "force_charge_battery_text";
 
     private static final int STATUS_BAR_BATTERY_STYLE_PORTRAIT = 0;
 
@@ -64,6 +65,7 @@ public class StatusbarBatteryStyle extends SettingsPreferenceFragment implements
     private int mStatusBarBatteryValue;
     private int mStatusBarBatteryShowPercentValue;
     private SwitchPreference mQsBatteryTitle;
+    private SwitchPreference mForceChargeBatteryText;
 
 
     @Override
@@ -84,6 +86,11 @@ public class StatusbarBatteryStyle extends SettingsPreferenceFragment implements
                 Settings.Secure.STATUS_BAR_BATTERY_STYLE_TILE, 0) == 1));
         mQsBatteryTitle.setOnPreferenceChangeListener(this);
 
+        mForceChargeBatteryText = (SwitchPreference) findPreference(FORCE_CHARGE_BATTERY_TEXT);
+        mForceChargeBatteryText.setChecked((Settings.Secure.getInt(resolver,
+                Settings.Secure.FORCE_CHARGE_BATTERY_TEXT, 1) == 1));
+        mForceChargeBatteryText.setOnPreferenceChangeListener(this);
+
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
         mStatusBarBatteryValue = Settings.Secure.getInt(resolver,
                 Settings.Secure.STATUS_BAR_BATTERY_STYLE, 0);
@@ -99,7 +106,7 @@ public class StatusbarBatteryStyle extends SettingsPreferenceFragment implements
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
 
-        enableStatusBarBatteryDependents(mStatusBarBatteryValue);
+        enableStatusBarBatteryDependents(mStatusBarBatteryValue, mStatusBarBatteryShowPercentValue);
     }
 
     @Override
@@ -118,7 +125,6 @@ public class StatusbarBatteryStyle extends SettingsPreferenceFragment implements
                     mStatusBarBattery.getEntries()[index]);
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE, mStatusBarBatteryValue);
-            enableStatusBarBatteryDependents(mStatusBarBatteryValue);
         } else if (preference == mStatusBarBatteryShowPercent) {
             mStatusBarBatteryShowPercentValue = Integer.valueOf((String) newValue);
             int index = mStatusBarBatteryShowPercent.findIndexOfValue((String) newValue);
@@ -130,20 +136,29 @@ public class StatusbarBatteryStyle extends SettingsPreferenceFragment implements
             boolean checked = ((SwitchPreference)preference).isChecked();
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.STATUS_BAR_BATTERY_STYLE_TILE, checked ? 1:0);
+        } else if  (preference == mForceChargeBatteryText) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.Secure.putInt(resolver,
+                    Settings.Secure.FORCE_CHARGE_BATTERY_TEXT, checked ? 1:0);
         }
+        enableStatusBarBatteryDependents(mStatusBarBatteryValue, mStatusBarBatteryShowPercentValue);
         return true;
     }
 
-    private void enableStatusBarBatteryDependents(int batteryIconStyle) {
+    private void enableStatusBarBatteryDependents(int batteryIconStyle, int showPercentMode) {
         if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_HIDDEN ||
                 batteryIconStyle == STATUS_BAR_BATTERY_STYLE_TEXT) {
             mStatusBarBatteryShowPercent.setEnabled(false);
             mQsBatteryTitle.setEnabled(false);
+            mForceChargeBatteryText.setEnabled(false);
         } else if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_PORTRAIT) {
+            mForceChargeBatteryText.setEnabled(true);
             mQsBatteryTitle.setEnabled(false);
+            mForceChargeBatteryText.setEnabled(showPercentMode == 1 ? true : false);
         } else {
             mStatusBarBatteryShowPercent.setEnabled(true);
             mQsBatteryTitle.setEnabled(true);
+            mForceChargeBatteryText.setEnabled(showPercentMode == 1 ? true : false);
         }
     }
 
