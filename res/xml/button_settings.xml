@@ -31,7 +31,13 @@
         android:title="@string/buttons_show_navbar_title"
         settings:keywords="@string/buttons_show_navbar_title"
         android:summary="@string/buttons_show_navbar_summary" />
-    
+
+    <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="pixel_nav_animation"
+            android:title="@string/pixel_navbar_anim_title"
+            android:summary="@string/pixel_navbar_anim_summary"
+            android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/buttons_hardware_buttons_category">
         

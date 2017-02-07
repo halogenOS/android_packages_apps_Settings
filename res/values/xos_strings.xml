@@ -151,4 +151,8 @@
    <!-- App details: open play store link if app is user installed -->
    <string name="app_play_store">Google Play</string>
 
+    <!-- Pixel Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
+    <string name="pixel_navbar_anim_summary">Enables the pixel navbar animation</string>
+
 </resources>
