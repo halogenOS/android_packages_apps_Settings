@@ -152,6 +152,7 @@ public class StatusbarBatteryStyle extends SettingsPreferenceFragment implements
             mQsBatteryTitle.setEnabled(false);
             mForceChargeBatteryText.setEnabled(false);
         } else if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_PORTRAIT) {
+            mStatusBarBatteryShowPercent.setEnabled(true);
             mForceChargeBatteryText.setEnabled(true);
             mQsBatteryTitle.setEnabled(false);
             mForceChargeBatteryText.setEnabled(showPercentMode == 1 ? true : false);
