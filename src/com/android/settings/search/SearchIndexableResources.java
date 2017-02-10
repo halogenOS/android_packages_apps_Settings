@@ -340,7 +340,7 @@ public final class SearchIndexableResources {
                         Ranking.getRankForClassName(CustomizationsActivity.class.getName()),
                         NO_DATA_RES_ID,
                         CustomizationsActivity.class.getName(),
-                        R.drawable.ic_settings_customizations));
+                        R.drawable.ic_customizations));
     }
 
     private SearchIndexableResources() {
