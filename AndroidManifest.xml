@@ -1086,7 +1086,7 @@
         <activity
             android:name="Settings$CustomizationsActivity"
             android:label="@string/customizations_title"
-            android:icon="@drawable/ic_customizations"
+            android:icon="@drawable/ic_settings_customizations"
             android:taskAffinity="">
             <intent-filter android:priority="1">
                 <action android:name="com.android.settings.CUSTOMIZATIONS" />
