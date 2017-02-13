@@ -76,12 +76,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
     private static final String KEY_DEVICE_FEEDBACK = "device_feedback";
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
-    private static final String KEY_MBN_VERSION = "mbn_version";
-    private static final String PROPERTY_MBN_VERSION = "persist.mbn.version";
-    private static final String KEY_QGP_VERSION = "qgp_version";
-    private static final String PROPERTY_QGP_VERSION = "persist.qgp.version";
-    private static final String MBN_VERSION_PATH = "/persist/speccfg/mbnversion";
-    private static final String QGP_VERSION_PATH = "/persist/speccfg/qgpversion";
     private static final String KEY_CAF_BRANCH = "caf_branch";
     private static final String PROPERTY_CAF_BRANCH = "ro.caf.branch";
 
@@ -135,18 +129,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         setValueSummary(KEY_BUILD_DATE, "ro.build.date");
-        String mQGPVersion = getQGPVersionValue();
-        setStringSummary(KEY_QGP_VERSION, mQGPVersion);
-        if(mQGPVersion == null){
-            getPreferenceScreen().removePreference(findPreference(KEY_QGP_VERSION));
-        }
         findPreference(KEY_KERNEL_VERSION).setSummary(DeviceInfoUtils.customizeFormatKernelVersion(
                 getResources().getBoolean(R.bool.def_hide_kernel_version_name)));
-        String mMbnVersion = getMBNVersionValue();
-        setStringSummary(KEY_MBN_VERSION, mMbnVersion);
-        if(mMbnVersion == null){
-            getPreferenceScreen().removePreference(findPreference(KEY_MBN_VERSION));
-        }
         setValueSummary(KEY_MOD_VERSION, "ro.xos.version");
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -416,47 +400,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         }
     }
 
-    private String getMBNVersionValue() {
-        String mVersion = null;
-
-        if (RegionalizationEnvironment.isSupported()) {
-            mRegionalizationService = RegionalizationEnvironment.getRegionalizationService();
-        }
-        if(mRegionalizationService != null){
-            try{
-                if(!mRegionalizationService.checkFileExists(MBN_VERSION_PATH))
-                    return null;
-                if(mRegionalizationService.readFile(MBN_VERSION_PATH, "").size() > 0){
-                    mVersion = mRegionalizationService.readFile(MBN_VERSION_PATH, "").get(0);
-                }
-                Log.d(LOG_TAG,"read MBNVersion="+mVersion);
-            }catch (Exception e) {
-                Log.e(LOG_TAG, "IOException:"+ e.getMessage());
-            }
-        }
-        return mVersion;
-    }
-
-    private String getQGPVersionValue() {
-        String mVersion = null;
-
-        if (RegionalizationEnvironment.isSupported()) {
-            mRegionalizationService = RegionalizationEnvironment.getRegionalizationService();
-        }
-        if(mRegionalizationService != null){
-            try{
-                if(!mRegionalizationService.checkFileExists(QGP_VERSION_PATH))
-                    return null;
-                if(mRegionalizationService.readFile(QGP_VERSION_PATH, "").size() > 0){
-                    mVersion = mRegionalizationService.readFile(QGP_VERSION_PATH, "").get(0);
-                }
-                Log.d(LOG_TAG,"read QGPVersion="+mVersion);
-            }catch (Exception e) {
-                Log.e(LOG_TAG, "IOException:"+ e.getMessage());
-            }
-        }
-        return mVersion;
-    }
     private void setValueSummary(String preference, String property) {
         try {
             findPreference(preference).setSummary(
