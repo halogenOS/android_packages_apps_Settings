@@ -472,7 +472,8 @@ public class InstalledAppDetails extends AppInfoBase
         }
         // Utils.isSystemPackage doesn't include all aosp built apps, like Contacts etc. Add them
         // and grab the Google Play Store itself (com.android.vending) in the process
-        menu.findItem(PLAY_STORE).setVisible(!Utils.isSystemPackage(mPm, mPackageInfo)
+        menu.findItem(PLAY_STORE).setVisible(!Utils.isSystemPackage(
+            getResources(), mPm, mPackageInfo)
                 && !isAospOrStore(mAppEntry.info.packageName));
     }
 
