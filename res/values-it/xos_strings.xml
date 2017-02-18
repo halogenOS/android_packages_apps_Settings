@@ -149,4 +149,38 @@
     <string name="status_bar_notif_count_title">Mostra conteggio notifiche</string>
     <string name="status_bar_notif_count_summary">Mostra il numero di notifiche in sospeso</string>
 
+    <!-- App details: open play store link if app is user installed -->
+    <string name="app_play_store">Google Play</string>
+
+    <!-- Customizations fragment title -->
+    <string name="customizations_title">Personalizzazioni</string>
+
+    <!-- Pixel Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Barra di navigazione Pixel</string>
+    <string name="pixel_navbar_anim_summary">Abilita l\'animazione stile Pixel della barra di navigazione</string>
+
+    <!-- Statusbar customisations title -->
+    <string name="statusbar_customisations_title">
+       Personalizzazioni barra di stato
+    </string>
+
+    <!-- Battery customizations -->
+    <string name="status_bar_battery_style_category">Batteria</string>
+    <string name="status_bar_battery_style_title">Stile indicatore batteria</string>
+    <string name="status_bar_battery_style_icon_portrait">Icona verticale</string>
+    <string name="status_bar_battery_style_icon_landscape">Icona orizzontale</string>
+    <string name="status_bar_battery_style_circle">Cerchio</string>
+    <string name="status_bar_battery_style_text">Testo</string>
+    <string name="status_bar_battery_style_hidden">Nascosta</string>
+    <string name="status_bar_battery_percentage_title">Percentuale batteria</string>
+    <string name="status_bar_battery_percentage_default">Nascosta</string>
+    <string name="status_bar_battery_percentage_text_inside">All\'interno dell\'icona</string>
+    <string name="status_bar_battery_percentage_text_next">Accanto all\'icona</string>
+
+    <string name="status_bar_battery_style_tile_title">Riquadro batteria personalizzato</string>
+    <string name="status_bar_battery_style_tile_summary">Permette di impostare lo stesso indicatore batteria scelto per la barra di stato</string>
+    <string name="force_charge_battery_text_title">Mostra percentuale accanto alla batteria durante la carica</string>
+    <string name="force_charge_battery_text_summary_on">Mostra la percentuale della batteria accanto all\'icona durante la carica</string>
+    <string name="force_charge_battery_text_summary_off">Mostra la percentuale della batteria all\'interno dell\'icona durante la carica</string>
+
 </resources>
