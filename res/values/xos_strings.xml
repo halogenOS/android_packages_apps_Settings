@@ -238,6 +238,8 @@
     <string name="action_splitscreen">Splitscreen</string>
     <string name="action_screen_off">Turn off screen</string>
     <string name="action_screenshot">Screenshot</string>
+    <string name="action_onehand_left">Single hand mode (left)</string>
+    <string name="action_onehand_right">Single hand mode (right)</string>
 
     <!-- Lockscreen Tweaks -->
     <string name="lockscreen_tweaks">Lockscreen Tweaks</string>

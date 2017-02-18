@@ -122,6 +122,8 @@
         <item>@string/action_splitscreen</item>
         <item>@string/action_screen_off</item>
         <item>@string/action_screenshot</item>
+        <item>@string/action_onehand_left</item>
+        <item>@string/action_onehand_right</item>
     </string-array>
 
     <string-array name="action_values" translatable="false">
@@ -136,6 +138,8 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 
     <!-- Clock & Date options -->
