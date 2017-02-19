@@ -137,7 +137,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 findPreference(KEY_SHOW_NAVBAR);
         
         int nav = Settings.System.getIntForUser(getContentResolver(),
-                    Settings.System.SHOW_NAVBAR, -1, UserHandle.USER_CURRENT);
+                    Settings.System.NAVIGATION_BAR_ENABLED, -1, UserHandle.USER_CURRENT);
         if(nav == NAVBAR_MUST_SHOW)
             removePreference(KEY_SHOW_NAVBAR);
         else mShowNavbarPreference.setOnPreferenceChangeListener(this);
@@ -187,7 +187,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 break;
             case KEY_SHOW_NAVBAR:
                 int nav = Settings.System.getIntForUser(getContentResolver(),
-                    Settings.System.SHOW_NAVBAR, -1, UserHandle.USER_CURRENT);
+                    Settings.System.NAVIGATION_BAR_ENABLED, -1, UserHandle.USER_CURRENT);
                 mShowNavbarPreference.setChecked(nav == NAVBAR_SHOW);
             case KEY_HW_BUTTONS:
                 if(mEnableHwButtonsPreference == null) break;
@@ -252,7 +252,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     
     private void applyNavbarSetting(boolean enable) {
         Settings.System.putIntForUser(getContentResolver(),
-            Settings.System.SHOW_NAVBAR, enable ? 1 : 0,
+            Settings.System.NAVIGATION_BAR_ENABLED, enable ? 1 : 0,
             UserHandle.USER_CURRENT);
     }
     
