@@ -20,10 +20,14 @@
      <PreferenceCategory
             android:key="xos_statusbar_options"
             android:title="@string/statusbar_customisations_title">
-         <PreferenceScreen
-              android:key="statusbar_customisations"
-              android:fragment="com.android.settings.fragments.StatusbarBatteryStyle"
-              android:title="@string/status_bar_battery_style_category" />
+        <PreferenceScreen
+            android:key="statusbar_customisations"
+            android:fragment="com.android.settings.fragments.StatusbarBatteryStyle"
+            android:title="@string/status_bar_battery_style_category" />
+        <PreferenceScreen
+            android:fragment="com.android.settings.fragments.CarrierLabelSettings"
+            android:title="@string/carrier_label_settings_title"
+            android:summary="@string/carrier_label_settings_summary" />
      </PreferenceCategory>
 
 </PreferenceScreen>

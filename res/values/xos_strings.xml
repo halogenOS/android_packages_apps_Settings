@@ -182,6 +182,19 @@
     <string name="force_charge_battery_text_summary_on">Show the battery percentage outside the icon when charging</string>
     <string name="force_charge_battery_text_summary_off">Show the battery percentage inside the icon when charging</string>
 
+
+    <!-- Custom carrier label and position -->
+    <string name="carrier_label_settings_title">Carrier Label</string>
+    <string name="carrier_label_settings_summary">Customize the carrier label</string>
+    <string name="custom_carrier_label_title">Custom carrier label</string>
+    <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
+    <string name="custom_carrier_label_notset">Custom label currently not set</string>
+    <string name="show_carrier_title">Carrier label</string>
+    <string name="show_carrier_disabled">Disabled</string>
+    <string name="show_carrier_keyguard">Lockscreen only</string>
+    <string name="show_carrier_statusbar">Statusbar only</string>
+    <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
+
     <!-- Wi-Fi region code -->
     <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
     <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
