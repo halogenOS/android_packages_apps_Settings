@@ -23,8 +23,8 @@
                 android:title="@string/system_update_settings_list_item_title"
                 android:summary="@string/system_update_settings_list_item_summary">
             <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.ota.updates.OtaUpdates"
-                    android:targetClass="com.ota.updates.OtaUpdates.activities.MainActivity" />
+                    android:targetPackage="com.ota.updates"
+                    android:targetClass="com.ota.updates.activities.MainActivity" />
         </PreferenceScreen>
 
 
