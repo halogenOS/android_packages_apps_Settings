@@ -36,4 +36,13 @@
             android:defaultValue="false" />
      </PreferenceCategory>
 
+
+     <PreferenceCategory
+         android:title="@string/button_settings">
+         <PreferenceScreen
+             android:title="@string/button_settings_title"
+             android:summary="@string/button_settings_summary"
+             android:fragment="com.android.settings.fragments.ButtonSettings"/>
+    </PreferenceCategory>
+
 </PreferenceScreen>

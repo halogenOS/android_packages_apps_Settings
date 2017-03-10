@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.settings;
+package com.android.settings.fragments;
 
 import static org.halogenos.hardware.buttons.IButtonBacklightControl.CONTROL_TYPE_FULL;
 import static org.halogenos.hardware.buttons.IButtonBacklightControl.CONTROL_TYPE_PARTIAL;
@@ -43,6 +43,8 @@ import android.os.Handler;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
@@ -91,7 +93,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         KEY_HW_BACKLIGHT =
                     "buttons_hw_backlight"
                     ;
-    
+
     private static final int
         NAVBAR_MUST_SHOW = -2,
         NAVBAR_NOT_SET = -1,
@@ -104,10 +106,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mShowNavbarPreference,
         mEnableHwButtonsPreference
         ;
-    
+
     private Preference
         mHwBacklightPreference;
-    
+
     private Handler mHandler;
     private final Runnable resetNavbarToggle = new Runnable() {
         @Override
@@ -124,7 +126,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         mHandler = new Handler();
 
         addPreferencesFromResource(R.xml.button_settings);
@@ -132,16 +134,16 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mLongPressHomeButtonAssistPreference = (SwitchPreference)
                 findPreference(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
         mLongPressHomeButtonAssistPreference.setOnPreferenceChangeListener(this);
-        
+
         mShowNavbarPreference = (SwitchPreference)
                 findPreference(KEY_SHOW_NAVBAR);
-        
+
         int nav = Settings.System.getIntForUser(getContentResolver(),
                     Settings.System.NAVIGATION_BAR_ENABLED, -1, UserHandle.USER_CURRENT);
         if(nav == NAVBAR_MUST_SHOW)
             removePreference(KEY_SHOW_NAVBAR);
         else mShowNavbarPreference.setOnPreferenceChangeListener(this);
-        
+
         if(KeyDisablerUtils.areHwKeysSupportedInSettings(getContext())) {
             mEnableHwButtonsPreference = (SwitchPreference)
                 findPreference(KEY_HW_BUTTONS);
@@ -149,7 +151,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else {
             removePreference(KEY_HW_BUTTONS);
         }
-        
+
         int currentControlType =
                 IButtonBacklightControl.currentControlType(getContentResolver());
         if(currentControlType == CONTROL_TYPE_NONE) {
@@ -159,7 +161,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             mHwBacklightPreference = findPreference(KEY_HW_BACKLIGHT);
             mHwBacklightPreference.setOnPreferenceClickListener(this);
         }
-        
+
         updateState();
     }
 
@@ -203,7 +205,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             default: break;
         }
     }
-    
+
     public void setBacklightPrefPercentage(int perc) {
         if(mHwBacklightPreference != null)
             mHwBacklightPreference.setSummary(
@@ -214,9 +216,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     )
             );
     }
-    
+
     public String doMagicOnBrightnessMagic(int magic) {
-        return 
+        return
             magic == -2 ?
                 getString(R.string.general_on) :
                 (magic == -3 ?
@@ -225,37 +227,37 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         getString(R.string.general_dimmed) :
                             String.valueOf(magic)));
     }
-    
+
     public int doMagicOnBrightnessProgress(int cb, int cc) {
         return cc == CONTROL_TYPE_SWITCH ? (cb == 1000 ? -2 : -3)
                 : (cc == CONTROL_TYPE_FULL ?
                     cb / 10 : (cb == 1 ? -1 : (cb == 2 ? -2 : 
                         (cb == 1000 ? -2 : -3))));
     }
-    
+
     public void applyBacklightPrefPercentage(int cb) {
         int cc = IButtonBacklightControl.currentControlType(getContentResolver());
         setBacklightPrefPercentage(
             doMagicOnBrightnessProgress(cb, cc));
     }
-    
+
     public void autoSetBacklightPrefPercentage() {
         applyBacklightPrefPercentage(Settings.System.getIntForUser(getContentResolver(),
             Settings.System.BUTTON_BACKLIGHT_BRIGHTNESS, 0,
             UserHandle.USER_CURRENT));
     }
-    
+
     @Override
     public boolean onPreferenceClick(Preference preference) {
         return onPreferenceChange(preference, null);
     }
-    
+
     private void applyNavbarSetting(boolean enable) {
         Settings.System.putIntForUser(getContentResolver(),
             Settings.System.NAVIGATION_BAR_ENABLED, enable ? 1 : 0,
             UserHandle.USER_CURRENT);
     }
-    
+
     private void showBacklightDialog() {
         final ContentResolver resolver = getContentResolver();
         AlertDialog.Builder b = new AlertDialog.Builder(getContext());
@@ -270,7 +272,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                             })
             .setCancelable(true)
             ;
-        
+
         LinearLayout layout = new LinearLayout(getContext());
         LayoutInflater.from(getContext())
                 .inflate(R.layout.button_backlight_dialog, layout);
@@ -290,7 +292,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             layout.findViewById(R.id.button_backlight_dialog_brightness_tv),
                        timeouttv = (TextView)
             layout.findViewById(R.id.button_backlight_dialog_timeout_tv);
-        
+
         int bftb = 0;
         final int cc = IButtonBacklightControl.currentControlType(resolver);
         if(cc == CONTROL_TYPE_FULL || cc == CONTROL_TYPE_PARTIAL) {
@@ -308,7 +310,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         0, UserHandle.USER_CURRENT);
             onoff.setChecked(bftb == 1000);
         } else return;
-        
+
         if(cc == CONTROL_TYPE_SWITCH)
             onoff.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
@@ -357,7 +359,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     }
                 });
         }
-        
+
         timeout.setMax(10);
         int tmot = Settings.System.getIntForUser(resolver,
                     Settings.System.BUTTON_BACKLIGHT_TIMEOUT, 3,
@@ -390,7 +392,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         // Not needed
                     }
                 });
-        
+
         b.setView(layout);
         b.create().show();
     }
@@ -411,7 +413,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mShowNavbarPreference.setEnabled(false);
                 mHandler.postDelayed(resetNavbarToggle, 480);
             case KEY_HW_BUTTONS:
-                boolean newSetting = (key.equals(KEY_HW_BUTTONS) 
+                boolean newSetting = (key.equals(KEY_HW_BUTTONS)
                     ? (boolean)objValue : !(boolean)objValue);
                 Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.BUTTON_BACKLIGHT_BRIGHTNESS,
