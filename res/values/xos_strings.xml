@@ -178,9 +178,6 @@
     <string name="ticker_title">Status Bar Ticker</string>
     <string name="ticker_summary">Enable the old status bar ticker</string>
 
-    <string name="button_settings_title">Navigation Keys settings</string>
-    <string name="button_settings_summary">Customize your hardware and software keys</string>
-
     <!-- One handed mode -->
     <string name="one_handed_mode_title">One Handed mode</string>
     <string name="one_handed_mode_summary">Allows swiping on the navigation bar to enable one handed mode</string>
