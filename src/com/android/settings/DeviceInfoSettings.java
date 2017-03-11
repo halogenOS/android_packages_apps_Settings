@@ -76,8 +76,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
     private static final String KEY_DEVICE_FEEDBACK = "device_feedback";
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
-    private static final String KEY_CAF_BRANCH = "caf_branch";
-    private static final String PROPERTY_CAF_BRANCH = "ro.caf.branch";
+    private static final String KEY_REVISIONS = "revisions";
+    private static final String PROPERTY_REVISIONS = "ro.mod.revisions";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     private static final String KEY_MOD_VERSION = "mod_version";
@@ -140,10 +140,17 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             setStringSummary(KEY_SELINUX_STATUS, status);
         }
 
-        setValueSummary(KEY_CAF_BRANCH, PROPERTY_CAF_BRANCH);
-        // Remove CAF Branch preference if property is not present
-        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_CAF_BRANCH,
-                PROPERTY_CAF_BRANCH);
+        String revisionsString = SystemProperties.get(PROPERTY_REVISIONS, "");
+        String cafRevision = revisionsString.split(" ")[0].split("=")[1];
+        String droidRevision = revisionsString.split(" ")[1].split("=")[1];
+        revisionsString =
+            "CAF: " + cafRevision + "\n" +
+            "AOSP: " + droidRevision;
+
+        setStringSummary(KEY_REVISIONS, revisionsString);
+        // Remove revisions preference if property is not present
+        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_REVISIONS,
+                PROPERTY_REVISIONS);
 
         // Remove selinux information if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
