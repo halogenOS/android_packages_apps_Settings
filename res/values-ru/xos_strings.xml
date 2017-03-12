@@ -126,7 +126,7 @@
      <string name="camera_sounds_title">Звук затвора камеры</string>
      
     <!-- Revisions -->
-    <string name="rom_revisions">ревизии</string>
+    <string name="rom_revisions">Ревизии</string>
 
     <!-- Display -> Double tap to sleep -->
     <string name="double_tap_to_sleep_title">Двойное нажатие для блокировки экрана (DT2S)</string>
