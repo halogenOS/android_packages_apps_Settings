@@ -141,8 +141,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         }
 
         String revisionsString = SystemProperties.get(PROPERTY_REVISIONS, "");
-        String cafRevision = revisionsString.split(" ")[0].split("=")[1];
-        String droidRevision = revisionsString.split(" ")[1].split("=")[1];
+        String cafRevision = revisionsString.split(",")[0].split("=")[1];
+        String droidRevision = revisionsString.split(",")[1].split("=")[1];
         revisionsString =
             "CAF: " + cafRevision + "\n" +
             "AOSP: " + droidRevision;
