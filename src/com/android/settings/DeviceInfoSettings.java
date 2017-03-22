@@ -148,17 +148,17 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             setStringSummary(KEY_SELINUX_STATUS, status);
         }
 
-        String revisionsString = SystemProperties.get(PROPERTY_REVISIONS, "");
-        String cafRevision = revisionsString.split(",")[0].split("=")[1];
-        String droidRevision = revisionsString.split(",")[1].split("=")[1];
-        revisionsString =
-            "CAF: " + cafRevision + "\n" +
-            "AOSP: " + droidRevision;
-
-        setStringSummary(KEY_REVISIONS, revisionsString);
-        // Remove revisions preference if property is not present
-        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_REVISIONS,
-                PROPERTY_REVISIONS);
+        try {
+            String revisionsString = SystemProperties.get(PROPERTY_REVISIONS, "");
+            String cafRevision = revisionsString.split(",")[0].split("=")[1];
+            String droidRevision = revisionsString.split(",")[1].split("=")[1];
+            revisionsString =
+                "CAF: " + cafRevision + "\n" +
+                "AOSP: " + droidRevision;
+            setStringSummary(KEY_REVISIONS, revisionsString);
+        } catch (ArrayIndexOutOfBoundsException ignored){
+           getPreferenceScreen().removePreference(findPreference(KEY_REVISIONS));
+        }
 
         // Remove selinux information if property is not present
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
