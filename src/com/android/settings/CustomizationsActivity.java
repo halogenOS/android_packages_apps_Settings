@@ -40,7 +40,7 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
     private static final String PREF_SHOW_TICKER = "status_bar_show_ticker";
     private static final String PREF_SHOW_HEADSUP = "enable_headsup";
     private SwitchPreference mShowTicker;
-    private SwitchPreference mShowHeadsup;
+    private SwitchPreference mHeadsup;
 
 
     @Override
@@ -61,11 +61,13 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
                 Settings.System.STATUS_BAR_SHOW_TICKER, 0) != 0);
         mShowTicker.setOnPreferenceChangeListener(this);
 
-        mShowHeadsup = (SwitchPreference) prefSet.findPreference(PREF_SHOW_TICKER);
-        mShowHeadsup.setChecked(Settings.System.getInt(resolver,
-                Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS, 0) != 0);
-        mShowHeadsup.setOnPreferenceChangeListener(this);
-
+        mHeadsup = (SwitchPreference) findPreference(PREF_SHOW_HEADSUP);
+        if (mHeadsup != null)
+            mHeadsup.setChecked(
+                Settings.System.getInt(getContentResolver(),
+                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
+                    1) == 1);
+        mHeadsup.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -75,7 +77,6 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
     }
 
     private void updateState() {
-
     }
 
     private void updateState(String key) {
@@ -90,16 +91,17 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mShowTicker) {
-            int enabled = ((Boolean) objValue) ? 1 : 0;
             Settings.System.putInt(resolver,
-                    Settings.System.STATUS_BAR_SHOW_TICKER, enabled);
-            if (enabled==1){
-                Settings.System.putInt(resolver,
-                        Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS, ((Boolean) objValue) ? 0 : 1);
-                mShowTicker.setChecked(((Boolean) objValue) ? 0 : 1);
-            }
-            return true;
+                    Settings.System.STATUS_BAR_SHOW_TICKER, ((Boolean) objValue) ? 1 : 0);
+            if ((Boolean) objValue) Settings.System.putInt(resolver,
+                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS, ((Boolean) objValue) ? 0 : 1);
         }
+        if (preference == mHeadsup) {
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
+                (boolean)objValue ? 1 : 0);
+        }
+
         updateState(preference.getKey());
         return true;
     }

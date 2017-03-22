@@ -117,7 +117,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String SHOW_NETWORK_NAME_MODE = "show_network_name_mode";
     private static final String KEY_LOCKSCREEN_VISUALIZER = "lockscreen_visualizer";
     private static final String KEY_DOUBLE_TAP_SLEEP = "double_tap_sleep_gesture";
-    private static final String KEY_HEADSUP = "enable_headsup";
     private static final String KEY_PROXIMITY_ON_WAKE =
                     Settings.System.PROXIMITY_ON_WAKE;
     private static final int SHOW_NETWORK_NAME_ON = 1;
@@ -145,7 +144,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mNetworkNameDisplayedPreference = null;
     private SwitchPreference mLockscreenVisualizerPreference;
     private SwitchPreference mDoubleTapSleepPreference;
-    private SwitchPreference mHeadsupPreference;
     private SwitchPreference mProximityWakePreference;
 
     private SharedPreferences mSharedPreferences;
@@ -328,9 +326,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mDoubleTapSleepPreference = (SwitchPreference)
                             findPreference(KEY_DOUBLE_TAP_SLEEP);
         mDoubleTapSleepPreference.setOnPreferenceChangeListener(this);
-
-        mHeadsupPreference = (SwitchPreference) findPreference(KEY_HEADSUP);
-        mHeadsupPreference.setOnPreferenceChangeListener(this);
 
         mProximityWakePreference = (SwitchPreference)
                             findPreference(KEY_PROXIMITY_ON_WAKE);
@@ -534,12 +529,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     1, UserHandle.USER_CURRENT) == 1);
         }
 
-        if (mHeadsupPreference != null)
-            mHeadsupPreference.setChecked(
-                Settings.System.getIntForUser(getContentResolver(),
-                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
-                    1, UserHandle.USER_CURRENT) == 1);
-
         if (mProximityWakePreference != null)
             mProximityWakePreference.setChecked(
                 Settings.System.getIntForUser(getContentResolver(),
@@ -635,11 +624,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if(preference == mDoubleTapSleepPreference) {
             Settings.System.putIntForUser(getContentResolver(),
                 Settings.System.DOUBLE_TAP_SLEEP_GESTURE,
-                (boolean)objValue ? 1 : 0, UserHandle.USER_CURRENT);
-        }
-        if (preference == mHeadsupPreference) {
-            Settings.System.putIntForUser(getContentResolver(),
-                Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
                 (boolean)objValue ? 1 : 0, UserHandle.USER_CURRENT);
         }
         if (preference == mProximityWakePreference) {
