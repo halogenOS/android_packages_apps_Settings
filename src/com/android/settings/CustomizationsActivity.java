@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
- * Copyright (C) 2016 halogenOS
+ * Copyright (C) 2017 The halogenOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,12 @@ import android.support.v14.preference.SwitchPreference;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+
+import com.plattysoft.leonids.ParticleSystem;
+import android.view.animation.AccelerateInterpolator;
+import java.util.Random;
+import com.android.internal.util.omni.PackageUtils;
+import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +95,20 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (PackageUtils.isImageTileInstalled(getContext())){
+          Random rand =  new Random();
+          int firstRandom = rand.nextInt(91 - 0);
+          int secondRandom = rand.nextInt(181 - 90);
+          int thirdRandom = rand.nextInt(181 - 0);
+          Drawable flyingFucks = super.getResources().getDrawable(R.drawable.flying_fucks, null);
+          ParticleSystem ps = new ParticleSystem(getActivity(), 100, flyingFucks, 3000);
+          ps.setScaleRange(0.7f,1.3f);
+          ps.setSpeedRange(0.1f, 0.25f);
+          ps.setAcceleration(0.0001f, thirdRandom);
+          ps.setRotationSpeedRange(firstRandom, secondRandom);
+          ps.setFadeOut(200, new AccelerateInterpolator());
+          ps.oneShot(this.getView(), 100);
+        }
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mShowTicker) {
             Settings.System.putInt(resolver,
