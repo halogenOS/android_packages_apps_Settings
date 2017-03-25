@@ -19,8 +19,4 @@ limitations under the License.
     <!-- External Icon Tint -->
     <color name="external_icon_tint">@*android:color/material_deep_teal_500</color>
 
-    <!-- Expanded desktop -->
-    <drawable name="expanded_item_bg_activated">#ffEEEEEE</drawable>
-    <drawable name="expanded_item_bg">@android:color/background_light</drawable>
-
 </resources>
