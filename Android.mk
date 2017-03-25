@@ -12,6 +12,7 @@ include $(BUILD_STATIC_JAVA_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_JAVA_LIBRARIES := bouncycastle core-oj telephony-common ims-common telephony-ext
+
 LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v4 \
     android-support-v13 \
@@ -20,7 +21,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v7-appcompat \
     android-support-v14-preference \
     jsr305 \
-    settings-logtags
+    settings-logtags \
+    particles
 
 LOCAL_MODULE_TAGS := optional
 
@@ -43,7 +45,11 @@ LOCAL_PRIVILEGED_MODULE := true
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_AAPT_FLAGS := --auto-add-overlay \
-    --extra-packages android.support.v7.preference:android.support.v14.preference:android.support.v17.preference:android.support.v7.appcompat:android.support.v7.recyclerview
+    --extra-packages android.support.v7.preference\
+    --extra-packages android.support.v14.preference\
+    --extra-packages android.support.v17.preference\
+    --extra-packages android.support.v7.appcompat\
+    --extra-packages android.support.v7.recyclerview
 
 ifneq ($(INCREMENTAL_BUILDS),)
     LOCAL_PROGUARD_ENABLED := disabled
@@ -56,6 +62,13 @@ include frameworks/opt/setupwizard/library/common-full-support.mk
 include frameworks/base/packages/SettingsLib/common.mk
 
 include $(BUILD_PACKAGE)
+
+include $(CLEAR_VARS)
+
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
+    particles:libs/leonidslib-1.3.2.jar
+
+include $(BUILD_MULTI_PREBUILT)
 
 # Use the following include to make our test apk.
 ifeq (,$(ONE_SHOT_MAKEFILE))

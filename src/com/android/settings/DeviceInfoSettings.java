@@ -19,6 +19,7 @@ package com.android.settings;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -43,20 +44,25 @@ import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.RestrictedLockUtils;
+import com.android.internal.util.omni.PackageUtils;
 import com.android.internal.os.RegionalizationEnvironment;
 import com.android.internal.os.IRegionalizationService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import android.view.animation.AccelerateInterpolator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Random;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
+
+import com.plattysoft.leonids.ParticleSystem;
 
 import com.android.settings.R;
 
@@ -245,8 +251,21 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        String prefKey = preference.getKey();
-        if (prefKey.equals(KEY_FIRMWARE_VERSION)) {
+        if (PackageUtils.isImageTileInstalled(getContext())){
+          Random rand =  new Random();
+          int firstRandom = rand.nextInt(91 - 0);
+          int secondRandom = rand.nextInt(181 - 90);
+          int thirdRandom = rand.nextInt(181 - 0);
+          Drawable flyingFucks = super.getResources().getDrawable(R.drawable.flying_fucks, null);
+          ParticleSystem ps = new ParticleSystem(getActivity(), 100, flyingFucks, 3000);
+          ps.setScaleRange(0.7f,1.3f);
+          ps.setSpeedRange(0.1f, 0.25f);
+          ps.setAcceleration(0.0001f, thirdRandom);
+          ps.setRotationSpeedRange(firstRandom, secondRandom);
+          ps.setFadeOut(200, new AccelerateInterpolator());
+          ps.oneShot(this.getView(), 100);
+        }
+        if (preference.getKey().equals(KEY_FIRMWARE_VERSION)) {
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
             mHits[mHits.length-1] = SystemClock.uptimeMillis();
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
@@ -317,9 +336,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 if (mDevHitToast != null) {
                     mDevHitToast.cancel();
                 }
-                mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
-                        Toast.LENGTH_LONG);
-                mDevHitToast.show();
+                //mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
+                //        Toast.LENGTH_LONG);
+                //mDevHitToast.show();
             }
         } else if (preference.getKey().equals(KEY_SECURITY_PATCH)) {
             if (getPackageManager().queryIntentActivities(preference.getIntent(), 0).isEmpty()) {
@@ -345,7 +364,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                 getActivity().getString(R.string.share_message), Build.MODEL));
         startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
 
-        } else if (prefKey.equals(KEY_KERNEL_VERSION)) {
+        } else if (preference.getKey().equals(KEY_KERNEL_VERSION)) {
             setStringSummary(KEY_KERNEL_VERSION, getKernelVersion());
             return true;
         }

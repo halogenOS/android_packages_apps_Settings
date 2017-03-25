@@ -65,6 +65,12 @@ import com.android.settings.search.Indexable;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedPreference;
 
+import com.plattysoft.leonids.ParticleSystem;
+import android.view.animation.AccelerateInterpolator;
+import java.util.Random;
+import com.android.internal.util.omni.PackageUtils;
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +88,7 @@ import static android.provider.Settings.System.SHOW_LOCKSCREEN_VISUALIZER_DEFAUL
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, 
+        Preference.OnPreferenceChangeListener,
         WarnedPreference.OnPreferenceValueChangeListener,
         WarnedPreference.OnPreferenceClickListener, Indexable {
     private static final String TAG = "DisplaySettings";
@@ -318,7 +324,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mNightModePreference.setValue(String.valueOf(currentNightMode));
             mNightModePreference.setOnPreferenceChangeListener(this);
         }
-        
+
         mLockscreenVisualizerPreference = (SwitchPreference)
                             findPreference(KEY_LOCKSCREEN_VISUALIZER);
         mLockscreenVisualizerPreference.setOnPreferenceChangeListener(this);
@@ -515,7 +521,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             int value = Settings.Secure.getInt(getContentResolver(), CAMERA_GESTURE_DISABLED, 0);
             mCameraGesturePreference.setChecked(value == 0);
         }
-        
+
         if(mLockscreenVisualizerPreference != null) {
             mLockscreenVisualizerPreference.setChecked(
                 Settings.System.getInt(getContentResolver(), SHOW_LOCKSCREEN_VISUALIZER,
@@ -570,6 +576,20 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+      if (PackageUtils.isImageTileInstalled(getContext())){
+          Random rand =  new Random();
+          int firstRandom = rand.nextInt(91 - 0);
+          int secondRandom = rand.nextInt(181 - 90);
+          int thirdRandom = rand.nextInt(181 - 0);
+          Drawable flyingFucks = super.getResources().getDrawable(R.drawable.flying_fucks, null);
+          ParticleSystem ps = new ParticleSystem(getActivity(), 100, flyingFucks, 3000);
+          ps.setScaleRange(0.7f,1.3f);
+          ps.setSpeedRange(0.1f, 0.25f);
+          ps.setAcceleration(0.0001f, thirdRandom);
+          ps.setRotationSpeedRange(firstRandom, secondRandom);
+          ps.setFadeOut(200, new AccelerateInterpolator());
+          ps.oneShot(this.getView(), 100);
+        }
         final String key = preference.getKey();
         if (KEY_SCREEN_TIMEOUT.equals(key)) {
             try {
