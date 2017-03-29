@@ -328,7 +328,7 @@ public final class SearchIndexableResources {
                         ZenModeVisualInterruptionSettings.class.getName(),
                         R.drawable.ic_settings_notifications));
 
-        sResMap.put(LegalSettings.class.getName(),
+        sResMap.put(CustomizationsActivity.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(CustomizationsActivity.class.getName()),
                         NO_DATA_RES_ID,
