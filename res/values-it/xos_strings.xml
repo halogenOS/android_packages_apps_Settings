@@ -51,11 +51,6 @@
     <string name="share_xos_summary">Fai conoscere halogenOS ad altri</string>
     <string name="share_message">Scopri di più su #halogenOS @ http://halogenOS.org/</string>
     <string name="share_chooser_title">Condividi halogenOS</string>
- 
-    <!-- Modern services -->
-    <string name="modern_services_title">Servizi Moderni</string>
-    <string name="modern_services_summary">Abilita alcuni servizi moderni esclusivi</string>
-    <string name="modern_services_cleardata">Potrebbe essere necessario cancellare i dati delle app Google e Google Foto affinché questa impostazione abbia effetto</string>
         
     <!-- Developer options -> Disable dropbox -->
     <string name="debug_disable_dropbox_title">Disabilita dropbox</string>

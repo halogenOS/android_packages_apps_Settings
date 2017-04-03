@@ -227,8 +227,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
 
-    private static final String KEY_ENABLE_MODERN_SERVICES = "modern_services",
-                                KEY_DISABLE_DROPBOX        = "disable_dropbox",
+    private static final String KEY_DISABLE_DROPBOX        = "disable_dropbox",
                                 KEY_DISABLE_TOMBSTONES     = "disable_tombstones";
 
     private static final String FORCE_AUTHORIZE_SUBSTRATUM_PACKAGES = "force_authorize_substratum_packages";
@@ -328,8 +327,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private EditTextPreference mChangeAndroidIdPreference;
 
-    private SwitchPreference mEnableModernServicesPreference,
-                             mDisableDropboxPreference,
+    private SwitchPreference mDisableDropboxPreference,
                              mDisableTombstonesPreference;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
@@ -535,12 +533,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
 
         updateWebViewProviderOptions();
-
-        mEnableModernServicesPreference = (SwitchPreference)
-                    findPreference(KEY_ENABLE_MODERN_SERVICES);
-        mEnableModernServicesPreference.setOnPreferenceChangeListener(this);
-        mEnableModernServicesPreference.setChecked(
-            SystemProperties.get("sf.enable_modern_services").equals("1"));
 
         mDisableDropboxPreference = (SwitchPreference)
                     findPreference(KEY_DISABLE_DROPBOX);
@@ -2203,14 +2195,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return true;
         } else if (preference == mSimulateColorSpace) {
             writeSimulateColorSpace(newValue);
-            return true;
-        } else if (preference == mEnableModernServicesPreference) {
-            SystemProperties.set("sf.enable_modern_services",
-                        (boolean)newValue ? "1" : "0");
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.ENABLE_MODERN_SERVICES, (boolean)newValue ? 1 : 0);
-            Toast.makeText(getActivity(), R.string.modern_services_cleardata,
-                    Toast.LENGTH_LONG).show();
             return true;
         } else if (preference == mDisableDropboxPreference) {
             Settings.Secure.putInt(getContentResolver(),

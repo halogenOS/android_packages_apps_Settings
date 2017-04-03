@@ -92,13 +92,6 @@
     <string name="share_xos_summary">Рассказать другим, что Вы используете halogenOS</string>
     <string name="share_message">Check out what #halogenOS is all about @ http://halogenOS.org/</string>
     <string name="share_chooser_title">Рассказать о halogenOS</string>
-    
-    <!-- Modern services -->
-    <string name="modern_services_title">Modern Services</string>
-    <string name="modern_services_summary">Включить некоторые эксклюзивные современные услуги</string>
-    <string name="modern_services_cleardata">
-		Вам может понадобиться очистить данные Google и Google Photos, чтобы изменения вступили в силу
-    </string>
         
     <!-- Developer options -> Disable dropbox -->
     <string name="debug_disable_dropbox_title">Отключение dropbox</string>
