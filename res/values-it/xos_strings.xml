@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 halogenOS
+<!-- Copyright (C) 2016-2017 halogenOS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,66 +13,24 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
      
     <!-- Buttons -->
-    <string name="button_settings">
-        Tasti
-    </string>
-    
-    <string name="long_press_home_button_assist_title">
-        Pressione prolungata home per assistente
-    </string>
-    
-    <string name="long_press_home_button_assist_summary">
-        Avvia l\'assistente di ricerca alla pressione prolungata
-        del tasto home
-    </string>
-
-    <string name="buttons_show_navbar_title">
-        Barra di navigazione
-    </string>
-
-    <string name="buttons_show_navbar_summary">
-        Mostra la barra di navigazione a schermo
-    </string>
-    
-    <string name="buttons_hardware_buttons_category">
-        Tasti fisici
-    </string>
-    
-    <string name="buttons_button_backlight_title">
-        Retroilluminazione tasti
-    </string>
-    
-    <string name="buttons_button_backlight_summary">
-        Abilita la retroilluminazione dei tasti fisici
-    </string>
-    
-    <string name="buttons_button_backlight_status">
-        Luminosità: %s
-    </string>
-    
-    <string name="buttons_hw_buttons_title">
-        Tasti fisici
-    </string>
-    
-    <string name="buttons_hw_buttons_summary">
-        Abilita i tasti fisici del dispositivo
-    </string>
-    
-    <string name="buttons_backlight_enable_backlight">
-        Abilita retroilluminazione
-    </string>
-    
-    <string name="general_brightness">
-        Luminosità
-    </string>
-    
-    <string name="general_timeout">
-        Timeout
-    </string>
-    
+    <string name="button_settings">Tasti</string>    
+    <string name="long_press_home_button_assist_title">Pressione prolungata home per assistente</string>    
+    <string name="long_press_home_button_assist_summary">Avvia l\'assistente di ricerca alla pressione prolungata
+        del tasto home</string>
+    <string name="buttons_show_navbar_title">Barra di navigazione</string>
+    <string name="buttons_show_navbar_summary">Mostra la barra di navigazione a schermo</string>    
+    <string name="buttons_hardware_buttons_category">Tasti fisici</string>    
+    <string name="buttons_button_backlight_title">Retroilluminazione tasti</string>    
+    <string name="buttons_button_backlight_summary">Abilita la retroilluminazione dei tasti fisici</string>    
+    <string name="buttons_button_backlight_status">Luminosità: %s</string>    
+    <string name="buttons_hw_buttons_title">Tasti fisici</string>    
+    <string name="buttons_hw_buttons_summary">Abilita i tasti fisici del dispositivo</string>    
+    <string name="buttons_backlight_enable_backlight">Abilita retroilluminazione</string>    
+    <string name="general_brightness">Luminosità</string>    
+    <string name="general_timeout">Timeout</string>    
     <string name="general_on">Alta</string>
     <string name="general_off">Off</string>
     <string name="general_dimmed">Bassa</string>
@@ -97,9 +55,7 @@
     <!-- Modern services -->
     <string name="modern_services_title">Servizi Moderni</string>
     <string name="modern_services_summary">Abilita alcuni servizi moderni esclusivi</string>
-    <string name="modern_services_cleardata">
-        Potrebbe essere necessario cancellare i dati delle app Google e Google Foto affinché questa impostazione abbia effetto
-    </string>
+    <string name="modern_services_cleardata">Potrebbe essere necessario cancellare i dati delle app Google e Google Foto affinché questa impostazione abbia effetto</string>
         
     <!-- Developer options -> Disable dropbox -->
     <string name="debug_disable_dropbox_title">Disabilita dropbox</string>
@@ -169,7 +125,8 @@
     <string name="status_bar_battery_style_title">Stile indicatore batteria</string>
     <string name="status_bar_battery_style_icon_portrait">Icona verticale</string>
     <string name="status_bar_battery_style_icon_landscape">Icona orizzontale</string>
-    <string name="status_bar_battery_style_circle">Cerchio</string>
+    <string name="status_bar_battery_style_circle">Anello</string>
+    <string name="status_bar_battery_style_solid">Cerchio</string>
     <string name="status_bar_battery_style_text">Testo</string>
     <string name="status_bar_battery_style_hidden">Nascosta</string>
     <string name="status_bar_battery_percentage_title">Percentuale batteria</string>
@@ -183,4 +140,56 @@
     <string name="force_charge_battery_text_summary_on">Mostra la percentuale della batteria accanto all\'icona durante la carica</string>
     <string name="force_charge_battery_text_summary_off">Mostra la percentuale della batteria all\'interno dell\'icona durante la carica</string>
 
+
+    <!-- Custom carrier label and position -->
+    <string name="carrier_label_settings_title">Etichetta Operatore</string>
+    <string name="carrier_label_settings_summary">Personalizza l\'etichetta dell\'operatore</string>
+    <string name="custom_carrier_label_title">Etichetta personalizzata</string>
+    <string name="custom_carrier_label_explain">Inserisci una nuova etichetta. Lascia vuoto per ripristinare quella originale.</string>
+    <string name="custom_carrier_label_notset">Etichetta personalizzata attualmente non impostata</string>
+    <string name="show_carrier_title">Etichetta operatore</string>
+    <string name="show_carrier_disabled">Disabilitata</string>
+    <string name="show_carrier_keyguard">Solo schermata di blocco</string>
+    <string name="show_carrier_statusbar">Solo barra di stato</string>
+    <string name="show_carrier_enabled">Schermata di blocco &amp; barra di stato</string>
+
+    <!-- Wi-Fi region code -->
+    <string name="wifi_setting_countrycode_title">Codice regione Wi\u2011Fi</string>
+    <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+    <string name="wifi_setting_countrycode_summary">Specifica il codice regione per il Wi\u2011Fi</string>
+    <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+    <string name="wifi_setting_countrycode_error">Errore durante l\'impostazione del codice regione.</string>
+
+    <!-- Status Bar Ticker -->
+    <string name="ticker_title">Notifiche barra di stato</string>
+    <string name="ticker_summary">Attiva il vecchio indicatore di notifiche nella barra di stato</string>
+
+    <string name="button_settings_title">Impostazione tasti di navigazione</string>
+    <string name="button_settings_summary">Personalizza i tuoi tasti hardware e software</string>
+
+    <!-- One handed mode -->
+    <string name="one_handed_mode_title">Modalità a mano singola</string>
+    <string name="one_handed_mode_summary">Scorri sulla barra di navigazione per abilitare la modalità a mano singola</string>
+
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Cambia ID Android</string>
+    <string name="usersettings_change_android_id_text">
+        Inserisci qui l\'ID Android desiderato o lascia il campo vuoto per generarne uno nuovo.
+    </string>
+
+    <!-- Expanded desktop -->
+    <string name="power_menu_expanded_desktop">Desktop esteso</string>
+    <string name="expanded_hide_nothing">Non nascondere nulla</string>
+    <string name="expanded_hide_status">Nascondi barra di stato</string>
+    <string name="expanded_hide_navigation">Nascondi barra di navigazione</string>
+    <string name="expanded_hide_both">Nascondi entrambe</string>
+    <string name="expanded_nothing_to_show">Per aggiungere una configurazione personalizzata per app, imposta "Abilitato per tutto" nella posizione off</string>
+    <string name="expanded_desktop_state">Stato esteso</string>
+    <string name="expanded_enabled_for_all">Abilitato per tutto</string>
+    <string name="expanded_user_configurable">Configurabile da utente</string>
+    <string name="expanded_desktop_style">Stile desktop esteso</string>
+    <string name="expanded_desktop_style_description">Scegli uno stile predefinito per il desktop esteso</string>
+    <string name="expanded_desktop_title">Opzioni desktop esteso</string>
+
 </resources>
+
