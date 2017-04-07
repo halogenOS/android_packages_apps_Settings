@@ -147,8 +147,7 @@ public class UsbBackend {
             case MODE_DATA_NONE:
                 //Take MTP mode and data unlocked false as charging
                 if(!isInPowerSourceMode()){
-                    mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MTP);
-                    mUsbManager.setUsbDataUnlocked(false);
+                    mUsbManager.setCurrentFunction(UsbManager.USB_FUNCTION_MTP, true);
                     break;
                 }
             default:
