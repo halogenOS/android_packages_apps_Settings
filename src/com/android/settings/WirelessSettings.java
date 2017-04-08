@@ -572,6 +572,8 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                     .getBoolean(com.android.internal.R.bool.config_volte_preferred);
             mVoLtePreference = (SwitchPreference) findPreference(VOICE_OVER_LTE);
             if (mLteEnabled) {
+                mVoLtePreference.setSummary(R.string.volte_preferred_summary_superb);
+                mVoLtePreference.setChecked(true);
                 mVoLtePreference.setEnabled(false);
                 mImsExtManager = QtiImsExtManager.getInstance();
                 if(mImsExtManager != null) {
@@ -584,7 +586,9 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                     }
                 }
             } else {
-                getPreferenceScreen().removePreference(mVoLtePreference);
+                mVoLtePreference.setSummary(R.string.volte_preferred_summary_fukvolte);
+                mVoLtePreference.setChecked(false);
+                mVoLtePreference.setEnabled(false);
             }
         }
 
