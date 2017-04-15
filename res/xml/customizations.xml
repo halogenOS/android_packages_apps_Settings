@@ -37,12 +37,11 @@
         <SwitchPreference
             android:key="enable_headsup"
             android:title="@string/notifpaneltweaks_enable_headsup" />
-<!--        <SwitchPreference
+        <SwitchPreference
             android:key="status_bar_notif_count"
             android:title="@string/status_bar_notif_count_title"
             android:summary="@string/status_bar_notif_count_summary"
-            android:enabled="false"
-            android:defaultValue="false" />-->
+            android:defaultValue="false" />
      </PreferenceCategory>
 
 

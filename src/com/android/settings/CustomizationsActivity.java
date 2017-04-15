@@ -45,8 +45,10 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
     private static final String TAG = CustomizationsActivity.class.getSimpleName();
     private static final String PREF_SHOW_TICKER = "status_bar_show_ticker";
     private static final String PREF_SHOW_HEADSUP = "enable_headsup";
+    private static final String PREF_NOTIF_COUNTER = "status_bar_notif_count";
     private SwitchPreference mShowTicker;
     private SwitchPreference mHeadsup;
+    private SwitchPreference mNotifCounter;
 
 
     @Override
@@ -63,17 +65,26 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
         ContentResolver resolver = getActivity().getContentResolver();
 
         mShowTicker = (SwitchPreference) prefSet.findPreference(PREF_SHOW_TICKER);
-        mShowTicker.setChecked(Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_SHOW_TICKER, 0) != 0);
-        mShowTicker.setOnPreferenceChangeListener(this);
+        if (mShowTicker != null){
+          mShowTicker.setChecked(Settings.System.getInt(resolver,
+                  Settings.System.STATUS_BAR_SHOW_TICKER, 0) != 0);
+          mShowTicker.setOnPreferenceChangeListener(this);
+        }
 
         mHeadsup = (SwitchPreference) findPreference(PREF_SHOW_HEADSUP);
-        if (mHeadsup != null)
-            mHeadsup.setChecked(
-                Settings.System.getInt(getContentResolver(),
-                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
-                    1) == 1);
-        mHeadsup.setOnPreferenceChangeListener(this);
+
+        if (mHeadsup != null){
+          mHeadsup.setChecked(Settings.System.getInt(resolver,
+                  Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS, 0) != 0);
+          mHeadsup.setOnPreferenceChangeListener(this);
+        }
+
+        mNotifCounter = (SwitchPreference) findPreference(PREF_NOTIF_COUNTER);
+        if (mNotifCounter != null){
+          mNotifCounter.setChecked(Settings.System.getInt(resolver,
+                  Settings.System.STATUS_BAR_NOTIF_COUNT, 0) != 0);
+          mNotifCounter.setOnPreferenceChangeListener(this);
+        }
     }
 
     @Override
@@ -112,14 +123,24 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mShowTicker) {
             Settings.System.putInt(resolver,
-                    Settings.System.STATUS_BAR_SHOW_TICKER, ((Boolean) objValue) ? 1 : 0);
-            if ((Boolean) objValue) Settings.System.putInt(resolver,
-                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS, ((Boolean) objValue) ? 0 : 1);
-        }
-        if (preference == mHeadsup) {
-            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_SHOW_TICKER,
+                    ((Boolean) objValue) ? 1 : 0);
+            Settings.System.putInt(resolver,
+                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
+                    ((Boolean) objValue) ? 0 : 1);
+            mHeadsup.setChecked(false);
+        } else if (preference == mHeadsup) {
+            Settings.System.putInt(resolver,
                 Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
                 (boolean)objValue ? 1 : 0);
+            Settings.System.putInt(resolver,
+                Settings.System.STATUS_BAR_SHOW_TICKER,
+                ((boolean) objValue) ? 0 : 1);
+            mShowTicker.setChecked(false);
+        } else if (preference == mNotifCounter){
+            Settings.System.putInt(resolver,
+                Settings.System.STATUS_BAR_NOTIF_COUNT,
+                ((boolean) objValue) ? 1 : 0);
         }
 
         updateState(preference.getKey());
