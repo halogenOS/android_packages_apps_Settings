@@ -153,7 +153,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         int currentControlType =
-                IButtonBacklightControl.currentControlType(getContentResolver());
+                IButtonBacklightControl.getCurrentControlType(getContentResolver());
         if(currentControlType == CONTROL_TYPE_NONE) {
             // No button backlight control
             removePreference(KEY_HW_BACKLIGHT);
@@ -236,7 +236,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     public void applyBacklightPrefPercentage(int cb) {
-        int cc = IButtonBacklightControl.currentControlType(getContentResolver());
+        int cc = IButtonBacklightControl.getCurrentControlType(getContentResolver());
         setBacklightPrefPercentage(
             doMagicOnBrightnessProgress(cb, cc));
     }
@@ -294,7 +294,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             layout.findViewById(R.id.button_backlight_dialog_timeout_tv);
 
         int bftb = 0;
-        final int cc = IButtonBacklightControl.currentControlType(resolver);
+        final int cc = IButtonBacklightControl.getCurrentControlType(resolver);
         if(cc == CONTROL_TYPE_FULL || cc == CONTROL_TYPE_PARTIAL) {
             onoffl.setVisibility(View.GONE);
             layout.removeView(onoffl);
