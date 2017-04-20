@@ -119,12 +119,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     }
 
     public List<Tile> getSuggestions() {
-        return mSuggestions;
+        return null;
     }
 
     public void setCategoriesAndSuggestions(List<DashboardCategory> categories,
             List<Tile> suggestions) {
-        mSuggestions = suggestions;
+        mSuggestions = null;
         recountItems();
     }
 
