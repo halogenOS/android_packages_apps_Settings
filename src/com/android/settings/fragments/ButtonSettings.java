@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
- * Copyright (C) 2016 halogenOS
+ * Copyright (C) 2016 The halogenOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,22 +23,12 @@ import static org.halogenos.hardware.buttons.IButtonBacklightControl.CONTROL_TYP
 import static org.halogenos.hardware.buttons.IButtonBacklightControl.CONTROL_TYPE_NONE;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.app.UiModeManager;
-import android.app.WallpaperManager;
-import android.app.admin.DevicePolicyManager;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.ComponentName;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemProperties;
 import android.os.UserHandle;
@@ -83,32 +73,19 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String TAG = ButtonSettings.class.getSimpleName();
     private static final boolean DEBUG = false;
 
-    private static final String
-        KEY_LONG_PRESS_HOME_BUTTON_ASSIST =
-                    "long_press_home_button_assist",
-        KEY_SHOW_NAVBAR =
-                    "buttons_show_navbar",
-        KEY_HW_BUTTONS =
-                    "buttons_enable_hw_buttons",
-        KEY_HW_BACKLIGHT =
-                    "buttons_hw_backlight"
-                    ;
+    private static final String KEY_SHOW_NAVBAR = "buttons_show_navbar";
+    private static final String KEY_HW_BUTTONS = "buttons_enable_hw_buttons";
+    private static final String KEY_HW_BACKLIGHT = "buttons_hw_backlight";
 
-    private static final int
-        NAVBAR_MUST_SHOW = -2,
-        NAVBAR_NOT_SET = -1,
-        NAVBAR_DONT_SHOW = 0,
-        NAVBAR_SHOW = 1
-        ;
+    private static final int NAVBAR_MUST_SHOW = -2;
+    private static final int NAVBAR_NOT_SET = -1;
+    private static final int NAVBAR_DONT_SHOW = 0;
+    private static final int NAVBAR_SHOW = 1;
 
-    private SwitchPreference
-        mLongPressHomeButtonAssistPreference,
-        mShowNavbarPreference,
-        mEnableHwButtonsPreference
-        ;
+    private SwitchPreference mShowNavbarPreference;
+    private SwitchPreference mEnableHwButtonsPreference;
 
-    private Preference
-        mHwBacklightPreference;
+    private Preference mHwBacklightPreference;
 
     private Handler mHandler;
     private final Runnable resetNavbarToggle = new Runnable() {
@@ -130,10 +107,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mHandler = new Handler();
 
         addPreferencesFromResource(R.xml.button_settings);
-
-        mLongPressHomeButtonAssistPreference = (SwitchPreference)
-                findPreference(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
-        mLongPressHomeButtonAssistPreference.setOnPreferenceChangeListener(this);
 
         mShowNavbarPreference = (SwitchPreference)
                 findPreference(KEY_SHOW_NAVBAR);
@@ -172,7 +145,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateState() {
-        updateState(KEY_LONG_PRESS_HOME_BUTTON_ASSIST);
         updateState(KEY_SHOW_NAVBAR);
         if(mEnableHwButtonsPreference != null)
             updateState(KEY_HW_BUTTONS);
@@ -182,11 +154,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private void updateState(String key) {
         if(DEBUG) Log.d(TAG, "Updating state for " + key);
         switch(key) {
-            case KEY_LONG_PRESS_HOME_BUTTON_ASSIST:
-                mLongPressHomeButtonAssistPreference.setChecked(
-                    Settings.System.getInt(getContentResolver(),
-                        Settings.System.LONG_PRESS_HOME_BUTTON_BEHAVIOR, 0) == 2);
-                break;
             case KEY_SHOW_NAVBAR:
                 int nav = Settings.System.getIntForUser(getContentResolver(),
                     Settings.System.NAVIGATION_BAR_ENABLED, -1, UserHandle.USER_CURRENT);
@@ -231,7 +198,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public int doMagicOnBrightnessProgress(int cb, int cc) {
         return cc == CONTROL_TYPE_SWITCH ? (cb == 1000 ? -2 : -3)
                 : (cc == CONTROL_TYPE_FULL ?
-                    cb / 10 : (cb == 1 ? -1 : (cb == 2 ? -2 : 
+                    cb / 10 : (cb == 1 ? -1 : (cb == 2 ? -2 :
                         (cb == 1000 ? -2 : -3))));
     }
 
@@ -261,37 +228,26 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private void showBacklightDialog() {
         final ContentResolver resolver = getContentResolver();
         AlertDialog.Builder b = new AlertDialog.Builder(getContext());
-        b
-            .setTitle(R.string.buttons_button_backlight_title)
-            .setPositiveButton(android.R.string.ok,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface d, int i) {
-                                    d.dismiss();
-                                }
-                            })
-            .setCancelable(true)
-            ;
+        b.setTitle(R.string.buttons_button_backlight_title)
+         .setPositiveButton(android.R.string.ok,
+             new DialogInterface.OnClickListener() {
+                 @Override
+                 public void onClick(DialogInterface d, int i) {
+                     d.dismiss();
+                 }
+             })
+          .setCancelable(true);
 
         LinearLayout layout = new LinearLayout(getContext());
-        LayoutInflater.from(getContext())
-                .inflate(R.layout.button_backlight_dialog, layout);
-        LinearLayout onoffl = (LinearLayout)
-            layout.findViewById(R.id.button_backlight_dialog_onoff),
-                     brightnessl = (LinearLayout)
-            layout.findViewById(R.id.button_backlight_dialog_brightness);
-        SeekBar brightness = (SeekBar)
-            layout.findViewById(R.id.button_backlight_dialog_brightness_bar);
-        final SeekBar timeout = (SeekBar)
-            layout.findViewById(R.id.button_backlight_dialog_timeout_bar);
-        Switch  onoff      = (Switch)
-            layout.findViewById(R.id.button_backlight_dialog_onoff_switch);
-        TextView onofftv   = (TextView)
-            layout.findViewById(R.id.button_backlight_dialog_onoff_text);
-        final TextView brightntv = (TextView)
-            layout.findViewById(R.id.button_backlight_dialog_brightness_tv),
-                       timeouttv = (TextView)
-            layout.findViewById(R.id.button_backlight_dialog_timeout_tv);
+        LayoutInflater.from(getContext()).inflate(R.layout.button_backlight_dialog, layout);
+        LinearLayout onoffl = (LinearLayout) layout.findViewById(R.id.button_backlight_dialog_onoff);
+        LinearLayout brightnessl = (LinearLayout) layout.findViewById(R.id.button_backlight_dialog_brightness);
+        SeekBar brightness = (SeekBar) layout.findViewById(R.id.button_backlight_dialog_brightness_bar);
+        final SeekBar timeout = (SeekBar) layout.findViewById(R.id.button_backlight_dialog_timeout_bar);
+        Switch onoff = (Switch) layout.findViewById(R.id.button_backlight_dialog_onoff_switch);
+        TextView onofftv = (TextView) layout.findViewById(R.id.button_backlight_dialog_onoff_text);
+        final TextView brightntv = (TextView) layout.findViewById(R.id.button_backlight_dialog_brightness_tv);
+        final TextView timeouttv = (TextView) layout.findViewById(R.id.button_backlight_dialog_timeout_tv);
 
         int bftb = 0;
         final int cc = IButtonBacklightControl.getCurrentControlType(resolver);
@@ -403,11 +359,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     " : " + objValue);
         String key = preference.getKey();
         switch(key) {
-            case KEY_LONG_PRESS_HOME_BUTTON_ASSIST:
-                Settings.System.putInt(getContentResolver(),
-                    Settings.System.LONG_PRESS_HOME_BUTTON_BEHAVIOR,
-                        ((Boolean)objValue) ? 2 : 0);
-                break;
             case KEY_SHOW_NAVBAR:
                 applyNavbarSetting((boolean)objValue);
                 mShowNavbarPreference.setEnabled(false);
