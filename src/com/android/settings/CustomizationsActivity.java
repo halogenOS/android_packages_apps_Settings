@@ -24,6 +24,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.SwitchPreference;
+import com.android.settings.preferences.SystemSettingSwitchPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -46,7 +47,7 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
     private static final String PREF_SHOW_TICKER = "status_bar_show_ticker";
     private static final String PREF_SHOW_HEADSUP = "enable_headsup";
     private static final String PREF_NOTIF_COUNTER = "status_bar_notif_count";
-    private SwitchPreference mShowTicker;
+    private SystemSettingSwitchPreference mShowTicker;
     private SwitchPreference mHeadsup;
     private SwitchPreference mNotifCounter;
 
@@ -64,7 +65,7 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
-        mShowTicker = (SwitchPreference) prefSet.findPreference(PREF_SHOW_TICKER);
+        mShowTicker = (SystemSettingSwitchPreference) prefSet.findPreference(PREF_SHOW_TICKER);
         if (mShowTicker != null){
           mShowTicker.setChecked(Settings.System.getInt(resolver,
                   Settings.System.STATUS_BAR_SHOW_TICKER, 0) != 0);
