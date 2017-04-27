@@ -76,6 +76,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_SHOW_NAVBAR = "buttons_show_navbar";
     private static final String KEY_HW_BUTTONS = "buttons_enable_hw_buttons";
     private static final String KEY_HW_BACKLIGHT = "buttons_hw_backlight";
+    private static final String KEY_HW_REBINDING = "hw_key_rebinding";
 
     private static final int NAVBAR_MUST_SHOW = -2;
     private static final int NAVBAR_NOT_SET = -1;
@@ -111,9 +112,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mShowNavbarPreference = (SwitchPreference)
                 findPreference(KEY_SHOW_NAVBAR);
 
-        int nav = Settings.System.getIntForUser(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_ENABLED, -1, UserHandle.USER_CURRENT);
-        if(nav == NAVBAR_MUST_SHOW)
+        boolean navbarMustShow = res.getBoolean(com.android.internal.R.bool.config_showNavigationBar);
+
+        if (navbarMustShow) {
             removePreference(KEY_SHOW_NAVBAR);
         else mShowNavbarPreference.setOnPreferenceChangeListener(this);
 
@@ -133,6 +134,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else {
             mHwBacklightPreference = findPreference(KEY_HW_BACKLIGHT);
             mHwBacklightPreference.setOnPreferenceClickListener(this);
+        }
+
+        if (SystemProperties.get("qemu.hw.mainkeys", "1").equals("")) {
+            removePreference(KEY_HW_REBINDING);
         }
 
         updateState();
