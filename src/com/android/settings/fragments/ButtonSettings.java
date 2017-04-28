@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
- * Copyright (C) 2016 The halogenOS Project
+ * Copyright (C) 2016-2017 The halogenOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,14 +29,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import android.provider.SearchIndexableResource;
-import android.provider.Settings;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.DropDownPreference;
 import android.support.v7.preference.ListPreference;
@@ -59,6 +56,10 @@ import com.android.settings.accessibility.ToggleFontSizePreferenceFragment;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,19 +107,16 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         mHandler = new Handler();
+        final Resources res = getActivity().getResources();
 
         addPreferencesFromResource(R.xml.button_settings);
 
         mShowNavbarPreference = (SwitchPreference)
                 findPreference(KEY_SHOW_NAVBAR);
 
-        boolean navbarMustShow = res.getBoolean(com.android.internal.R.bool.config_showNavigationBar);
+        mShowNavbarPreference.setOnPreferenceChangeListener(this);
 
-        if (navbarMustShow) {
-            removePreference(KEY_SHOW_NAVBAR);
-        else mShowNavbarPreference.setOnPreferenceChangeListener(this);
-
-        if(KeyDisablerUtils.areHwKeysSupportedInSettings(getContext())) {
+        if(KeyDisablerUtils.areHwKeysSupported()) {
             mEnableHwButtonsPreference = (SwitchPreference)
                 findPreference(KEY_HW_BUTTONS);
             mEnableHwButtonsPreference.setOnPreferenceChangeListener(this);
@@ -128,7 +126,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         int currentControlType =
                 IButtonBacklightControl.getCurrentControlType(getContentResolver());
-        if(currentControlType == CONTROL_TYPE_NONE) {
+        if (currentControlType == CONTROL_TYPE_NONE || !KeyDisablerUtils.areHwKeysSupported()) {
             // No button backlight control
             removePreference(KEY_HW_BACKLIGHT);
         } else {

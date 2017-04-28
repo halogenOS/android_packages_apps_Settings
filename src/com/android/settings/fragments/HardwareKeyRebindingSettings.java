@@ -1,4 +1,4 @@
-)/*
+/*
  * Copyright (C) 2014 ParanoidAndroid Project
  * Copyright (C) 2017 The halogenOS Project
  *
