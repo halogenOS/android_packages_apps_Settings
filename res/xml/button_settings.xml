@@ -54,7 +54,6 @@
             android:summary="@string/buttons_button_backlight_status" />
 
         <PreferenceScreen
-            android:key="hw_key_rebinding"
             android:fragment="com.android.settings.fragments.HardwareKeyRebindingSettings"
             android:title="@string/hw_keys_rebinding_title"
             android:summary="@string/hw_keys_rebinding_summary"/>
