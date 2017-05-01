@@ -1,5 +1,4 @@
 /*
- * Copyright (C) 2010 The Android Open Source Project
  * Copyright (C) 2017 The halogenOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,18 +16,21 @@
 
 package com.android.settings;
 
+import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
+
 import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceScreen;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
-import android.support.v14.preference.SwitchPreference;
-import com.android.settings.preferences.SystemSettingSwitchPreference;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+
+import com.android.settings.dashboard.SummaryLoader;
+import com.android.settings.R;
 
 import com.plattysoft.leonids.ParticleSystem;
 import android.view.animation.AccelerateInterpolator;
@@ -36,20 +38,10 @@ import java.util.Random;
 import com.android.internal.util.omni.PackageUtils;
 import android.graphics.drawable.Drawable;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class CustomizationsActivity extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener,
         Indexable {
     private static final String TAG = CustomizationsActivity.class.getSimpleName();
-    private static final String PREF_SHOW_TICKER = "status_bar_show_ticker";
-    private static final String PREF_SHOW_HEADSUP = "enable_headsup";
-    private static final String PREF_NOTIF_COUNTER = "status_bar_notif_count";
-    private SystemSettingSwitchPreference mShowTicker;
-    private SwitchPreference mHeadsup;
-    private SwitchPreference mNotifCounter;
 
 
     @Override
@@ -60,44 +52,12 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         addPreferencesFromResource(R.xml.customizations);
-        PreferenceScreen prefSet = getPreferenceScreen();
-        ContentResolver resolver = getActivity().getContentResolver();
-
-        mShowTicker = (SystemSettingSwitchPreference) prefSet.findPreference(PREF_SHOW_TICKER);
-        if (mShowTicker != null){
-          mShowTicker.setChecked(Settings.System.getInt(resolver,
-                  Settings.System.STATUS_BAR_SHOW_TICKER, 0) != 0);
-          mShowTicker.setOnPreferenceChangeListener(this);
-        }
-
-        mHeadsup = (SwitchPreference) findPreference(PREF_SHOW_HEADSUP);
-
-        if (mHeadsup != null){
-          mHeadsup.setChecked(Settings.System.getInt(resolver,
-                  Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS, 0) != 0);
-          mHeadsup.setOnPreferenceChangeListener(this);
-        }
-
-        mNotifCounter = (SwitchPreference) findPreference(PREF_NOTIF_COUNTER);
-        if (mNotifCounter != null){
-          mNotifCounter.setChecked(Settings.System.getInt(resolver,
-                  Settings.System.STATUS_BAR_NOTIF_COUNT, 0) != 0);
-          mNotifCounter.setOnPreferenceChangeListener(this);
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        updateState();
-    }
-
-    private void updateState() {
-    }
-
-    private void updateState(String key) {
     }
 
     @Override
@@ -121,30 +81,6 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
           ps.setFadeOut(200, new AccelerateInterpolator());
           ps.oneShot(this.getView(), 100);
         }
-        ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mShowTicker) {
-            Settings.System.putInt(resolver,
-                    Settings.System.STATUS_BAR_SHOW_TICKER,
-                    ((Boolean) objValue) ? 1 : 0);
-            Settings.System.putInt(resolver,
-                    Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
-                    ((Boolean) objValue) ? 0 : 1);
-            mHeadsup.setChecked(false);
-        } else if (preference == mHeadsup) {
-            Settings.System.putInt(resolver,
-                Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
-                (boolean)objValue ? 1 : 0);
-            Settings.System.putInt(resolver,
-                Settings.System.STATUS_BAR_SHOW_TICKER,
-                ((boolean) objValue) ? 0 : 1);
-            mShowTicker.setChecked(false);
-        } else if (preference == mNotifCounter){
-            Settings.System.putInt(resolver,
-                Settings.System.STATUS_BAR_NOTIF_COUNT,
-                ((boolean) objValue) ? 1 : 0);
-        }
-
-        updateState(preference.getKey());
         return true;
     }
 
@@ -153,4 +89,36 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
         return R.string.help_uri_customizations;
     }
 
+    private static class SummaryProvider implements SummaryLoader.SummaryProvider {
+
+        private final Context mContext;
+        private final SummaryLoader mSummaryLoader;
+        private ContentResolver resolver;
+
+        public SummaryProvider(Context context, SummaryLoader summaryLoader) {
+            mContext = context;
+            mSummaryLoader = summaryLoader;
+            resolver = mContext.getContentResolver();
+        }
+
+        @Override
+        public void setListening(boolean listening) {
+            if (listening) {
+                boolean navbarEnabled = Settings.System.getInt(resolver,
+                   Settings.System.NAVIGATION_BAR_ENABLED, 0) != 0;
+                String newSummary = navbarEnabled ? mContext.getString(R.string.navbar_enabled)
+                                              : mContext.getString(R.string.navbar_disabled);
+                mSummaryLoader.setSummary(this, newSummary);
+            }
+        }
+    }
+
+    public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
+            = new SummaryLoader.SummaryProviderFactory() {
+        @Override
+        public SummaryLoader.SummaryProvider createSummaryProvider(Activity activity,
+                                                                   SummaryLoader summaryLoader) {
+            return new SummaryProvider(activity, summaryLoader);
+        }
+    };
 }

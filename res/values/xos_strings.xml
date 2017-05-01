@@ -91,26 +91,17 @@
     <string name="advanced_reboot_title">Advanced reboot</string>
     <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
 
-    <!-- Display -> Heads-Up -->
-    <string name="notifpaneltweaks_enable_headsup">Heads-Up notifications</string>
-
     <!-- Proximity wake -->
     <string name="proximity_wake_title">Prevent accidental wake-up</string>
     <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen</string>
 
-    <!-- Status bar notif count -->
-    <string name="status_bar_notif_count_title">Show notification count</string>
-    <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
-
    <!-- App details: open play store link if app is user installed -->
    <string name="app_play_store">Google Play</string>
 
-   <!-- Customizations fragment title -->
+   <!-- Customizations fragment -->
    <string name="customizations_title">Customizations</string>
-
-    <!-- Pixel Navbar Animation -->
-    <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
-    <string name="pixel_navbar_anim_summary">Enables the pixel navbar animation</string>
+   <string name="navbar_enabled">Navigation Bar enabled</string>
+   <string name="navbar_disabled">Navigation Bar disabled</string>
 
    <!-- Statusbar customisations title -->
    <string name="statusbar_customisations_title">
@@ -118,7 +109,8 @@
    </string>
 
    <!-- Battery customizations -->
-    <string name="status_bar_battery_style_category">Battery</string>
+    <string name="status_bar_battery_style_category_title">Battery</string>
+    <string name="status_bar_battery_style_category_summary">Customize your battery icon</string>
     <string name="status_bar_battery_style_title">Battery status style</string>
     <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
     <string name="status_bar_battery_style_icon_landscape">Icon landscape</string>
@@ -130,13 +122,11 @@
     <string name="status_bar_battery_percentage_default">Hidden</string>
     <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
     <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
-
     <string name="status_bar_battery_style_tile_title">Custom battery tile style</string>
     <string name="status_bar_battery_style_tile_summary">Allow to set the same icon style chosen for the statusbar battery</string>
     <string name="force_charge_battery_text_title">Show percentage near battery when charging</string>
     <string name="force_charge_battery_text_summary_on">Show the battery percentage outside the icon when charging</string>
     <string name="force_charge_battery_text_summary_off">Show the battery percentage inside the icon when charging</string>
-
 
     <!-- Custom carrier label and position -->
     <string name="carrier_label_settings_title">Carrier Label</string>
@@ -150,22 +140,25 @@
     <string name="show_carrier_statusbar">Statusbar only</string>
     <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
 
+    <!-- Status Bar Ticker and Headsup -->
+    <string name="ticker_and_headsup_settings_title">Statusbar Ticker and Headsup</string>
+    <string name="ticker_and_headsup_settings_summary">Customize the ticker and headsup behaviour</string>
+    <string name="ticker_title">Status Bar Ticker</string>
+    <string name="ticker_summary">Enable the old status bar ticker</string>
+    <string name="track_ticker_title">Show music track changes</string>
+    <string name="track_ticker_summary">When the track changes while playing music, the ticker will show the change.</string>
+    <string name="headsup_title">Heads-Up notifications</string>
+    <string name="headsup_summary">Enable the headsup notifications</string>
+    <string name="status_bar_notif_count_title">Show notification count</string>
+    <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
+
+
     <!-- Wi-Fi region code -->
     <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
     <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
     <string name="wifi_setting_countrycode_summary">Specify the region code for Wi\u2011Fi</string>
     <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
     <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
-
-    <!-- Status Bar Ticker -->
-    <string name="ticker_title">Status Bar Ticker</string>
-    <string name="ticker_summary">Enable the old status bar ticker</string>
-    <string name="track_ticker_title">Show music track changes</string>
-    <string name="track_ticker_summary">When the track changes while playing music, the ticker will show the change.</string>
-
-    <!-- One handed mode -->
-    <string name="one_handed_mode_title">One Handed mode</string>
-    <string name="one_handed_mode_summary">Allows swiping on the navigation bar to enable one handed mode</string>
 
     <!-- Users -> Change Android ID -->
     <string name="usersettings_change_android_id">Change Android ID</string>
@@ -214,6 +207,15 @@
     <string name="security_settings_fingerprint_sensor_location_left">left side</string>
     <string name="security_settings_fingerprint_sensor_location_right">right side</string>
 
+
+    <!-- Pixel Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Pixel navbar animation</string>
+    <string name="pixel_navbar_anim_summary">Enables the pixel navbar animation</string>
+
+    <!-- One handed mode -->
+    <string name="one_handed_mode_title">One Handed mode</string>
+    <string name="one_handed_mode_summary">Allows swiping on the navigation bar to enable one handed mode</string>
+
     <!-- HW Keys rebinding -->
     <string name="hw_keys_rebinding_title">Hardware keys custom rebinding</string>
     <string name="hw_keys_rebinding_summary">Change the default behaviour of your hardware keys</string>
@@ -235,5 +237,12 @@
     <string name="action_launch_camera">Open camera</string>
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
+
+    <!-- Help URI, Buttons [DO NOT TRANSLATE] -->
+    <string name="help_uri_buttons" translatable="false"></string>
+    <!-- Help URI, Customizations [DO NOT TRANSLATE] -->
+    <string name="help_uri_customizations" translatable="false"></string>
+    <!-- Help URI, Ticker and Headsup [DO NOT TRANSLATE] -->
+    <string name="help_uri_ticker_headsup" translatable="false"></string>
 
 </resources>

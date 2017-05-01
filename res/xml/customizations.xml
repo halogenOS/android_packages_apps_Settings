@@ -18,38 +18,21 @@
         android:title="@string/customizations_title">
 
      <PreferenceCategory
-            android:key="xos_statusbar_options"
             android:title="@string/statusbar_customisations_title">
 
         <PreferenceScreen
-            android:key="batteryicon_customisations"
-            android:fragment="com.android.settings.fragments.StatusbarBatteryStyle"
-            android:title="@string/status_bar_battery_style_category" />
+            android:title="@string/status_bar_battery_style_category_title"
+            android:summary="@string/status_bar_battery_style_category_summary"
+            android:fragment="com.android.settings.fragments.StatusbarBatteryStyle" />
         <PreferenceScreen
-            android:fragment="com.android.settings.fragments.CarrierLabelSettings"
             android:title="@string/carrier_label_settings_title"
-            android:summary="@string/carrier_label_settings_summary" />
-        <com.android.settings.preferences.SystemSettingSwitchPreference
-            android:key="status_bar_show_ticker"
-            android:title="@string/ticker_title"
-            android:summary="@string/ticker_summary"
-            android:defaultValue="false" />
-        <com.android.settings.preferences.SystemSettingSwitchPreference
-            android:key="status_bar_track_ticker"
-            android:title="@string/track_ticker_title"
-            android:summary="@string/track_ticker_summary"
-            android:dependency="status_bar_show_ticker"
-            android:defaultValue="true" />
-        <SwitchPreference
-            android:key="enable_headsup"
-            android:title="@string/notifpaneltweaks_enable_headsup" />
-        <SwitchPreference
-            android:key="status_bar_notif_count"
-            android:title="@string/status_bar_notif_count_title"
-            android:summary="@string/status_bar_notif_count_summary"
-            android:defaultValue="false" />
+            android:summary="@string/carrier_label_settings_summary"
+            android:fragment="com.android.settings.fragments.CarrierLabelSettings" />
+        <PreferenceScreen
+            android:title="@string/ticker_and_headsup_settings_title"
+            android:summary="@string/ticker_and_headsup_settings_summary"
+            android:fragment="com.android.settings.fragments.TickerAndHeadsupSettings" />
      </PreferenceCategory>
-
 
      <PreferenceCategory
          android:title="@string/button_settings">
