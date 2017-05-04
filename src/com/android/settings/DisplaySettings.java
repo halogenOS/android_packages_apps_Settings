@@ -121,7 +121,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_NETWORK_NAME_DISPLAYED = "network_operator_display";
     private static final String SHOW_NETWORK_NAME_MODE = "show_network_name_mode";
-    private static final String KEY_LOCKSCREEN_VISUALIZER = "lockscreen_visualizer";
     private static final String KEY_DOUBLE_TAP_SLEEP = "double_tap_sleep_gesture";
     private static final String KEY_PROXIMITY_ON_WAKE =
                     Settings.System.PROXIMITY_ON_WAKE;
@@ -148,7 +147,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
     private SwitchPreference mNetworkNameDisplayedPreference = null;
-    private SwitchPreference mLockscreenVisualizerPreference;
     private SwitchPreference mDoubleTapSleepPreference;
     private SwitchPreference mProximityWakePreference;
 
@@ -324,10 +322,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mNightModePreference.setValue(String.valueOf(currentNightMode));
             mNightModePreference.setOnPreferenceChangeListener(this);
         }
-
-        mLockscreenVisualizerPreference = (SwitchPreference)
-                            findPreference(KEY_LOCKSCREEN_VISUALIZER);
-        mLockscreenVisualizerPreference.setOnPreferenceChangeListener(this);
 
         mDoubleTapSleepPreference = (SwitchPreference)
                             findPreference(KEY_DOUBLE_TAP_SLEEP);
@@ -522,12 +516,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mCameraGesturePreference.setChecked(value == 0);
         }
 
-        if(mLockscreenVisualizerPreference != null) {
-            mLockscreenVisualizerPreference.setChecked(
-                Settings.System.getInt(getContentResolver(), SHOW_LOCKSCREEN_VISUALIZER,
-                    SHOW_LOCKSCREEN_VISUALIZER_DEFAULT) == 1);
-        }
-
         if(mDoubleTapSleepPreference != null) {
             mDoubleTapSleepPreference.setChecked(
                 Settings.System.getIntForUser(getContentResolver(),
@@ -636,10 +624,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist night mode setting", e);
             }
-        }
-        if(preference == mLockscreenVisualizerPreference) {
-            Settings.System.putInt(getContentResolver(), SHOW_LOCKSCREEN_VISUALIZER,
-                    ((boolean)objValue) ? 1 : 0);
         }
         if(preference == mDoubleTapSleepPreference) {
             Settings.System.putIntForUser(getContentResolver(),

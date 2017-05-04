@@ -37,12 +37,6 @@
     <string name="button_settings_title">Navigation Keys settings</string>
     <string name="button_settings_summary">Customize your hardware and software keys</string>
 
-    <!-- Display -> Lockscreen Visualizer -->
-    <string name="lockscreen_visualizer_title">Lockscreen Visualizer</string>
-    <string name="lockscreen_visualizer_summary">
-        Whether to show the music visualizer on lockscreen
-    </string>
-
     <!-- Allow fake signature checkbox in developer settings -->
     <string name="allow_signature_fake">Allow signature spoofing</string>
     <string name="allow_signature_fake_summary">Allow apps to bypass security systems by pretending to be a different app</string>
@@ -237,6 +231,13 @@
     <string name="action_launch_camera">Open camera</string>
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
+
+    <!-- Lockscreen Tweaks -->
+    <string name="lockscreen_tweaks">Lockscreen Tweaks</string>
+    <string name="lockscreen_visualizer_title">Lockscreen Visualizer</string>
+    <string name="lockscreen_visualizer_summary">
+        Whether to show the music visualizer on lockscreen
+    </string>
 
     <!-- Help URI, Buttons [DO NOT TRANSLATE] -->
     <string name="help_uri_buttons" translatable="false"></string>

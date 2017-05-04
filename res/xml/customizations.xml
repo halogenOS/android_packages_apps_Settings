@@ -42,4 +42,12 @@
              android:fragment="com.android.settings.fragments.ButtonSettings"/>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/lockscreen_tweaks">
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="show_lockscreen_visualizer"
+            android:title="@string/lockscreen_visualizer_title"
+            android:summary="@string/lockscreen_visualizer_summary" />
+    </PreferenceCategory>
+
 </PreferenceScreen>
