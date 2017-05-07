@@ -144,8 +144,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private void updateState() {
         updateState(KEY_SHOW_NAVBAR);
-        if(mEnableHwButtonsPreference != null)
-            updateState(KEY_HW_BUTTONS);
+        updateState(KEY_HW_BUTTONS);
         updateState(KEY_HW_BACKLIGHT);
     }
 
