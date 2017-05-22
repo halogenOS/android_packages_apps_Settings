@@ -100,6 +100,7 @@
    <string name="customizations_title">Customizations</string>
    <string name="navbar_enabled">Navigation Bar enabled</string>
    <string name="navbar_disabled">Navigation Bar disabled</string>
+   <string name="customizations_keywords">customizations, battery icon, carrier label, ticker, headsup, clock, navbar, keys, rebinding, lockscreen</string>
 
    <!-- Statusbar customisations title -->
    <string name="statusbar_customisations_title">

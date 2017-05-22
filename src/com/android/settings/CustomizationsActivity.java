@@ -19,24 +19,27 @@ package com.android.settings;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
-
+import android.view.animation.AccelerateInterpolator;
+import com.android.internal.util.omni.PackageUtils;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
-
+import com.android.settings.search.SearchIndexableRaw;
 import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.R;
 
 import com.plattysoft.leonids.ParticleSystem;
-import android.view.animation.AccelerateInterpolator;
+
+import java.util.ArrayList;
 import java.util.Random;
-import com.android.internal.util.omni.PackageUtils;
-import android.graphics.drawable.Drawable;
+import java.util.List;
 
 public class CustomizationsActivity extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Preference.OnPreferenceClickListener,
@@ -121,4 +124,33 @@ public class CustomizationsActivity extends SettingsPreferenceFragment implement
             return new SummaryProvider(activity, summaryLoader);
         }
     };
+    /** Index provider used to expose this fragment in search. */
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableRaw> getRawDataToIndex(Context context, boolean enabled) {
+                    final Resources res = context.getResources();
+                    final SearchIndexableRaw data = new SearchIndexableRaw(context);
+                    data.title = res.getString(R.string.customizations_title);
+                    data.screenTitle = res.getString(R.string.customizations_title);
+                    data.keywords = res.getString(R.string.customizations_keywords);
+
+                    final List<SearchIndexableRaw> result = new ArrayList<>(1);
+                    result.add(data);
+                    return result;
+                }
+
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.customizations;
+                    result.add(sir);
+
+                    return result;
+                }
+            };
 }
