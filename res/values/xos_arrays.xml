@@ -121,6 +121,7 @@
         <item>@string/action_last_app</item>
         <item>@string/action_splitscreen</item>
         <item>@string/action_screen_off</item>
+        <item>@string/action_screenshot</item>
     </string-array>
 
     <string-array name="action_values" translatable="false">
@@ -134,6 +135,7 @@
         <item>7</item>
         <item>8</item>
         <item>9</item>
+        <item>10</item>
     </string-array>
 
     <!-- Clock & Date options -->

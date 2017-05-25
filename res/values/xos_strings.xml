@@ -236,6 +236,7 @@
     <string name="action_last_app">Launch last app</string>
     <string name="action_splitscreen">Splitscreen</string>
     <string name="action_screen_off">Turn off screen</string>
+    <string name="action_screenshot">Screenshot</string>
 
     <!-- Lockscreen Tweaks -->
     <string name="lockscreen_tweaks">Lockscreen Tweaks</string>
