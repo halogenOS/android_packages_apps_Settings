@@ -13,7 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Buttons -->
     <string name="button_settings">
@@ -76,12 +76,6 @@
     <string name="general_off">Aus</string>
     <string name="general_dimmed">Verdunkelt</string>
 
-    <!-- Display -> Lockscreen Visualizer -->
-    <string name="lockscreen_visualizer_title">Lockscreen-Visualizer</string>
-    <string name="lockscreen_visualizer_summary">
-        Zeigt den Musik-Visualizer auf dem Sperrbildschirm
-    </string>
-
     <!-- Share halogenOS -->
     <string name="share_xos_title">halogenOS teilen</string>
     <string name="share_xos_summary">Lasse andere über halogenOS erfahren</string>
@@ -139,5 +133,123 @@
         Gebe hier deine gewünschte Android ID ein oder lasse das Feld leer,
         um eine ID zu generieren.
     </string>
+
+    <!-- Expanded desktop -->
+    <string name="power_menu_expanded_desktop">Erweiterter Desktop</string>
+    <string name="expanded_hide_nothing">Nichts ausblenden</string>
+    <string name="expanded_hide_status">Statusleiste ausblenden</string>
+    <string name="expanded_hide_navigation">Navigationsleiste ausblenden</string>
+    <string name="expanded_hide_both">Beides ausblenden</string>
+    <string name="expanded_nothing_to_show">
+        Um eine benutzerdefinierte Per-App-Konfiguration für den
+        erweiterten Zustand festzulegen, deaktiviere "Für alle aktiv"</string>
+    <string name="expanded_desktop_state">Erweiterter Zustand</string>
+    <string name="expanded_enabled_for_all">Für alle aktiv</string>
+    <string name="expanded_user_configurable">Benutzerdefinierbar</string>
+    <string name="expanded_desktop_style">Art des erweiterten Desktops</string>
+    <string name="expanded_desktop_style_description">Wähle die Standartmäßige Art des erweiterten Desktops</string>
+    <string name="expanded_desktop_title">Expanded desktop options</string>
+
+    <!-- MSIM Manual provisioning -->
+    <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> ist <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
+    <string name="sim_enabled">aktiviert</string>
+    <string name="sim_disabled">deaktiviert</string>
+    <string name="sim_missing">fehlend oder beschädigt</string>
+    <string name="sim_enabler_need_disable_sim">SIM-Karte wird deaktiviert. Fortfahren?</string>
+    <string name="sim_enabler_will_disable_sim_title">Achtung</string>
+    <string name="sim_enabler_need_switch_data_service">
+        Diese SIM wird deaktiviert und SIM <xliff:g id="slotid">%1$s</xliff:g>
+        wird für mobile Daten verwendet. Fortfahren?</string>
+    <string name="sim_enabler_airplane_on">Dieser Vorgang kann nicht während dem Flugmodus ausgeführt werden.</string>
+    <string name="sim_enabler_in_call">Dieser Vorgang kann nicht während eines Anrufes ausgeführt werden.</string>
+    <string name="sim_enabler_both_inactive">Es können nicht alle SIM-Karten gleichzeitig deaktiviert werden.</string>
+    <string name="sim_enabler_enabling">Aktivierung\u2026</string>
+    <string name="sim_enabler_disabling">Deaktivierung\u2026</string>
+    <string name="sub_activate_success">SIM aktiviert.</string>
+    <string name="sub_activate_failed">Aktivierung fehlgeschlagen.</string>
+    <string name="sub_deactivate_success">SIM deaktiviert.</string>
+    <string name="sub_deactivate_failed">Deaktivierung fehlgeschlagen.</string>
+
+    <!-- Format string for fingerprint location message -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Finde den Fingerabdrucksensor auf der <xliff:g id="sensor_location">%1$s</xliff:g> des Gerätes.</string>
+
+    <!-- Fingerprint sensor locations -->
+    <string name="security_settings_fingerprint_sensor_location_back">Rückseite</string>
+    <string name="security_settings_fingerprint_sensor_location_front">Vorderseite</string>
+    <string name="security_settings_fingerprint_sensor_location_left">linken Seite</string>
+    <string name="security_settings_fingerprint_sensor_location_right">rechten Seite</string>
+
+
+    <!-- Pixel Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Pixel-Animationen für Navigationsleiste</string>
+    <string name="pixel_navbar_anim_summary">Aktiviert die Animationen vom Pixel für die Navigationsleiste</string>
+
+    <!-- One handed mode -->
+    <string name="one_handed_mode_title">Einhändiger Modus</string>
+    <string name="one_handed_mode_summary">Erlaubt Wischen auf der Navigationsleiste, um den einhändigen Modus zu aktivieren.</string>
+
+    <!-- HW Keys rebinding -->
+    <string name="hw_keys_rebinding_title">Benutzerdefinierte Hardwaretasten-Aktionen</string>
+    <string name="hw_keys_rebinding_summary">Ändere das Verhalten der Hardwaretasten</string>
+    <string name="home_key_title">Home-Taste</string>
+    <string name="back_key_title">Zurück-Taste</string>
+    <string name="menu_key_title">Menü-Taste</string>
+    <string name="assist_key_title">Assistenten-Taste</string>
+    <string name="app_switch_key_title">Zuletzt geöffnete Apps-Taste</string>
+    <string name="camera_key_title">Kamera-Taste</string>
+    <string name="short_press_title">Aktion für kurzes Drücken</string>
+    <string name="long_press_title">Aktion für gedrückt halten</string>
+    <string name="double_tap_title">Aktion für doppelt drücken</string>
+    <string name="action_nothing">Keine Aktion</string>
+    <string name="action_menu">Öffne/Schließe Menü</string>
+    <string name="action_app_switch">Zuletzt geöffnete Apps</string>
+    <string name="action_search">Suchassistent</string>
+    <string name="action_voice_search">Sprachsuche</string>
+    <string name="action_in_app_search">In-App-Suche</string>
+    <string name="action_launch_camera">Öffne Kamera</string>
+    <string name="action_last_app">Letzte App öffnen</string>
+    <string name="action_splitscreen">Bildschirm teilen</string>
+    <string name="action_screen_off">Bildschirm ausschalten</string>
+    <string name="action_screenshot">Screenshot</string>
+
+    <!-- Lockscreen Tweaks -->
+    <string name="lockscreen_tweaks">Sperrbildschirm</string>
+    <string name="lockscreen_visualizer_title">Lockscreen-Visualizer</string>
+    <string name="lockscreen_visualizer_summary">
+        Zeigt den Musik-Visualizer auf dem Sperrbildschirm
+    </string>
+
+    <!-- Linked / unlinked notification volume -->
+    <string name="link_volume_option_title">Anruf- und Benachrichtigungslautstärke zusammen steuern</string>
+    <string name="notification_volume_option_title">Benachrichtigungslautstärke</string>
+    <string name="ring_notification_volume_option_title">Anruf- und Benachrichtigungslautstärke</string>
+
+    <!-- Clock settings -->
+    <string name="clock_settings_title">Uhrzeitanzeige</string>
+    <string name="clock_settings_summary">Einstellungen für Uhrzeit- und Datumsanzeige</string>
+
+    <!-- clock date options -->
+    <string name="clock_title_enable">Ausrichtung</string>
+    <string name="status_bar_show_clock_title">Uhrzeit und Datum anzeigen</string>
+    <string name="status_bar_clock_seconds_title">Sekunden anzeigen</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">24-Stunden Uhr aktiv</string>
+    <string name="right_clock">Rechts</string>
+    <string name="center_clock">Zentriert</string>
+    <string name="left_clock">Links</string>
+    <string name="clock_date_display">Datum</string>
+    <string name="clock_date_style">Art des Datums</string>
+    <string name="clock_date_position">Position des Datums</string>
+    <string name="clock_date_format">Format des Datums</string>
+    <string name="clock_date_string_edittext_title">Muss DateFormat entsprechen, z. B. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Text eingeben</string>
+    <string name="clock_date_right">Rechts zur Uhrzeit</string>
+    <string name="clock_date_left">Links zur Uhrzeit</string>
+    <string name="clock_am_pm_date_normal">Normal</string>
+    <string name="clock_am_pm_date_small">Klein</string>
+    <string name="clock_am_pm_date_none">Versteckt</string>
+    <string name="clock_date_style_lowercase">Klein geschrieben</string>
+    <string name="clock_date_style_uppercase">Groß geschrieben</string>
+    <string name="clock_date_format_custom">Benutzerdefiniertes Java-Format</string>
 
 </resources>
