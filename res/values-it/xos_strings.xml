@@ -243,13 +243,6 @@
         Mostra il visualizzatore della musica nella schermata di blocco
    </string>
 
-    <!-- Help URI, Buttons [DO NOT TRANSLATE] -->
-    <string name="help_uri_buttons" translatable="false"></string>
-    <!-- Help URI, Customizations [DO NOT TRANSLATE] -->
-    <string name="help_uri_customizations" translatable="false"></string>
-    <!-- Help URI, Ticker and Headsup [DO NOT TRANSLATE] -->
-    <string name="help_uri_ticker_headsup" translatable="false"></string>
-
     <!-- Linked / unlinked notification volume -->
     <string name="link_volume_option_title">Link ring e volume notifiche</string>
     <string name="notification_volume_option_title">Volume notifiche</string>
