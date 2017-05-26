@@ -40,6 +40,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.hardware.usb.IUsbManager;
 import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiManager;
@@ -76,6 +77,7 @@ import android.view.ThreadedRenderer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityManager;
+import android.view.animation.AccelerateInterpolator;
 import android.webkit.IWebViewUpdateService;
 import android.webkit.WebViewProviderInfo;
 import android.widget.Switch;
@@ -83,7 +85,10 @@ import android.widget.Toast;
 
 import com.android.internal.app.LocalePicker;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.util.omni.PackageUtils;
+import com.android.settings.R;
 import com.android.settings.applications.BackgroundCheckSummary;
+import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.fuelgauge.InactiveApps;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -92,18 +97,15 @@ import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.RestrictedSwitchPreference;
 
-import com.plattysoft.leonids.ParticleSystem;
-import android.view.animation.AccelerateInterpolator;
-import java.util.Random;
-import com.android.internal.util.omni.PackageUtils;
-import android.graphics.drawable.Drawable;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 
 import org.xdevs23.crypto.hashing.HashUtils;
+
+import com.plattysoft.leonids.ParticleSystem;
 
 /*
  * Displays preferences for application developers.
@@ -2463,4 +2465,38 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         return !(mUm.hasBaseUserRestriction(UserManager.DISALLOW_OEM_UNLOCK, userHandle)
                 || mUm.hasBaseUserRestriction(UserManager.DISALLOW_FACTORY_RESET, userHandle));
     }
+
+    private static class SummaryProvider implements SummaryLoader.SummaryProvider {
+
+        private final Context mContext;
+        private final SummaryLoader mSummaryLoader;
+        private ContentResolver resolver;
+
+        public SummaryProvider(Context context, SummaryLoader summaryLoader) {
+            mContext = context;
+            mSummaryLoader = summaryLoader;
+            resolver = mContext.getContentResolver();
+        }
+
+        @Override
+        public void setListening(boolean listening) {
+            if (listening) {
+                boolean adbEnabled = Settings.Global.getInt(resolver,
+                Settings.Global.ADB_ENABLED, 0) != 0;
+                String newSummary = adbEnabled ? mContext.getString(R.string.adb_enabled)
+                                              : mContext.getString(R.string.adb_disabled);
+                mSummaryLoader.setSummary(this, newSummary);
+            }
+        }
+    }
+
+    public static final SummaryLoader.SummaryProviderFactory SUMMARY_PROVIDER_FACTORY
+            = new SummaryLoader.SummaryProviderFactory() {
+        @Override
+        public SummaryLoader.SummaryProvider createSummaryProvider(Activity activity,
+                                                                   SummaryLoader summaryLoader) {
+            return new SummaryProvider(activity, summaryLoader);
+        }
+    };
+
 }

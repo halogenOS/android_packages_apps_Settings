@@ -284,4 +284,8 @@
     <string name="clock_date_style_lowercase">Lowercase</string>
     <string name="clock_date_style_uppercase">Uppercase</string>
     <string name="clock_date_format_custom">Custom java format</string>
+
+    <!-- Development Settings summary-->
+    <string name="adb_enabled">ADB Enabled</string>
+    <string name="adb_disabled">ADB Disabled</string>
 </resources>
