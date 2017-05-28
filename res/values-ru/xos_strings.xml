@@ -75,7 +75,48 @@
     <string name="general_on">Вкл.</string>
     <string name="general_off">Выкл.</string>
     <string name="general_dimmed">Затемнен</string>
+    <string name="button_settings_title">Настройка софт-кнопок</string>
     
+    <!-- Customizations fragment -->
+   <string name="customizations_title">Расширенные настройки</string>
+   <string name="navbar_enabled">Софт-кнопки включены</string>
+   <string name="navbar_disabled">Софт-кнопки выключены</string>
+
+<!-- Statusbar customisations title -->
+   <string name="statusbar_customisations_title">
+       Настройки статус-бара
+   </string>
+
+ <!-- Battery customizations -->
+    <string name="status_bar_battery_style_category_title">Батарея</string>
+    <string name="status_bar_battery_style_category_summary">Поменяйте стиль панели заряда батареи</string>
+    <string name="status_bar_battery_style_title">Стиль значка батареи в строке состояния</string>
+    <string name="status_bar_battery_style_icon_portrait">Вертикальный значок</string>
+    <string name="status_bar_battery_style_icon_landscape">Горизонтальный значок</string>
+    <string name="status_bar_battery_style_circle">Круглый значок</string>
+    <string name="status_bar_battery_style_solid">Сплошной</string>
+    <string name="status_bar_battery_style_text">Текст</string>
+    <string name="status_bar_battery_style_hidden">Не показывать значок</string>
+    <string name="status_bar_battery_percentage_title">Battery percentage</string>
+    <string name="status_bar_battery_percentage_default">Не показывать</string>
+    <string name="status_bar_battery_percentage_text_inside">Внутри значка</string>
+    <string name="status_bar_battery_percentage_text_next">Рядом со значком</string>
+    <string name="force_charge_battery_text_title">Процент зарядки батареи в строке состояния</string>
+    <string name="force_charge_battery_text_summary_on">Показывать процент зарядки батареи вне значка во время зарядки</string>
+    <string name="force_charge_battery_text_summary_off">Показывать процент зарядки батареи в значке во время зарядки</string>
+    
+     <!-- Custom carrier label and position -->
+    <string name="carrier_label_settings_title">Имя оператора</string>
+    <string name="carrier_label_settings_summary">Изменение имени оператора</string>
+    <string name="custom_carrier_label_title">Пользовательское имя оператора</string>
+    <string name="custom_carrier_label_explain">Пожалуйста, введите своё имя оператора. Оставить пустым для отображения по умолчанию.</string>
+    <string name="custom_carrier_label_notset">Имя оператора в данный момент не установлено</string>
+    <string name="show_carrier_title">Имя оператора</string>
+    <string name="show_carrier_disabled">Выключено</string>
+    <string name="show_carrier_keyguard">Только на экране блокировки</string>
+    <string name="show_carrier_statusbar">Только в строке состояния</string>
+    <string name="show_carrier_enabled">На экране блокировки и в строке состояния</string>
+
     <!-- Display -> Lockscreen Visualizer -->
     <string name="lockscreen_visualizer_title">Визуализация на экране блокировки</string>
     <string name="lockscreen_visualizer_summary">
