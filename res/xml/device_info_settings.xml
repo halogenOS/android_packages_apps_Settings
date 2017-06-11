@@ -83,7 +83,6 @@
         <Preference
                 android:key="mod_version"
                 android:enabled="false"
-                android:selectable="false"
                 android:shouldDisableView="false"
                 android:title="@string/xos_version"
                 android:summary="@string/device_info_default" />
@@ -98,7 +97,6 @@
         <!-- Revisions -->
         <Preference android:key="revisions"
                 android:enabled="false"
-                android:selectable="false"
                 android:shouldDisableView="false"
                 android:title="@string/rom_revisions"
                 android:summary="@string/device_info_default" />
@@ -146,7 +144,6 @@
         <!-- Build date -->
         <Preference android:key="build_date"
                 android:enabled="false"
-                android:selectable="false"
                 android:shouldDisableView="false"
                 android:title="@string/build_date"
                 android:summary="@string/build_date_default" />
