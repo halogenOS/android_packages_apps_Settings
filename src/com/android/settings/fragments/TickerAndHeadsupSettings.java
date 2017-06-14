@@ -84,15 +84,26 @@ public class TickerAndHeadsupSettings extends SettingsPreferenceFragment impleme
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mShowTicker) {
-            Settings.System.putInt(resolver,
+            if ((boolean) objValue) {
+                mHeadsup.setChecked(false);
+                Settings.System.putInt(resolver,
                     Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
-                    ((Boolean) objValue) ? 0 : 1);
-            mHeadsup.setChecked(false);
-        } else if (preference == mHeadsup) {
+                    ((boolean) objValue) ? 0 : 1);
+            }
             Settings.System.putInt(resolver,
                 Settings.System.STATUS_BAR_SHOW_TICKER,
-                ((boolean) objValue) ? 0 : 1);
-            mShowTicker.setChecked(false);
+                ((boolean) objValue) ? 1 : 0);
+        } else if (preference == mHeadsup) {
+            if ((boolean) objValue) {
+                mShowTicker.setChecked(false);
+                Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_SHOW_TICKER,
+                    ((boolean) objValue) ? 0 : 1);
+            }
+            Settings.System.putInt(resolver,
+                Settings.System.KEY_ENABLE_HEADSUP_NOTIFICATIONS,
+                ((boolean) objValue) ? 1 : 0);
+
         }
         return true;
     }
