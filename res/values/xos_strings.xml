@@ -244,6 +244,7 @@
     <string name="action_screenshot">Screenshot</string>
     <string name="action_onehand_left">Single hand mode (left)</string>
     <string name="action_onehand_right">Single hand mode (right)</string>
+    <string name="action_partial_screenshot">Partial screenshot</string>
 
     <!-- Lockscreen Tweaks -->
     <string name="lockscreen_tweaks">Lockscreen Tweaks</string>
