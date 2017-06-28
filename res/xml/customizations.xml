@@ -56,7 +56,8 @@
         <com.android.settings.preferences.SystemSettingSwitchPreference
             android:key="show_lockscreen_visualizer"
             android:title="@string/lockscreen_visualizer_title"
-            android:summary="@string/lockscreen_visualizer_summary" />
+            android:summary="@string/lockscreen_visualizer_summary"
+            android:defaultValue="true" />
     </PreferenceCategory>
 
 </PreferenceScreen>
