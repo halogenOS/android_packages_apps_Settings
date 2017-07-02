@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 halogenOS
+<!-- Copyright (C) 2016-2017 The halogenOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,84 +13,295 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-     
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- General strings -->
+    <string name="cancel">Cancelar</string>
+    <string name="save">Guardar</string>
+
     <!-- Buttons -->
-    <string name="button_settings">
-        Botones
-    </string>
-    
-    <string name="long_press_home_button_assist_title">
-        Pulsación larga en inicio para el asistente
-    </string>
-    
-    <string name="long_press_home_button_assist_summary">
-        El asistente se activa con una pulsación larga del botón de inicio
+    <string name="button_settings">Botones</string>
+    <string name="long_press_home_button_assist_title">Pulsación larga para asistente</string>
+    <string name="long_press_home_button_assist_summary"> El asistente deberá ser lanzado con una pulsación larga del botón de  inicio</string>
+    <string name="buttons_show_navbar_title">Barra de navegación</string>
+    <string name="buttons_show_navbar_summary">Mostrar la barra de navegación</string>
+    <string name="buttons_hardware_buttons_category">Botones Físicos</string>
+    <string name="buttons_button_backlight_title">Retroiluminación</string>
+    <string name="buttons_button_backlight_summary">Activar la retroiluminación de los botones</string>
+    <string name="buttons_button_backlight_status">Brillo: %s</string>
+    <string name="buttons_hw_buttons_title">Botones Físicos</string>
+    <string name="buttons_hw_buttons_summary">Activar los botones físicos.</string>
+    <string name="buttons_backlight_enable_backlight">Activar la retroiluminación</string>
+    <string name="general_brightness">Brillo</string>
+    <string name="general_timeout">Tiempo de espera</string>
+    <string name="general_on">Encendido</string>
+    <string name="general_off">Apagado</string>
+    <string name="general_dimmed">Atenuado</string>
+    <string name="button_settings_title">Ajustes de las teclas de navegación</string>
+    <string name="button_settings_summary">Personalizar las teclas físicas y virtuales</string>
+
+    <!-- Allow fake signature checkbox in developer settings -->
+    <string name="allow_signature_fake">Allow signature spoofing</string>
+    <string name="allow_signature_fake_summary">Allow apps to bypass security systems by pretending to be a different app</string>
+    <string name="allow_signature_fake_warning">Allowing apps to bypass security systems can lead to serious security
+     and privacy problems! Check that only benign apps use the corresponding permission when this is active.</string>
+
+    <!-- Share halogenOS -->
+    <string name="share_xos_title">Compartir halogenOS</string>
+    <string name="share_xos_summary">Haz saber a otros de halogenOS</string>
+    <string name="share_message">Mira #halogenOS todo sobret @ http://halogenOS.org/</string>
+    <string name="share_chooser_title">Compartir halogenOS</string>
+
+    <!-- Developer options -> Disable dropbox -->
+    <string name="debug_disable_dropbox_title">Desactivar dropbox</string>
+    <string name="debug_disable_dropbox_summary">
+        Previene que el sistema incluya en los logs de registro excepciones de dropbox.
+        No afecta al Logcat u otro mecanismo de logging.
+	No está relacionado con el almacenimiento en la nube de Dropbox!
     </string>
 
-    <string name="buttons_show_navbar_title">
-        Barra de navegación
+    <!-- Developer options -> Desactivar  tombstones -->
+    <string name="debug_disable_tombstones_title">Desactivar tombstones</string>
+    <string name="debug_disable_tombstones_summary">
+        Previene al sistema de recuperar tombstones. Tombstones son informes nativos de cierres 	que contienen mucha información de depuración.
+	Normalmente, no son utilizados, pero puede que un desarrollador te los solicite, así que 	deberás habilitarlo en ese caso
     </string>
 
-    <string name="buttons_show_navbar_summary">
-        Mostrar la barra de navegación
+    <string name="xos_version">Versión de halogenOS</string>
+
+    <!-- [CHAR LIMIT=100] Notification Importance slider: very low importance level description -->
+    <string name="notification_importance_very_low">No full screen interruption, peeking, sound, or vibration. Show at the bottom of the notification list. Hide from lock screen.</string>
+
+    <!-- Camera sound switch -->
+    <string name="camera_sounds_title">Sonido de obturado de la camara</string>
+
+    <!-- Revisions -->
+    <string name="rom_revisions">Revisiones</string>
+
+    <!-- Display -> Double tap to sleep -->
+    <string name="double_tap_to_sleep_title">Doble toque para apagar</string>
+    <string name="double_tap_to_sleep_summary">Doble toque en la barra de estado para apagar 		pantalla la</string>
+     <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Reinicio avanzado</string>
+    <string name="advanced_reboot_summary">Con el telefono desbloqueado, incluye opciones de reinicio al recovery, bootloader o realizar un reinicio suave</string>
+
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Prevenir encendido accidental</string>
+    <string name="proximity_wake_summary">Comprueba el sensor de proximidad para encender la 		pantalla</string>
+
+   <!-- App details: open play store link if app is user installed -->
+   <string name="app_play_store">Google Play</string>
+
+   <!-- Customizations fragment -->
+   <string name="customizations_title">Personalización</string>
+   <string name="navbar_enabled">Barra de navegación activada</string>
+   <string name="navbar_disabled">Barra de navegación desactivada</string>
+   <string name="customizations_keywords">personalización, icono de batería, texto de operadora, ticker, headsup, reloj, barra de navegación, teclas, rebinding, pantalla de bloqueo</string>
+
+   <!-- Statusbar customisations title -->
+   <string name="statusbar_customisations_title">
+       Personalización de barra de estado
+   </string>
+
+   <!-- Battery customizations -->
+    <string name="status_bar_battery_style_category_title">Batería</string>
+    <string name="status_bar_battery_style_category_summary">Personalizar el icono de batería</string>
+    <string name="status_bar_battery_style_title">Estilo de estado de batería</string>
+    <string name="status_bar_battery_style_icon_portrait">Icono retrato</string>
+    <string name="status_bar_battery_style_icon_landscape">Icono apaisado</string>
+    <string name="status_bar_battery_style_circle">Circulo</string>
+    <string name="status_bar_battery_style_solid">Solido</string>
+    <string name="status_bar_battery_style_text">Texto</string>
+    <string name="status_bar_battery_style_hidden">Oculto</string>
+    <string name="status_bar_battery_percentage_title">Porcentaje de batería</string>
+    <string name="status_bar_battery_percentage_default">Oculto</string>
+    <string name="status_bar_battery_percentage_text_inside">Dentro del icono</string>
+    <string name="status_bar_battery_percentage_text_next">Al lado del icono</string>
+    <string name="status_bar_battery_style_tile_title">Acceso de batería de aspecto personalizado</string>
+    <string name="status_bar_battery_style_tile_summary">Permite el mismo estilo de batería que el icono</string>
+    <string name="force_charge_battery_text_title">Mostrar el porcentaje al lado durante la carga</string>
+    <string name="force_charge_battery_text_summary_on">Muestra el porcentaje de batería fuera del icono durante la carga</string>
+    <string name="force_charge_battery_text_summary_off">Muestra el porcentaje de batería dentro del icono durante la carga</string>
+
+    <!-- Custom carrier label and position -->
+    <string name="carrier_label_settings_title">Texto de operadora</string>
+    <string name="carrier_label_settings_summary">Personalizar el texto de operadora</string>
+    <string name="custom_carrier_label_title">Texto de operadora personalizado</string>
+    <string name="custom_carrier_label_explain">Introduce un texto de operadora. Dejarlo en blanco para volver al valor por defecto.</string>
+    <string name="custom_carrier_label_notset">Texto personalizado no aplicado</string>
+    <string name="show_carrier_title">Texto de operadora</string>
+    <string name="show_carrier_disabled">Desactivado</string>
+    <string name="show_carrier_keyguard">Solo pantalla de bloqueo</string>
+    <string name="show_carrier_statusbar">Solo barra de estado</string>
+    <string name="show_carrier_enabled">Patalla de bloqueo &amp; barra de estado</string>
+
+    <!-- Status Bar Ticker and Headsup -->
+    <string name="ticker_and_headsup_settings_title">Statusbar Ticker and Headsup</string>
+    <string name="ticker_and_headsup_settings_summary">Customize the ticker and headsup behaviour</string>
+    <string name="ticker_title">Status Bar Ticker</string>
+    <string name="ticker_summary">Activa los antiguos ticker de la barra de estado</string>
+    <string name="track_ticker_title">Mostrar cambios de canción</string>
+    <string name="track_ticker_summary">Cuando la canción cambie mientras se escucha música, el ticker mostrará el cambio.</string>
+    <string name="headsup_title">Heads-Up notifications</string>
+    <string name="headsup_summary">Activar las notificationes headsup</string>
+    <string name="status_bar_notif_count_title">Mostrar contador notification</string>
+    <string name="status_bar_notif_count_summary">Mostrar el número de notificaciones pendientes</string>
+
+
+    <!-- Wi-Fi region code -->
+    <string name="wifi_setting_countrycode_title">Wi\u2011Fi código de región</string>
+    <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+    <string name="wifi_setting_countrycode_summary">Especificar el código de región Wi\u2011Fi</string>
+    <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+    <string name="wifi_setting_countrycode_error">Hubo un problema al aplicar el código de región.</string>
+
+    <!-- Users -> Change Android ID -->
+    <string name="usersettings_change_android_id">Cambiar Android ID</string>
+    <string name="usersettings_change_android_id_text">
+       Introducir tu ID Android aquí o dejarlo en blanco para generar uno nuevo.
     </string>
-    
-    <string name="buttons_hardware_buttons_category">
-        Botones físicos
-    </string>
-    
-    <string name="buttons_button_backlight_title">
-        Iluminación de los botones
-    </string>
-    
-    <string name="buttons_button_backlight_summary">
-        Activar la iluminación de los botones
-    </string>
-    
-    <string name="buttons_button_backlight_status">
-        Brillo: %s
-    </string>
-    
-    <string name="buttons_hw_buttons_title">
-        Botones físicos
-    </string>
-    
-    <string name="buttons_hw_buttons_summary">
-        Activar los botones físicos
-    </string>
-    
-    <string name="buttons_backlight_enable_backlight">
-        Activar retroiluminación
-    </string>
-    
-    <string name="general_brightness">
-        Brillo
-    </string>
-    
-    <string name="general_timeout">
-        Tiempo de espera
-    </string>
-    
-    <string name="general_on">On</string>
-    <string name="general_off">Off</string>
-    <string name="general_dimmed">Dimmed</string>
-    
-    <!-- Display -> Lockscreen Visualizer -->
-    <string name="lockscreen_visualizer_title">Lockscreen Visualizer</string>
+
+    <!-- Expanded desktop -->
+    <string name="power_menu_expanded_desktop">Escritorio expandido</string>
+    <string name="expanded_hide_nothing">No ocultar nada</string>
+    <string name="expanded_hide_status">Ocultar barra de estado</string>
+    <string name="expanded_hide_navigation">Ocultar barra de navegación</string>
+    <string name="expanded_hide_both">Ocultar ambos</string>
+    <string name="expanded_nothing_to_show">Añadir configuraciones para cada aplicación, seleccionar "Activar para todo" para mantener la posición desactivada</string>
+    <string name="expanded_desktop_state">Estado expandido</string>
+    <string name="expanded_enabled_for_all">Activar para todo</string>
+    <string name="expanded_user_configurable">Configurable por usuario</string>
+    <string name="expanded_desktop_style">Expanded desktop style</string>
+    <string name="expanded_desktop_style_description">Elegir un estilo de escritorio expandido por defecto</string>
+    <string name="expanded_desktop_title">Opciones de escritorio expandido</string>
+
+    <!-- MSIM Manual provisioning -->
+    <string name="sim_enabler_summary"><xliff:g id="displayName">%1$s</xliff:g> es <xliff:g id="status" example="disabled">%2$s</xliff:g></string>
+    <string name="sim_enabled">activado</string>
+    <string name="sim_disabled">desactivado</string>
+    <string name="sim_missing">sin servicio o con fallos</string>
+    <string name="sim_enabler_need_disable_sim">Se descactivará la tarjeta SIM.¿Quieres continuar?</string>
+    <string name="sim_enabler_will_disable_sim_title">Atención</string>
+    <string name="sim_enabler_need_switch_data_service">This SIM will be disabled and SIM <xliff:g id="slotid">%1$s</xliff:g> will be used for data services. Are you sure you want to continue?</string>
+    <string name="sim_enabler_airplane_on">Imposible completar la mientras esté activado el modo avión.</string>
+    <string name="sim_enabler_in_call">Imposible realizar con una llamada en curso.</string>
+    <string name="sim_enabler_both_inactive">No se pueden desactivar todas las SIM</string>
+    <string name="sim_enabler_enabling">Activando\u2026</string>
+    <string name="sim_enabler_disabling">Desactivando\u2026</string>
+    <string name="sub_activate_success">SIM activada.</string>
+    <string name="sub_activate_failed">Error de activación.</string>
+    <string name="sub_deactivate_success">SIM desactivada.</string>
+    <string name="sub_deactivate_failed">Error de desactivación.</string>
+
+    <!-- Format string for fingerprint location message -->
+    <string name="security_settings_fingerprint_enroll_find_sensor_message_cm">Localiza el sensor de huellas en <xliff:g id="sensor_location">%1$s</xliff:g> de tu móvil.</string>
+
+    <!-- Fingerprint sensor locations -->
+    <string name="security_settings_fingerprint_sensor_location_back">la trasera</string>
+    <string name="security_settings_fingerprint_sensor_location_front">el fontral</string>
+    <string name="security_settings_fingerprint_sensor_location_left">el lado izquierdo</string>
+    <string name="security_settings_fingerprint_sensor_location_right">el lado derecho</string>
+
+    <!-- Battery stats reset -->
+    <string name="battery_stats_reset">Reiniciar estadísticas</string>
+    <string name="battery_stats_message">El historial de bateria se reiniciará</string>
+    <string name="ok_string">Ok</string>
+
+    <!-- Volume button track change -->
+    <string name="volbtn_music_controls_title">Control de música</string>
+    <string name="volbtn_music_controls_summary">Con la pantalla apagada, pulsación larga en las teclas de volumen para cambiar la canción</string>
+
+    <!-- Pixel Navbar Animation -->
+    <string name="pixel_navbar_anim_title">Animación de barra de navegación de pixel</string>
+    <string name="pixel_navbar_anim_summary">Activa la animación pixel de la barra de navegación</string>
+
+    <!-- One handed mode -->
+    <string name="one_handed_mode_title">Modo a una mano</string>
+    <string name="one_handed_mode_summary">Permite deslizar la barra de navegación para activar el modo a una mano</string>
+
+    <!-- HW Keys rebinding -->
+    <string name="hw_keys_rebinding_title">Configuración personalizada de los botones</string>
+    <string name="hw_keys_rebinding_summary">Cambia el comportamiento de tus botones</string>
+    <string name="home_key_title">Tecla de inicio</string>
+    <string name="back_key_title">Tecla atrás</string>
+    <string name="menu_key_title">Tecla de menú</string>
+    <string name="assist_key_title">Tecla de asistente</string>
+    <string name="app_switch_key_title">Tecla de recientes</string>
+    <string name="camera_key_title">Tecla de cámara</string>
+    <string name="short_press_title">Acción de pulsación corta</string>
+    <string name="long_press_title">Acción de pulsación larga</string>
+    <string name="double_tap_title">Acción de doble pulsación</string>
+    <string name="action_nothing">Sin acción</string>
+    <string name="action_menu">Abre/Cierra menú</string>
+    <string name="action_app_switch">Recientes</string>
+    <string name="action_search">Asistente de búsqueda</string>
+    <string name="action_voice_search">Búsqueda de voz</string>
+    <string name="action_in_app_search">Busqueda en la aplicación</string>
+    <string name="action_launch_camera">Abrir cámara</string>
+    <string name="action_last_app">Lanzar la última aplicación</string>
+    <string name="action_splitscreen">Pantalla dividida</string>
+    <string name="action_screen_off">Apagar la pantalla</string>
+    <string name="action_screenshot">Captura de pantalla</string>
+    <string name="action_onehand_left">Modo a una mano (Izquierda)</string>
+    <string name="action_onehand_right">Modo a una mano (Derecha)</string>
+    <string name="action_partial_screenshot">Captura de pantalla parcial</string>
+
+    <!-- Lockscreen Tweaks -->
+    <string name="lockscreen_tweaks">Ajustes de pantalla de bloqueo</string>
+    <string name="lockscreen_visualizer_title">Visualizador de la pantalla de bloqueo</string>
     <string name="lockscreen_visualizer_summary">
         Mostrar el visualizador de música en la pantalla de bloqueo
     </string>
 
-    <!-- Allow fake signature checkbox in developer settings -->
-    <string name="allow_signature_fake">Permitir firmas falsas</string>
-    <string name="allow_signature_fake_summary">Permitir a las aplicaciones sobrepasar la seguridad del sistema si pretenden identificarse como otra app</string>
-    <string name="allow_signature_fake_warning">¡Permitir a las aplicaciones sobrepasar la seguridad del sistema supone serios problemas de seguridad y privacidad! Comprueba las aplicaciones que usan el permiso.</string>
+    <!-- Help URI, Buttons [DO NOT TRANSLATE] -->
+    <string name="help_uri_buttons" translatable="false"></string>
+    <!-- Help URI, Customizations [DO NOT TRANSLATE] -->
+    <string name="help_uri_customizations" translatable="false"></string>
+    <!-- Help URI, Ticker and Headsup [DO NOT TRANSLATE] -->
+    <string name="help_uri_ticker_headsup" translatable="false"></string>
 
-    <!-- Share halogenOS -->
-    <string name="share_xos_title">Compartir halogenOS</string>
-    <string name="share_xos_summary">Cuenta a otros sobre halogenOS</string>
-    <string name="share_message">Comprueba lo que es #halogenOS  @ http://halogenOS.org/</string>
-    <string name="share_chooser_title">Comparte halogenOS</string>
- 
+    <!-- Linked / unlinked notification volume -->
+    <string name="link_volume_option_title">Unir tono de llamada y sonido de notificación</string>
+    <string name="notification_volume_option_title">Volumen de notificación</string>
+    <string name="ring_notification_volume_option_title">Volumen de tono de llamada y notificación</string>
+
+    <!-- Clock settings -->
+    <string name="clock_settings_title">Ajustes de reloj</string>
+    <string name="clock_settings_summary">Opciones personalizadas de reloj y fecha</string>
+    <!-- clock date options -->
+    <string name="clock_title_enable">Posición</string>
+    <string name="status_bar_show_clock_title">Mostrar reloj y fecha</string>
+    <string name="status_bar_clock_seconds_title">Mostrar segundos</string>
+    <string name="status_bar_am_pm_title">AM/PM</string>
+    <string name="status_bar_am_pm_info">Reloj 24 horas activado</string>
+    <string name="right_clock">Posición derecha</string>
+    <string name="center_clock">Posición central</string>
+    <string name="left_clock">Posición izquierda</string>
+    <string name="clock_date_display">Fecha</string>
+    <string name="clock_date_style">Estilo de fecha</string>
+    <string name="clock_date_position">Posición de fecha</string>
+    <string name="clock_date_format">Formato de fecha</string>
+    <string name="clock_date_string_edittext_title">Irá en formato de fecha ej. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Introducir cadena</string>
+    <string name="clock_date_right">A la derecha del reloj</string>
+    <string name="clock_date_left">A la izquierda del reloj</string>
+    <string name="clock_am_pm_date_normal">Normal</string>
+    <string name="clock_am_pm_date_small">Pequeño</string>
+    <string name="clock_am_pm_date_none">Oculto</string>
+    <string name="clock_date_style_lowercase">Minusculas</string>
+    <string name="clock_date_style_uppercase">Mayusculas</string>
+    <string name="clock_date_format_custom">Custom java format</string>
+
+    <!-- Development Settings summary-->
+    <string name="adb_enabled">ADB Activado</string>
+    <string name="adb_disabled">ADB Desactivado</string>
+
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (1). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_wifi_preferred_summary" xliff:restype="x-UNLIMITED">Llamada pro Wi-Fi. Si el Wi-Fi no está disponible se usará la linea telefónica.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (2). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Llamada por la línea telefónica. Si no está disponible la línea telefónica, se usará el wifi.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
+    <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Llamada por Wi-Fi. Si se pierde la conexión, se termina la llamada</string>
+
 </resources>
+
