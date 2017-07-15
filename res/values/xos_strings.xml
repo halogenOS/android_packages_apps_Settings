@@ -19,6 +19,8 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
 
+    <string name="background_processes_settings_title">Background processes</string>
+
     <!-- Buttons -->
     <string name="button_settings">Buttons</string>
     <string name="long_press_home_button_assist_title">Long press home for assist</string>
