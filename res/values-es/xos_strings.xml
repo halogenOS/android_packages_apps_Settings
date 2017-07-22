@@ -253,13 +253,6 @@
         Mostrar el visualizador de música en la pantalla de bloqueo
     </string>
 
-    <!-- Help URI, Buttons [DO NOT TRANSLATE] -->
-    <string name="help_uri_buttons" translatable="false"></string>
-    <!-- Help URI, Customizations [DO NOT TRANSLATE] -->
-    <string name="help_uri_customizations" translatable="false"></string>
-    <!-- Help URI, Ticker and Headsup [DO NOT TRANSLATE] -->
-    <string name="help_uri_ticker_headsup" translatable="false"></string>
-
     <!-- Linked / unlinked notification volume -->
     <string name="link_volume_option_title">Unir tono de llamada y sonido de notificación</string>
     <string name="notification_volume_option_title">Volumen de notificación</string>
