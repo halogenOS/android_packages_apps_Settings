@@ -20,6 +20,8 @@
     <string name="cancel">Annulla</string>
     <string name="save">Salva</string>
 
+    <string name="background_processes_settings_title">Processi in background</string>
+
     <!-- Buttons -->
     <string name="button_settings">Tasti</string>
     <string name="long_press_home_button_assist_title">Pressione prolungata home per assistente</string>
@@ -205,6 +207,11 @@
     <string name="security_settings_fingerprint_sensor_location_left">lato sinistro</string>
     <string name="security_settings_fingerprint_sensor_location_right">lato destro</string>
 
+    <!-- Battery stats reset -->
+    <string name="battery_stats_reset">Azzera statistiche</string>
+    <string name="battery_stats_message">Le statistiche di utilizzo verranno azzerata</string>
+    <string name="ok_string">Ok</string>
+
     <!-- Pixel Navbar Animation -->
     <string name="pixel_navbar_anim_title">Barra di navigazione Pixel</string>
     <string name="pixel_navbar_anim_summary">Abilita l\'animazione stile Pixel della barra di navigazione</string>
@@ -235,6 +242,10 @@
     <string name="action_last_app">Apri ultima app</string>
     <string name="action_splitscreen">Modalità schermo diviso</string>
     <string name="action_screen_off">Spegni schermo</string>
+    <string name="action_screenshot">Schermata</string>
+    <string name="action_onehand_left">Modalità a mano singola (sinistra)</string>
+    <string name="action_onehand_right">Modalità a mano singola (destra)</string>
+    <string name="action_partial_screenshot">Schermata parziale</string>
 
     <!-- Lockscreen Tweaks -->
     <string name="lockscreen_tweaks">Opzioni schermata di blocco</string>
@@ -274,5 +285,16 @@
     <string name="clock_date_style_lowercase">Minuscolo</string>
     <string name="clock_date_style_uppercase">Maiuscolo</string>
     <string name="clock_date_format_custom">Formato java personalizzato</string>
-</resources>
 
+    <!-- Development Settings summary-->
+    <string name="adb_enabled">ADB Abilitato</string>
+    <string name="adb_disabled">ADB Disabilitato</string>
+
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (1). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_wifi_preferred_summary" xliff:restype="x-UNLIMITED">Priorità a Wi-Fi. Se non è disponibile una rete Wi-Fi, usa la rete cellulare.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (2). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Priorità a rete cellulare. Se non è disponibile una rete cellulare, usa Wi-Fi.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
+    <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Solo Wi-Fi. Se si disconette la rete Wi-Fi, si termina la chiamata.</string>
+
+</resources>
