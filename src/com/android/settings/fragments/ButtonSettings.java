@@ -361,16 +361,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mShowNavbarPreference.setEnabled(false);
                 mHandler.postDelayed(resetNavbarToggle, 480);
             case KEY_HW_BUTTONS:
-                boolean newSetting = (key.equals(KEY_HW_BUTTONS)
-                    ? (boolean)objValue : !(boolean)objValue);
-                Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.BUTTON_BACKLIGHT_BRIGHTNESS,
-                    newSetting ? 1000 : 0, UserHandle.USER_CURRENT);
-                applyBacklightPrefPercentage(newSetting ? 1000 : 0);
                 if(mEnableHwButtonsPreference == null) break;
                 Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.HARDWARE_BUTTONS_ENABLED,
-                        newSetting ? 1 : 0,
+                        ((boolean) objValue) ? 1 : 0,
                     UserHandle.USER_CURRENT);
                 break;
             case KEY_HW_BACKLIGHT:
