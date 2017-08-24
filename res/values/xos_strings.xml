@@ -25,4 +25,5 @@
     <string name="encryption_and_credential_settings_summary_disabled" product="tablet">Device is not encrypted</string>
 
     <string name="rom_version_title">halogenOS version</string>
+    <string name="rom_revisions_title">Revisions</string>
 </resources>
