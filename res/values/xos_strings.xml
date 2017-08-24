@@ -19,4 +19,5 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="rom_version_title">halogenOS Version</string>
+    <string name="rom_revisions_title">Revisions</string>
 </resources>
