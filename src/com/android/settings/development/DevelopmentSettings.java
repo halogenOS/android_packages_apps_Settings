@@ -233,8 +233,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String KEY_CONVERT_FBE = "convert_to_file_encryption";
 
-    private static final String OTA_DISABLE_AUTOMATIC_UPDATE_KEY = "ota_disable_automatic_update";
-
     private static final int RESULT_DEBUG_APP = 1000;
     private static final int RESULT_MOCK_LOCATION_APP = 1001;
 
@@ -258,6 +256,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private boolean mHaveDebugSettings;
     private boolean mDontPokeProperties;
+
     private SwitchPreference mEnableAdb;
     private Preference mClearAdbKeys;
     private SwitchPreference mEnableTerminal;
@@ -293,7 +292,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private ListPreference mBluetoothSelectA2dpChannelMode;
     private ListPreference mBluetoothSelectA2dpLdacPlaybackQuality;
 
-    private SwitchPreference mOtaDisableAutomaticUpdate;
     private SwitchPreference mWifiAllowScansWithTraffic;
     private SwitchPreference mStrictMode;
     private SwitchPreference mPointerLocation;
@@ -554,8 +552,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             removePreference(KEY_CONVERT_FBE);
         }
 
-        mOtaDisableAutomaticUpdate = findAndInitSwitchPref(OTA_DISABLE_AUTOMATIC_UPDATE_KEY);
-
         mColorModePreference = (ColorModePreference) findPreference(KEY_COLOR_MODE);
         mColorModePreference.updateCurrentAndSupported();
         if (mColorModePreference.getColorModeCount() < 2 ||
@@ -572,6 +568,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             removePreference(COLOR_TEMPERATURE_KEY);
             mColorTemperaturePreference = null;
         }
+
+        final ContentResolver cr = getActivity().getContentResolver();
 
         addDashboardCategoryPreferences();
     }
@@ -800,7 +798,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateShowAllANRsOptions();
         updateShowNotificationChannelWarningsOptions();
         mVerifyAppsOverUsbController.updatePreference();
-        updateOtaDisableAutomaticUpdateOptions();
         updateBugreportOptions();
         updateForceRtlOptions();
         updateLogdSizeValues();
@@ -2474,8 +2471,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             startActivityForResult(intent, RESULT_DEBUG_APP);
         } else if (preference == mWaitForDebugger) {
             writeDebuggerOptions();
-        } else if (preference == mOtaDisableAutomaticUpdate) {
-            writeOtaDisableAutomaticUpdateOptions();
         } else if (preference == mStrictMode) {
             writeStrictModeVisualOptions();
         } else if (preference == mPointerLocation) {
