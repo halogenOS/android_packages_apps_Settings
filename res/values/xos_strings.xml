@@ -265,6 +265,8 @@
     <string name="help_uri_customizations" translatable="false"></string>
     <!-- Help URI, Ticker and Headsup [DO NOT TRANSLATE] -->
     <string name="help_uri_ticker_headsup" translatable="false"></string>
+    <!-- Help URI, Device Setings [DO NOT TRANSLATE] -->
+    <string name="help_uri_devicesettings" translatable="false"></string>
 
     <!-- Linked / unlinked notification volume -->
     <string name="link_volume_option_title">Link ring and notification volume</string>
@@ -308,5 +310,15 @@
     <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Call over the cellular network. If cellular network is not available, use Wi-Fi.</string>
     <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
     <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is lost, call ended.</string>
+
+    <!-- Device settings -->
+    <string name="devicesettings_title">Device Settings</string>
+    <string name="devicesettings_summary">Settings and options specific to OnePlus devices</string>
+    <string name="devicesettings_gestures_title">Gestures</string>
+    <string name="devicesettings_gestures_summary">Gestures specific to OnePlus devices</string>
+    <string name="devicesettings_buttons_title">Buttons</string>
+    <string name="devicesettings_buttons_summary">Swap hardware buttons order and customize alert slider</string>
+    <string name="devicesettings_ambientdisplay_title">Ambient Display</string>
+    <string name="devicesettings_ambientdisplay_summary">Manage ambient display triggers</string>
 
 </resources>

@@ -56,6 +56,7 @@ import com.android.settings.users.UserSettings;
 import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
+import com.android.settings.DeviceSettingsActivity;
 
 import java.util.HashMap;
 
@@ -89,6 +90,7 @@ public final class Ranking {
     public static final int RANK_DEVICE_INFO = 23;
     public static final int RANK_GESTURE = 24;
     public static final int RANK_CUSTOMIZATIONS = 25;
+    public static final int RANK_DEVICESETTINGS = 26;
 
     public static final int RANK_UNDEFINED = -1;
     public static final int RANK_OTHERS = 1024;
@@ -124,6 +126,9 @@ public final class Ranking {
 
         // Customizations
         sRankMap.put(CustomizationsActivity.class.getName(), RANK_CUSTOMIZATIONS);
+
+        // Device settings
+        sRankMap.put(DeviceSettingsActivity.class.getName(), RANK_DEVICESETTINGS);
 
         // Wallpapers
         sRankMap.put(WallpaperTypeSettings.class.getName(), RANK_WALLPAPER);

@@ -56,6 +56,7 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.CustomizationsActivity;
+import com.android.settings.DeviceSettingsActivity;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -334,6 +335,14 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         CustomizationsActivity.class.getName(),
                         R.drawable.ic_settings_customizations));
+
+        sResMap.put(DeviceSettingsActivity.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(DeviceSettingsActivity.class.getName()),
+                        NO_DATA_RES_ID,
+                        DeviceSettingsActivity.class.getName(),
+                        R.drawable.ic_settings_devicesettings));
+
     }
 
     private SearchIndexableResources() {

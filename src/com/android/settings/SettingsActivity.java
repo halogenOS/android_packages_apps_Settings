@@ -271,6 +271,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             Settings.StorageSettingsActivity.class.getName(),
             Settings.ManageApplicationsActivity.class.getName(),
             Settings.PowerUsageSummaryActivity.class.getName(),
+            Settings.DeviceSettingsActivity.class.getName(),
             Settings.GestureSettingsActivity.class.getName(),
             //personal_section
             Settings.ProfileMgrMainActivity.class.getName(),
@@ -388,6 +389,7 @@ public class SettingsActivity extends SettingsDrawerActivity
             ManageDomainUrls.class.getName(),
             AutomaticStorageManagerSettings.class.getName(),
             CustomizationsActivity.class.getName(),
+            DeviceSettingsActivity.class.getName(),
             ExpandedDesktopPreferenceFragment.class.getName()
     };
 
@@ -1247,6 +1249,17 @@ public class SettingsActivity extends SettingsDrawerActivity
         setTileEnabled(new ComponentName(packageName,
                         Settings.SuperSUActivity.class.getName()),
                 SUSupported, isAdmin, pm);
+
+        // DeviceSettings
+        boolean deviceSettingsSupported = false;
+        try {
+            deviceSettingsSupported = (getPackageManager().getPackageInfo("com.cyanogenmod.settings.device", 0).versionCode > 0);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+        setTileEnabled(new ComponentName(packageName,
+                        Settings.DeviceSettingsActivity.class.getName()),
+                deviceSettingsSupported, isAdmin, pm);
+
 
         // Reveal development-only quick settings tiles
         DevelopmentTiles.setTilesEnabled(this, showDev);
