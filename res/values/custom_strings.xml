@@ -15,4 +15,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="custom_rom_version">halogenOS version</string>
+
+    <!-- Lockscreen battery info indicator  -->
+    <string name="lockscreen_battery_info_title">Battery info</string>
+    <string name="lockscreen_battery_info_summary">Display negotiated charger max current-voltage and battery temperature on lockscreen while charging</string>
 </resources>
