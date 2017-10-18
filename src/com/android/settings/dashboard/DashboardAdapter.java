@@ -147,7 +147,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     }
 
     public List<Tile> getSuggestions() {
-        return mDashboardData.getSuggestions();
+        return null;
     }
 
     public void setCategoriesAndSuggestions(DashboardCategory category,
@@ -156,8 +156,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
 
         final DashboardData prevData = mDashboardData;
         mDashboardData = new DashboardData.Builder(prevData)
-                .setSuggestions(suggestions.subList(0,
-                        Math.min(suggestions.size(), MAX_SUGGESTION_TO_SHOW)))
+                .setSuggestions(null)
                 .setCategory(category)
                 .build();
         notifyDashboardDataChanged(prevData);
