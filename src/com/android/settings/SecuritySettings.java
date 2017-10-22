@@ -427,6 +427,14 @@ public class SecuritySettings extends SettingsPreferenceFragment
         mEnterprisePrivacyPreferenceController.displayPreference(root);
         mEnterprisePrivacyPreferenceController.onResume();
 
+        final Preference encryptionPreference = root.findPreference(KEY_ENCRYPTION_AND_CREDENTIALS);
+        if (LockPatternUtils.isDeviceEncryptionEnabled()) {
+            encryptionPreference.setSummary(getResources().getString(
+                     R.string.encryption_and_credential_settings_summary));
+        } else {
+            encryptionPreference.setSummary(getResources().getString(
+                     R.string.encryption_and_credential_settings_summary_disabled));
+        }
         return root;
     }
 
