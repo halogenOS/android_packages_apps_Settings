@@ -35,4 +35,8 @@
     <string name="navbar_enabled">Navigation Bar enabled</string>
     <string name="navbar_disabled">Navigation Bar disabled</string>
 
+    <!-- Security Settings screen Encryption and crendential summary -->
+    <string name="encryption_and_credential_settings_summary_disabled" product="default">Phone is not encrypted</string>
+    <!-- Security Settings screen Encryption and crendential summary -->
+    <string name="encryption_and_credential_settings_summary_disabled" product="tablet">Device is not encrypted</string>
 </resources>
