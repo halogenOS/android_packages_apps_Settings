@@ -995,24 +995,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
     }
 
-    private void updateOtaDisableAutomaticUpdateOptions() {
-        // We use the "disabled status" in code, but show the opposite text
-        // "Automatic system updates" on screen. So a value 0 indicates the
-        // automatic update is enabled.
-        updateSwitchPreference(mOtaDisableAutomaticUpdate, Settings.Global.getInt(
-                getActivity().getContentResolver(),
-                Settings.Global.OTA_DISABLE_AUTOMATIC_UPDATE, 0) != 1);
-    }
-
-    private void writeOtaDisableAutomaticUpdateOptions() {
-        // We use the "disabled status" in code, but show the opposite text
-        // "Automatic system updates" on screen. So a value 0 indicates the
-        // automatic update is enabled.
-        Settings.Global.putInt(getActivity().getContentResolver(),
-                Settings.Global.OTA_DISABLE_AUTOMATIC_UPDATE,
-                mOtaDisableAutomaticUpdate.isChecked() ? 0 : 1);
-    }
-
     private static boolean showEnableOemUnlockPreference(Context context) {
         return context.getSystemService(Context.OEM_LOCK_SERVICE) != null;
     }
