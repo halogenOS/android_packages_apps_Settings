@@ -58,4 +58,21 @@
                     android:targetClass="com.android.systemui.tuner.LockscreenTunerActivity" />
             </Preference>
         </PreferenceCategory>
+
+        <PreferenceCategory
+            android:title="@string/backlight_category"
+            android:id="@+id/backlight_category">
+            <com.android.settings.preferences.CustomSeekBarPreference
+                android:key="button_backlight_brightness"
+                android:title="@string/button_backlight_brightness"
+                android:max="255"
+                settings:min="0"
+                android:persistent="false" />
+            <com.android.settings.preferences.CustomSeekBarPreference
+                android:key="button_backlight_timeout"
+                android:title="@string/button_backlight_timeout"
+                android:max="30"
+                settings:min="0"
+                android:persistent="false" />
+        </PreferenceCategory>
 </PreferenceScreen>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-* Copyright (C) 2017 The halogenOS Project
+* Copyright (C) 2018 The halogenOS Project
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -50,4 +50,9 @@
     <string name="menu_stats_reset">Reset stats</string>
     <!-- Reset stats confirmation dialog's message -->
     <string name="reset_stats_msg">Battery history stats are going to be reset</string>
+
+    <!-- Button backlight settings -->
+    <string name="backlight_category">Button backlight settings</string>
+    <string name="button_backlight_brightness">Button backlight brightness</string>
+    <string name="button_backlight_timeout">Button backlight timeout</string>
 </resources>

@@ -17,16 +17,20 @@
 package com.android.settings.customization;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v14.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
+import android.provider.Settings;
 import com.android.settings.R;
+import com.android.settings.preferences.CustomSeekBarPreference;
 import com.android.settings.SettingsPreferenceFragment;
 
 public class Customizations extends SettingsPreferenceFragment implements
@@ -35,6 +39,8 @@ public class Customizations extends SettingsPreferenceFragment implements
     private static final String TAG = Customizations.class.getSimpleName();
     private static final String PREF_NAVBAR_TOGGLE_KEY = "navigation_bar_enabled";
     private static final String PREF_NAVBAR_TUNER_KEY = "tuner_navbar";
+    private static final String PREF_KEY_BACKLIGHT_BRIGHTNESS = "button_backlight_brightness";
+    private static final String PREF_KEY_BACKLIGHT_TIMEOUT = "button_backlight_timeout";
 
     private ContentResolver mResolver;
 
@@ -49,10 +55,14 @@ public class Customizations extends SettingsPreferenceFragment implements
         }
     };
 
+    private CustomSeekBarPreference backlightBrightnessPreference;
+    private CustomSeekBarPreference backlightTimeoutPreference;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.customizations);
+        Context mContext = getContext();
         Preference prefSet = getPreferenceScreen();
         mResolver = getActivity().getContentResolver();
 
@@ -65,6 +75,25 @@ public class Customizations extends SettingsPreferenceFragment implements
         mNavbarToggle.setChecked(mNavbarEnabled);
         findPreference(PREF_NAVBAR_TUNER_KEY).setEnabled(mNavbarEnabled);
         mNavbarToggle.setOnPreferenceChangeListener(this);
+
+        backlightBrightnessPreference = (CustomSeekBarPreference)
+            findPreference(PREF_KEY_BACKLIGHT_BRIGHTNESS);
+        boolean hasVariableBrightness = mContext
+                .getResources()
+                .getBoolean(
+                    com.android.internal.R.bool.config_deviceHasVariableButtonBrightness);
+        if (hasVariableBrightness) {
+            PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+            final int defaultButtonBrightness = pm.getDefaultButtonBrightness();
+            final int currentBrightness = Settings.System.getInt(getContentResolver(),
+                Settings.System.BUTTON_BRIGHTNESS, defaultButtonBrightness);
+            backlightBrightnessPreference.setMax(pm.getMaximumScreenBrightnessSetting());
+            backlightBrightnessPreference.setOnPreferenceChangeListener(this);
+        } else {
+            removePreference(PREF_KEY_BACKLIGHT_BRIGHTNESS);
+        }
+        backlightTimeoutPreference = (CustomSeekBarPreference) findPreference(PREF_KEY_BACKLIGHT_TIMEOUT);
+        backlightTimeoutPreference.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -83,6 +112,15 @@ public class Customizations extends SettingsPreferenceFragment implements
             mNavbarToggle.setEnabled(false);
             mHandler.postDelayed(resetNavbarToggle, 500);
             findPreference(PREF_NAVBAR_TUNER_KEY).setEnabled(value);
+        } else if (preference == backlightBrightnessPreference) {
+            int val = (Integer) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                Settings.System.BUTTON_BRIGHTNESS, val, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == backlightTimeoutPreference) {
+            int val = (Integer) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                Settings.System.BUTTON_BACKLIGHT_TIMEOUT, val * 1000, UserHandle.USER_CURRENT);
             return true;
         }
         return false;
