@@ -17,4 +17,43 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/customizations_title">
 
+        <PreferenceCategory
+            android:title="@string/statusbar_customizations_title">
+            <Preference
+                android:key="tuner_statusbar_icons"
+                android:title="@string/statusbar_icons_title"
+                android:summary="@string/statusbar_icons_summary"
+                android:persistent="false">
+                <intent
+                    android:targetPackage="com.android.systemui"
+                    android:targetClass="com.android.systemui.tuner.StatusBarIconsTunerActivity" />
+            </Preference>
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:title="@string/navigation_customizations_title">
+            <Preference
+                android:key="tuner_navbar"
+                android:title="@string/navbar_tuner_title"
+                android:summary="@string/navbar_tuner_summary"
+                android:persistent="false">
+                <intent
+                    android:targetPackage="com.android.systemui"
+                    android:targetClass="com.android.systemui.tuner.NavBarTunerActivity" />
+            </Preference>
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:title="@string/lockscreen_customizations_title">
+            <Preference
+                android:key="tuner_lockshortcuts"
+                android:title="@string/lockscreen_shortcuts_title"
+                android:summary="@string/lockscreen_shortcuts_summary"
+                android:persistent="false">
+                <intent
+                    android:targetPackage="com.android.systemui"
+                    android:targetClass="com.android.systemui.tuner.LockscreenTunerActivity" />
+            </Preference>
+        </PreferenceCategory>
+
 </PreferenceScreen>
