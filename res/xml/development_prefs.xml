@@ -432,10 +432,12 @@
             android:entryValues="@array/app_process_limit_values" />
 
 
+<!--
         <Preference
                 android:key="background_check"
                 android:fragment="com.android.settings.applications.BackgroundCheckSummary"
                 android:title="@string/background_check_pref" />
+-->
 
 
         <SwitchPreference
