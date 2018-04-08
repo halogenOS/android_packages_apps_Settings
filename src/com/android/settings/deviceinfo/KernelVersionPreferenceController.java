@@ -21,7 +21,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import java.io.BufferedReader;
@@ -47,21 +46,12 @@ public class KernelVersionPreferenceController extends AbstractPreferenceControl
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-        preference.setSummary(DeviceInfoUtils.getFormattedKernelVersion());
+        preference.setSummary(getKernelVersion());
     }
 
     @Override
     public String getPreferenceKey() {
         return KEY_KERNEL_VERSION;
-    }
-
-    @Override
-    public boolean handlePreferenceTreeClick(Preference preference) {
-        if (!TextUtils.equals(preference.getKey(), KEY_KERNEL_VERSION)) {
-            return false;
-        }
-        preference.setSummary(getKernelVersion());
-        return false;
     }
 
     private String getKernelVersion() {

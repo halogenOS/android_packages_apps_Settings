@@ -37,7 +37,7 @@ public class RevisionsPreferenceController extends AbstractPreferenceController 
 
     @Override
     public boolean isAvailable() {
-        return !isEmpty(SystemProperties.get(PROPERTY_MOD_REVISIONS));
+        return !TextUtils.isEmpty(SystemProperties.get(PROPERTY_MOD_REVISIONS));
     }
 
     @Override
@@ -61,13 +61,9 @@ public class RevisionsPreferenceController extends AbstractPreferenceController 
         if (revisionsString.contains("droid")) {
             droidRevision = revisionsString.split(",")[1].split("=")[1];
         }
-        valueSummary.append(isEmpty(cafRevision) ? "" : "CAF: " + cafRevision + "\n");
-        valueSummary.append(isEmpty(droidRevision) ? "" : "AOSP: " + droidRevision);
+        valueSummary.append(TextUtils.isEmpty(cafRevision) ? "" : "CAF: " + cafRevision + "\n");
+        valueSummary.append(TextUtils.isEmpty(droidRevision) ? "" : "AOSP: " + droidRevision);
         pref.setSummary(valueSummary.toString());
-    }
-
-    private boolean isEmpty(String string) {
-        return TextUtils.isEmpty(string);
     }
 }
 
