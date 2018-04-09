@@ -28,7 +28,7 @@ import com.android.settingslib.core.AbstractPreferenceController;
 public class RevisionsPreferenceController extends AbstractPreferenceController implements
       PreferenceControllerMixin {
 
-    private static final String PROPERTY_MOD_REVISIONS = "ro.mod.revisons";
+    private static final String PROPERTY_MOD_REVISIONS = "ro.mod.revisions";
     private static final String KEY_MOD_REVISIONS = "revisions";
 
     public RevisionsPreferenceController(Context context) {
