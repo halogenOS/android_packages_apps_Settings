@@ -34,14 +34,14 @@
     <!-- Help URI, Customizations [DO NOT TRANSLATE] -->
     <string name="help_uri_customizations" translatable="false"></string>
     <!-- Customizations preferences -->
-    <string name="statusbar_customizations_title">Statusbar customizations</string>
+    <string name="statusbar_customizations_title">Statusbar</string>
     <string name="statusbar_icons_title">Statusbar icons</string>
     <string name="statusbar_icons_summary">Toggle individual statusbar icons on/off</string>
-    <string name="navigation_customizations_title">Navigation control customizations</string>
+    <string name="navigation_customizations_title">Navigation control</string>
     <string name="navigation_bar_enabled_title">Enable navigation bar</string>
     <string name="navbar_tuner_title">Navbar Tuner</string>
     <string name="navbar_tuner_summary">Add/rearrange/remove navigation bar buttons</string>
-    <string name="lockscreen_customizations_title">Lockscreen customizations</string>
+    <string name="lockscreen_customizations_title">Lockscreen</string>
     <string name="lockscreen_shortcuts_title">Lockscreen shorcuts</string>
     <string name="lockscreen_shortcuts_summary">Change lockscreen shortcut actions, assign custom icons and more</string>
 
