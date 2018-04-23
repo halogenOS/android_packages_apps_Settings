@@ -19,6 +19,7 @@ package com.android.settings.customization;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
@@ -38,6 +39,13 @@ public class Customizations extends SettingsPreferenceFragment implements
     private ContentResolver mResolver;
 
     private SwitchPreference mNavbarToggle;
+
+    private final Runnable resetNavbarToggle = new Runnable() {
+        @Override
+        public void run() {
+            mNavbarToggle.setEnabled(true);
+        }
+    };
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -70,6 +78,8 @@ public class Customizations extends SettingsPreferenceFragment implements
                 Settings.Secure.NAVIGATION_BAR_ENABLED, value ? 1 : 0,
                 UserHandle.USER_CURRENT);
             mNavbarToggle.setChecked(value);
+            mNavbarToggle.setEnabled(false);
+            new Handler().postDelayed(() -> resetNavbarToggle, 500);
             findPreference(PREF_NAVBAR_TUNER_KEY).setEnabled(value);
             return true;
         }
