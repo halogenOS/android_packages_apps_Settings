@@ -40,6 +40,8 @@ public class Customizations extends SettingsPreferenceFragment implements
 
     private SwitchPreference mNavbarToggle;
 
+    private Handler mHandler = new Handler();
+
     private final Runnable resetNavbarToggle = new Runnable() {
         @Override
         public void run() {
@@ -79,7 +81,7 @@ public class Customizations extends SettingsPreferenceFragment implements
                 UserHandle.USER_CURRENT);
             mNavbarToggle.setChecked(value);
             mNavbarToggle.setEnabled(false);
-            new Handler().postDelayed(resetNavbarToggle, 500);
+            mHandler.postDelayed(resetNavbarToggle, 500);
             findPreference(PREF_NAVBAR_TUNER_KEY).setEnabled(value);
             return true;
         }
