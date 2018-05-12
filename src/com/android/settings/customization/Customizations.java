@@ -79,7 +79,7 @@ public class Customizations extends SettingsPreferenceFragment implements
                 UserHandle.USER_CURRENT);
             mNavbarToggle.setChecked(value);
             mNavbarToggle.setEnabled(false);
-            new Handler().postDelayed(() -> resetNavbarToggle, 500);
+            new Handler().postDelayed(resetNavbarToggle, 500);
             findPreference(PREF_NAVBAR_TUNER_KEY).setEnabled(value);
             return true;
         }
