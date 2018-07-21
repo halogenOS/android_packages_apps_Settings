@@ -55,4 +55,9 @@
     <string name="backlight_category">Button backlight settings</string>
     <string name="button_backlight_brightness">Button backlight brightness</string>
     <string name="button_backlight_timeout">Button backlight timeout</string>
+
+    <!-- OP-like navigation gestures -->
+    <string name="use_bottom_gesture_title">Use swipe up gestures for navigation</string>
+    <string name="use_bottom_gesture_summary">Works only with navigation bar disable</string>
+
 </resources>
