@@ -57,7 +57,7 @@
     <string name="button_backlight_timeout">Button backlight timeout</string>
 
     <!-- OP-like navigation gestures -->
-    <string name="use_bottom_gesture_title">Use swipe up gestures for navigation</string>
-    <string name="use_bottom_gesture_summary">Works only with navigation bar disable</string>
+    <string name="use_bottom_gesture_title">Swipe up navigation gestures</string>
+    <string name="use_bottom_gesture_summary">Works only when navigation bar is disabled</string>
 
 </resources>
