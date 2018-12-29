@@ -33,4 +33,8 @@
     <string name="selinux_status_disabled">Disabled</string>
     <string name="selinux_status_permissive">Permissive</string>
     <string name="selinux_status_enforcing">Enforcing</string>
+
+    <!-- Device Parts -->
+    <string name="device_part_title">Device features</string>
+    <string name="device_part_summary">Device specific features</string>
 </resources>
