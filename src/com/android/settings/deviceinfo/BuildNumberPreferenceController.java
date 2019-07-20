@@ -88,10 +88,10 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
                 StringBuilder sb = new StringBuilder();
                 sb.append(BidiFormatter.getInstance().unicodeWrap(
                         TextUtils.isEmpty(Build.VENDOR.BUILD_NUMBER_OVERRIDE) ? Build.DISPLAY : Build.VENDOR.BUILD_NUMBER_OVERRIDE));
-                String pixelExperienceVersion = getPixelExperienceVersion();
-                if (!pixelExperienceVersion.equals("")){
+                String romVersion = getRomVersion();
+                if (!romVersion.equals("")){
                     sb.append("\n");
-                    sb.append(pixelExperienceVersion);
+                    sb.append(romVersion);
                 }
                 preference.setSummary(sb.toString());
                 preference.setEnabled(true);
@@ -101,10 +101,11 @@ public class BuildNumberPreferenceController extends AbstractPreferenceControlle
         }
     }
 
-    private String getPixelExperienceVersion(){
-        String buildDate = SystemProperties.get("org.pixelexperience.build_date","");
-        String buildType = SystemProperties.get("org.pixelexperience.build_type","unofficial").toUpperCase();
-        return buildDate.equals("") ? "" : "PixelExperience-" + buildDate + "-" + buildType;
+    public static String getRomVersion(){
+        String romName = SystemProperties.get("ro.rom.name", "Romey Rom Rom");
+        String buildDate = SystemProperties.get("ro.rom.build_date", "");
+        String buildType = SystemProperties.get("ro.rom.build_type", "unofficial").toUpperCase();
+        return buildDate.equals("") ? "" : romName + " " + buildDate + " (" + buildType + ")";
     }
 
     @Override
