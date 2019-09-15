@@ -61,6 +61,7 @@ public class ConditionManager {
      */
     public List<ContextualCard> getDisplayableCards() {
         final List<ContextualCard> cards = new ArrayList<>();
+        /*
         final List<Future<ContextualCard>> displayableCards = new ArrayList<>();
         // Check displayable future
         for (ConditionalCardController card : mCardControllers) {
@@ -79,6 +80,7 @@ public class ConditionManager {
                 Log.w(TAG, "Failed to get displayable state for card, likely timeout. Skipping", e);
             }
         }
+        */
         return cards;
     }
 
