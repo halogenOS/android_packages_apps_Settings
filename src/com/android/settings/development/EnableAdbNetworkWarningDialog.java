@@ -44,7 +44,7 @@ public class EnableAdbNetworkWarningDialog extends InstrumentedDialogFragment im
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.OWLSNEST;
+        return MetricsEvent.XOS;
     }
 
     @Override
