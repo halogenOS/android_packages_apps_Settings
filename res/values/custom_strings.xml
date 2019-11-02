@@ -29,4 +29,8 @@
     <string name="device_maintainer">Device Maintainer(s)</string>
 
     <string name="additional_buttons_title">Additional buttons</string>
+
+    <!-- Android debugging as root -->
+    <string name="adb_enable_root">Rooted debugging</string>
+    <string name="adb_enable_summary_root">Allow running Android debugging as root</string>
 </resources>
