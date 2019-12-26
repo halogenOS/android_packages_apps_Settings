@@ -572,6 +572,11 @@
         android:title="@string/debug_applications_category"
         android:order="1000">
 
+        <com.android.settings.preferences.GlobalSettingSwitchPreference
+            android:key="allow_signature_fake"
+            android:title="@string/devel_allow_faking_signatures"
+            android:summary="@string/devel_allow_faking_signatures_summary" />
+
         <SwitchPreference
             android:key="immediately_destroy_activities"
             android:title="@string/immediately_destroy_activities"

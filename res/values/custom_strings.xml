@@ -30,4 +30,8 @@
 
     <string name="device_maintainer">Device maintainer</string>
 
+    <!-- Title of setting in development settings that allows faking app signatures -->
+    <string name="devel_allow_faking_signatures">Allow faking app signatures</string>
+    <!-- Summary of setting in development settings that allows faking app signatures -->
+    <string name="devel_allow_faking_signatures_summary">Allows app signatures to be faked by packages that define the corresponding permission. You need this for microG.</string>
 </resources>
