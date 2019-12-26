@@ -15,4 +15,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="custom_rom_version">halogenOS version</string>
+    <!-- Title of setting in development settings that allows faking app signatures [CHAR LIMIT=NONE] -->
+    <string name="devel_allow_faking_signatures">Allow faking app signatures</string>
+    <!-- Summary of setting in development settings that allows faking app signatures [CHAR LIMIT=NONE] -->
+    <string name="devel_allow_faking_signatures_summary">Allows app signatures to be faked by packages that define the corresponding permission. You need this for microG.</string>
 </resources>
