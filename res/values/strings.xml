@@ -11352,4 +11352,8 @@
     <!-- Summary for Enterprise Privacy settings, explaining what the user can expect to find under it [CHAR LIMIT=NONE]-->
     <string name="work_policy_privacy_settings_summary">Settings managed by your IT admin</string>
 
+    <!-- Title of setting in development settings that allows faking app signatures [CHAR LIMIT=NONE] -->
+    <string name="devel_allow_faking_signatures">Allow faking app signatures</string>
+    <!-- Summary of setting in development settings that allows faking app signatures [CHAR LIMIT=NONE] -->
+    <string name="devel_allow_faking_signatures_summary">Allows app signatures to be faked by packages that want to do so. This is especially helpful when using microG</string>
 </resources>
