@@ -35,7 +35,7 @@ import com.android.settingslib.search.SearchIndexable;
 import java.util.Arrays;
 import java.util.List;
 
-import com.derpquest.settings.Utils;
+import com.android.internal.util.aosip.aosipUtils;
 
 @SearchIndexable
 public class SystemDashboardFragment extends DashboardFragment {
@@ -59,7 +59,7 @@ public class SystemDashboardFragment extends DashboardFragment {
             screen.setInitialExpandedChildrenCount(Integer.MAX_VALUE);
         }
 
-        if (!Utils.isPackageInstalled(getActivity(), KEY_DEVICE_PART_PACKAGE_NAME)) {
+        if (!aosipUtils.isAvailableApp(KEY_DEVICE_PART_PACKAGE_NAME, getActivity())) {
             screen.removePreference(findPreference(KEY_DEVICE_PART));
         }
 
