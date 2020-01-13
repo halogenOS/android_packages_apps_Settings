@@ -53,6 +53,11 @@
             android:summary="@string/lockdown_settings_summary"
             settings:controller="com.android.settings.security.LockdownButtonPreferenceController" />
 
+        <com.android.settings.preferences.SystemSettingSwitchPreference
+            android:key="show_lockscreen_visualizer"
+            android:title="@string/show_lockscreen_visualizer_title"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
