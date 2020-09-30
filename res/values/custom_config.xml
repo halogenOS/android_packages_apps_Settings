@@ -14,4 +14,8 @@
 
     <!-- The device maintainers that the Android version screen shows, one item for each. -->
     <string-array name="device_info_device_maintainers" translatable="false" />
+
+    <string-array name="config_ignored_backup_transports" translatable="false">
+        <item>com.android.localtransport/.LocalTransport</item>
+    </string-array>
 </resources>
