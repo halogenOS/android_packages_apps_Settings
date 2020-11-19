@@ -69,6 +69,15 @@
         android:fragment="com.android.settings.LegalSettings"
         settings:allowDividerAbove="true"/>
 
+    <Preference
+            android:title="@string/radio_info_title"
+            android:key="radio_info_settings"
+            android:order="15">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.phone"
+                android:targetClass="com.android.phone.settings.RadioInfo" />
+    </Preference>
+
     <!-- Regulatory labels -->
     <Preference
         android:key="regulatory_info"
