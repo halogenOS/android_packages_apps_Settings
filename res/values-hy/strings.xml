@@ -1336,7 +1336,7 @@
     <string name="baseband_version" msgid="2600182227599835857">"Baseband-ի տարբերակը"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Միջուկի տարբերակը"</string>
     <string name="build_number" msgid="9009733242117579826">"Կառուցման համարը"</string>
-    <string name="module_version" msgid="1787518340082046658">"Google Play-ի համակարգային թարմացում"</string>
+    <string name="module_version" msgid="1787518340082046658">"Mainline-ի համակարգային թարմացում"</string>
     <string name="device_info_not_available" msgid="4804474466616712326">"Անհասանելի է"</string>
     <string name="device_status_activity_title" msgid="1812666241137263882">"Կարգավիճակ"</string>
     <string name="device_status" msgid="7988547478034984649">"Կարգավիճակ"</string>
@@ -1744,7 +1744,7 @@
     <string name="safety_and_regulatory_info" msgid="8285048080439298528">"Անվտանգության և ստանդարտների ձեռնարկ"</string>
     <string name="copyright_title" msgid="83245306827757857">"Հեղինակային իրավունք"</string>
     <string name="license_title" msgid="8745742085916617540">"Արտոնագիր"</string>
-    <string name="module_license_title" msgid="8705484239826702828">"Google Play-ի համակարգային թարմացման արտոնագրեր"</string>
+    <string name="module_license_title" msgid="8705484239826702828">"Mainline-ի համակարգային թարմացման արտոնագրեր"</string>
     <string name="terms_title" msgid="2071742973672326073">"Կանոններն ու պայմանները"</string>
     <string name="webview_license_title" msgid="5832692241345780517">"Համակարգի WebView-ի լիցենզիա"</string>
     <string name="wallpaper_attributions" msgid="3080339190260272255">"Պաստառներ"</string>

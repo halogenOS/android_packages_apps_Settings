@@ -3068,7 +3068,7 @@
     <string name="kernel_version">Kernel version</string>
     <!-- About phone screen,  setting option name  [CHAR LIMIT=40] -->
     <string name="build_number">Build number</string>
-    <!-- About phone screen, tapping this button will take user to a seperate UI to check Google Play system update [CHAR LIMIT=60] -->
+    <!-- About phone screen, tapping this button will take user to a seperate UI to check Mainline system update [CHAR LIMIT=60] -->
     <string name="module_version">Mainline system update</string>
 
     <!-- About phone screen, show when a value of some status item is unavailable. -->
@@ -4036,7 +4036,7 @@
     <!-- About phone settings screen, setting option name to see licensing info -->
     <string name="license_title">License</string>
     <!-- Note: this may be replaced by a more-specific title of the activity that will get launched --> <skip />
-    <!-- About phone settings screen, setting option name to see licensing info for Google Play system updates [CHAR LIMIT=50] -->
+    <!-- About phone settings screen, setting option name to see licensing info for Mainline system updates [CHAR LIMIT=50] -->
     <string name="module_license_title">Mainline system update licenses</string>
     <!-- Note: this may be replaced by a more-specific title of the activity that will get launched --> <skip />
     <!-- About phone settings screen, setting option name to see terms and conditions -->
@@ -9202,8 +9202,8 @@
     <string name="zen_mode_bypassing_apps_footer">Selected people can still reach you, even if you don\u2019t allow apps to interrupt</string>
     <!-- [CHAR LIMIT=120] Zen mode settings: Allow apps to bypass DND -->
     <plurals name="zen_mode_bypassing_apps_subtext">
-        <item quantity="one"><xliff:g id="app_name" example="Nest">%s</xliff:g> can interrupt</item>
-        <item quantity="other"><xliff:g id="app_names" example="Nest and Google Play Store">%s</xliff:g> can interrupt</item>
+        <item quantity="one"><xliff:g id="app_name" example="Tasks">%s</xliff:g> can interrupt</item>
+        <item quantity="other"><xliff:g id="app_names" example="Tasks and F-Droid">%s</xliff:g> can interrupt</item>
     </plurals>
     <!-- [CHAR LIMIT=30] Zen mode settings: List item in a summary indicating additional apps are
      allowed to bypass Do Not Disturb. For example, "Nest, Messages, and 2 more can interrupt". -->
