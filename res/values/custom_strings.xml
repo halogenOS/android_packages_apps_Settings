@@ -32,4 +32,10 @@
     <string name="theme_customization_device_default">Device default</string>
     <!-- String for removal of sensitive info on about, depending on tap -->
     <string name="device_info_protected_single_press">Tap to show info</string>
+
+    <!-- Title of setting in development settings that allows faking app signatures [CHAR LIMIT=NONE] -->
+    <string name="devel_allow_faking_signatures">Allow faking app signatures</string>
+    <!-- Summary of setting in development settings that allows faking app signatures [CHAR LIMIT=NONE] -->
+    <string name="devel_allow_faking_signatures_summary">Allows app signatures to be faked by packages that define the corresponding permission. You need this for microG.</string>
+
 </resources>
