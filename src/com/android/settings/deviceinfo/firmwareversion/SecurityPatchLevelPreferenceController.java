@@ -20,13 +20,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.SystemProperties;
+import android.text.format.DateFormat;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.preference.Preference;
 
 import com.android.settings.core.BasePreferenceController;
-import com.android.settingslib.DeviceInfoUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class SecurityPatchLevelPreferenceController extends BasePreferenceController {
 
@@ -40,7 +45,23 @@ public class SecurityPatchLevelPreferenceController extends BasePreferenceContro
     public SecurityPatchLevelPreferenceController(Context context, String key) {
         super(context, key);
         mPackageManager = mContext.getPackageManager();
-        mCurrentPatch = DeviceInfoUtils.getSecurityPatch();
+        mCurrentPatch = getSecurityPatch();
+    }
+
+    private static String getSecurityPatch() {
+        String patch = SystemProperties.get("ro.custom.build.version.sp");
+        if (!"".equals(patch)) {
+            try {
+                String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
+                patch = DateFormat.format(format,
+                            new SimpleDateFormat("yyyy-MM-dd").parse(patch)).toString();
+            } catch (ParseException e) {
+                // broken parse; fall through and use the raw string
+            }
+            return patch;
+        } else {
+            return "";
+        }
     }
 
     @Override
