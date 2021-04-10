@@ -57,10 +57,8 @@ public class SecurityPatchLevelPreferenceController extends BasePreferenceContro
             } catch (ParseException e) {
                 // broken parse; fall through and use the raw string
             }
-            return patch;
-        } else {
-            return "";
         }
+        return patch;
     }
 
     @Override
