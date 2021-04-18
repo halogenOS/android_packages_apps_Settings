@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.SystemProperties;
 import android.text.format.DateFormat;
 import android.text.TextUtils;
 import android.util.Log;
@@ -48,7 +49,7 @@ public class SecurityPatchLevelPreferenceController extends BasePreferenceContro
     }
 
     private static String getSecurityPatch() {
-        String patch = System.getProperty("ro.custom.build.version.sp");
+        String patch = SystemProperties.get("ro.custom.build.version.sp");
         if (!"".equals(patch)) {
             try {
                 String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
