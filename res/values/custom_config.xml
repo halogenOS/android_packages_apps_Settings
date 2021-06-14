@@ -19,4 +19,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Package name of the black theme to apply when toggled on -->
     <string name="config_blackThemePackage">custom.theme.black</string>
+
+    <!-- Whether to show advanced display rotation settings -->
+    <bool name="config_show_advanced_rotation_settings">true</bool>
 </resources>
