@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!-- Copyright (C) 2019-2023 The halogenOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,4 +32,12 @@
 
     <!-- Search keywords for black theme settings [CHAR LIMIT=NONE] -->
     <string name="keywords_black_ui_mode">theme, black, dark, mode, make black, blacken, blacked, black mode, oled, amoled</string>
+
+    <!-- Add sliders for color balance adjustment via ColorDisplayManager -->
+    <string name="color_mode_balance_category">Color balance</string>
+    <string name="color_mode_balance_red">Red strength</string>
+    <string name="color_mode_balance_green">Green strength</string>
+    <string name="color_mode_balance_blue">Blue strength</string>
+    <string name="keywords_color_balance">color, color balance, color correction, red, green, blue, LiveDisplay</string>
+
 </resources>
