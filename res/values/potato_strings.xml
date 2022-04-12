@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2019 Potato Open Sauce Project
+     Copyright (C) 2022 halogenOS
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -12,18 +13,16 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- POSP version in About phone -->
-    <string name="potato_version_title">POSP version</string>
+    <!-- halogenOS version in About phone -->
+    <string name="custom_version_title">halogenOS version</string>
 
     <!-- Build types, now with translations -->
     <string name="build_type">Build Type</string>
-    <string name="potato_cheesy">Cheesy (Official release)</string>
-    <string name="potato_mashed">Mashed (Open beta)</string>
-    <string name="potato_salad">Salad (Internal build)</string>
-    <string name="potato_unofficial">Community (Unofficial build)</string>
+    <string name="custom_unofficial">Unofficial</string>
+    <string name="custom_official">Official</string>
 
     <!-- Device Model -->
-    <string name="potato_device_model">Device Model</string>
+    <string name="custom_device_model">Device Model</string>
 
     <!-- Screenshot shutter -->
     <string name="screenshot_shutter_sound_title">Screenshot sound</string>

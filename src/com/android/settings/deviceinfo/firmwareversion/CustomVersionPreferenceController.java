@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2017 The halogenOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,28 +17,29 @@ package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
 import android.os.SystemProperties;
-import androidx.annotation.VisibleForTesting;
+import android.text.TextUtils;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class PotatoModelPreferenceController extends BasePreferenceController {
+public class CustomVersionPreferenceController extends BasePreferenceController {
 
-    @VisibleForTesting
-    private static final String POTATO_DEVICE_MODEL = "ro.product.model";
+    private static final String PROPERTY_CUSTOM_VERSION = "ro.custom.version_number";
 
-    public PotatoModelPreferenceController(Context context, String preferenceKey) {
-        super(context, preferenceKey);
+    public CustomVersionPreferenceController(Context context, String key) {
+        super(context, key);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return AVAILABLE;
+        if (!TextUtils.isEmpty(SystemProperties.get(PROPERTY_CUSTOM_VERSION))) return AVAILABLE;
+        return CONDITIONALLY_UNAVAILABLE;
     }
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get(POTATO_DEVICE_MODEL,
-                mContext.getString(R.string.device_info_default));
+        return SystemProperties.get(PROPERTY_CUSTOM_VERSION,
+                mContext.getString(R.string.unknown));
     }
 }
+

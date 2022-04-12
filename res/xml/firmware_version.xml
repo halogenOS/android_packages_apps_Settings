@@ -21,24 +21,20 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
-   <PreferenceScreen
-       android:layout="@layout/potato_branding_layout"
-       android:key="potato_branding" />
-
     <!-- Device Model-->
     <Preference
-        android:key="potato_device_model"
-        android:title="@string/potato_device_model"
+        android:key="custom_device_model"
+        android:title="@string/custom_device_model"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.PotatoModelPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.CustomModelPreferenceController"/>
 
-    <!-- POSP Version -->
+    <!-- halogenOS Version -->
     <Preference
         android:key="modversion"
-        android:title="@string/potato_version_title"
+        android:title="@string/custom_version_title"
         android:summary="@string/device_info_default"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.PotatoVersionPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.CustomVersionPreferenceController"/>
 
     <!-- Android version -->
     <Preference
@@ -49,12 +45,12 @@
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
-    <!-- POSP build type -->
+    <!-- Build type -->
     <Preference
         android:key="build_type"
         android:title="@string/build_type"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.PotatoBuildTypePreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.CustomBuildTypePreferenceController"/>
 
     <!-- Security patch -->
     <Preference

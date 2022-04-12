@@ -23,12 +23,12 @@ import android.text.TextUtils;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class PotatoBuildTypePreferenceController  extends BasePreferenceController {
+public class CustomBuildTypePreferenceController  extends BasePreferenceController {
 
-    private static final String TAG = "PotatoBuildTypePreferenceController";
-    private static final String POTATO_BUILD_TYPE = "ro.potato.branding.version";
+    private static final String TAG = "CustomBuildTypePreferenceController";
+    private static final String CUSTOM_BUILD_TYPE = "ro.custom.branding.version";
 
-    public PotatoBuildTypePreferenceController(Context context, String key) {
+    public CustomBuildTypePreferenceController(Context context, String key) {
         super(context, key);
     }
 
@@ -39,16 +39,12 @@ public class PotatoBuildTypePreferenceController  extends BasePreferenceControll
 
     @Override
     public CharSequence getSummary() {
-        String buildType = SystemProperties.get(POTATO_BUILD_TYPE);
+        String buildType = SystemProperties.get(CUSTOM_BUILD_TYPE);
         switch (buildType) {
-            case "Cheesy":
-                return mContext.getString(R.string.potato_cheesy);
-            case "Mashed":
-                return mContext.getString(R.string.potato_mashed);
-            case "Salad":
-                return mContext.getString(R.string.potato_salad);
+            case "Official":
+                return mContext.getString(R.string.custom_official);
             default:
-                return mContext.getString(R.string.potato_unofficial);
+                return mContext.getString(R.string.custom_unofficial);
         }
     }
 }
