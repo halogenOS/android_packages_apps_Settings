@@ -11,4 +11,6 @@
     <!-- Photos Spoof -->
     <string name="photos_spoof_title">Photos spoof</string>
     <string name="photos_spoof_summary">Spoof your device as a different model to enable unlimited backup for photos app (reboot required)</string>
+
+    <string name="custom_rom_version">halogenOS version</string>
 </resources>
