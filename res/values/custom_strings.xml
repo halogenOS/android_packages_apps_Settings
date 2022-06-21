@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The halogenOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="custom_rom_version">halogenOS version</string>
+    <string name="custom_rom_build_version">Build version</string>
+
+    <string name="custom_rom_version_purpose" translatable="false">The version of the custom ROM</string>
+    <string name="custom_rom_build_version_purpose" translatable="false">The build version of the custom ROM</string>
+</resources>

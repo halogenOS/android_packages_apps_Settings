@@ -71,10 +71,12 @@ open class FirmwareVersionScreen : PreferenceScreenMixin, PreferenceSummaryProvi
     override fun getPreferenceHierarchy(context: Context, coroutineScope: CoroutineScope) =
         preferenceHierarchy(context) {
             +FirmwareVersionDetailPreference()
+            +CustomRomVersionPreference()
             +SecurityPatchLevelPreference()
             +MainlineModuleVersionPreference()
             +BasebandVersionPreference()
             +KernelVersionPreference()
+            +CustomRomBuildVersionPreference()
             +SimpleBuildNumberPreference()
         }
 
