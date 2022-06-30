@@ -55,7 +55,7 @@ public class UsbBackend {
     private final boolean mTetheringSupported;
     private final boolean mIsAdminUser;
 
-    private UsbManager mUsbManager;
+    private UsbManager mUsbManager = null;
 
     @Nullable
     private UsbPort mPort;
@@ -68,7 +68,11 @@ public class UsbBackend {
 
     @VisibleForTesting
     public UsbBackend(Context context, UserManager userManager) {
-        mUsbManager = context.getSystemService(UsbManager.class);
+	try {
+            mUsbManager = context.getSystemService(UsbManager.class);
+	} catch (Exception e) {
+            // Ignore
+	}
 
         mFileTransferRestricted = isUsbFileTransferRestricted(userManager);
         mFileTransferRestrictedBySystem = isUsbFileTransferRestrictedBySystem(userManager);
@@ -84,22 +88,33 @@ public class UsbBackend {
     }
 
     public long getCurrentFunctions() {
+	if (mUsbManager == null) {
+            return 0L;
+	}
         return mUsbManager.getCurrentFunctions();
     }
 
     public void setCurrentFunctions(long functions) {
+	if (mUsbManager == null) return;
         mUsbManager.setCurrentFunctions(functions);
     }
 
     public long getDefaultUsbFunctions() {
+	if (mUsbManager == null) {
+            return 0L;
+	}
         return mUsbManager.getScreenUnlockedFunctions();
     }
 
     public void setDefaultUsbFunctions(long functions) {
+	if (mUsbManager == null) return;
         mUsbManager.setScreenUnlockedFunctions(functions);
     }
 
     public boolean areFunctionsSupported(long functions) {
+	if (mUsbManager == null) {
+            return false;
+	}
         if ((!mMidiSupported && (functions & UsbManager.FUNCTION_MIDI) != 0)
                 || (!mTetheringSupported && (functions & UsbManager.FUNCTION_RNDIS) != 0)) {
             return false;
@@ -242,6 +257,7 @@ public class UsbBackend {
     }
 
     private void updatePorts() {
+	if (mUsbManager == null) return;
         mPort = null;
         mPortStatus = null;
         List<UsbPort> ports = mUsbManager.getPorts();
