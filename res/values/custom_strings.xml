@@ -32,4 +32,5 @@
     <string name="theme_customization_device_default">Device default</string>
 
     <string name="vendor_security_patch">Vendor Security Patch</string>
+    <string name="device_maintainer">Device Maintainer</string>
 </resources>
