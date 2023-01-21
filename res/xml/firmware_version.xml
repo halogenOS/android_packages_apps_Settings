@@ -21,6 +21,13 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
+    <!-- Device Maintainer -->
+    <Preference
+        android:key="device_maintainer"
+        android:title="@string/device_maintainer"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.DeviceMaintainerPreferenceController"/>
+
     <!-- Android version -->
     <Preference
         android:key="os_firmware_version"
@@ -44,6 +51,13 @@
         android:title="@string/security_patch"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.SecurityPatchLevelPreferenceController"/>
+
+    <!-- Vendor security patch -->
+    <Preference
+        android:key="vendor_security_key"
+        android:title="@string/vendor_security_patch"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.VendorSecurityPatchLevelPreferenceController"/>
 
     <!-- Mainline module version -->
     <Preference
