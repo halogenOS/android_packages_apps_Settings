@@ -18,4 +18,8 @@
     <!-- Lock pattern view size, align sysui biometric_auth_pattern_view_size -->
     <dimen name="biometric_auth_pattern_view_size">298dp</dimen>
 
+    <string name="vendor_security_patch">Vendor security patch</string>
+
+    <string name="device_maintainer">Device maintainer</string>
+
 </resources>
