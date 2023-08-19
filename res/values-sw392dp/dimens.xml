@@ -19,10 +19,6 @@
 
     <string name="custom_rom_version">halogenOS version</string>
 
-    <string name="vendor_security_patch">Vendor security patch</string>
-
-    <string name="device_maintainer">Device maintainer</string>
-
     <!-- Title of setting in development settings that allows faking app signatures -->
     <string name="devel_allow_faking_signatures">Allow faking app signatures</string>
     <!-- Summary of setting in development settings that allows faking app signatures -->
