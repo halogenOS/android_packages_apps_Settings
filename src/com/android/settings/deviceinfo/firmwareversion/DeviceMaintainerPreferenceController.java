@@ -43,7 +43,7 @@ public class DeviceMaintainerPreferenceController extends BasePreferenceControll
     }
 
     private static String getDeviceMaintainer() {
-        return SystemProperties.get("ro.custom.build.device.maintainer");
+        return SystemProperties.get("ro.custom.build.device.maintainer").replace("\\n", "\n");
     }
 
     @Override
