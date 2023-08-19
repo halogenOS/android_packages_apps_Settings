@@ -26,6 +26,6 @@
 
     <string name="vendor_security_patch">Vendor Security Patch</string>
 
-    <string name="device_maintainer">Device Maintainer</string>
+    <string name="device_maintainer">Device Maintainer(s)</string>
 
 </resources>
