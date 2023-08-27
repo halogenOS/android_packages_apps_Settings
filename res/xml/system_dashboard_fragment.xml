@@ -95,6 +95,7 @@
     <org.derpfest.support.preferences.RemotePreference
         android:key="additional_buttons"
         android:title="@string/additional_buttons_title"
+        android:icon="@drawable/ic_buttons"
         settings:requiresAction="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS">
         <intent
             android:action="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS" />
