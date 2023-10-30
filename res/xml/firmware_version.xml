@@ -21,6 +21,12 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
+    <!-- halogenOS banner -->
+    <PreferenceScreen
+        android:key="halogenos_banner"
+        android:layout="@layout/halogenos_banner"
+        android:selectable="false" />
+
     <!-- Device Maintainer -->
     <Preference
         android:key="device_maintainer"
