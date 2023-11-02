@@ -22,7 +22,7 @@
     settings:keywords="@string/keywords_android_version">
 
     <!-- halogenOS banner -->
-    <PreferenceScreen
+    <com.android.settingslib.widget.LayoutPreference
         android:key="halogenos_banner"
         android:layout="@layout/halogenos_banner"
         android:selectable="false" />
