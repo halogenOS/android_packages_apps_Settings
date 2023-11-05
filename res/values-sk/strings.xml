@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"Zobrazenie vyváženia bielej"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"Pokračovať v používaní aplikácií po zložení"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Plynulý obraz"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"Automaticky zvyšuje frekvenciu obnovenia zo 60 na <xliff:g id="ID_1">%1$s</xliff:g> Hz pre určitý obsah. Zvýši sa spotreba batérie."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"Vynútiť vrcholovú frekvenciu obnovenia"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"Najvyššia frekvencia obnovenia zlepšujúca dotykovú odozvu a kvalitu animácií. Zvýši sa spotreba batérie."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"Vnímavá obrazovka"</string>

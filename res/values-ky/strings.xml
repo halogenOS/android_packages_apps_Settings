@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"Экрандын ак балансы"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"Түзмөк бүктөлгөндө колдонмолорду пайдалана бериңиз"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Smooth Display"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"Айрым нерселер үчүн экрандын жаңыруу жыштыгы 60 Герцтен <xliff:g id="ID_1">%1$s</xliff:g> Герцке чейин өзгөрөт. Батарея тез отуруп калышы мүмкүн"</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"Экрандын жаңыруу жыштыгын жогорулатуу"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"Сенсордун функциясын жана анимациянын сапатын жакшыртуу үчүн жаңыртуу ылдамдыгы жогорулатылды. Батареянын колдонулушун жогорулатат."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"Ыңгайлашуучу көшүү режими"</string>

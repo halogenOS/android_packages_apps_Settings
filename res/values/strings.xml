@@ -2397,9 +2397,7 @@
     <!-- Display settings screen, setting option name to change Fold setting -->
     <string name="fold_lock_behavior_title">Continue using apps on fold</string>
     <!-- Display settings screen, peak refresh rate settings title [CHAR LIMIT=30] -->
-    <string name="peak_refresh_rate_title">Smooth Display</string>
     <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
-    <string name="peak_refresh_rate_summary">Automatically raises the refresh rate from 60 to <xliff:g name="refresh_rate" example="120">%1$s</xliff:g> Hz for some content. Increases battery usage.</string>
     <!-- Display developer settings: Force to the highest refresh rate [CHAR LIMIT=NONE] -->
     <string name="force_high_refresh_rate_toggle">Force peak refresh rate</string>
     <!-- Display developer settings: Force to the highest refresh rate description [CHAR LIMIT=NONE]-->

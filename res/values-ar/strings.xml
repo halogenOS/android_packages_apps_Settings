@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"موازنة اللون الأبيض للشاشة"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"مواصلة استخدام التطبيقات أثناء طيّ الهاتف"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"العرض السلس"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"تعمل هذه الميزة على رفع معدل التحديث تلقائيًا من 60 إلى <xliff:g id="ID_1">%1$s</xliff:g> هرتز لبعض أنواع المحتوى. يؤدي هذا إلى زيادة استخدام البطارية."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"فرض معدل إعادة التحميل الأقصى"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"أعلى معدل إعادة تحميل لتحسين استجابة اللمس وجودة الصور المتحركة. يؤدي هذا إلى زيادة استخدام البطارية."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"استعراض الشاشة"</string>

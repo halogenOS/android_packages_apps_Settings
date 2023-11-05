@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"디스플레이 화이트 밸런스"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"접은 상태에서 앱 계속 사용"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"스무스 디스플레이"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"일부 콘텐츠의 화면 재생 빈도를 자동으로 60Hz에서 <xliff:g id="ID_1">%1$s</xliff:g>Hz로 늘립니다. 배터리 사용량이 증가합니다."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"가장 높은 새로고침 빈도 강제 적용"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"향상된 터치 반응 속도 및 애니메이션 품질에 맞는 가장 높은 새로고침 빈도입니다. 배터리 사용량이 증가합니다."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"화면 시선 감지"</string>

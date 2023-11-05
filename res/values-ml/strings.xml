@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"വൈറ്റ് ബാലന്‍സ് പ്രദര്‍ശിപ്പിക്കുക"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"ഫോൾഡിൽ ആപ്പുകൾ ഉപയോഗിക്കുന്നത് തുടരുക"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"സ്‌മൂത്ത് ഡിസ്പ്ലേ"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"ചില ഉള്ളടക്കങ്ങളുടെ റീഫ്രഷ് തോത് 60-ൽ നിന്നും <xliff:g id="ID_1">%1$s</xliff:g> Hz-ലേക്ക് സ്വയമേവ ഉയർത്തുന്നു. ബാറ്ററി ഉപയോഗം വർദ്ധിപ്പിക്കുന്നു."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"പരമാവധി റീഫ്രഷ് നിരക്ക് നിർബന്ധിതമാക്കുക"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"മെച്ചപ്പെട്ട സ്‌പർശന പ്രതികരണശേഷി, ആനിമേഷൻ നിലവാരം എന്നിവയ്‌ക്കുള്ള ഉയർന്ന റീഫ്രഷ് നിരക്ക്. ബാറ്ററി ഉപയോഗം വർദ്ധിപ്പിക്കുന്നു."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"സ്ക്രീൻ ശ്രദ്ധ"</string>

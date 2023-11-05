@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"Cân bằng trắng của màn hình"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"Tiếp tục dùng ứng dụng khi điện thoại đã gập"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Hình ảnh mượt"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"Tự động tăng tốc độ làm mới từ 60 lên <xliff:g id="ID_1">%1$s</xliff:g> Hz đối với một số nội dung. Chế độ cài đặt này sẽ làm tăng mức sử dụng pin."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"Buộc chuyển sang tốc độ làm mới cao nhất"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"Tốc độ làm mới cao nhất giúp cải thiện khả năng phản hồi khi chạm và chất lượng ảnh động. Tính năng này làm tăng mức sử dụng pin."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"Phát hiện ánh mắt"</string>

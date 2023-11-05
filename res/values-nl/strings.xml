@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"Witbalans van scherm"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"Apps blijven gebruiken bij vouwen"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Smooth Display"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"Hiermee wordt de vernieuwingssnelheid automatisch verhoogd van 60 naar <xliff:g id="ID_1">%1$s</xliff:g> Hz voor bepaalde content. Het batterijgebruik neemt toe."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"Piekvernieuwingssnelheid afdwingen"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"De hoogste vernieuwingssnelheid voor verbeterde responsiviteit voor aanraking en animatiekwaliteit. Het batterijgebruik neemt toe."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"Schermaandacht"</string>

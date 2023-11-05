@@ -1008,8 +1008,6 @@
     <string name="display_white_balance_title" msgid="2624544323029364713">"Pateikti baltos spalv. balansą"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"Toliau naudoti programas, kai įrenginys sulenktas"</string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Ekrano glodinimas"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"Automatiškai padidinamas kai kurio turinio atnaujinimo dažnis nuo 60 iki <xliff:g id="ID_1">%1$s</xliff:g> Hz. Vartojama daugiau akumuliatoriaus energijos."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"Priverstinai nustatyti didžiausią atnaujinimo dažnį"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"Didžiausias atnaujinimo dažnis, siekiant patobulinti palietimo atsakomumą ir animacijos kokybę. Vartojama daugiau akumuliatoriaus energijos."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"Žiūrėjimas į ekraną"</string>
