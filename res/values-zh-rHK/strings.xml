@@ -990,8 +990,6 @@
     <string name="auto_brightness_summary_off" msgid="8077066192887677956">"關閉"</string>
     <string name="display_white_balance_title" msgid="2624544323029364713">"顯示屏白平衡"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"流暢顯示"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"自動將部分內容的重新整理頻率提升至 60 到 <xliff:g id="ID_1">%1$s</xliff:g> Hz 之間。電池用量會因而增加。"</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"強制使用最高重新整理頻率"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"最高的重新整理頻率，帶來更靈敏的觸控反應和更高畫質的動畫。這會增加電池用量。"</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"螢幕感知"</string>

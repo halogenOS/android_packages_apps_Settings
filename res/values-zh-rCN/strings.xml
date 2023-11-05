@@ -990,8 +990,6 @@
     <string name="auto_brightness_summary_off" msgid="8077066192887677956">"已关闭"</string>
     <string name="display_white_balance_title" msgid="2624544323029364713">"显示屏白平衡"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"流畅画面"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"自动将某些内容的刷新率从 60 Hz 调高到 <xliff:g id="ID_1">%1$s</xliff:g> Hz。但会增加耗电量。"</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"强制使用峰值刷新频率"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"使用最高刷新频率可提升按触操作响应和动画质量，但会增加耗电量。"</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"屏幕感知"</string>

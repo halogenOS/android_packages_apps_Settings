@@ -990,8 +990,6 @@
     <string name="auto_brightness_summary_off" msgid="8077066192887677956">"निष्क्रिय छ"</string>
     <string name="display_white_balance_title" msgid="2624544323029364713">"श्वेत सन्तुलन देखाउनुहोस्"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Smooth Display"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"केही सामग्रीका हकमा रिफ्रेस रेट स्वतः ६० हर्जबाट बढाएर <xliff:g id="ID_1">%1$s</xliff:g> हर्ज बनाउँछ। यसले गर्दा ब्याट्रीको खपत बढ्छ।"</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"रिफ्रेस गर्ने दर बलपूर्वक सबैभन्दा बढी बनाउनुहोस्"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"स्क्रिनमा छुँदा स्क्रिनले जनाउने प्रतिक्रिया र एनिमेसनको गुणस्तर सुधार्न उच्चतम रिफ्रेस रेट। ब्याट्रीको खपत बढाउँछ।"</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"स्क्रिनमा हेरिरहँदा"</string>

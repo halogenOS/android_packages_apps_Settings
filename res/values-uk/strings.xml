@@ -990,8 +990,6 @@
     <string name="auto_brightness_summary_off" msgid="8077066192887677956">"Вимкнено"</string>
     <string name="display_white_balance_title" msgid="2624544323029364713">"Баланс білого для екрана"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Плавне відображення"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"Автоматично збільшує частоту оновлення певного контенту із 60 до <xliff:g id="ID_1">%1$s</xliff:g> Гц. Збільшує використання заряду акумулятора."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"Примусово найбільша частота оновлення"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"Найвища частота оновлення для кращого реагування на дотики й вищої якості анімації. Підвищує використання заряду акумулятора."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"Адаптивний сплячий режим"</string>

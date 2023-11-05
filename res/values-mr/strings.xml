@@ -990,8 +990,6 @@
     <string name="auto_brightness_summary_off" msgid="8077066192887677956">"बंद"</string>
     <string name="display_white_balance_title" msgid="2624544323029364713">"व्हाइट बॅलन्स डिस्प्ले करा"</string>
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
-    <string name="peak_refresh_rate_title" msgid="1878771412897140903">"स्मूथ डिस्प्ले"</string>
-    <string name="peak_refresh_rate_summary" msgid="3627278682437562787">"काही आशयासाठी रिफ्रेश रेट ६० ते <xliff:g id="ID_1">%1$s</xliff:g> Hz पर्यंत आपोआप वाढवते. बॅटरी वापर वाढवते."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"सक्तीने सर्वोच्च रिफ्रेश रेट गाठा"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"सुधारित स्पर्श प्रतिसाद आणि अ‍ॅनिमेशन गुणवत्तेसाठी उच्चतम रिफ्रेश रेट. बॅटरी वापर वाढवतो."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"स्क्रीन अटेंशन"</string>
