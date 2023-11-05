@@ -41,4 +41,10 @@
             Prolonged use of max brightness may cause permanent damage or burn-in to the screen.
             Consumes more energy when HBM is active.
     </string>
+
+    <!-- [CHAR LIMIT=60] Name of setting that dims the UI further -->
+    <string name="black_ui_mode">Dimmed theme</string>
+
+    <!-- Search keywords for dimmed theme settings [CHAR LIMIT=NONE] -->
+    <string name="keywords_black_ui_mode">theme, black, dark, oled, amoled, dimmed</string>
 </resources>
