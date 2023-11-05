@@ -68,6 +68,14 @@
             settings:controller="com.android.settings.display.DarkUIPreferenceController"
             settings:keywords="@string/keywords_dark_ui_mode"/>
 
+        <com.android.settingslib.PrimarySwitchPreference
+            android:key="black_ui_mode"
+            android:title="@string/black_ui_mode"
+            android:widgetLayout="@null"
+            settings:widgetLayout="@null"
+            settings:controller="com.android.settings.display.BlackThemePreferenceController"
+            settings:keywords="@string/keywords_black_ui_mode" />
+
         <Preference
             android:fragment="com.android.settings.accessibility.TextReadingPreferenceFragment"
             android:key="text_reading_options"
