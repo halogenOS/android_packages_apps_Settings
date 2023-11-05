@@ -37,16 +37,16 @@ import com.android.settingslib.core.lifecycle.events.OnStop;
 
 public class BlackThemePreferenceController extends TogglePreferenceController implements LifecycleObserver {
 
-    public static String blackThemeOverlay = "custom.theme.black";
-
     @VisibleForTesting
     Preference mPreference;
 
     private OverlayManager mOverlayManager;
+    private final String blackThemeOverlay;
 
     public BlackThemePreferenceController(Context context, String key) {
         super(context, key);
         mOverlayManager = (OverlayManager) context.getSystemService(Context.OVERLAY_SERVICE);
+        blackThemeOverlay = context.getResources().getString(R.string.config_blackThemePackage);
     }
 
     @Override
