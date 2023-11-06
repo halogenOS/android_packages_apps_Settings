@@ -32,7 +32,6 @@ import com.android.settings.accessibility.BaseSupportFragment;
 import com.android.settings.accessibility.ToggleShortcutPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
-import com.android.settingslib.widget.IllustrationPreference;
 import com.android.settingslib.widget.MainSwitchPreference;
 
 /**
@@ -42,7 +41,6 @@ import com.android.settingslib.widget.MainSwitchPreference;
 public class OneHandedSettings extends BaseSupportFragment {
 
     private static final String TAG = "OneHandedSettings";
-    private static final String ONE_HANDED_ILLUSTRATION_KEY = "one_handed_header";
     protected static final String ONE_HANDED_MAIN_SWITCH_KEY =
             "gesture_one_handed_mode_enabled_main_switch";
     @Nullable
@@ -68,13 +66,8 @@ public class OneHandedSettings extends BaseSupportFragment {
         OneHandedSettingsUtils.setUserId(UserHandle.myUserId());
         super.updatePreferenceStates();
 
-        final IllustrationPreference illustrationPreference =
-                getPreferenceScreen().findPreference(ONE_HANDED_ILLUSTRATION_KEY);
         final boolean isSwipeDownNotification =
                 OneHandedSettingsUtils.isSwipeDownNotificationEnabled(getContext());
-        illustrationPreference.setLottieAnimationResId(
-                isSwipeDownNotification ? R.raw.lottie_swipe_for_notifications
-                        : R.raw.lottie_one_hand_mode);
 
         final MainSwitchPreference mainSwitchPreference =
                 getPreferenceScreen().findPreference(ONE_HANDED_MAIN_SWITCH_KEY);
