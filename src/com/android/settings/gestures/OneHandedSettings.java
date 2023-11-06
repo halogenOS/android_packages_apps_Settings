@@ -42,7 +42,6 @@ public class OneHandedSettings extends AccessibilityShortcutPreferenceFragment {
 
     private static final String TAG = "OneHandedSettings";
     private static final String ONE_HANDED_SHORTCUT_KEY = "one_handed_shortcuts_preference";
-    private static final String ONE_HANDED_ILLUSTRATION_KEY = "one_handed_header";
     protected static final String ONE_HANDED_MAIN_SWITCH_KEY =
             "gesture_one_handed_mode_enabled_main_switch";
     private String mFeatureName;
@@ -60,13 +59,8 @@ public class OneHandedSettings extends AccessibilityShortcutPreferenceFragment {
         OneHandedSettingsUtils.setUserId(UserHandle.myUserId());
         super.updatePreferenceStates();
 
-        final IllustrationPreference illustrationPreference =
-                getPreferenceScreen().findPreference(ONE_HANDED_ILLUSTRATION_KEY);
         final boolean isSwipeDownNotification =
                 OneHandedSettingsUtils.isSwipeDownNotificationEnabled(getContext());
-        illustrationPreference.setLottieAnimationResId(
-                isSwipeDownNotification ? R.raw.lottie_swipe_for_notifications
-                        : R.raw.lottie_one_hand_mode);
 
         final MainSwitchPreference mainSwitchPreference =
                 getPreferenceScreen().findPreference(ONE_HANDED_MAIN_SWITCH_KEY);
