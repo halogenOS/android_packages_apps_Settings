@@ -51,6 +51,7 @@ import com.android.settings.spa.app.specialaccess.UsageDataAppListProvider
 import com.android.settings.spa.app.specialaccess.WriteSystemPreferencesAppListProvider
 import com.android.settings.utils.HsuUtils
 import com.android.settingslib.spa.framework.common.SettingsPageProvider
+import com.android.settingslib.spa.framework.compose.LifecycleEffect
 import com.android.settingslib.spa.framework.compose.navigator
 import com.android.settingslib.spa.widget.scaffold.RegularScaffold
 import com.android.settingslib.spa.widget.ui.Category
@@ -126,6 +127,8 @@ object AppInfoSettingsProvider : SettingsPageProvider {
 
 @Composable
 private fun AppInfoSettings(packageInfoPresenter: PackageInfoPresenter) {
+    // needed to refresh AppSwitch items after returning from their fragments
+    LifecycleEffect(onStart = { check(packageInfoPresenter.manualRefreshFlow.tryEmit(Any())) })
     val packageInfoState = packageInfoPresenter.flow.collectAsStateWithLifecycle()
     val context = LocalContext.current
     RegularScaffold(
