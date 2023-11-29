@@ -23,6 +23,10 @@
 
     <string name="additional_buttons_title">Additional buttons</string>
 
+    <!-- Android debugging as root -->
+    <string name="adb_enable_root">Rooted debugging</string>
+    <string name="adb_enable_summary_root">Allow running Android debugging as root</string>
+
     <!-- [CHAR LIMIT=60] Name of setting that changes the UI to black -->
     <string name="black_ui_mode">Black theme</string>
 
