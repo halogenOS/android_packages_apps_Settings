@@ -13,8 +13,8 @@
     <string name="photos_spoof_summary">Spoof your device as a different model to enable unlimited backup for photos app (reboot required)</string>
 
     <string name="custom_rom_version">halogenOS version</string>
-    <string name="vendor_security_patch">Vendor Security Patch</string>
-    <string name="device_maintainer">Device Maintainer(s)</string>
+    <string name="vendor_security_patch">Vendor security patch</string>
+    <string name="device_maintainer">Device maintainer(s)</string>
 
     <!-- [CHAR LIMIT=60] Name of setting that changes the UI to black -->
     <string name="black_ui_mode">Black theme (BETA)</string>
