@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="custom_rom_version">halogenOS version</string>
-    <string name="vendor_security_patch">Vendor Security Patch</string>
-    <string name="device_maintainer">Device Maintainer(s)</string>
+    <string name="vendor_security_patch">Vendor security patch</string>
+    <string name="device_maintainer">Device maintainer(s)</string>
 
     <!-- Android debugging as root -->
     <string name="adb_enable_root">Rooted debugging</string>
