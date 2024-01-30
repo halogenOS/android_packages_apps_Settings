@@ -523,6 +523,11 @@
     <dimen name="audio_streams_qrcode_scanner_fragment_padding">16dp</dimen>
     <dimen name="audio_sharing_name_preference_edit_text_format_alert_padding">24dp</dimen>
 
+    <!-- Setup wizard related -->
+    <dimen name="sud_progress_bar_margin_top">
+        @dimen/sud_progress_bar_margin_top_material_you
+    </dimen>
+
     <!-- Zen Modes -->
     <dimen name="zen_mode_header_size">136dp</dimen>
     <dimen name="zen_mode_header_inner_icon_size">64dp</dimen>
