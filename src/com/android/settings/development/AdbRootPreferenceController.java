@@ -76,7 +76,7 @@ public class AdbRootPreferenceController extends DeveloperOptionsPreferenceContr
         super.onDeveloperOptionsSwitchDisabled();
 
         mADBRootService.setEnabled(false);
-        ((SwitchPreferenceCompat) mPreference).setChecked(false);
+        ((SwitchPreference) mPreference).setChecked(false);
     }
 
     @Override
