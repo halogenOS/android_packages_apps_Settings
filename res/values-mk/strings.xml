@@ -983,7 +983,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"Пробајте да го доближите уредот до пристапната точка/рутерот за Wi‑Fi"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"Проверете ја лозинката и обидете се повторно"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"Контактирајте со производителот на уредот"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"Проверете ја врската и обидете се повторно"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"Изберете мрежа"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"За да го поврзете уредот, изберете мрежа"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"Да се додаде уредов на „<xliff:g id="SSID">%1$s</xliff:g>“?"</string>

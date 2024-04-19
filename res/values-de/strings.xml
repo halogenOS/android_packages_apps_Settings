@@ -983,7 +983,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"Versuche, die Entfernung zwischen dem Gerät und deinem WLAN-Zugangspunkt oder Router zu verringern"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"Prüfe das Passwort und versuch es noch einmal"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"Wende dich an den Hersteller des Geräts"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"Prüfe die Verbindung und versuche es noch einmal"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"Netzwerk auswählen"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"Wenn du dein Gerät verbinden möchtest, wähle ein Netzwerk"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"Dieses Gerät zu \"<xliff:g id="SSID">%1$s</xliff:g>\" hinzufügen?"</string>

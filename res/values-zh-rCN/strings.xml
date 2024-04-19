@@ -983,7 +983,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"请尝试让设备更靠近您的 WLAN 接入点/路由器"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"请检查密码，然后重试"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"请与设备制造商联系"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"请检查连接状况，然后重试"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"选择网络"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"要连接设备，请选择一个网络"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"要将此设备添加到“<xliff:g id="SSID">%1$s</xliff:g>”吗？"</string>

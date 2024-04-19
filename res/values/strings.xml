@@ -2203,7 +2203,6 @@
     <!-- Hint for Wi-Fi DPP handshake failure [CHAR LIMIT=NONE]  -->
     <string name="wifi_dpp_failure_enrollee_rejected_configuration">Contact the device manufacturer</string>
     <!-- Hint for Wi-Fi connection fail [CHAR LIMIT=NONE]  -->
-    <string name="wifi_dpp_check_connection_try_again">Check connection and try again</string>
     <!-- Title for the fragment choose network [CHAR LIMIT=50]  -->
     <string name="wifi_dpp_choose_network">Choose network</string>
     <!-- Hint for the user to center another device's QR code in the below camera window [CHAR LIMIT=NONE] -->
