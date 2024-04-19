@@ -36,7 +36,7 @@ public class MediaControlsRecommendationController extends TogglePreferenceContr
     @Override
     public boolean isChecked() {
         int val = Settings.Secure.getInt(mContext.getContentResolver(),
-                MEDIA_CONTROLS_RECOMMENDATION, 1);
+                MEDIA_CONTROLS_RECOMMENDATION, 0);
         return val == 1;
     }
 
