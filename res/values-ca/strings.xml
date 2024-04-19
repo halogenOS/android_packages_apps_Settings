@@ -797,7 +797,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"Prova d\'acostar el dispositiu al punt d\'accés Wi‑Fi o l\'encaminador"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"Comprova la contrasenya i torna-ho a provar"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"Contacta amb el fabricant del dispositiu"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"Comprova la connexió i torna-ho a provar"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"Tria una xarxa"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"Per connectar el dispositiu, tria una xarxa"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"Vols afegir aquest dispositiu a \"<xliff:g id="SSID">%1$s</xliff:g>\"?"</string>

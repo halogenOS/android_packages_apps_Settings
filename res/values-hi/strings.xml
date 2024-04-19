@@ -797,7 +797,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"डिवाइस को अपने वाई-फ़ाई ऐक्सेस पॉइंट/राऊटर के पास लाने की कोशिश करें"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"कृपया अपना पासवर्ड फिर से डालें"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"डिवाइस बनाने वाली कंपनी से संपर्क करें"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"कनेक्शन जाँचें और फिर से कोशिश करें"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"नेटवर्क चुनें"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"अपना डिवाइस जोड़ने के लिए कोई नेटवर्क चुनें"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"इस डिवाइस को “<xliff:g id="SSID">%1$s</xliff:g>” से जोड़ें?"</string>

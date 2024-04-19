@@ -797,7 +797,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"పరికరాన్ని మీ Wi-Fi యాక్సెస్ పాయింట్/రూటర్ కు దగ్గరగా జరపడానికి ప్రయత్నించండి"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"మీ పాస్‌వర్డ్‌ని సరిచూసుకొని, మళ్లీ ట్రై చేయండి"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"పరికరం తయారీదారుని సంప్రదించండి"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"కనెక్షన్‌ను పరిశీలించి, మళ్లీ ట్రై చేయండి"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"నెట్‌వర్క్‌ను ఎంచుకోండి"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"మీ పరికరాన్ని కనెక్ట్ చేయడానికి ఒక నెట్‌వర్క్‌ని ఎంచుకోండి"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"“<xliff:g id="SSID">%1$s</xliff:g>”కి ఈ పరికరాన్ని జోడించాలా?"</string>

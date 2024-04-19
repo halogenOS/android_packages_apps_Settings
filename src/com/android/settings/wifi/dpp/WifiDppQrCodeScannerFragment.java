@@ -211,12 +211,6 @@ public class WifiDppQrCodeScannerFragment extends WifiDppQrCodeBaseFragment impl
                         }
                     }
 
-                    if (!hasHiddenOrReachableWifiNetwork) {
-                        showErrorMessageAndRestartCamera(
-                                R.string.wifi_dpp_check_connection_try_again);
-                        return;
-                    }
-
                     mMetricsFeatureProvider.action(
                             mMetricsFeatureProvider.getAttribution(getActivity()),
                             SettingsEnums.ACTION_SETTINGS_ENROLL_WIFI_QR_CODE,

@@ -797,7 +797,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"Testa att flytta enheten närmare wifi-åtkomstpunkten eller routern"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"Kontrollera lösenordet och försök igen"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"Kontakta enhetens tillverkare"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"Kontrollera anslutningen och försök igen"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"Välj nätverk"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"Välj ett nätverk om du vill ansluta enheten"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"Vill du lägga till enheten på <xliff:g id="SSID">%1$s</xliff:g>?"</string>

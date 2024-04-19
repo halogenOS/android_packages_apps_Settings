@@ -797,7 +797,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"기기를 Wi-Fi 액세스 포인트나 라우터에 더 가까이 옮겨 보세요."</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"비밀번호를 확인하고 다시 시도해 보세요."</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"기기 제조업체에 문의하세요."</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"연결을 확인한 후 다시 시도해 보세요."</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"네트워크 선택"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"기기를 연결하려면 네트워크를 선택하세요."</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"이 기기를 \'<xliff:g id="SSID">%1$s</xliff:g>\'에 추가하시겠습니까?"</string>

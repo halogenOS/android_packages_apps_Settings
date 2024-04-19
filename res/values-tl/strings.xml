@@ -797,7 +797,6 @@
     <string name="wifi_dpp_failure_cannot_find_network" msgid="8519567801353014036">"Subukang ilapit ang device sa iyong Wi‑Fi access point/router"</string>
     <string name="wifi_dpp_failure_enrollee_authentication" msgid="7008840843663520852">"Suriin ang password at subukan ulit"</string>
     <string name="wifi_dpp_failure_enrollee_rejected_configuration" msgid="982310033782652478">"Makipag-ugnayan sa manufacturer ng device"</string>
-    <string name="wifi_dpp_check_connection_try_again" msgid="6118892932595974823">"Suriin ang koneksyon at subukan ulit"</string>
     <string name="wifi_dpp_choose_network" msgid="3987007684129341427">"Pumili ng network"</string>
     <string name="wifi_dpp_choose_network_to_connect_device" msgid="4321618376432197593">"Para maikonekta ang iyong device, pumili ng network"</string>
     <string name="wifi_dpp_add_device_to_wifi" msgid="5170095438763569255">"Idagdag ang device na ito sa “<xliff:g id="SSID">%1$s</xliff:g>”?"</string>
