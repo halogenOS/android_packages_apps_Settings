@@ -637,7 +637,6 @@ public class WifiDppQrCodeScannerFragment extends WifiDppQrCodeBaseFragment impl
             Log.e(TAG, "Invalid networkId " + newNetworkId);
             mLatestStatusCode = EasyConnectStatusCallback.EASY_CONNECT_EVENT_FAILURE_GENERIC;
             updateEnrolleeSummary();
-            showErrorMessageAndRestartCamera(R.string.wifi_dpp_check_connection_try_again);
         }
 
         @Override
@@ -753,7 +752,6 @@ public class WifiDppQrCodeScannerFragment extends WifiDppQrCodeBaseFragment impl
     @Override
     public void onFailure(int reason) {
         Log.d(TAG, "Wi-Fi connect onFailure reason - " + reason);
-        showErrorMessageAndRestartCamera(R.string.wifi_dpp_check_connection_try_again);
     }
 
     // Check is Easy Connect handshaking or not
