@@ -13,4 +13,11 @@
 
     <!-- Search keywords for black theme settings [CHAR LIMIT=NONE] -->
     <string name="keywords_black_ui_mode">theme, black, dark, mode, make black, blacken, blacked, black mode, oled, amoled</string>
+
+    <string name="force_allow_hbm_title">Force allow HBM</string>
+    <string name="force_allow_hbm_summary">
+            Bypasses HBM checks and always allows max brightness.
+            Prolonged use of max brightness may cause permanent damage or burn-in to the screen.
+            Consumes more energy when HBM is active.
+    </string>
 </resources>
