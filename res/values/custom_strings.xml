@@ -40,4 +40,10 @@
     <string name="color_mode_balance_blue">Blue strength</string>
     <string name="keywords_color_balance">color, color balance, color correction, red, green, blue, LiveDisplay</string>
 
+    <string name="force_allow_hbm_title">Force allow HBM</string>
+    <string name="force_allow_hbm_summary">
+            Bypasses HBM checks and always allows max brightness.
+            Prolonged use of max brightness may cause permanent damage or burn-in to the screen.
+            Consumes more energy when HBM is active.
+    </string>
 </resources>
