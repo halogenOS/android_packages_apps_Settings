@@ -32,4 +32,11 @@
     <string name="vendor_security_patch_purpose" translatable="false">The date of the last vendor security update</string>
     <string name="device_maintainer_purpose" translatable="false">The people who maintain the build for this device</string>
     <string name="my_device_info_more_pref_screen_purpose" translatable="false">Allows users to view the device details not shown by the header of About phone, such as the phone number, baseband version, model, IMEI, hardware identifiers and legal information.</string>
+
+    <string name="force_allow_hbm_title">Force allow HBM</string>
+    <string name="force_allow_hbm_summary">
+            Bypasses HBM checks and always allows max brightness.
+            Prolonged use of max brightness may cause permanent damage or burn-in to the screen.
+            Consumes more energy when HBM is active.
+    </string>
 </resources>

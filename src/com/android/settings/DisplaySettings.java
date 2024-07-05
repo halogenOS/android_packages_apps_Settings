@@ -29,6 +29,7 @@ import com.android.settings.display.BrightnessLevelPreferenceController;
 import com.android.settings.display.CameraGesturePreferenceController;
 import com.android.settings.display.DisplayScreen;
 import com.android.settings.display.ExternalDisplayPreferenceController;
+import com.android.settings.display.ForceAllowHBMPreferenceController;
 import com.android.settings.display.LiftToWakePreferenceController;
 import com.android.settings.display.ShowOperatorNamePreferenceController;
 import com.android.settings.display.TapToWakePreferenceController;
@@ -94,6 +95,7 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new TapToWakePreferenceController(context));
         controllers.add(new VrDisplayPreferenceController(context));
         controllers.add(new ShowOperatorNamePreferenceController(context));
+        controllers.add(new ForceAllowHBMPreferenceController(context));
         controllers.add(new ThemePreferenceController(context));
         controllers.add(new BrightnessLevelPreferenceController(context, lifecycle));
 
