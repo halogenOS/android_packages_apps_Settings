@@ -21,4 +21,11 @@
             Prolonged use of max brightness may cause permanent damage or burn-in to the screen.
             Consumes more energy when HBM is active.
     </string>
+
+    <!-- Misc Settings -->
+    <string name="misc_settings_title">Misc</string>
+
+    <!-- PI Spoof -->
+    <string name="pi_spoof_title">PI spoof</string>
+    <string name="pi_spoof_summary">Spoof your device as a different model for PI (reboot required)</string>
 </resources>
