@@ -71,7 +71,7 @@ public class CustomRomVersionDetailPreferenceController extends BasePreferenceCo
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get("ro.custom.version");
+        return SystemProperties.get("ro.custom.display.version");
     }
 
     @Override
