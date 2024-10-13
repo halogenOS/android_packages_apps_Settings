@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="custom_rom_version">halogenOS version</string>
     <string name="custom_rom_build_version">Build version</string>
-    <string name="vendor_security_patch">Vendor security patch</string>
+    <string name="vendor_security_patch">Vendor security update</string>
     <string name="device_maintainer">Device maintainer(s)</string>
 
     <!-- Android debugging as root -->
