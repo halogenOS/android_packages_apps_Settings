@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
+ * Copyright (C) 2024 The halogenOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,24 +18,34 @@
 package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.SystemProperties;
 
+import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class CustomRomVersionPreferenceController extends BasePreferenceController {
+public class CustomRomBuildVersionDetailPreferenceController extends BasePreferenceController {
 
-    public CustomRomVersionPreferenceController(Context context, String key) {
+    public CustomRomBuildVersionDetailPreferenceController(Context context, String key) {
         super(context, key);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return AVAILABLE_UNSEARCHABLE;
+        return AVAILABLE;
+    }
+
+    @Override
+    public boolean useDynamicSliceSummary() {
+        return true;
+    }
+
+    @Override
+    public boolean isSliceable() {
+        return true;
     }
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get("ro.custom.display.version");
+        return SystemProperties.get("ro.custom.version");
     }
 }
