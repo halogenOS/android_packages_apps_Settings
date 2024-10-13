@@ -21,7 +21,6 @@ import android.os.Build;
 import android.text.BidiFormatter;
 
 import com.android.settings.core.BasePreferenceController;
-import com.android.settings.deviceinfo.VersionUtils;
 
 public class SimpleBuildNumberPreferenceController extends BasePreferenceController {
 
@@ -39,11 +38,6 @@ public class SimpleBuildNumberPreferenceController extends BasePreferenceControl
     public CharSequence getSummary() {
         StringBuilder sb = new StringBuilder();
         sb.append(BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY));
-        String customVersion = VersionUtils.getCustomVersion();
-        if (!customVersion.equals("")){
-            sb.append("\n");
-            sb.append(customVersion);
-        }
         return sb.toString();
     }
 }
