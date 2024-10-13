@@ -27,8 +27,10 @@ import androidx.preference.Preference;
 
 import com.android.settings.core.BasePreferenceController;
 
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Locale;
 
 public class DeviceMaintainerPreferenceController extends BasePreferenceController {
@@ -43,7 +45,15 @@ public class DeviceMaintainerPreferenceController extends BasePreferenceControll
     }
 
     private static String getDeviceMaintainer() {
-        return SystemProperties.get("ro.custom.build.device.maintainer").replace("\\n", "\n");
+        String maintainers = SystemProperties.get("ro.custom.build.device.maintainer");
+        if (!"".equals(maintainers)) {
+            try {
+                return new String(Base64.getUrlDecoder().decode(maintainers), StandardCharsets.UTF_8);
+            } catch (IllegalArgumentException e) {
+                return e.getMessage();
+            }
+        }
+        return "";
     }
 
     @Override
