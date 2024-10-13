@@ -35,6 +35,6 @@ public class CustomRomVersionPreferenceController extends BasePreferenceControll
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get("ro.custom.version");
+        return SystemProperties.get("ro.custom.display.version");
     }
 }
