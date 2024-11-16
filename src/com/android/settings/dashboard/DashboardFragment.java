@@ -78,6 +78,8 @@ public abstract class DashboardFragment extends SettingsPreferenceFragment
     private static final String TAG = "DashboardFragment";
     private static final long TIMEOUT_MILLIS = 50L;
 
+    private static final ArrayMap<String, Integer> KEY_ORDER = new ArrayMap<>();
+
     @VisibleForTesting
     final ArrayMap<String, List<DynamicDataObserver>> mDashboardTilePrefKeys = new ArrayMap<>();
     private final Map<Class, List<AbstractPreferenceController>> mPreferenceControllers =
@@ -599,6 +601,10 @@ public abstract class DashboardFragment extends SettingsPreferenceFragment
                 observers = mDashboardFeatureProvider.bindPreferenceToTileAndGetObservers(
                         getActivity(), this, forceRoundedIcons, preference, tile, key,
                         mPlaceholderPreferenceController.getOrder());
+                // Order the prefs within their respective category
+                if (KEY_ORDER.containsKey(key)) {
+                    preference.setOrder(KEY_ORDER.get(key));
+                }
             } else {
                 // Don't have this key, add it.
                 final Preference pref = createPreference(tile);
