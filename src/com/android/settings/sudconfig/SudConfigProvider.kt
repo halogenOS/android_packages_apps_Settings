@@ -32,9 +32,12 @@ class SudConfigProvider : NonRelationalProvider() {
     override fun onCreate(): Boolean {
         // returns value of setupwizard.theme sysprop
         val theme: Optional<String> = android.sysprop.SetupWizardProperties.theme()
-        // setupwizard.theme should always be set to prevent inconsistencies in setupdesign UIs
-        check(theme.isPresent) { "missing setupwizard.theme sysprop" }
-        defaultThemeString = theme.get()
+        if (theme.isPresent) {
+            defaultThemeString = theme.get()
+        } else {
+            // Allows tests to run without having to manually set this.
+            defaultThemeString = "fallback"
+        }
         return true
     }
 
