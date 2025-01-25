@@ -145,6 +145,11 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
                     )
                 )
             }
+            .plus(
+                arrayOf(
+                    com.android.settings.applications.AswAdapterManagePlayIntegrityApi.makeAppListPageProvider(),
+                )
+            )
 
     override val logger =
         if (FeatureFlagUtils.isEnabled(context, FeatureFlagUtils.SETTINGS_ENABLE_SPA_METRICS))
