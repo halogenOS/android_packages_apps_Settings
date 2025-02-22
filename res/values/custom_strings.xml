@@ -25,4 +25,8 @@
     <!-- PI Spoof -->
     <string name="pi_spoof_title">PI spoof</string>
     <string name="pi_spoof_summary">Spoof your device as a different model for PI (reboot required)</string>
+
+    <!-- Games Spoof -->
+    <string name="games_spoof_title">Games spoof</string>
+    <string name="games_spoof_summary">Spoof your device as a different model for games (reboot required)</string>
 </resources>

@@ -73,6 +73,13 @@
             android:summary="@string/pi_spoof_summary"
             android:defaultValue="true" />
 
+        <!-- Games -->
+        <com.android.settings.custom.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.games"
+            android:title="@string/games_spoof_title"
+            android:summary="@string/games_spoof_summary"
+            android:defaultValue="false" />
+
         <ListPreference
             android:key="hdcp_checking"
             android:title="@string/hdcp_checking_title"
