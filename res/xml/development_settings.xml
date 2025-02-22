@@ -66,7 +66,7 @@
             android:summary="@string/keep_screen_on_summary"
             settings:useAdditionalSummary="true" />
         
-        <!-- Google Play Integrity -->
+        <!-- PI -->
         <com.android.settings.custom.preference.SystemPropertySwitchPreference
             android:key="persist.sys.pixelprops.pi"
             android:title="@string/pi_spoof_title"
