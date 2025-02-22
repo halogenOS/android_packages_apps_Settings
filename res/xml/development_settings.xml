@@ -80,6 +80,13 @@
             android:summary="@string/games_spoof_summary"
             android:defaultValue="false" />
 
+        <!-- Photos -->
+        <com.android.settings.custom.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.pixelprops.gphotos"
+            android:title="@string/photos_spoof_title"
+            android:summary="@string/photos_spoof_summary"
+            android:defaultValue="true" />
+
         <ListPreference
             android:key="hdcp_checking"
             android:title="@string/hdcp_checking_title"
