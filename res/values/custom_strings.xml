@@ -29,4 +29,8 @@
     <!-- Games Spoof -->
     <string name="games_spoof_title">Games spoof</string>
     <string name="games_spoof_summary">Spoof your device as a different model for games (reboot required)</string>
+
+    <!-- Photos Spoof -->
+    <string name="photos_spoof_title">Photos spoof</string>
+    <string name="photos_spoof_summary">Spoof your device as a different model to enable unlimited backup for photos app (reboot required)</string>
 </resources>
