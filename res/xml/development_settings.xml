@@ -71,7 +71,7 @@
             android:key="persist.sys.pixelprops.pi"
             android:title="@string/pi_spoof_title"
             android:summary="@string/pi_spoof_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <!-- Games -->
         <com.android.settings.custom.preference.SystemPropertySwitchPreference
@@ -85,7 +85,7 @@
             android:key="persist.sys.pixelprops.gphotos"
             android:title="@string/photos_spoof_title"
             android:summary="@string/photos_spoof_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <ListPreference
             android:key="hdcp_checking"
