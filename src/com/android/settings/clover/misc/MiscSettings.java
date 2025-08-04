@@ -17,6 +17,6 @@ public class MiscSettings extends SettingsPreferenceFragment {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.CLOVER;
+        return MetricsProto.MetricsEvent.VIEW_UNKNOWN;
     }
 }
