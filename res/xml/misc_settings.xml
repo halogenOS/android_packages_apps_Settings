@@ -10,5 +10,12 @@
             android:title="@string/pi_spoof_title"
             android:summary="@string/pi_spoof_summary"
             android:defaultValue="true" />
+
+        <!-- Sussybox Debug Mode -->
+        <com.android.settings.custom.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.sussybox.fail"
+            android:title="@string/sussybox_debug_title"
+            android:summary="@string/sussybox_debug_summary"
+            android:defaultValue="false" />
    
 </PreferenceScreen>
