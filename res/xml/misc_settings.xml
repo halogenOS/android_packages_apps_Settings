@@ -11,7 +11,7 @@
             android:summary="@string/pi_spoof_summary"
             android:defaultValue="true" />
 
-        <!-- Sussybox Debug Mode -->
+        <!-- Sussybox fail prop -->
         <com.android.settings.custom.preference.SystemPropertySwitchPreference
             android:key="persist.sys.sussybox.fail"
             android:title="@string/sussybox_debug_title"

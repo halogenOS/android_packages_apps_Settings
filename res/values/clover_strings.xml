@@ -27,8 +27,8 @@
     <string name="keybox_data_title">Select keybox XML to spoof</string>
     <string name="keybox_data_summary">Select the keybox XML used for system-wide key attestation spoofing. Click delete to reset keybox data.</string>
 
-    <!-- Sussybox Debug -->
-    <string name="sussybox_debug_title">Sussybox mode</string>
+    <!-- Sussybox Fail prop -->
+    <string name="sussybox_debug_title">Failure mode</string>
     <string name="sussybox_debug_summary">Intentionally cause an exception during keychain generation which may help with strong integrity.</string>
 
     <!-- OS Version Override -->
