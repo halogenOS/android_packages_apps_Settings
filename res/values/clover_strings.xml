@@ -31,4 +31,10 @@
     <string name="sussybox_debug_title">Sussybox mode</string>
     <string name="sussybox_debug_summary">Intentionally cause an exception during keychain generation which may help with strong integrity.</string>
 
+    <!-- OS Version Override -->
+    <string name="os_version_override_title">OS version override</string>
+    <string name="os_version_default_summary">Using default OS version</string>
+    <string name="os_version_custom_summary">Using custom OS version: %1$s</string>
+    <string name="os_version_dialog_title">Set OS version</string>
+    <string name="os_version_dialog_message">Enter the OS version number (e.g., 160000 for Android 16.0.0)</string>
 </resources>

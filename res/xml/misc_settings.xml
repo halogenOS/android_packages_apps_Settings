@@ -17,5 +17,12 @@
             android:title="@string/sussybox_debug_title"
             android:summary="@string/sussybox_debug_summary"
             android:defaultValue="false" />
+
+        <!-- OS Version Override -->
+        <com.android.settings.clover.misc.OsVersionPreference
+            android:key="os_version_override"
+            android:title="@string/os_version_override_title"
+            android:dialogTitle="@string/os_version_dialog_title"
+            android:dialogMessage="@string/os_version_dialog_message" />
    
 </PreferenceScreen>
