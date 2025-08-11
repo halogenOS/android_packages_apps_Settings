@@ -75,7 +75,6 @@ import com.android.settings.activityembedding.EmbeddedDeepLinkUtils;
 import com.android.settings.core.CategoryMixin;
 import com.android.settings.core.FeatureFlags;
 import com.android.settings.flags.Flags;
-import com.android.settings.homepage.contextualcards.ContextualCardsFragment;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.safetycenter.SafetyCenterManagerWrapper;
 import com.android.settingslib.Utils;
@@ -111,8 +110,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
     private TopLevelSettings mMainFragment;
     private View mHomepageView;
-    private View mSuggestionView;
-    private View mTwoPaneSuggestionView;
     private CategoryMixin mCategoryMixin;
     private Set<HomepageLoadedListener> mLoadedListeners;
     private boolean mIsEmbeddingActivityEnabled;
@@ -122,7 +119,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
     private SplitControllerCallbackAdapter mSplitControllerAdapter;
     private SplitInfoCallback mCallback;
-    private boolean mAllowUpdateSuggestion = true;
 
     /** A listener receiving homepage loaded events. */
     public interface HomepageLoadedListener {
@@ -152,32 +148,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
             }
             return true;
         }
-    }
-
-    /**
-     * Shows the homepage and shows/hides the suggestion together. Only allows to be executed once
-     * to avoid the flicker caused by the suggestion suddenly appearing/disappearing.
-     */
-    public void showHomepageWithSuggestion(boolean showSuggestion) {
-        if (mAllowUpdateSuggestion) {
-            Log.i(TAG, "showHomepageWithSuggestion: " + showSuggestion);
-            mAllowUpdateSuggestion = false;
-            if (Flags.homepageRevamp()) {
-                mSuggestionView.setVisibility(showSuggestion ? View.VISIBLE : View.GONE);
-            } else {
-                mSuggestionView.setVisibility(showSuggestion ? View.VISIBLE : View.GONE);
-                mTwoPaneSuggestionView.setVisibility(showSuggestion ? View.VISIBLE : View.GONE);
-            }
-        }
-
-        if (mHomepageView == null) {
-            return;
-        }
-        final View homepageView = mHomepageView;
-        mHomepageView = null;
-        mLoadedListeners.forEach(listener -> listener.onHomepageLoaded());
-        mLoadedListeners.clear();
-        homepageView.setVisibility(View.VISIBLE);
     }
 
     /** Returns the main content fragment */
@@ -276,15 +246,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         // Only allow features on high ram devices.
         if (!getSystemService(ActivityManager.class).isLowRamDevice()) {
             initAvatarView();
-            final boolean scrollNeeded = mIsEmbeddingActivityEnabled
-                    && !TextUtils.equals(getString(DEFAULT_HIGHLIGHT_MENU_KEY), highlightMenuKey);
-            showSuggestionFragment(scrollNeeded);
-            if (!Flags.updatedSuggestionCardAosp()
-                    && FeatureFlagUtils.isEnabled(this, FeatureFlags.CONTEXTUAL_HOME)) {
-                showFragment(() -> new ContextualCardsFragment(), R.id.contextual_cards_content);
-                ((FrameLayout) findViewById(R.id.main_content))
-                        .getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
-            }
         }
         mMainFragment = showFragment(() -> {
             final TopLevelSettings fragment = new TopLevelSettings();
@@ -331,7 +292,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     @Override
     protected void onStop() {
         super.onStop();
-        mAllowUpdateSuggestion = true;
         if (mSplitControllerAdapter != null && mCallback != null) {
             mSplitControllerAdapter.removeSplitListener(mCallback);
             mCallback = null;
@@ -484,39 +444,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         if (Flags.homepageRevamp()) {
             //Update search bar background
             findViewById(R.id.app_bar_container).setBackgroundColor(color);
-        }
-    }
-
-    private void showSuggestionFragment(boolean scrollNeeded) {
-        final Class<? extends Fragment> fragmentClass = FeatureFactory.getFeatureFactory()
-                .getSuggestionFeatureProvider().getSuggestionFragment();
-        if (fragmentClass == null) {
-            return;
-        }
-
-        if (Flags.homepageRevamp()) {
-            mSuggestionView = findViewById(R.id.suggestion_content);
-        } else {
-            mSuggestionView = findViewById(R.id.suggestion_content);
-            mTwoPaneSuggestionView = findViewById(R.id.two_pane_suggestion_content);
-        }
-        mHomepageView = findViewById(R.id.settings_homepage_container);
-        // Hide the homepage for preparing the suggestion. If scrolling is needed, the list views
-        // should be initialized in the invisible homepage view to prevent a scroll flicker.
-        mHomepageView.setVisibility(scrollNeeded ? View.INVISIBLE : View.GONE);
-        // Schedule a timer to show the homepage and hide the suggestion on timeout.
-        mHomepageView.postDelayed(() -> showHomepageWithSuggestion(false),
-                HOMEPAGE_LOADING_TIMEOUT_MS);
-        if (Flags.homepageRevamp()) {
-            showFragment(new SuggestionFragCreator(fragmentClass, true),
-                    R.id.suggestion_content);
-        } else {
-            showFragment(new SuggestionFragCreator(fragmentClass, /* isTwoPaneLayout= */ false),
-                    R.id.suggestion_content);
-            if (mIsEmbeddingActivityEnabled) {
-                showFragment(new SuggestionFragCreator(fragmentClass, /* isTwoPaneLayout= */ true),
-                        R.id.two_pane_suggestion_content);
-            }
         }
     }
 
@@ -798,11 +725,9 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         if (mIsTwoPane) {
             findViewById(R.id.homepage_app_bar_regular_phone_view).setVisibility(View.GONE);
             findViewById(R.id.homepage_app_bar_two_pane_view).setVisibility(View.VISIBLE);
-            findViewById(R.id.suggestion_container_two_pane).setVisibility(View.VISIBLE);
         } else {
             findViewById(R.id.homepage_app_bar_regular_phone_view).setVisibility(View.VISIBLE);
             findViewById(R.id.homepage_app_bar_two_pane_view).setVisibility(View.GONE);
-            findViewById(R.id.suggestion_container_two_pane).setVisibility(View.GONE);
         }
     }
 
@@ -844,20 +769,12 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         @Override
         public Fragment create() {
-            try {
-                Fragment fragment = mClass.getConstructor().newInstance();
-                return fragment;
-            } catch (Exception e) {
-                Log.w(TAG, "Cannot show fragment", e);
-            }
             return null;
         }
 
         @Override
         public void init(Fragment fragment) {
-            if (fragment instanceof SplitLayoutListener) {
-                ((SplitLayoutListener) fragment).setSplitLayoutSupported(mIsTwoPaneLayout);
-            }
+            // no-op
         }
     }
 
