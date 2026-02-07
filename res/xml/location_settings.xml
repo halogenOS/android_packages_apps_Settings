@@ -77,6 +77,12 @@
             android:title="@string/location_services_preference_title"
             settings:controller="com.android.settings.location.LocationServicesPreferenceController"/>
 
+        <SwitchPreferenceCompat
+            android:key="assisted_gps"
+            android:title="@string/assisted_gps_title"
+            android:summary="@string/assisted_gps_summary"
+            settings:controller="com.android.settings.location.AssistedGpsPreferenceController"/>
+
     </com.android.settingslib.widget.UntitledPreferenceCategory>
 
     <com.android.settingslib.widget.FooterPreference

@@ -91,6 +91,10 @@
     <string name="fingerprint_enroll_touch_dialog_message_side" product="device">Touch the sensor on the side of your device.</string>
     <string name="fingerprint_enroll_touch_dialog_message_side" product="default">Touch the sensor on the side of your phone.</string>
 
+    <!-- Assisted GPS -->
+    <string name="assisted_gps_title">Assisted GPS</string>
+    <string name="assisted_gps_summary">Download satellite assistance data to improve GPS startup performance. For emergency calls, assisted GPS is always allowed.</string>
+
     <!-- Warning message for the sd card setup -->
     <string name="storage_warning_internal">Warning: This option may not work properly or lead to data loss and is therefore not recommended!</string>
 </resources>
