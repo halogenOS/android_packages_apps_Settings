@@ -80,4 +80,8 @@
     <string name="battery_maximum_capacity">Maximum capacity</string>
     <string name="battery_maximum_capacity_summary">%1$d mAh (%2$d%%)</string>
     <string name="battery_maximum_capacity_not_available" translatable="false">@string/battery_cycle_count_not_available</string>
+
+    <!-- Assisted GPS -->
+    <string name="assisted_gps_title">Assisted GPS</string>
+    <string name="assisted_gps_summary">Download satellite assistance data to improve GPS startup performance. For emergency calls, assisted GPS is always allowed.</string>
 </resources>
