@@ -747,7 +747,7 @@
     <string name="privacy_location_access_purpose" translatable="false">Links to general location settings.</string>
     <!-- Privacy controls screen end -->
     <string name="app_security_subpage_screen_purpose" translatable="false">Displays app security status and scanning information from safety sources.</string>
-    <string name="system_and_updates_subpage_screen_purpose" translatable="false">Displays system update status and Google Play system update information.</string>
+    <string name="system_and_updates_subpage_screen_purpose" translatable="false">Displays system update status and Mainline system update information.</string>
     <string name="more_security_privacy_screen_purpose" translatable="false">Allows users to manage additional security and privacy settings, including lock screen notifications and content capture.</string>
     <string name="privacy_media_controls_lockscreen_purpose" translatable="false">Whether media controls are shown on the lock screen.</string>
     <string name="privacy_camera_extensions_fallback_purpose" translatable="false">Whether software fallback is allowed for camera extensions.</string>

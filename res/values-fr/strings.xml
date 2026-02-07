@@ -1551,7 +1551,7 @@
     <string name="baseband_version" msgid="2600182227599835857">"Version de bande de base"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Version de noyau"</string>
     <string name="build_number" msgid="9009733242117579826">"Numéro de build"</string>
-    <string name="module_version" msgid="1787518340082046658">"Mise à jour du système Google Play"</string>
+    <string name="module_version" msgid="1787518340082046658">"Mise à jour du système Mainline"</string>
     <string name="battery_info" msgid="7873528123969546728">"Informations sur la batterie"</string>
     <string name="device_info_not_available" msgid="4804474466616712326">"Non disponible"</string>
     <string name="storage_settings" msgid="7472188817781592677">"Stockage"</string>
@@ -1847,7 +1847,7 @@
     <string name="safety_and_regulatory_info" msgid="8285048080439298528">"Manuel de sécurité et réglementation"</string>
     <string name="copyright_title" msgid="83245306827757857">"Droits d\'auteur"</string>
     <string name="license_title" msgid="8745742085916617540">"Licence"</string>
-    <string name="module_license_title" msgid="8705484239826702828">"Licences des mises à jour du système Google Play"</string>
+    <string name="module_license_title" msgid="8705484239826702828">"Licences des mises à jour du système Mainline"</string>
     <string name="terms_title" msgid="2071742973672326073">"Conditions d\'utilisation"</string>
     <string name="webview_license_title" msgid="5832692241345780517">"Licence WebView du système"</string>
     <string name="wallpaper_attributions" msgid="4323659759250650736">"Crédits des fonds d\'écran"</string>
