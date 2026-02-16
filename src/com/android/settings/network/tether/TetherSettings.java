@@ -685,8 +685,12 @@ public class TetherSettings extends RestrictedDashboardFragment
                         keys.add(KEY_ENABLE_BLUETOOTH_TETHERING);
                     }
 
-                    final EthernetManager em =
-                            context.getSystemService(EthernetManager.class);
+                    EthernetManager em = null;
+                    try {
+                        em = context.getSystemService(EthernetManager.class);
+                    } catch (Exception e) {
+                        // EthernetManager may not be available on all devices
+                    }
                     final boolean ethernetAvailable = (em != null);
                     if (!ethernetAvailable) {
                         keys.add(KEY_ENABLE_ETHERNET_TETHERING);
