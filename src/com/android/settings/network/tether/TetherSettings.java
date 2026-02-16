@@ -192,9 +192,9 @@ public class TetherSettings extends RestrictedDashboardFragment
         mDataSaverBackend.addListener(this);
 
         mCm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        // Some devices do not have available EthernetManager. In that case getSystemService will
-        // return null.
-        mEm = mContext.getSystemService(EthernetManager.class);
+        if (android.os.ServiceManager.checkService("ethernet") != null) {
+            mEm = mContext.getSystemService(EthernetManager.class);
+        }
 
         mUsbRegexs = mTm.getTetherableUsbRegexs();
         mBluetoothRegexs = mTm.getTetherableBluetoothRegexs();
@@ -685,13 +685,8 @@ public class TetherSettings extends RestrictedDashboardFragment
                         keys.add(KEY_ENABLE_BLUETOOTH_TETHERING);
                     }
 
-                    EthernetManager em = null;
-                    try {
-                        em = context.getSystemService(EthernetManager.class);
-                    } catch (Exception e) {
-                        // EthernetManager may not be available on all devices
-                    }
-                    final boolean ethernetAvailable = (em != null);
+                    final boolean ethernetAvailable =
+                            android.os.ServiceManager.checkService("ethernet") != null;
                     if (!ethernetAvailable) {
                         keys.add(KEY_ENABLE_ETHERNET_TETHERING);
                     }
