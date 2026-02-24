@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <string name="bool_setting_enable">Enable</string>
+    <string name="bool_setting_enabled">Enabled</string>
+    <string name="bool_setting_disabled">Disabled</string>
 
+    <string name="sandboxed_google_play">Sandboxed Google Play</string>
+    <string name="sandboxed_google_play_work_profile">Sandboxed Google Play (work profile)</string>
+
+    <string name="app_exploit_protection_default_value_warning">"Warning: enabling this setting might cause some apps to stop working.</string>
+
+    <string name="app_play_integrity_api">Play Integrity API</string>
+    <string name="app_play_integrity_top_intro">The Play Integrity API allows services to verify properties of a device through their app. Most services check for the device or strong integrity level which requires having the unmodified stock OS on a device licensing Google Mobile Services. Not every app using it will ban using a custom OS. This custom OS passes the basic integrity level and the miscellaneous checks for licensing, Play Protect, etc. work fine. We recommend leaving feedback for apps using it to ban custom AOSP-based operating systems like GrapheneOS asking them to stop banning using a much more secure OS.</string>
+    <string name="app_play_integrity_contact_app_developer">Contact app developer</string>
+    <string name="app_play_integrity_show_usage_notifications">Show usage notifications</string>
+    <string name="app_play_integrity_block_usage_attempts">Block usage attempts</string>
+    <string name="app_play_integrity_block_usage_attempts_summary_on">
+        Play Integrity API usage attempts will fail with the "API is not available" error code
+    </string>
+    <string name="app_play_integrity_api_blocked">Blocked</string>
+    <string name="app_play_integrity_api_not_blocked">Not blocked</string>
+    <string name="app_play_integrity_see_all_apps">Show apps that used the Play Integrity API</string>
 
 </resources>
