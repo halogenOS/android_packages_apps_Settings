@@ -146,12 +146,7 @@ public abstract class AswAppInfoFragment<T extends AppSwitch>
     }
 
     private String getAppDefaultSettingPathForCategory(AswAdapter.Category category) {
-        switch (category) {
-            case ExploitProtection:
-                return getSettingPath(R.string.safety_center_title, R.string.exploit_protection_settings);
-            default:
-                throw new IllegalArgumentException(category.toString());
-        }
+        throw new IllegalArgumentException(category.toString());
     }
 
     private String getSettingPath(int... parts) {
