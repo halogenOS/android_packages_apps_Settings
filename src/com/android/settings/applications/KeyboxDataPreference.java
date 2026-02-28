@@ -76,7 +76,14 @@ public class KeyboxDataPreference extends Preference {
         }
 
         try (InputStream inputStream = getContext().getContentResolver().openInputStream(uri);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+             BufferedReader reader = new BufferedReader(
+                     new InputStreamReader(inputStream, java.nio.charset.StandardCharsets.UTF_8))) {
+
+            // Skip UTF-8 BOM if present
+            reader.mark(1);
+            if (reader.read() != '\uFEFF') {
+                reader.reset();
+            }
 
             StringBuilder xmlContent = new StringBuilder();
             String line;
@@ -84,7 +91,9 @@ public class KeyboxDataPreference extends Preference {
                 xmlContent.append(line).append('\n');
             }
 
-            String xml = xmlContent.toString();
+            String xml = xmlContent.toString()
+                    .replace("\uFEFF", "")
+                    .replace("\r", "");
             if (!validateXml(xml)) {
                 Toast.makeText(getContext(), "Invalid XML: missing required data", Toast.LENGTH_SHORT).show();
                 return;
@@ -130,13 +139,6 @@ public class KeyboxDataPreference extends Preference {
 
                         case "Key":
                             currentAlg = parser.getAttributeValue(null, "algorithm");
-                            if ("ecdsa".equalsIgnoreCase(currentAlg)) {
-                                hasEcdsaKey = true;
-                            } else if ("rsa".equalsIgnoreCase(currentAlg)) {
-                                hasRsaKey = true;
-                            } else {
-                                currentAlg = null; // unsupported key
-                            }
                             break;
 
                         case "PrivateKey": {
@@ -145,10 +147,22 @@ public class KeyboxDataPreference extends Preference {
                                 Log.w(TAG, "Invalid or missing format for PrivateKey");
                                 return false;
                             }
-                            if ("ecdsa".equalsIgnoreCase(currentAlg)) {
-                                hasEcdsaPrivKey = true;
-                            } else if ("rsa".equalsIgnoreCase(currentAlg)) {
-                                hasRsaPrivKey = true;
+                            // Read PEM content to detect actual key type,
+                            // since the algorithm attribute may be watermarked
+                            parser.next();
+                            if (parser.getEventType() == XmlPullParser.TEXT) {
+                                String pem = parser.getText().trim();
+                                if (pem.contains("BEGIN EC PRIVATE KEY")
+                                        || pem.contains("BEGIN EC PARAMETERS")) {
+                                    currentAlg = "ecdsa";
+                                    hasEcdsaKey = true;
+                                    hasEcdsaPrivKey = true;
+                                } else if (pem.contains("BEGIN RSA PRIVATE KEY")
+                                        || pem.contains("BEGIN PRIVATE KEY")) {
+                                    currentAlg = "rsa";
+                                    hasRsaKey = true;
+                                    hasRsaPrivKey = true;
+                                }
                             }
                             break;
                         }
