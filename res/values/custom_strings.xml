@@ -4,6 +4,9 @@
     <string name="custom_rom_build_version">Build version</string>
     <string name="vendor_security_patch">Vendor security update</string>
     <string name="device_maintainer">Device maintainer(s)</string>
+    <string name="maintained_by">Maintained by %s</string>
+    <string name="about_phone_more">More</string>
+    <string name="deep_sleep">Deep sleep</string>
 
     <!-- [CHAR LIMIT=60] Name of setting that changes the UI to black -->
     <string name="black_ui_mode">Black theme (BETA)</string>

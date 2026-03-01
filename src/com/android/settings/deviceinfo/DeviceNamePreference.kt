@@ -23,7 +23,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.preference.Preference
 import com.android.settings.R
-import com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment
+import com.android.settings.deviceinfo.aboutphone.MyDeviceInfoMoreFragment
 import com.android.settings.widget.ValidatedEditTextPreference
 import com.android.settings.wifi.tether.WifiDeviceNameTextValidator
 import com.android.settingslib.datastore.HandlerExecutor
@@ -74,8 +74,8 @@ class DeviceNamePreference(val context: Context) :
     }
 
     override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
-        val fragment: MyDeviceInfoFragment? =
-            lifeCycleContext.findFragment(MY_DEVICE_FRAGMENT_NAME) as MyDeviceInfoFragment?
+        val fragment: MyDeviceInfoMoreFragment? =
+            lifeCycleContext.findFragment(MY_DEVICE_FRAGMENT_NAME) as MyDeviceInfoMoreFragment?
         Log.d(
             TAG,
             "DeviceNamePreference fragment is " +
@@ -108,7 +108,7 @@ class DeviceNamePreference(val context: Context) :
 
     companion object {
         const val KEY = "device_name"
-        private val MY_DEVICE_FRAGMENT_NAME: String = MyDeviceInfoFragment::class.java.simpleName
+        private val MY_DEVICE_FRAGMENT_NAME: String = MyDeviceInfoMoreFragment::class.java.simpleName
         private val TAG = DeviceNamePreference::class.java.simpleName
     }
 }

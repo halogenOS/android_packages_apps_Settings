@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2024 halogenOS
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/about_header_padding"
+    android:paddingBottom="@dimen/about_header_padding"
+    android:clipToPadding="false">
+
+    <!-- Logo centered -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:src="@drawable/halogenos_banner"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
+
+    <!-- Device name -->
+    <TextView
+        android:id="@+id/header_device_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:singleLine="true"
+        android:ellipsize="end" />
+
+    <!-- Maintainer -->
+    <TextView
+        android:id="@+id/header_maintainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@*android:color/materialColorOnSurfaceVariant"
+        android:textSize="13sp"
+        android:paddingTop="2dp"
+        android:visibility="gone" />
+
+    <!-- Spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <!-- Featured cards row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Android version card -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/about_card_bg"
+            android:backgroundTint="@*android:color/materialColorPrimaryContainer"
+            android:orientation="vertical"
+            android:padding="@dimen/about_header_card_padding"
+            android:layout_marginEnd="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/firmware_version"
+                android:textColor="@*android:color/materialColorOnPrimaryContainer"
+                android:alpha="0.7"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/header_android_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@*android:color/materialColorOnPrimaryContainer"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <!-- XOS version card -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/about_card_bg"
+            android:backgroundTint="@*android:color/materialColorSecondaryContainer"
+            android:orientation="vertical"
+            android:padding="@dimen/about_header_card_padding"
+            android:layout_marginStart="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/custom_rom_version"
+                android:textColor="@*android:color/materialColorOnSecondaryContainer"
+                android:alpha="0.7"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/header_xos_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@*android:color/materialColorOnSecondaryContainer"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <!-- Info group card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/about_card_bg"
+        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
+        android:orientation="vertical">
+
+        <!-- Security patch row -->
+        <LinearLayout
+            android:id="@+id/card_security_patch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/about_info_row_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/security_patch"
+                android:textColor="@*android:color/materialColorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/header_security_patch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:id="@+id/divider_after_security"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@*android:color/materialColorOutlineVariant"
+            android:layout_marginStart="@dimen/about_info_row_padding"
+            android:layout_marginEnd="@dimen/about_info_row_padding" />
+
+        <!-- Vendor security patch row (hidden by default) -->
+        <LinearLayout
+            android:id="@+id/row_vendor_security_patch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/about_info_row_padding"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/vendor_security_patch"
+                android:textColor="@*android:color/materialColorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/header_vendor_security_patch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+
+        <!-- Divider after vendor patch (hidden by default) -->
+        <View
+            android:id="@+id/divider_after_vendor"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@*android:color/materialColorOutlineVariant"
+            android:layout_marginStart="@dimen/about_info_row_padding"
+            android:layout_marginEnd="@dimen/about_info_row_padding"
+            android:visibility="gone" />
+
+        <!-- Kernel row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/about_info_row_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/kernel_version"
+                android:textColor="@*android:color/materialColorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/header_kernel_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@*android:color/materialColorOutlineVariant"
+            android:layout_marginStart="@dimen/about_info_row_padding"
+            android:layout_marginEnd="@dimen/about_info_row_padding" />
+
+        <!-- Build version row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/about_info_row_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/custom_rom_build_version"
+                android:textColor="@*android:color/materialColorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/header_build_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@*android:color/materialColorOutlineVariant"
+            android:layout_marginStart="@dimen/about_info_row_padding"
+            android:layout_marginEnd="@dimen/about_info_row_padding" />
+
+        <!-- Build number row -->
+        <LinearLayout
+            android:id="@+id/card_build_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/about_info_row_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/build_number"
+                android:textColor="@*android:color/materialColorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/header_build_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@*android:color/materialColorOutlineVariant"
+            android:layout_marginStart="@dimen/about_info_row_padding"
+            android:layout_marginEnd="@dimen/about_info_row_padding" />
+
+        <!-- SELinux row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/about_info_row_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/selinux_status"
+                android:textColor="@*android:color/materialColorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/header_selinux_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@*android:color/materialColorOutlineVariant"
+            android:layout_marginStart="@dimen/about_info_row_padding"
+            android:layout_marginEnd="@dimen/about_info_row_padding" />
+
+        <!-- Uptime row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/about_info_row_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/status_up_time"
+                android:textColor="@*android:color/materialColorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/header_uptime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingTop="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_header_card_margin" />
+
+    <!-- More button -->
+    <LinearLayout
+        android:id="@+id/card_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/about_card_bg"
+        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/about_header_card_padding">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/about_phone_more"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="›"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

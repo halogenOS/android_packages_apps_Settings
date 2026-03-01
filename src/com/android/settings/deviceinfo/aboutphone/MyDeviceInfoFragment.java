@@ -16,68 +16,73 @@
 
 package com.android.settings.deviceinfo.aboutphone;
 
-import static androidx.core.content.ContextCompat.getMainExecutor;
-
-import android.app.Activity;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.UserInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.os.SELinux;
 import android.os.Bundle;
-import android.os.UserManager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.os.SystemProperties;
+import android.text.TextUtils;
+import android.text.format.DateFormat;
+import android.text.format.DateUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.preference.PreferenceScreen;
+import androidx.preference.Preference;
 
 import com.android.settings.R;
-import com.android.settings.Utils;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.deviceinfo.BluetoothAddressPreferenceController;
 import com.android.settings.deviceinfo.BuildNumberPreferenceController;
-import com.android.settings.deviceinfo.DeviceNamePreferenceController;
-import com.android.settings.deviceinfo.FccEquipmentIdPreferenceController;
-import com.android.settings.deviceinfo.FeedbackPreferenceController;
-import com.android.settings.deviceinfo.IpAddressPreferenceController;
-import com.android.settings.deviceinfo.ManualPreferenceController;
-import com.android.settings.deviceinfo.RegulatoryInfoPreferenceController;
-import com.android.settings.deviceinfo.SafetyInfoPreferenceController;
-import com.android.settings.deviceinfo.UptimePreferenceController;
-import com.android.settings.deviceinfo.WifiMacAddressPreferenceController;
-import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
-import com.android.settings.deviceinfo.simstatus.EidStatus;
-import com.android.settings.deviceinfo.simstatus.SimEidPreferenceController;
-import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
-import com.android.settings.deviceinfo.simstatus.SlotSimStatus;
-import com.android.settings.flags.Flags;
 import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settings.widget.EntityHeaderController;
+import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.LayoutPreference;
 
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.function.Consumer;
+import java.util.Locale;
 
 @SearchIndexable
-public class MyDeviceInfoFragment extends DashboardFragment
-        implements DeviceNamePreferenceController.DeviceNamePreferenceHost {
+public class MyDeviceInfoFragment extends DashboardFragment {
 
     private static final String LOG_TAG = "MyDeviceInfoFragment";
-    private static final String KEY_EID_INFO = "eid_info";
-    private static final String KEY_MY_DEVICE_INFO_HEADER = "my_device_info_header";
+    private static final String KEY_HALOGENOS_ABOUT_HEADER = "halogenos_about_header";
+    private static final Uri SECURITY_BULLETIN_URI = Uri.parse(
+            "https://source.android.com/docs/security/bulletin/");
 
     private BuildNumberPreferenceController mBuildNumberPreferenceController;
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
+    private TextView mUptimeView;
 
-    private DeviceInfoViewModel mDeviceInfoViewModel;
+    private final Runnable mUptimeUpdater = new Runnable() {
+        @Override
+        public void run() {
+            if (mUptimeView != null) {
+                long elapsedMs = SystemClock.elapsedRealtime();
+                long uptimeMs = SystemClock.uptimeMillis();
+                String uptime = DateUtils.formatElapsedTime(elapsedMs / 1000);
+                int deepSleepPct = elapsedMs > 0
+                        ? (int) ((elapsedMs - uptimeMs) * 100 / elapsedMs) : 0;
+                mUptimeView.setText(uptime + " (" + getString(R.string.deep_sleep)
+                        + ": " + deepSleepPct + "%)");
+            }
+            mHandler.postDelayed(this, 1000);
+        }
+    };
 
     @Override
     public int getMetricsCategory() {
@@ -92,37 +97,29 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        use(DeviceNamePreferenceController.class).setHost(this /* parent */);
         mBuildNumberPreferenceController = use(BuildNumberPreferenceController.class);
         mBuildNumberPreferenceController.setHost(this /* parent */);
     }
 
     @Override
-    public void onCreate(@Nullable Bundle icicle) {
-        super.onCreate(icicle);
-        mDeviceInfoViewModel = new ViewModelProvider(getActivity()).get(DeviceInfoViewModel.class);
-    }
-
-    @Override
-    protected @NonNull Set<String> getPreferenceKeysInHierarchy() {
-        Set<String> keys = super.getPreferenceKeysInHierarchy();
-        // add async preference key manually
-        keys.add(KEY_EID_INFO);
-        return keys;
-    }
-
-    @Override
-    protected void onPreferenceScreenCreatedFromResource(
-            @NonNull PreferenceScreen preferenceScreen) {
-        if (isCatalystEnabled()) {
-            // remove the preference created from resource to avoid duplicated key
-            preferenceScreen.removePreferenceRecursively(KEY_EID_INFO);
-        }
-    }
-
-    @Override
     public void onStart() {
         super.onStart();
+        Preference buildPref = findPreference("build_number");
+        if (buildPref != null) {
+            buildPref.setVisible(false);
+        }
+        Preference morePref = findPreference("about_phone_more");
+        if (morePref != null) {
+            morePref.setVisible(false);
+        }
+        initAboutHeader();
+        mHandler.post(mUptimeUpdater);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mHandler.removeCallbacks(mUptimeUpdater);
     }
 
     @Override
@@ -137,69 +134,12 @@ public class MyDeviceInfoFragment extends DashboardFragment
 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, this /* fragment */, getSettingsLifecycle());
+        return buildPreferenceControllers(context, getSettingsLifecycle());
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
-            Context context, MyDeviceInfoFragment fragment, Lifecycle lifecycle) {
-        // disable catalyst for settings search (i.e. fragment is null)
-        boolean isCatalystEnabled = Flags.catalystMyDeviceInfoPrefScreen() && fragment != null;
-        final List<AbstractPreferenceController> controllers = new ArrayList<>();
-
-        final Executor executor = (fragment == null) ? getMainExecutor(context) :
-                Executors.newSingleThreadExecutor();
-        androidx.lifecycle.Lifecycle lifecycleObject = (fragment == null) ? null :
-                fragment.getLifecycle();
-        final SlotSimStatus slotSimStatus = new SlotSimStatus(context, executor, lifecycleObject);
-
-        controllers.add(new IpAddressPreferenceController(context, lifecycle));
-        controllers.add(new WifiMacAddressPreferenceController(context, lifecycle));
-        controllers.add(new BluetoothAddressPreferenceController(context, lifecycle));
-        controllers.add(new RegulatoryInfoPreferenceController(context));
-        controllers.add(new SafetyInfoPreferenceController(context));
-        controllers.add(new ManualPreferenceController(context));
-        controllers.add(new FeedbackPreferenceController(fragment, context));
-        controllers.add(new FccEquipmentIdPreferenceController(context));
-        controllers.add(new UptimePreferenceController(context, lifecycle));
-
-        Consumer<String> imeiInfoList = imeiKey -> {
-            if (Flags.catalystMyDeviceInfoPrefScreen()) {
-                return;
-            }
-            ImeiInfoPreferenceController imeiRecord =
-                    new ImeiInfoPreferenceController(context, imeiKey);
-            imeiRecord.init(fragment, slotSimStatus);
-            controllers.add(imeiRecord);
-        };
-
-        if (fragment != null) {
-            imeiInfoList.accept(ImeiInfoPreferenceController.DEFAULT_KEY);
-        }
-
-        for (int slotIndex = 0; slotIndex < slotSimStatus.size(); slotIndex++) {
-            SimStatusPreferenceController slotRecord =
-                    new SimStatusPreferenceController(context,
-                            slotSimStatus.getPreferenceKey(slotIndex));
-            slotRecord.init(fragment, slotSimStatus);
-            controllers.add(slotRecord);
-
-            if (fragment != null) {
-                imeiInfoList.accept(ImeiInfoPreferenceController.DEFAULT_KEY + (1 + slotIndex));
-            }
-        }
-
-        if (!isCatalystEnabled) {
-            EidStatus eidStatus = new EidStatus(slotSimStatus, context, executor);
-            SimEidPreferenceController simEid = new SimEidPreferenceController(context,
-                    KEY_EID_INFO);
-            simEid.init(slotSimStatus, eidStatus);
-            controllers.add(simEid);
-        }
-
-        if (executor instanceof ExecutorService) {
-            ((ExecutorService) executor).shutdown();
-        }
-        return controllers;
+            Context context, Lifecycle lifecycle) {
+        return new ArrayList<>();
     }
 
     @Override
@@ -210,64 +150,146 @@ public class MyDeviceInfoFragment extends DashboardFragment
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void initHeader() {
-        // TODO: Migrate into its own controller.
-        final LayoutPreference headerPreference =
-                getPreferenceScreen().findPreference(KEY_MY_DEVICE_INFO_HEADER);
-        final boolean shouldDisplayHeader = getContext().getResources().getBoolean(
-                R.bool.config_show_device_header_in_device_info);
-        headerPreference.setVisible(shouldDisplayHeader);
-        if (!shouldDisplayHeader) {
+    private void initAboutHeader() {
+        final LayoutPreference headerPref =
+                getPreferenceScreen().findPreference(KEY_HALOGENOS_ABOUT_HEADER);
+        if (headerPref == null) {
             return;
         }
-        final View headerView = headerPreference.findViewById(R.id.entity_header);
-        final Activity context = getActivity();
-        final Bundle bundle = getArguments();
-        final EntityHeaderController controller = EntityHeaderController
-                .newInstance(context, this, headerView)
-                .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
-                        EntityHeaderController.ActionType.ACTION_NONE);
 
-        // TODO: There may be an avatar setting action we can use here.
-        final int iconId = bundle != null ? bundle.getInt("icon_id", 0) : 0;
-        if (iconId == 0) {
-            final UserManager userManager = (UserManager) getActivity().getSystemService(
-                    Context.USER_SERVICE);
-            final UserInfo info = Utils.getExistingUser(userManager,
-                    android.os.Process.myUserHandle());
-            controller.setLabel(info.name);
-            controller.setIcon(
-                    com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
-        }
+        // Device name
+        setText(headerPref, R.id.header_device_name, Build.MODEL);
 
-        controller.done(true /* rebindActions */);
-    }
-
-    @Override
-    public void showDeviceNameWarningDialog(String deviceName) {
-        mDeviceInfoViewModel.setDeviceName(deviceName);
-        DeviceNameWarningDialog.show(this);
-    }
-
-    public void onSetDeviceNameConfirm(boolean confirm) {
-        if (!isCatalystEnabled() || !Flags.catalystAboutPhoneDeviceName()) {
-            final DeviceNamePreferenceController controller = use(
-                    DeviceNamePreferenceController.class);
-            controller.updateDeviceName(confirm);
-        } else {
-            if (confirm) {
-                final String deviceName = mDeviceInfoViewModel.getDeviceName();
-                if (deviceName != null) {
-                    UtilsKt.updateDeviceName(getActivity(), deviceName);
-                }
+        // Maintainer (conditionally visible)
+        String maintainer = getMaintainer();
+        if (!TextUtils.isEmpty(maintainer)) {
+            TextView maintainerView = headerPref.findViewById(R.id.header_maintainer);
+            if (maintainerView != null) {
+                maintainerView.setText(getString(R.string.maintained_by, maintainer));
+                maintainerView.setVisibility(View.VISIBLE);
             }
         }
-        mDeviceInfoViewModel.clearDeviceNme();
+
+        // Android version
+        setText(headerPref, R.id.header_android_version,
+                Build.VERSION.RELEASE_OR_PREVIEW_DISPLAY);
+
+        // XOS version
+        setText(headerPref, R.id.header_xos_version,
+                SystemProperties.get("ro.custom.display.version", Build.DISPLAY));
+
+        // Security patch (clickable → opens security bulletin)
+        String securityPatch = DeviceInfoUtils.getSecurityPatch();
+        if (!TextUtils.isEmpty(securityPatch)) {
+            setText(headerPref, R.id.header_security_patch, securityPatch);
+            View securityRow = headerPref.findViewById(R.id.card_security_patch);
+            if (securityRow != null) {
+                securityRow.setOnClickListener(v -> openSecurityBulletin());
+            }
+        }
+
+        // Vendor security patch (conditionally visible)
+        String vendorPatch = getVendorSecurityPatch();
+        if (!TextUtils.isEmpty(vendorPatch)) {
+            setVisible(headerPref, R.id.row_vendor_security_patch);
+            setVisible(headerPref, R.id.divider_after_vendor);
+            setText(headerPref, R.id.header_vendor_security_patch, vendorPatch);
+        }
+
+        // Kernel version
+        setText(headerPref, R.id.header_kernel_version,
+                DeviceInfoUtils.getFormattedKernelVersion(getContext()));
+
+        // Build version
+        setText(headerPref, R.id.header_build_version,
+                SystemProperties.get("ro.custom.version", ""));
+
+        // Build number (clickable → dev mode tap counter)
+        setText(headerPref, R.id.header_build_number, Build.DISPLAY);
+        View buildNumberRow = headerPref.findViewById(R.id.card_build_number);
+        if (buildNumberRow != null) {
+            buildNumberRow.setOnClickListener(v -> {
+                Preference buildPref = findPreference("build_number");
+                if (buildPref != null) {
+                    buildPref.performClick();
+                }
+            });
+        }
+
+        // SELinux status
+        setText(headerPref, R.id.header_selinux_status, getSELinuxStatus());
+
+        // Uptime
+        mUptimeView = headerPref.findViewById(R.id.header_uptime);
+
+        // More button
+        View moreCard = headerPref.findViewById(R.id.card_more);
+        if (moreCard != null) {
+            moreCard.setOnClickListener(v -> {
+                Preference morePref = findPreference("about_phone_more");
+                if (morePref != null) {
+                    morePref.performClick();
+                }
+            });
+        }
+    }
+
+    private void setText(LayoutPreference pref, int viewId, CharSequence text) {
+        TextView tv = pref.findViewById(viewId);
+        if (tv != null) {
+            tv.setText(text);
+        }
+    }
+
+    private void setVisible(LayoutPreference pref, int viewId) {
+        View v = pref.findViewById(viewId);
+        if (v != null) {
+            v.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void openSecurityBulletin() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, SECURITY_BULLETIN_URI);
+        PackageManager pm = getContext().getPackageManager();
+        if (!pm.queryIntentActivities(intent, 0).isEmpty()) {
+            startActivity(intent);
+        }
+    }
+
+    private static String getMaintainer() {
+        String encoded = SystemProperties.get("ro.custom.build.device.maintainer", "");
+        if (TextUtils.isEmpty(encoded)) return "";
+        try {
+            return new String(Base64.getUrlDecoder().decode(encoded), StandardCharsets.UTF_8);
+        } catch (IllegalArgumentException e) {
+            return "";
+        }
+    }
+
+    private String getSELinuxStatus() {
+        if (!SELinux.isSELinuxEnabled()) {
+            return getString(R.string.selinux_status_disabled);
+        } else if (!SELinux.isSELinuxEnforced()) {
+            return getString(R.string.selinux_status_permissive);
+        }
+        return getString(R.string.selinux_status_enforcing);
+    }
+
+    private static String getVendorSecurityPatch() {
+        String patch = SystemProperties.get("ro.vendor.build.security_patch", "");
+        if (TextUtils.isEmpty(patch)) return "";
+        try {
+            String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
+            return DateFormat.format(format,
+                    new SimpleDateFormat("yyyy-MM-dd").parse(patch)).toString();
+        } catch (ParseException e) {
+            return patch;
+        }
     }
 
     @Override
     public @Nullable String getPreferenceScreenBindingKey(@NonNull Context context) {
-        return MyDeviceInfoScreen.KEY;
+        return null;
     }
 
     /**
@@ -279,8 +301,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
                 @Override
                 public List<AbstractPreferenceController> createPreferenceControllers(
                         Context context) {
-                    return buildPreferenceControllers(context, null /* fragment */,
-                            null /* lifecycle */);
+                    return buildPreferenceControllers(context, null /* lifecycle */);
                 }
             };
 }
