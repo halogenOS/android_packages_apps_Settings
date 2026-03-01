@@ -16,4 +16,11 @@
     <dimen name="about_header_section_margin">10dp</dimen>
     <!-- Margin on the inner side of each version card, so the gap between them is twice this -->
     <dimen name="about_version_card_margin">4dp</dimen>
+    <!-- Space between a line of text and the line above it -->
+    <dimen name="about_header_line_spacing">2dp</dimen>
+    <dimen name="about_info_icon_size">36dp</dimen>
+    <dimen name="about_info_icon_padding">8dp</dimen>
+    <dimen name="about_info_icon_radius">10dp</dimen>
+    <!-- Space between the icon of a row and its label -->
+    <dimen name="about_info_text_margin">12dp</dimen>
 </resources>

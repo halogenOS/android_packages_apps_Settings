@@ -7,22 +7,42 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
     android:padding="@dimen/about_info_row_padding">
 
-    <TextView
-        android:id="@android:id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@*android:color/materialColorOnSurfaceVariant"
-        android:textSize="12sp" />
+    <ImageView
+        android:id="@android:id/icon"
+        android:layout_width="@dimen/about_info_icon_size"
+        android:layout_height="@dimen/about_info_icon_size"
+        android:background="@drawable/about_icon_bg"
+        android:backgroundTint="@*android:color/materialColorSecondaryContainer"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/about_info_icon_padding"
+        android:scaleType="centerInside"
+        android:tint="@*android:color/materialColorOnSecondaryContainer" />
 
-    <TextView
-        android:id="@android:id/summary"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="2dp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:layout_marginStart="@dimen/about_info_text_margin"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@android:id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@*android:color/materialColorOnSurfaceVariant"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@android:id/summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/about_header_line_spacing"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </LinearLayout>

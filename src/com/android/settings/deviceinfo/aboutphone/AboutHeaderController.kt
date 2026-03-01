@@ -7,12 +7,13 @@ import android.content.Context
 import android.content.Intent
 import android.icu.text.NumberFormat
 import android.os.Build
-import android.os.SELinux
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -35,7 +36,6 @@ import com.android.settings.deviceinfo.firmwareversion.SimpleBuildNumberPreferen
 import com.android.settings.deviceinfo.firmwareversion.VendorSecurityPatchLevelPreference
 import com.android.settings.deviceinfo.firmwareversion.deviceMaintainers
 import com.android.settings.utils.hasActivityFor
-import com.android.settingslib.metadata.PreferenceAvailabilityProvider
 import com.android.settingslib.metadata.PreferenceMetadata
 import com.android.settingslib.metadata.getPreferenceSummary
 import com.android.settingslib.metadata.getPreferenceTitle
@@ -76,18 +76,31 @@ class AboutHeaderController(context: Context, key: String) :
 
         val infoCard: ViewGroup = header.findViewById(R.id.info_card)
         val securityPatch = SecurityPatchLevelPreference()
-        infoCard.addRow(securityPatch)?.startOnClick(securityPatch.intent(mContext))
-        infoCard.addRow(VendorSecurityPatchLevelPreference())
-        infoCard.addRow(KernelVersionPreference())
-        infoCard.addRow(CustomRomBuildVersionPreference())
-        infoCard.addRow(SimpleBuildNumberPreference())?.setOnClickListener {
-            buildNumber.performClick()
+        if (securityPatch.isAvailable(mContext)) {
+            infoCard.addRow(R.drawable.ic_about_security).apply {
+                show(securityPatch)
+                startOnClick(securityPatch.intent(mContext))
+            }
         }
-        infoCard.addRow(mContext.getText(R.string.selinux_status), mContext.getText(selinuxStatus))
-        uptime =
-            infoCard
-                .addRow(mContext.getText(R.string.status_up_time), formatUptime())
-                .requireViewById(android.R.id.summary)
+        val vendorSecurityPatch = VendorSecurityPatchLevelPreference()
+        if (vendorSecurityPatch.isAvailable(mContext)) {
+            infoCard.addRow(R.drawable.ic_about_vendor_security).show(vendorSecurityPatch)
+        }
+        infoCard.addRow(R.drawable.ic_about_kernel).show(KernelVersionPreference())
+        infoCard.addRow(R.drawable.ic_about_build).show(CustomRomBuildVersionPreference())
+        infoCard.addRow(R.drawable.ic_about_build_number).apply {
+            show(SimpleBuildNumberPreference())
+            setOnClickListener { buildNumber.performClick() }
+        }
+        infoCard
+            .addRow(R.drawable.ic_about_selinux)
+            .show(
+                title = mContext.getText(R.string.selinux_status),
+                summary = mContext.getText(SelinuxMode.current().label),
+            )
+        val uptimeRow = infoCard.addRow(R.drawable.ic_about_uptime)
+        uptimeRow.show(title = mContext.getText(R.string.status_up_time), summary = formatUptime())
+        uptime = uptimeRow.requireViewById(android.R.id.summary)
 
         header.findViewById<View>(R.id.more_card).setOnClickListener {
             open(MyDeviceInfoMoreFragment::class, R.string.about_phone_more)
@@ -137,15 +150,6 @@ class AboutHeaderController(context: Context, key: String) :
             .launch()
 
     companion object {
-        @get:StringRes
-        private val selinuxStatus: Int
-            get() =
-                when {
-                    !SELinux.isSELinuxEnabled() -> R.string.selinux_status_disabled
-                    !SELinux.isSELinuxEnforced() -> R.string.selinux_status_permissive
-                    else -> R.string.selinux_status_enforcing
-                }
-
         private fun View.show(title: CharSequence?, summary: CharSequence?) {
             requireViewById<TextView>(android.R.id.title).text = title
             requireViewById<TextView>(android.R.id.summary).text = summary
@@ -154,21 +158,10 @@ class AboutHeaderController(context: Context, key: String) :
         private fun View.show(metadata: PreferenceMetadata) =
             show(metadata.getPreferenceTitle(context), metadata.getPreferenceSummary(context))
 
-        /** Adds a row that shows [title] above [summary] to this card, and returns the row. */
-        private fun ViewGroup.addRow(title: CharSequence?, summary: CharSequence?): View =
+        private fun ViewGroup.addRow(@DrawableRes icon: Int): View =
             LayoutInflater.from(context).inflate(R.layout.about_device_info_row, this, false).also {
-                it.show(title, summary)
+                it.requireViewById<ImageView>(android.R.id.icon).setImageResource(icon)
                 addView(it)
-            }
-
-        /**
-         * Adds the row of [metadata] to this card unless it is unavailable, and returns the row.
-         */
-        private fun ViewGroup.addRow(metadata: PreferenceMetadata): View? =
-            if ((metadata as? PreferenceAvailabilityProvider)?.isAvailable(context) == false) {
-                null
-            } else {
-                addRow(metadata.getPreferenceTitle(context), metadata.getPreferenceSummary(context))
             }
     }
 }
