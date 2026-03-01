@@ -5,4 +5,5 @@
     <dimen name="about_header_card_radius">16dp</dimen>
     <dimen name="about_header_card_margin">6dp</dimen>
     <dimen name="about_info_row_padding">12dp</dimen>
+    <dimen name="about_header_name_bottom_padding">12dp</dimen>
 </resources>

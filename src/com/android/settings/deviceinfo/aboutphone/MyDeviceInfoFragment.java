@@ -158,7 +158,10 @@ public class MyDeviceInfoFragment extends DashboardFragment {
         }
 
         // Device name
-        setText(headerPref, R.id.header_device_name, Build.MODEL);
+        TextView deviceNameView = headerPref.findViewById(R.id.header_device_name);
+        if (deviceNameView != null) {
+            deviceNameView.setText(Build.MODEL);
+        }
 
         // Maintainer (conditionally visible)
         String maintainer = getMaintainer();
@@ -168,6 +171,11 @@ public class MyDeviceInfoFragment extends DashboardFragment {
                 maintainerView.setText(getString(R.string.maintained_by, maintainer));
                 maintainerView.setVisibility(View.VISIBLE);
             }
+        } else if (deviceNameView != null) {
+            // No maintainer — add bottom padding to device name to match maintainer spacing
+            int bottomPad = getResources().getDimensionPixelSize(R.dimen.about_header_name_bottom_padding);
+            deviceNameView.setPadding(deviceNameView.getPaddingLeft(), deviceNameView.getPaddingTop(),
+                    deviceNameView.getPaddingRight(), bottomPad);
         }
 
         // Android version
