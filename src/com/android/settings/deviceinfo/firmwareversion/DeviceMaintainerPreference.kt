@@ -46,10 +46,9 @@ class DeviceMaintainerPreference :
         super.bind(preference, metadata)
         preference.isCopyingEnabled = true
     }
-
-    private val Context.deviceMaintainers: List<String>
-        get() =
-            resources.getStringArray(R.array.device_info_device_maintainers).filter {
-                it.isNotBlank()
-            }
 }
+
+/** The names of the people who maintain the build for this device, empty when none are set. */
+internal val Context.deviceMaintainers: List<String>
+    get() =
+        resources.getStringArray(R.array.device_info_device_maintainers).filter { it.isNotBlank() }

@@ -21,6 +21,8 @@ import android.util.ArrayMap;
 import com.android.settings.backup.UserBackupSettingsActivity;
 import com.android.settings.connecteddevice.ConnectedDeviceDashboardFragment;
 import com.android.settings.connecteddevice.usb.UsbDetailsFragment;
+import com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment;
+import com.android.settings.deviceinfo.aboutphone.MyDeviceInfoMoreFragment;
 import com.android.settings.fuelgauge.batteryusage.PowerUsageAdvanced;
 import com.android.settings.fuelgauge.batteryusage.PowerUsageSummary;
 import com.android.settings.gestures.GestureNavigationSettingsFragment;
@@ -55,5 +57,7 @@ public class CustomSiteMapRegistry {
                 SystemDashboardFragment.class.getName());
         CUSTOM_SITE_MAP.put(GestureNavigationSettingsFragment.class.getName(),
                 SystemNavigationGestureSettings.class.getName());
+        CUSTOM_SITE_MAP.put(MyDeviceInfoMoreFragment.class.getName(),
+                MyDeviceInfoFragment.class.getName());
     }
 }

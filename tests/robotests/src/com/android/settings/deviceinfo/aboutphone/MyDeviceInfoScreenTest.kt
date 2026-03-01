@@ -32,7 +32,8 @@ import org.robolectric.annotation.Config
 
 @Config(shadows = [ShadowUserManager::class])
 class MyDeviceInfoScreenTest : SettingsCatalystTestCase() {
-    override val preferenceScreenCreator = MyDeviceInfoScreen()
+    // MyDeviceInfoMoreFragment binds the rows of About phone that Catalyst provides.
+    override val preferenceScreenCreator = MyDeviceInfoMoreScreen()
 
     override val flagName: String
         get() = Flags.FLAG_CATALYST_MY_DEVICE_INFO_PREF_SCREEN
@@ -53,13 +54,13 @@ class MyDeviceInfoScreenTest : SettingsCatalystTestCase() {
     fun getSummary_deviceNameNotSet_shouldReturnDeviceModel() {
         SettingsGlobalStore.get(appContext).setString(DEVICE_NAME, null)
 
-        assertThat(preferenceScreenCreator.getSummary(appContext)).isEqualTo(Build.MODEL)
+        assertThat(MyDeviceInfoScreen().getSummary(appContext)).isEqualTo(Build.MODEL)
     }
 
     @Test
     fun getSummary_deviceNameSet_shouldReturnDeviceName() {
         SettingsGlobalStore.get(appContext).setString(DEVICE_NAME, "Test")
 
-        assertThat(preferenceScreenCreator.getSummary(appContext)).isEqualTo("Test")
+        assertThat(MyDeviceInfoScreen().getSummary(appContext)).isEqualTo("Test")
     }
 }

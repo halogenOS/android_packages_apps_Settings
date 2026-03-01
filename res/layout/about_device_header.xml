@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The halogenOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/about_header_padding"
+    android:paddingBottom="@dimen/about_header_padding">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_header_logo_height"
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
+        android:scaleType="centerInside"
+        android:src="@drawable/halogenos_banner" />
+
+    <TextView
+        android:id="@+id/device_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:singleLine="true"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/maintainers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="2dp"
+        android:textColor="@*android:color/materialColorOnSurfaceVariant"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/about_header_section_margin"
+        android:orientation="horizontal">
+
+        <include
+            android:id="@+id/android_version_card"
+            layout="@layout/about_device_version_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/about_version_card_margin"
+            android:layout_weight="1"
+            android:theme="@style/ThemeOverlay.AboutVersionCard.Primary" />
+
+        <include
+            android:id="@+id/rom_version_card"
+            layout="@layout/about_device_version_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/about_version_card_margin"
+            android:layout_weight="1"
+            android:theme="@style/ThemeOverlay.AboutVersionCard.Secondary" />
+    </LinearLayout>
+
+    <!-- The rows of about_device_info_row are added in code. -->
+    <LinearLayout
+        android:id="@+id/info_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/about_header_section_margin"
+        android:background="@drawable/about_card_bg"
+        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
+        android:clipToOutline="true"
+        android:divider="@drawable/about_info_divider"
+        android:dividerPadding="@dimen/about_info_row_padding"
+        android:orientation="vertical"
+        android:showDividers="middle" />
+
+    <LinearLayout
+        android:id="@+id/more_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/about_header_card_margin"
+        android:background="@drawable/about_card_bg"
+        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
+        android:clipToOutline="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/about_header_card_padding">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/about_phone_more"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_chevron_right_24dp" />
+    </LinearLayout>
+</LinearLayout>

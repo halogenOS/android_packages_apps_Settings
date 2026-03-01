@@ -20,20 +20,18 @@ package com.android.settings.deviceinfo.firmwareversion;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.preference.Preference;
 
 import com.android.settings.core.BasePreferenceController;
+import com.android.settings.utils.IntentUtilsKt;
 import com.android.settingslib.DeviceInfoUtils;
 
 public class SecurityPatchLevelPreferenceController extends BasePreferenceController {
 
     private static final String TAG = "SecurityPatchCtrl";
-    private static final Uri INTENT_URI_DATA = Uri.parse(
-            "https://source.android.com/docs/security/bulletin/");
 
     private final PackageManager mPackageManager;
     private final String mCurrentPatch;
@@ -61,10 +59,8 @@ public class SecurityPatchLevelPreferenceController extends BasePreferenceContro
             return false;
         }
 
-        final Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setData(INTENT_URI_DATA);
-        if (mPackageManager.queryIntentActivities(intent, 0).isEmpty()) {
+        final Intent intent = new SecurityPatchLevelPreference().intent(mContext);
+        if (!IntentUtilsKt.hasActivityFor(mPackageManager, intent)) {
             // Don't send out the intent to stop crash
             Log.w(TAG, "queryIntentActivities() returns empty");
             return true;

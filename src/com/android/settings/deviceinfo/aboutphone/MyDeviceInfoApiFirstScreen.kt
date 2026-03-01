@@ -129,5 +129,5 @@ class MyDeviceInfoApiFirstScreen :
 //                 MyDeviceInfoScreen.kt,
 //                 ../DeviceNamePreferenceController.java,
 //                 ../BuildNumberPreferenceController.java,
-//                 ../UptimePreferenceController.java,
+//                 AboutHeaderController.kt,
 //                 ../PhoneNumberPreferenceController.java)

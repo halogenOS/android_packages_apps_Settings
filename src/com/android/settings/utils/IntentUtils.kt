@@ -19,6 +19,7 @@ package com.android.settings.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import com.android.settings.SettingsActivity.EXTRA_FRAGMENT_ARG_KEY
 import com.android.settings.SettingsLaunchpadActivity
@@ -134,6 +135,9 @@ fun Intent.highlightPreference(keyParameters: ValidatedKeyParameters, key: Strin
     putExtra(EXTRA_BINDING_SCREEN_ARGS, keyParameters.toBundle())
     if (key != null) putExtra(EXTRA_FRAGMENT_ARG_KEY, key)
 }
+
+/** Returns whether an activity can handle [intent]. */
+fun PackageManager.hasActivityFor(intent: Intent) = queryIntentActivities(intent, 0).isNotEmpty()
 
 /** Sets the intent extra to highlight given preference. */
 fun Intent.highlightPreference(key: String?) {

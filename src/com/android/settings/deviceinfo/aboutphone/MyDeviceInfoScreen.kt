@@ -25,15 +25,8 @@ import androidx.fragment.app.Fragment
 import com.android.settings.R
 import com.android.settings.Settings.MyDeviceInfoActivity
 import com.android.settings.core.PreferenceScreenMixin
-import com.android.settings.deviceinfo.firmwareversion.FirmwareVersionScreen
-import com.android.settings.deviceinfo.hardwareinfo.HardwareInfoScreen
-import com.android.settings.deviceinfo.imei.ImeiPreference
-import com.android.settings.deviceinfo.imei.getImeiList
-import com.android.settings.deviceinfo.simstatus.SimEidPreference
 import com.android.settings.flags.Flags
 import com.android.settings.utils.makeLaunchIntent
-import com.android.settings.wifi.utils.activeModemCount
-import com.android.settingslib.metadata.PreferenceCategory
 import com.android.settingslib.metadata.PreferenceIconProvider
 import com.android.settingslib.metadata.PreferenceMetadata
 import com.android.settingslib.metadata.PreferenceSummaryProvider
@@ -42,7 +35,6 @@ import com.android.settingslib.metadata.UI_ONLY_PREFERENCE
 import com.android.settingslib.metadata.preferenceHierarchy
 import com.android.settingslib.widget.SettingsThemeHelper.isExpressiveTheme
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import com.android.settingslib.metadata.preferencesapi.PreferencesApiScreen.Companion.APP_FUNCTION_UNCATEGORIZED
 
 // LINT.IfChange
@@ -83,33 +75,14 @@ open class MyDeviceInfoScreen :
     override fun getLaunchIntent(context: Context, metadata: PreferenceMetadata?): Intent? =
         makeLaunchIntent(context, MyDeviceInfoActivity::class.java, metadata?.key)
 
+    // Catalyst binds the Model, EID and IMEI rows on the More page, through MyDeviceInfoMoreScreen.
     override fun getPreferenceHierarchy(context: Context, coroutineScope: CoroutineScope) =
-        preferenceHierarchy(context) {
-            +PreferenceCategory(
-                key = DEVICE_DETAIL_CATEGORY,
-                purpose = R.string.device_detail_category_purpose,
-                title = R.string.my_device_info_device_details_category_title,
-            ) +=
-                {
-                    +HardwareInfoScreen.KEY order 30
-                    addAsync(coroutineScope, Dispatchers.Default) {
-                        +SimEidPreference(context) order 31
-                    }
-                    val activeModemCount = context.activeModemCount
-                    val imeiList = context.getImeiList
-                    for (i in 0 until activeModemCount) {
-                        +ImeiPreference(context, i, activeModemCount, imeiList) order (i + 33)
-                    }
-                    +FirmwareVersionScreen.KEY order 42
-                }
-        }
+        preferenceHierarchy(context) {}
 
     override fun hasCompleteHierarchy() = false
 
     companion object {
         const val KEY = "my_device_info_pref_screen"
-
-        internal const val DEVICE_DETAIL_CATEGORY = "device_detail_category"
     }
 }
 // LINT.ThenChange(MyDeviceInfoFragment.java, MyDeviceInfoApiFirstScreen.kt)

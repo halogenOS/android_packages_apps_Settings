@@ -50,7 +50,7 @@ class SecurityPatchLevelPreference :
     override val title: Int
         get() = R.string.security_patch
 
-    override fun intent(context: Context): Intent? =
+    override fun intent(context: Context): Intent =
         Intent(Intent.ACTION_VIEW)
             .setData(Uri.parse("https://source.android.com/docs/security/bulletin/"))
 

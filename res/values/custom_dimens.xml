@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The halogenOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <dimen name="about_header_padding">16dp</dimen>
+    <dimen name="about_header_card_padding">12dp</dimen>
+    <dimen name="about_header_card_radius">16dp</dimen>
+    <dimen name="about_header_card_margin">6dp</dimen>
+    <dimen name="about_info_row_padding">12dp</dimen>
+    <dimen name="about_header_logo_height">64dp</dimen>
+    <!-- Space above the version cards and above the card of device details -->
+    <dimen name="about_header_section_margin">10dp</dimen>
+    <!-- Margin on the inner side of each version card, so the gap between them is twice this -->
+    <dimen name="about_version_card_margin">4dp</dimen>
+</resources>

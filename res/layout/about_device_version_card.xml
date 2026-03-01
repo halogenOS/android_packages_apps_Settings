@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The halogenOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- The colors come from the theme of the include, see ThemeOverlay.AboutVersionCard. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AboutCard.Clickable"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="?attr/aboutVersionCardColor"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@android:id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:textColor="?attr/aboutVersionCardContentColor"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@android:id/summary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="?attr/aboutVersionCardContentColor"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+</LinearLayout>

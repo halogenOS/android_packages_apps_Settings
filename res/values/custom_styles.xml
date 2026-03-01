@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The halogenOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- A rounded card in the header of About phone, tinted by backgroundTint -->
+    <style name="AboutCard">
+        <item name="android:background">@drawable/about_card_bg</item>
+        <item name="android:clipToOutline">true</item>
+    </style>
+
+    <!-- A card in the header of About phone that opens another page -->
+    <style name="AboutCard.Clickable">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:padding">@dimen/about_header_card_padding</item>
+    </style>
+
+    <style name="ThemeOverlay.AboutVersionCard.Primary" parent="">
+        <item name="aboutVersionCardColor">@*android:color/materialColorPrimaryContainer</item>
+        <item name="aboutVersionCardContentColor">@*android:color/materialColorOnPrimaryContainer</item>
+    </style>
+
+    <style name="ThemeOverlay.AboutVersionCard.Secondary" parent="">
+        <item name="aboutVersionCardColor">@*android:color/materialColorSecondaryContainer</item>
+        <item name="aboutVersionCardContentColor">@*android:color/materialColorOnSecondaryContainer</item>
+    </style>
+</resources>
