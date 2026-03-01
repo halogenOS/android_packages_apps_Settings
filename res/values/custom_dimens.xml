@@ -8,6 +8,8 @@
     <dimen name="about_header_card_padding">12dp</dimen>
     <dimen name="about_header_card_radius">16dp</dimen>
     <dimen name="about_header_card_margin">6dp</dimen>
+    <!-- Gap between two rows of the card of device details -->
+    <dimen name="about_info_divider_height">2dp</dimen>
     <dimen name="about_info_row_padding">12dp</dimen>
     <dimen name="about_header_logo_height">64dp</dimen>
     <!-- Space above the version cards and above the card of device details -->

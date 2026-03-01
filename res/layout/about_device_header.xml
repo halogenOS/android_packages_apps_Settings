@@ -69,29 +69,24 @@
     <!-- The rows of about_device_info_row are added in code. -->
     <LinearLayout
         android:id="@+id/info_card"
+        style="@style/AboutCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/about_header_section_margin"
-        android:background="@drawable/about_card_bg"
-        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
-        android:clipToOutline="true"
+        android:backgroundTint="@*android:color/materialColorSurfaceBright"
         android:divider="@drawable/about_info_divider"
-        android:dividerPadding="@dimen/about_info_row_padding"
         android:orientation="vertical"
         android:showDividers="middle" />
 
     <LinearLayout
         android:id="@+id/more_card"
+        style="@style/AboutCard.Clickable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/about_header_card_margin"
-        android:background="@drawable/about_card_bg"
-        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
-        android:clipToOutline="true"
-        android:foreground="?android:attr/selectableItemBackground"
+        android:backgroundTint="@*android:color/materialColorSurfaceBright"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="@dimen/about_header_card_padding">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
