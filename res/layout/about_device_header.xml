@@ -19,27 +19,35 @@
         android:scaleType="centerInside"
         android:src="@drawable/halogenos_banner" />
 
-    <TextView
-        android:id="@+id/device_name"
+    <!-- The bottom padding is below the device name even when the maintainer line is gone. -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:paddingTop="8dp"
-        android:singleLine="true"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/about_header_name_bottom_padding">
 
-    <TextView
-        android:id="@+id/maintainers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="2dp"
-        android:textColor="@*android:color/materialColorOnSurfaceVariant"
-        android:textSize="13sp"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/device_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingTop="@dimen/about_header_name_top_padding"
+            android:singleLine="true"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/maintainers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/about_header_line_spacing"
+            android:textColor="@*android:color/materialColorOnSurfaceVariant"
+            android:textSize="13sp"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -23,4 +23,8 @@
     <dimen name="about_info_icon_radius">10dp</dimen>
     <!-- Space between the icon of a row and its label -->
     <dimen name="about_info_text_margin">12dp</dimen>
+    <!-- Space between the logo and the device name -->
+    <dimen name="about_header_name_top_padding">20dp</dimen>
+    <!-- Space below the device name and the maintainer line, above the version cards -->
+    <dimen name="about_header_name_bottom_padding">12dp</dimen>
 </resources>
