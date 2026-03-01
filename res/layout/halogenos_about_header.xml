@@ -138,7 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/about_card_bg"
-        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
+        android:backgroundTint="@*android:color/materialColorSurfaceBright"
         android:orientation="vertical">
 
         <!-- Security patch row -->
@@ -170,10 +170,8 @@
         <View
             android:id="@+id/divider_after_security"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@*android:color/materialColorOutlineVariant"
-            android:layout_marginStart="@dimen/about_info_row_padding"
-            android:layout_marginEnd="@dimen/about_info_row_padding" />
+            android:layout_height="2dp"
+            android:background="?android:attr/colorBackground" />
 
         <!-- Vendor security patch row (hidden by default) -->
         <LinearLayout
@@ -205,10 +203,8 @@
         <View
             android:id="@+id/divider_after_vendor"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@*android:color/materialColorOutlineVariant"
-            android:layout_marginStart="@dimen/about_info_row_padding"
-            android:layout_marginEnd="@dimen/about_info_row_padding"
+            android:layout_height="2dp"
+            android:background="?android:attr/colorBackground"
             android:visibility="gone" />
 
         <!-- Kernel row -->
@@ -238,10 +234,8 @@
         <!-- Divider -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@*android:color/materialColorOutlineVariant"
-            android:layout_marginStart="@dimen/about_info_row_padding"
-            android:layout_marginEnd="@dimen/about_info_row_padding" />
+            android:layout_height="2dp"
+            android:background="?android:attr/colorBackground" />
 
         <!-- Build version row -->
         <LinearLayout
@@ -270,10 +264,8 @@
         <!-- Divider -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@*android:color/materialColorOutlineVariant"
-            android:layout_marginStart="@dimen/about_info_row_padding"
-            android:layout_marginEnd="@dimen/about_info_row_padding" />
+            android:layout_height="2dp"
+            android:background="?android:attr/colorBackground" />
 
         <!-- Build number row -->
         <LinearLayout
@@ -303,10 +295,8 @@
         <!-- Divider -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@*android:color/materialColorOutlineVariant"
-            android:layout_marginStart="@dimen/about_info_row_padding"
-            android:layout_marginEnd="@dimen/about_info_row_padding" />
+            android:layout_height="2dp"
+            android:background="?android:attr/colorBackground" />
 
         <!-- SELinux row -->
         <LinearLayout
@@ -335,10 +325,8 @@
         <!-- Divider -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@*android:color/materialColorOutlineVariant"
-            android:layout_marginStart="@dimen/about_info_row_padding"
-            android:layout_marginEnd="@dimen/about_info_row_padding" />
+            android:layout_height="2dp"
+            android:background="?android:attr/colorBackground" />
 
         <!-- Uptime row -->
         <LinearLayout
@@ -377,7 +365,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/about_card_bg"
-        android:backgroundTint="@*android:color/materialColorSurfaceContainerHigh"
+        android:backgroundTint="@*android:color/materialColorSurfaceBright"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:padding="@dimen/about_header_card_padding">
