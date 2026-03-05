@@ -67,7 +67,7 @@ class AboutHeaderController(context: Context, key: String) :
                 "${MyDeviceInfoApiFirstScreen.BUILD_NUMBER_KEY} is missing from my_device_info.xml"
             }
 
-        header.findViewById<TextView>(R.id.device_name).text = Build.MODEL
+        header.findViewById<TextView>(R.id.device_name).text = Build.DEVICE
         header.findViewById<TextView>(R.id.maintainers).showMaintainers()
         header
             .findViewById<View>(R.id.android_version_card)
