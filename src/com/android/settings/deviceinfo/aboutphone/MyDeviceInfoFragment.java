@@ -157,10 +157,10 @@ public class MyDeviceInfoFragment extends DashboardFragment {
             return;
         }
 
-        // Device name
+        // Device name (PRODUCT_DEVICE)
         TextView deviceNameView = headerPref.findViewById(R.id.header_device_name);
         if (deviceNameView != null) {
-            deviceNameView.setText(Build.MODEL);
+            deviceNameView.setText(Build.DEVICE);
         }
 
         // Maintainer (conditionally visible)
