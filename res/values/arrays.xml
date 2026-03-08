@@ -1665,4 +1665,16 @@
         <item>Quick settings</item>
         <item>Lockscreen</item>
     </string-array>
+
+    <!-- LTPO adaptive refresh rate mode entries -->
+    <string-array name="ltpo_mode_entries">
+        <item>@string/ltpo_mode_off</item>
+        <item>@string/ltpo_mode_idle</item>
+        <item>@string/ltpo_mode_vrr</item>
+    </string-array>
+    <string-array name="ltpo_mode_values">
+        <item>off</item>
+        <item>idle</item>
+        <item>vrr</item>
+    </string-array>
 </resources>

@@ -190,6 +190,13 @@
             android:summary="@string/peak_refresh_rate_summary"
             settings:controller="com.android.settings.display.PeakRefreshRatePreferenceController"/>
 
+        <ListPreference
+            android:key="ltpo_mode"
+            android:title="@string/ltpo_mode_title"
+            android:entries="@array/ltpo_mode_entries"
+            android:entryValues="@array/ltpo_mode_values"
+            settings:controller="com.android.settings.display.LtpoModePreferenceController"/>
+
         <SwitchPreferenceCompat
             android:key="show_operator_name"
             android:title="@string/show_operator_name_title"
