@@ -15594,4 +15594,13 @@
     <!-- Search keywords for Human interface device access setting -->
     <string name="keywords_access_hid">hid, human, access, device</string>
     <!-- Access HID end -->
+
+    <!-- LTPO adaptive refresh rate [CHAR LIMIT=NONE] -->
+    <string name="ltpo_mode_title">Adaptive refresh rate (BETA)</string>
+    <string name="ltpo_mode_off">Off</string>
+    <string name="ltpo_mode_idle">Idle only</string>
+    <string name="ltpo_mode_vrr">Match content</string>
+    <string name="ltpo_mode_summary_off">Panel stays at the selected refresh rate</string>
+    <string name="ltpo_mode_summary_idle">Drops to 1 Hz when screen content is idle</string>
+    <string name="ltpo_mode_summary_vrr">Adapts from 1 to 120 Hz based on content</string>
 </resources>
