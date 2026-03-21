@@ -14956,7 +14956,7 @@
     <string name="safety_center_system_component_update_search_terms"></string>
 
     <!-- LTPO adaptive refresh rate [CHAR LIMIT=NONE] -->
-    <string name="ltpo_mode_title">Adaptive refresh rate (BETA)</string>
+    <string name="ltpo_mode_title">Adaptive refresh rate</string>
     <string name="ltpo_mode_off">Off</string>
     <string name="ltpo_mode_idle">Idle only</string>
     <string name="ltpo_mode_vrr">Match content</string>
