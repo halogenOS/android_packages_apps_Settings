@@ -40,7 +40,7 @@
     <PreferenceCategory
         android:key="firmware_extra_category"
         android:selectable="false"
-        android:title="@string/firmware_version">
+        android:title="@string/firmware_information">
 
         <!-- Baseband -->
         <Preference
