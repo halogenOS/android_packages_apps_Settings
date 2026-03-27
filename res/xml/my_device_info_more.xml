@@ -49,7 +49,7 @@
     <PreferenceCategory
         android:key="firmware_extra_category"
         android:selectable="false"
-        android:title="@string/firmware_version">
+        android:title="@string/firmware_information">
 
         <!-- Baseband -->
         <Preference
@@ -70,16 +70,6 @@
             android:selectable="false"
             settings:enableCopying="true"
             settings:controller="com.android.settings.deviceinfo.firmwareversion.BootloaderVersionPreferenceController"/>
-
-        <!-- SELinux -->
-        <Preference
-            android:key="selinux_status"
-            android:order="12"
-            android:title="@string/selinux_status"
-            android:summary="@string/summary_placeholder"
-            settings:enableCopying="true"
-            android:selectable="false"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.SelinuxStatusPreferenceController"/>
     </PreferenceCategory>
 
     <PreferenceCategory

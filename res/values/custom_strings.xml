@@ -6,6 +6,7 @@
     <string name="device_maintainer">Device maintainer(s)</string>
     <string name="maintained_by">Maintained by %s</string>
     <string name="about_phone_more">More</string>
+    <string name="firmware_information">Firmware information</string>
     <string name="deep_sleep">Deep sleep</string>
 
     <!-- [CHAR LIMIT=60] Name of setting that dims the UI further -->
