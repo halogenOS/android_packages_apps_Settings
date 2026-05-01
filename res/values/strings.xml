@@ -297,6 +297,10 @@
 
     <!-- UI debug setting: Disable Bluetooth A2DP hardware offload [CHAR LIMIT=none] -->
     <string name="bluetooth_disable_a2dp_hw_offload">Disable Bluetooth A2DP hardware offload</string>
+    <!-- UI debug setting: Force AAC VBR encoding for Bluetooth A2DP [CHAR LIMIT=none] -->
+    <string name="bluetooth_aac_force_vbr">Force AAC variable bitrate</string>
+    <!-- Summary for force AAC VBR encoding [CHAR LIMIT=none] -->
+    <string name="bluetooth_aac_force_vbr_summary">Force VBR mode even when the sink rejects it during negotiation</string>
     <!-- UI debug setting: Disable Bluetooth LE audio hardware offload [CHAR LIMIT=none] -->
     <string name="bluetooth_disable_le_audio_hw_offload">Disable Bluetooth LE audio hardware offload</string>
     <!-- UI debug setting: Disable Bluetooth hardware offload [CHAR LIMIT=none] -->

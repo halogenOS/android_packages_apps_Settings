@@ -408,6 +408,11 @@
             android:key="bluetooth_disable_a2dp_hw_offload"
             android:title="@string/bluetooth_disable_a2dp_hw_offload" />
 
+        <SwitchPreferenceCompat
+            android:key="bluetooth_aac_force_vbr"
+            android:title="@string/bluetooth_aac_force_vbr"
+            android:summary="@string/bluetooth_aac_force_vbr_summary" />
+
         <ListPreference
             android:key="bluetooth_select_avrcp_version"
             android:title="@string/bluetooth_select_avrcp_version_string"

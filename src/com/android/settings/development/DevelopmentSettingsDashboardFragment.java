@@ -769,6 +769,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new BluetoothLeAudioDeviceDetailsPreferenceController(context));
         controllers.add(new BluetoothLeAudioAllowListPreferenceController(context));
         controllers.add(new BluetoothA2dpHwOffloadPreferenceController(context, fragment));
+        controllers.add(new BluetoothAacForceVbrPreferenceController(context));
         controllers.add(new BluetoothLeAudioHwOffloadPreferenceController(context, fragment));
         controllers.add(new BluetoothMaxConnectedAudioDevicesPreferenceController(context));
         controllers.add(new NfcSnoopLogPreferenceController(context, fragment));
