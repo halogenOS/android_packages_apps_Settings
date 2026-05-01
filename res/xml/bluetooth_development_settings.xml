@@ -127,6 +127,11 @@
             android:title="@string/bluetooth_disable_a2dp_hw_offload" />
 
         <SwitchPreferenceCompat
+            android:key="bluetooth_aac_force_vbr"
+            android:title="@string/bluetooth_aac_force_vbr"
+            android:summary="@string/bluetooth_aac_force_vbr_summary" />
+
+        <SwitchPreferenceCompat
             android:key="bluetooth_hd_audio_settings"
             android:title="@string/bluetooth_profile_a2dp_high_quality_unknown_codec"/>
 

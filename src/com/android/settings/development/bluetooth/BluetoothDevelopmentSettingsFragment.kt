@@ -33,6 +33,7 @@ import com.android.settings.R
 import com.android.settings.dashboard.RestrictedDashboardFragment
 import com.android.settings.development.BluetoothA2dpConfigStore
 import com.android.settings.development.BluetoothA2dpHwOffloadPreferenceController
+import com.android.settings.development.BluetoothAacForceVbrPreferenceController
 import com.android.settings.development.BluetoothAbsoluteVolumePreferenceController
 import com.android.settings.development.BluetoothAvrcpVersionPreferenceController
 import com.android.settings.development.BluetoothDeviceNoNamePreferenceController
@@ -185,6 +186,7 @@ class BluetoothDevelopmentSettingsFragment :
                 BluetoothLeAudioDeviceDetailsPreferenceController(context),
                 BluetoothLeAudioAllowListPreferenceController(context),
                 BluetoothA2dpHwOffloadPreferenceController(context, fragment),
+                BluetoothAacForceVbrPreferenceController(context),
                 BluetoothLeAudioHwOffloadPreferenceController(context, fragment),
                 BluetoothMaxConnectedAudioDevicesPreferenceController(context),
                 BluetoothCodecListPreferenceController(
