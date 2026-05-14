@@ -16,9 +16,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Miscellaneous  Settings -->
-    <string name="misc_settings_title">Miscellaneous</string>
-
     <!-- Keybox Data -->
     <string name="keybox_data_title">Select keybox XML to spoof</string>
     <string name="keybox_data_summary">Select the keybox XML used for system-wide key attestation spoofing. Click delete to reset keybox data.</string>

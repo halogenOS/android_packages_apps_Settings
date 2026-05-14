@@ -141,11 +141,4 @@
         android:fragment="com.android.settings.system.ResetDashboardFragment"
         settings:controller="com.android.settings.system.ResetPreferenceController"/>
 
-    <!-- Misc Settings -->
-    <Preference
-        android:key="misc_settings"
-        android:title="@string/misc_settings_title"
-        android:icon="@drawable/ic_misc_settings"
-        android:order="-25"
-        android:fragment="com.android.settings.clover.misc.MiscSettings"/>
 </PreferenceScreen>
