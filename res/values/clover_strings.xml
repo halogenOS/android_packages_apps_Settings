@@ -22,6 +22,6 @@
 
     <!-- Attestation spoofing toggle -->
     <string name="attestation_spoof_title">Attestation spoofing</string>
-    <string name="attestation_spoof_summary">Spoof key attestation and build properties so Play Integrity can pass. Has no effect on devices with OEM-verified boot. Changes take effect for newly started apps.</string>
+    <string name="attestation_spoof_summary">Spoof key attestation and build properties so Play Integrity can pass. Has no effect on devices with OEM-verified boot. Reboot required for changes to take effect.</string>
 
 </resources>
