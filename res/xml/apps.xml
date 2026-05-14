@@ -121,6 +121,13 @@
         android:summary="@string/keybox_data_summary"
         android:defaultValue=""/>
 
+    <SwitchPreferenceCompat
+        android:key="attestation_spoof_enabled"
+        android:title="@string/attestation_spoof_title"
+        android:summary="@string/attestation_spoof_summary"
+        android:defaultValue="true"
+        settings:controller="com.android.settings.applications.AttestationSpoofPreferenceController"/>
+
     <PreferenceCategory
         android:key="advanced_category"
         android:title="@string/advanced_apps"
