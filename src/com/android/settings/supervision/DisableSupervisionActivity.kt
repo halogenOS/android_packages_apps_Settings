@@ -40,6 +40,16 @@ class DisableSupervisionActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         Log.e(TAG, "onCreate for DisableSupervisionActivity")
 
+        // A null calling package means the activity was not started for a result, so the caller's
+        // identity cannot be verified. Without this check, a null package slips through the
+        // permission gate below (every comparison against null is satisfied) and can reach the
+        // supervision data deletion path.
+        if (callingPackage == null) {
+            Log.w(TAG, "Calling package is null; cannot verify caller. Finishing activity.")
+            setResultAndFinish(RESULT_CANCELED)
+            return
+        }
+
         val supervisionApps = supervisionRoleHolders
         val devicePolicyManager = getSystemService(DevicePolicyManager::class.java)
         val isAllowedProfileOwner = isCallingPackageSupervisionProfileOwner(devicePolicyManager)
