@@ -5845,6 +5845,19 @@
             android:knownActivityEmbeddingCerts="@array/config_known_host_certs"
             android:exported="false" />
         <activity android:name=".spa.SpaBridgeActivity" android:exported="false"/>
+
+        <activity-alias android:name="AudioInformationSettings"
+            android:exported="true"
+            android:targetActivity=".spa.SpaBridgeActivity">
+            <intent-filter>
+                <action android:name="com.android.settings.AUDIO_INFORMATION_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.spa.DESTINATION"
+                android:value="AudioInformation"/>
+            <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
+                android:value="@string/menu_key_about_device"/>
+        </activity-alias>
         <activity android:name=".spa.SpaAppBridgeActivity" android:exported="false"/>
 
         <activity

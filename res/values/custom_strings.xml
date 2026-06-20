@@ -18,6 +18,8 @@
     <string name="about_phone_more">More</string>
     <!-- About phone, More page: title of the group with the firmware versions of the device, such as baseband -->
     <string name="firmware_information">Firmware information</string>
+    <!-- About phone, More page: title of the item and page that show the live system audio path [CHAR LIMIT=60] -->
+    <string name="audio_information_title">Audio information</string>
     <!-- About phone: time since the device started, then the share of that time the device spent in deep sleep -->
     <string name="uptime_with_deep_sleep"><xliff:g id="uptime" example="3:12:45">%1$s</xliff:g> (Deep sleep: <xliff:g id="percentage" example="61%">%2$s</xliff:g>)</string>
     <!-- About phone: label of the SELinux mode of the device -->

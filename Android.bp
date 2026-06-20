@@ -102,6 +102,8 @@ android_library {
         "MediaDrmSettingsFlagsLib",
         "Settings-change-ids",
         "SettingsLib",
+        "AudioStateCompose",
+        "SettingsLibAudioState",
         "SettingsLibActivityEmbedding",
         "SettingsLibService",
         "aconfig_settings_flags_lib",

@@ -21,6 +21,7 @@ import android.util.FeatureFlagUtils
 import com.android.settings.network.apn.ApnEditPageProvider
 import com.android.settings.print.PrintSettingsPageProvider
 import com.android.settings.spa.about.AboutPhonePageProvider
+import com.android.settings.spa.about.AudioInformationPageProvider
 import com.android.settings.spa.accessibility.ForceDarkAppExceptionsPageProvider
 import com.android.settings.spa.app.AllAppListPageProvider
 import com.android.settings.spa.app.AppsMainPageProvider
@@ -126,6 +127,7 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
                 CloneAppInfoSettingsProvider,
                 NetworkAndInternetPageProvider,
                 AboutPhonePageProvider,
+                AudioInformationPageProvider,
                 StorageAppListPageProvider.Apps,
                 StorageAppListPageProvider.Games,
                 ApnEditPageProvider,
