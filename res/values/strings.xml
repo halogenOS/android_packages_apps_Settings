@@ -12778,6 +12778,8 @@
     <string name="my_device_info_legal_category_title">Legal &amp; regulatory</string>
     <!-- Title for preference category showing the name of device details. [CHAR LIMIT=60]-->
     <string name="my_device_info_device_details_category_title">Device details</string>
+    <!-- Title for the audio information page, showing the live system audio path. [CHAR LIMIT=60]-->
+    <string name="audio_information_title">Audio information</string>
     <!-- Title for preference category showing the name of device identifiers. [CHAR LIMIT=60]-->
     <string name="my_device_info_device_identifiers_category_title">Device identifiers</string>
 

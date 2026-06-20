@@ -98,6 +98,13 @@
             settings:keywords="@string/keywords_model_and_hardware"
             settings:controller="com.android.settings.deviceinfo.HardwareInfoPreferenceController"/>
 
+        <!-- Audio information -->
+        <Preference
+            android:key="audio_information"
+            android:order="24"
+            android:title="@string/audio_information_title"
+            settings:controller="com.android.settings.deviceinfo.AudioInformationPreferenceController"/>
+
         <!-- EID -->
         <com.android.settings.deviceinfo.simstatus.SimEidInfoPreference
             android:key="eid_info"
