@@ -32,6 +32,7 @@ import com.android.settings.R
 import com.android.settingslib.audiostate.AudioStateRepository
 import com.android.settingslib.audiostate.AudioStateSnapshot
 import com.android.settings.bluetooth.Utils
+import com.android.settingslib.audiostate.AudioFlingerInfoProvider
 import com.android.settingslib.audiostate.LocalBluetoothBatteryProvider
 import com.android.settingslib.audiostate.compose.AudioStateTree
 import com.android.settingslib.spa.framework.common.SettingsPageProvider
@@ -62,6 +63,7 @@ object AudioInformationPageProvider : SettingsPageProvider {
                         // Use Settings' shared LocalBluetoothManager, never a fresh getInstance —
                         // creating another would clobber the singleton other BT UI depends on.
                         LocalBluetoothBatteryProvider(Utils.getLocalBtManager(context)),
+                    outputThreadProvider = AudioFlingerInfoProvider(),
                 )
             }
             val snapshot: AudioStateSnapshot? by
