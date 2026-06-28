@@ -86,16 +86,6 @@
             android:summary="@string/summary_placeholder"
             android:fragment="com.android.settings.display.ScreenTimeoutSettings"
             settings:controller="com.android.settings.display.ScreenTimeoutPreferenceController"/>
-
-        <Preference
-            android:key="standby_watch"
-            android:title="@string/standby_watch_title"
-            android:summary="@string/standby_watch_summary"
-            settings:controller="com.android.settings.display.StandByWatchPreferenceController">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="custom.standbywatch"
-                    android:targetClass="custom.standbywatch.StandByWatchSettingsActivity" />
-        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory
