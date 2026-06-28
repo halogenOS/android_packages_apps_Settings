@@ -70,8 +70,12 @@ object AudioInformationPageProvider : SettingsPageProvider {
                 repository.audioState.collectAsStateWithLifecycle(initialValue = null)
 
             snapshot?.let {
-                Column(modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)) {
-                    AudioStateTree(snapshot = it, full = true)
+                // The page's horizontal gutter ([PAGE_GUTTER]) is passed to AudioStateTree as panelGutter
+                // so its idle cards break out of EXACTLY this inset — one source of truth, no baked library
+                // mirror. It is a fixed page-layout constant (NOT derived from the snapshot), hoisted to the
+                // companion below so the layout constant is plainly separate from the conditional data flow.
+                Column(modifier = Modifier.padding(horizontal = PAGE_GUTTER, vertical = 8.dp)) {
+                    AudioStateTree(snapshot = it, full = true, panelGutter = PAGE_GUTTER)
                 }
             }
         }
@@ -79,4 +83,8 @@ object AudioInformationPageProvider : SettingsPageProvider {
 
     override fun getTitle(arguments: Bundle?): String =
         SpaEnvironmentFactory.instance.appContext.getString(R.string.audio_information_title)
+
+    /** The page's per-side horizontal content gutter; the single value both the page padding and the
+     *  [AudioStateTree] breakout gutter ([AudioStateTree] `panelGutter`) read, so the two cannot drift. */
+    private val PAGE_GUTTER = 24.dp
 }
