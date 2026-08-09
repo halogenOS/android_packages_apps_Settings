@@ -51,13 +51,16 @@ public class AndroidIdRotationPreference extends Preference {
     public CharSequence getSummary() {
         final Context ctx = getContext();
         final String override = getOverride();
-        final boolean active = !TextUtils.isEmpty(override);
+        final String token = Settings.Secure.getString(ctx.getContentResolver(),
+                Settings.Secure.ATTESTATION_ANDROID_ID_REASSIGN);
 
         // The stored checkin ID is unreadable: GMS's gservices provider
-        // blocks device-ID access for non-Google packages, so only the
-        // override (which we own) can be displayed.
+        // blocks device-ID access for non-Google packages, so only our own
+        // rotation state can be displayed.
         String gmsIdDisplay;
-        if (active) {
+        if (!TextUtils.isEmpty(token)) {
+            gmsIdDisplay = ctx.getString(R.string.android_id_rotation_reassign_active);
+        } else if (!TextUtils.isEmpty(override)) {
             gmsIdDisplay = toHex(override)
                     + " " + ctx.getString(R.string.android_id_rotation_override_active);
         } else {
@@ -83,7 +86,10 @@ public class AndroidIdRotationPreference extends Preference {
     protected void onClick() {
         super.onClick();
 
-        final boolean active = !TextUtils.isEmpty(getOverride());
+        final boolean active = !TextUtils.isEmpty(getOverride())
+                || !TextUtils.isEmpty(Settings.Secure.getString(
+                        getContext().getContentResolver(),
+                        Settings.Secure.ATTESTATION_ANDROID_ID_REASSIGN));
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
                 .setTitle(getTitle())
                 .setMessage(R.string.android_id_rotation_dialog_message)
@@ -98,21 +104,28 @@ public class AndroidIdRotationPreference extends Preference {
 
     private void rotate() {
         final SecureRandom random = new SecureRandom();
-        long newId;
+        long newToken;
         do {
-            // positive 63-bit, non-zero — same domain as server-issued IDs
-            newId = random.nextLong() & Long.MAX_VALUE;
-        } while (newId == 0);
+            // positive 63-bit, non-zero
+            newToken = random.nextLong() & Long.MAX_VALUE;
+        } while (newToken == 0);
 
-        Settings.Secure.putString(getContext().getContentResolver(),
-                Settings.Secure.ATTESTATION_ANDROID_ID_OVERRIDE, Long.toString(newId));
+        // Server-reassign: drop the read override (a client-chosen ID is
+        // rejected by the integrity endpoints), request a fresh
+        // server-assigned checkin ID via the reassign token, and restart
+        // Play services + Play Store so the next checkin registers it.
+        final android.content.ContentResolver cr = getContext().getContentResolver();
+        Settings.Secure.putString(cr, Settings.Secure.ATTESTATION_ANDROID_ID_OVERRIDE, null);
+        Settings.Secure.putString(cr, Settings.Secure.ATTESTATION_ANDROID_ID_REASSIGN,
+                Long.toString(newToken));
         restartGoogleServices();
         notifyChanged();
     }
 
     private void resetOverride() {
-        Settings.Secure.putString(getContext().getContentResolver(),
-                Settings.Secure.ATTESTATION_ANDROID_ID_OVERRIDE, null);
+        final android.content.ContentResolver cr = getContext().getContentResolver();
+        Settings.Secure.putString(cr, Settings.Secure.ATTESTATION_ANDROID_ID_OVERRIDE, null);
+        Settings.Secure.putString(cr, Settings.Secure.ATTESTATION_ANDROID_ID_REASSIGN, null);
         restartGoogleServices();
         notifyChanged();
     }
