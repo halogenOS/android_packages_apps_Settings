@@ -132,6 +132,10 @@
         android:key="attestation_spoof_apps"
         android:title="@string/attestation_spoof_apps_title"/>
 
+    <com.android.settings.applications.AndroidIdRotationPreference
+        android:key="android_id_rotation"
+        android:title="@string/android_id_rotation_title"/>
+
     <PreferenceCategory
         android:key="advanced_category"
         android:title="@string/advanced_apps"

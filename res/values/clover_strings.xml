@@ -29,4 +29,17 @@
         <item quantity="other">%d apps selected. Takes effect for newly started apps.</item>
     </plurals>
 
+    <!-- Device identity rotation -->
+    <string name="android_id_rotation_title">Rotate device identity</string>
+    <string name="android_id_rotation_gms_id">GMS androidId: %1$s</string>
+    <string name="android_id_rotation_os_id">OS androidId: %1$s</string>
+    <string name="android_id_rotation_ssaid">GMS SSAID: %1$s</string>
+    <string name="android_id_rotation_unknown">unknown</string>
+    <string name="android_id_rotation_override_active">(override)</string>
+    <string name="android_id_rotation_stored_hidden">stored (hidden by GMS)</string>
+    <string name="android_id_rotation_ssaid_unreadable">only visible to GMS itself</string>
+    <string name="android_id_rotation_dialog_message">Play services will present a fresh androidId to Google instead of its stored one; the synthetic serial and IMEI shift with it. The stored ID is kept, so Reset restores the original identity. Play services and Play Store are restarted after each change.</string>
+    <string name="android_id_rotation_rotate">Rotate</string>
+    <string name="android_id_rotation_reset">Reset</string>
+
 </resources>
