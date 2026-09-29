@@ -8,7 +8,6 @@ package com.android.settings.display;
 import android.content.Context;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
-import android.provider.Settings;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -16,6 +15,7 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
+import com.android.settingslib.development.SystemPropPoker;
 
 public class LtpoModePreferenceController extends BasePreferenceController
         implements Preference.OnPreferenceChangeListener {
@@ -23,7 +23,6 @@ public class LtpoModePreferenceController extends BasePreferenceController
     private static final String AIDL_INSTANCE =
             "custom.hardware.display.ltpo.ILtpoControl/default";
     private static final String PROP_SFM_MODE = "persist.sys.sfm.mode";
-    private static final float PEAK_REFRESH_RATE = 120f;
 
     private ListPreference mPreference;
 
@@ -52,23 +51,11 @@ public class LtpoModePreferenceController extends BasePreferenceController
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String mode = (String) newValue;
-        boolean active = !"off".equals(mode);
 
+        // The display mode director holds the refresh rate LTPO needs for as long as this
+        // property names an active mode; the poke makes it re-read the property right away.
         SystemProperties.set(PROP_SFM_MODE, mode);
-
-        if (active) {
-            // SFM requires 120Hz base — lock min and peak to 120Hz.
-            Settings.System.putFloat(
-                    mContext.getContentResolver(),
-                    Settings.System.PEAK_REFRESH_RATE, PEAK_REFRESH_RATE);
-            Settings.System.putFloat(
-                    mContext.getContentResolver(),
-                    Settings.System.MIN_REFRESH_RATE, PEAK_REFRESH_RATE);
-        } else {
-            Settings.System.putFloat(
-                    mContext.getContentResolver(),
-                    Settings.System.MIN_REFRESH_RATE, 0f);
-        }
+        SystemPropPoker.getInstance().poke();
 
         updateSummary(mode);
         return true;
