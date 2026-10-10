@@ -7,9 +7,14 @@
     <string name="custom_rom_version">halogenOS version</string>
     <string name="custom_rom_build_version">Build version</string>
     <string name="vendor_security_patch">Vendor security update</string>
+    <plurals name="device_info_device_maintainers_title">
+        <item quantity="one">Device maintainer</item>
+        <item quantity="other">Device maintainers</item>
+    </plurals>
 
     <string name="custom_rom_banner_purpose" translatable="false">The logo of the custom ROM</string>
     <string name="custom_rom_version_purpose" translatable="false">The version of the custom ROM</string>
     <string name="custom_rom_build_version_purpose" translatable="false">The build version of the custom ROM</string>
     <string name="vendor_security_patch_purpose" translatable="false">The date of the last vendor security update</string>
+    <string name="device_maintainer_purpose" translatable="false">The people who maintain the build for this device</string>
 </resources>

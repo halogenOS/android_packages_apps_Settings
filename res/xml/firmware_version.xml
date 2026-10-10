@@ -27,6 +27,13 @@
         android:layout="@layout/halogenos_banner"
         android:selectable="false" />
 
+    <!-- Device maintainers -->
+    <Preference
+        android:key="device_maintainer"
+        settings:enableCopying="true"
+        settings:searchable="false"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.DeviceMaintainerPreferenceController"/>
+
     <!-- Android version -->
     <Preference
         android:key="os_firmware_version"

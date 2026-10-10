@@ -11,4 +11,7 @@
     <!-- Indicates whether device has a side mounted fingerprint sensor,
          but a dedicated one, i.e. not embedded in the power button. -->
     <bool name="config_is_side_fps" translatable="false">false</bool>
+
+    <!-- The device maintainers that the Android version screen shows, one item for each. -->
+    <string-array name="device_info_device_maintainers" translatable="false" />
 </resources>
