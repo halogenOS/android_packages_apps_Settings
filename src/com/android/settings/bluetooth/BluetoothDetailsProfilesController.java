@@ -78,6 +78,9 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
     private static final String KEY_PROFILES_GROUP = "bluetooth_profiles";
     private static final String KEY_BOTTOM_PREFERENCE = "bottom_preference";
     private static final int ORDINAL = 99;
+    // A profile switch and the two rows that can follow it: HD audio and audio quality under media
+    // audio.
+    private static final int ORDERS_PER_PROFILE = 3;
 
     private static final String ENABLE_DUAL_MODE_AUDIO =
             "persist.bluetooth.enable_dual_mode_audio";
@@ -152,7 +155,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         pref.setKey(profile.toString());
         pref.setTitle(profile.getNameResource(mCachedDevice.getDevice()));
         pref.setOnPreferenceClickListener(this);
-        pref.setOrder(profile.getOrdinal());
+        pref.setOrder(getProfileOrder(profile));
 
         boolean isLeEnabledByDefault =
                 SystemProperties.getBoolean(LE_AUDIO_CONNECTION_BY_DEFAULT_PROPERTY, true);
@@ -236,6 +239,11 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
                 } else {
                     highQualityPref.setVisible(false);
                 }
+            }
+            BluetoothAudioQualityPreference audioQualityPref =
+                    mProfilesContainer.findPreference(BluetoothAudioQualityPreference.KEY);
+            if (audioQualityPref != null) {
+                audioQualityPref.refresh();
             }
         }
     }
@@ -464,6 +472,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
             TwoStatePreference highQualityAudioPref = new SwitchPreferenceCompat(
                     mProfilesContainer.getContext());
             highQualityAudioPref.setKey(HIGH_QUALITY_AUDIO_PREF_TAG);
+            highQualityAudioPref.setOrder(getProfileOrder(a2dp) + 1);
             highQualityAudioPref.setVisible(false);
             highQualityAudioPref.setOnPreferenceClickListener(clickedPref -> {
                 boolean enable = ((TwoStatePreference) clickedPref).isChecked();
@@ -472,6 +481,22 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
             });
             mProfilesContainer.addPreference(highQualityAudioPref);
         }
+    }
+
+    /** Adds the audio quality row under the HD audio switch, after the A2DP switch was added. */
+    private void maybeAddAudioQualityPref(LocalBluetoothProfile profile) {
+        if (!(profile instanceof A2dpProfile)) {
+            return;
+        }
+        A2dpProfile a2dp = (A2dpProfile) profile;
+        BluetoothAudioQualityPreference audioQualityPref = new BluetoothAudioQualityPreference(
+                mProfilesContainer.getContext(), a2dp, mCachedDevice.getDevice());
+        audioQualityPref.setOrder(getProfileOrder(a2dp) + 2);
+        mProfilesContainer.addPreference(audioQualityPref);
+    }
+
+    private static int getProfileOrder(LocalBluetoothProfile profile) {
+        return profile.getOrdinal() * ORDERS_PER_PROFILE;
     }
 
     @Override
@@ -554,6 +579,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
                 pref = createProfilePreference(mProfilesContainer.getContext(), profile);
                 mProfilesContainer.addPreference(pref);
                 maybeAddHighQualityAudioPref(profile);
+                maybeAddAudioQualityPref(profile);
             }
             refreshProfilePreference(pref, profile);
         }
