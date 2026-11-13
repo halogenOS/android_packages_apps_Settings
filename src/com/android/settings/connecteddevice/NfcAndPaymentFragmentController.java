@@ -30,7 +30,7 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
-import com.android.settingslib.core.lifecycle.events.OnResume;
+import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
 
 /**
@@ -38,7 +38,7 @@ import com.android.settingslib.core.lifecycle.events.OnStop;
  */
 // LINT.IfChange
 public class NfcAndPaymentFragmentController extends BasePreferenceController
-        implements LifecycleObserver, OnResume, OnStop {
+        implements LifecycleObserver, OnStart, OnStop {
     private final NfcAdapter mNfcAdapter;
     private final PackageManager mPackageManager;
     private final UserManager mUserManager;
@@ -108,12 +108,12 @@ public class NfcAndPaymentFragmentController extends BasePreferenceController
     }
 
     @Override
-    public void onResume() {
+    public void onStart() {
         if (!isNfcAvailable()) {
             return;
         }
 
-        mContext.registerReceiver(mReceiver, mIntentFilter);
+        mContext.registerReceiver(mReceiver, mIntentFilter, Context.RECEIVER_EXPORTED);
     }
 
     private boolean isNfcAvailable() {
