@@ -23,6 +23,7 @@ import androidx.preference.Preference;
 import androidx.preference.TwoStatePreference;
 
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.datausage.DataUsageUtils;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
 public class WifiScanThrottlingPreferenceController extends DeveloperOptionsPreferenceController
@@ -39,6 +40,11 @@ public class WifiScanThrottlingPreferenceController extends DeveloperOptionsPref
     @Override
     public String getPreferenceKey() {
         return WIFI_SCAN_THROTTLING_KEY;
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return DataUsageUtils.hasWifiRadio(mContext);
     }
 
     @Override

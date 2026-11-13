@@ -24,6 +24,7 @@ import androidx.preference.Preference;
 import androidx.preference.TwoStatePreference;
 
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.datausage.DataUsageUtils;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
 public class WifiVerboseLoggingPreferenceController extends DeveloperOptionsPreferenceController
@@ -47,6 +48,11 @@ public class WifiVerboseLoggingPreferenceController extends DeveloperOptionsPref
     @Override
     public String getPreferenceKey() {
         return WIFI_VERBOSE_LOGGING_KEY;
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return DataUsageUtils.hasWifiRadio(mContext);
     }
 
     @Override
