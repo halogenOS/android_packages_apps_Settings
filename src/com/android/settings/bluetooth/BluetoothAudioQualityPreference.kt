@@ -6,71 +6,60 @@
 package com.android.settings.bluetooth
 
 import android.bluetooth.BluetoothDevice
-import android.content.BroadcastReceiver
+import android.bluetooth.audioquality.AudioQuality
+import android.bluetooth.audioquality.AudioQualityManager
 import android.content.Context
-import android.content.Intent
 import androidx.preference.ListPreference
-import com.android.settingslib.bluetooth.A2dpProfile
-import com.android.settingslib.bluetooth.audioquality.HeadsetAudioQuality
-import com.android.settingslib.bluetooth.audioquality.codecs.audioQualityCatalogue
-import com.android.settingslib.bluetooth.audioquality.createAudioQualityChangeFilter
+import com.android.settingslib.bluetooth.audioquality.formatNameWithBitrate
 import com.android.settingslib.bluetooth.audioquality.formatSummaryWithBitrate
-import com.android.settingslib.bluetooth.audioquality.formatTitleWithBitrate
+import com.android.settingslib.bluetooth.audioquality.isAdjustable
+import com.android.settingslib.bluetooth.setLevelAndLogFailure
 
 /**
- * Lists the audio quality levels of the codec in use on the A2DP connection to [device], and sends
- * the chosen level to the Bluetooth stack. The row is hidden while the device has no A2DP
- * connection or its codec runs at a fixed quality.
+ * Lists the audio quality levels of the A2DP codec used by [device], and sets the chosen level
+ * through [AudioQualityManager]. The row is shown only when the stack reports levels for the codec
+ * used by [device].
  */
 internal class BluetoothAudioQualityPreference(
     context: Context,
-    private val a2dp: A2dpProfile,
+    private val audioQualityManager: AudioQualityManager,
     private val device: BluetoothDevice,
 ) : ListPreference(context) {
-    private val qualityChangeReceiver =
-        object : BroadcastReceiver() {
-            override fun onReceive(context: Context, intent: Intent) = refresh()
-        }
+    private val qualityCollector = AudioQualityManager.Collector(::showQuality)
 
     init {
         key = KEY
+        isVisible = false
         setTitle(com.android.settingslib.R.string.bluetooth_audio_quality_title)
         setDialogTitle(com.android.settingslib.R.string.bluetooth_audio_quality_title)
         // The Bluetooth stack stores the level, and the row shows the level it reports.
         isPersistent = false
-        setOnPreferenceChangeListener { _, chosenKey ->
-            readQuality()
-                ?.levels
-                ?.find { it.key == chosenKey }
-                ?.let { audioQualityCatalogue.select(a2dp, device, it) }
+        setOnPreferenceChangeListener { _, chosenLevelId ->
+            if (chosenLevelId is String) {
+                audioQualityManager.setLevelAndLogFailure(device, chosenLevelId)
+            }
             false
         }
     }
 
-    /** Reads the quality from the Bluetooth stack again and shows it. */
-    fun refresh() {
-        val quality = readQuality()
-        isVisible = quality != null
-        quality?.let(::showLevels)
-    }
-
-    private fun readQuality() =
-        audioQualityCatalogue.readQuality(a2dp, device) as? HeadsetAudioQuality.Adjustable
-
-    private fun showLevels(quality: HeadsetAudioQuality.Adjustable) {
-        summary = quality.formatSummaryWithBitrate(context)
-        entries = quality.levels.map { it.formatTitleWithBitrate(context) }.toTypedArray()
-        entryValues = quality.levels.map { it.key }.toTypedArray()
-        value = quality.current?.key
+    private fun showQuality(quality: AudioQuality?) {
+        val adjustable = quality?.takeIf { it.isAdjustable }
+        isVisible = adjustable != null
+        adjustable?.let {
+            summary = it.formatSummaryWithBitrate(context)
+            entries = it.levels.map { level -> level.formatNameWithBitrate(context) }.toTypedArray()
+            entryValues = it.levels.map { level -> level.id }.toTypedArray()
+            value = it.currentLevelId
+        }
     }
 
     override fun onAttached() {
         super.onAttached()
-        context.registerReceiver(qualityChangeReceiver, createAudioQualityChangeFilter())
+        audioQualityManager.collect(device, context.mainExecutor, qualityCollector)
     }
 
     override fun onDetached() {
-        context.unregisterReceiver(qualityChangeReceiver)
+        audioQualityManager.cancel(qualityCollector)
         super.onDetached()
     }
 

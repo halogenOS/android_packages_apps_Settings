@@ -23,6 +23,7 @@ import static android.content.pm.PackageManager.FEATURE_PC;
 import android.app.settings.SettingsEnums;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
+import android.bluetooth.audioquality.AudioQualityManager;
 import android.content.Context;
 import android.os.SystemProperties;
 import android.sysprop.BluetoothProperties;
@@ -239,11 +240,6 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
                 } else {
                     highQualityPref.setVisible(false);
                 }
-            }
-            BluetoothAudioQualityPreference audioQualityPref =
-                    mProfilesContainer.findPreference(BluetoothAudioQualityPreference.KEY);
-            if (audioQualityPref != null) {
-                audioQualityPref.refresh();
             }
         }
     }
@@ -488,9 +484,15 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         if (!(profile instanceof A2dpProfile)) {
             return;
         }
+        Context context = mProfilesContainer.getContext();
+        AudioQualityManager audioQualityManager =
+                context.getSystemService(AudioQualityManager.class);
+        if (audioQualityManager == null) {
+            return;
+        }
         A2dpProfile a2dp = (A2dpProfile) profile;
         BluetoothAudioQualityPreference audioQualityPref = new BluetoothAudioQualityPreference(
-                mProfilesContainer.getContext(), a2dp, mCachedDevice.getDevice());
+                context, audioQualityManager, mCachedDevice.getDevice());
         audioQualityPref.setOrder(getProfileOrder(a2dp) + 2);
         mProfilesContainer.addPreference(audioQualityPref);
     }
