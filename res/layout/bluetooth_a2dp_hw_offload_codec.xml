@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-FileCopyrightText: The halogenOS Project -->
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<!-- Checkbox of one codec in the hardware offload dialog -->
+<CheckBox
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:paddingStart="16dp"
+    android:textAppearance="?android:attr/textAppearanceListItem"/>
