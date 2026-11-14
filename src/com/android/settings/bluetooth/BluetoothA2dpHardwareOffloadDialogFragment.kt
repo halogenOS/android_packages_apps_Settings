@@ -8,8 +8,6 @@ package com.android.settings.bluetooth
 import android.app.Dialog
 import android.bluetooth.BluetoothCodecType
 import android.bluetooth.BluetoothDevice
-import android.bluetooth.audioquality.AudioQuality
-import android.bluetooth.audioquality.AudioQualityManager
 import android.os.Bundle
 import android.text.style.TextAppearanceSpan
 import android.view.LayoutInflater
@@ -24,9 +22,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.android.bluetooth.audioquality.aidl.AudioQuality
 import com.android.settings.R
-import com.android.settingslib.bluetooth.qualityFlow
-import com.android.settingslib.bluetooth.setCodecOffloadedAndLogFailure
+import com.android.settingslib.bluetooth.audioquality.AudioQualityServiceClient
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 
@@ -35,15 +33,15 @@ private const val ARG_DEVICE = "device"
 
 /**
  * Chooses which A2DP codecs are encoded in hardware offload by the phone, for every headset. A tap
- * on a checkbox sends the change to [AudioQualityManager] at once, and the dialog shows the choice
- * reported by the Bluetooth stack with the quality of the device passed when the dialog opened.
+ * on a checkbox sends the change to the audio quality service of the Bluetooth app at once, and the
+ * dialog shows the choice reported by the Bluetooth stack with the quality for the device passed
+ * when the dialog opened. The dialog uses the client of the device page that opened it.
  */
 internal class BluetoothA2dpHardwareOffloadDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = requireContext()
-        val audioQualityManager =
-            checkNotNull(context.getSystemService(AudioQualityManager::class.java))
+        val audioQualityClient = AudioQualityClientViewModel.clientOf(requireParentFragment())
         val device =
             checkNotNull(requireArguments().getParcelable(ARG_DEVICE, BluetoothDevice::class.java))
         val content =
@@ -51,11 +49,11 @@ internal class BluetoothA2dpHardwareOffloadDialogFragment : DialogFragment() {
         val codecCheckBoxes =
             CodecCheckBoxes(
                 content.requireViewById(R.id.bluetooth_a2dp_hw_offload_codecs),
-                audioQualityManager,
+                audioQualityClient,
             )
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                audioQualityManager
+                audioQualityClient
                     .qualityFlow(device)
                     .filterNotNull()
                     .collect(codecCheckBoxes::show)
@@ -71,7 +69,7 @@ internal class BluetoothA2dpHardwareOffloadDialogFragment : DialogFragment() {
     }
 
     companion object {
-        /** Opens the dialog with the choice reported with the quality of [device]. */
+        /** Opens the dialog with the choice reported with the quality for [device]. */
         fun show(device: BluetoothDevice, fragmentManager: FragmentManager) =
             BluetoothA2dpHardwareOffloadDialogFragment()
                 .apply { arguments = bundleOf(ARG_DEVICE to device) }
@@ -81,23 +79,27 @@ internal class BluetoothA2dpHardwareOffloadDialogFragment : DialogFragment() {
 
 /**
  * One checkbox per codec offloadable by the phone, in [codecList]. [show] updates the checkboxes in
- * place, so a tap does not move the focus.
+ * place, so a tap does not move the focus. A tap sends the choice through [audioQualityClient].
  */
 private class CodecCheckBoxes(
     private val codecList: ViewGroup,
-    private val audioQualityManager: AudioQualityManager,
+    private val audioQualityClient: AudioQualityServiceClient,
 ) {
     private var checkBoxes: Map<BluetoothCodecType, CheckBox> = emptyMap()
 
     fun show(quality: AudioQuality) {
-        val offload = quality.hardwareOffload
-        if (checkBoxes.keys.toList() != offload.offloadableCodecTypes) {
+        val codecs = quality.hardwareOffload.codecs
+        val codecTypes = codecs.map { it.codecType }
+        if (checkBoxes.keys.toList() != codecTypes) {
             codecList.removeAllViews()
-            checkBoxes = offload.offloadableCodecTypes.associateWith(::addCheckBox)
+            checkBoxes = codecTypes.associateWith(::addCheckBox)
         }
-        checkBoxes.forEach { (codecType, checkBox) ->
-            checkBox.isChecked = codecType in offload.offloadedCodecTypes
-            checkBox.text = formatCodecLabel(codecType, inUse = codecType == quality.codecType)
+        codecs.forEach { codec ->
+            checkBoxes.getValue(codec.codecType).apply {
+                isChecked = codec.isOffloaded
+                text =
+                    formatCodecLabel(codec.codecType, inUse = codec.codecType == quality.codecType)
+            }
         }
     }
 
@@ -110,7 +112,7 @@ private class CodecCheckBoxes(
         checkBox.setOnClickListener {
             val offloaded = checkBox.isChecked
             checkBox.isChecked = !offloaded
-            audioQualityManager.setCodecOffloadedAndLogFailure(codecType, offloaded)
+            audioQualityClient.setCodecOffloaded(codecType, offloaded)
         }
         codecList.addView(checkBox)
         return checkBox

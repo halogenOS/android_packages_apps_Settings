@@ -6,34 +6,41 @@
 package com.android.settings.bluetooth
 
 import android.bluetooth.BluetoothDevice
-import android.bluetooth.audioquality.AudioQuality
-import android.bluetooth.audioquality.AudioQualityLevel
-import android.bluetooth.audioquality.AudioQualityManager
 import android.content.Context
+import androidx.lifecycle.LifecycleOwner
 import androidx.preference.ListPreference
+import com.android.bluetooth.audioquality.aidl.AudioQuality
+import com.android.settingslib.bluetooth.audioquality.AudioQualityServiceClient
 import com.android.settingslib.bluetooth.audioquality.currentLevelIndex
 import com.android.settingslib.bluetooth.audioquality.formatLabel
 import com.android.settingslib.bluetooth.audioquality.formatSummary
 import com.android.settingslib.bluetooth.audioquality.isAdjustable
-import com.android.settingslib.bluetooth.setLevelAndLogFailure
+import com.android.settingslib.spa.framework.util.collectLatestWithLifecycle
+import kotlinx.coroutines.Job
 
 /**
- * Lists the audio quality levels of the A2DP codec used by [device], and sets the chosen level
- * through [AudioQualityManager]. The row is shown only when the stack reports levels for the codec
- * used by [device].
+ * Lists the audio quality levels of the A2DP codec used by [device], as reported by the audio
+ * quality service of the Bluetooth app while [lifecycleOwner] is started, and sets the chosen level
+ * through that service. The row is shown only when the stack reports levels for the codec used by
+ * [device].
  */
 internal class BluetoothAudioQualityPreference(
     context: Context,
-    private val audioQualityManager: AudioQualityManager,
+    private val audioQualityClient: AudioQualityServiceClient,
     private val device: BluetoothDevice,
+    private val lifecycleOwner: LifecycleOwner,
 ) : ListPreference(context) {
-    private val qualityCollector = AudioQualityManager.Collector(::showQuality)
+    /** The Job that collects the quality for [device] while the row is attached. */
+    private var qualityCollection: Job? = null
 
-    /** The levels shown by the entries, in the same order. Each entry value is a position in it. */
-    private var shownLevels: List<AudioQualityLevel> = emptyList()
+    /**
+     * The quality shown by the entries, with its levels in the same order. Each entry value is a
+     * position in them.
+     */
+    private var shownQuality: AudioQuality? = null
 
-    /** The levels of the entries copied by the dialog when it opened. */
-    private var dialogLevels: List<AudioQualityLevel> = emptyList()
+    /** The quality the dialog copied from the shown quality when it opened. */
+    private var dialogQuality: AudioQuality? = null
 
     init {
         key = KEY
@@ -44,8 +51,8 @@ internal class BluetoothAudioQualityPreference(
         isPersistent = false
         setOnPreferenceChangeListener { _, chosenIndex ->
             (chosenIndex as? String)
-                ?.let { dialogLevels.getOrNull(it.toInt()) }
-                ?.let { audioQualityManager.setLevelAndLogFailure(device, it) }
+                ?.let { dialogQuality?.levels?.getOrNull(it.toInt()) }
+                ?.let { audioQualityClient.setLevel(device, it) }
             false
         }
     }
@@ -53,7 +60,7 @@ internal class BluetoothAudioQualityPreference(
     private fun showQuality(quality: AudioQuality?) {
         val adjustable = quality?.takeIf { it.isAdjustable }
         isVisible = adjustable != null
-        shownLevels = adjustable?.levels.orEmpty()
+        shownQuality = adjustable
         adjustable?.let {
             summary = it.formatSummary(context)
             entries = it.levels.map { level -> level.formatLabel(context) }.toTypedArray()
@@ -63,17 +70,20 @@ internal class BluetoothAudioQualityPreference(
     }
 
     override fun onClick() {
-        dialogLevels = shownLevels
+        dialogQuality = shownQuality
         super.onClick()
     }
 
     override fun onAttached() {
         super.onAttached()
-        audioQualityManager.collect(device, context.mainExecutor, qualityCollector)
+        qualityCollection =
+            audioQualityClient
+                .qualityFlow(device)
+                .collectLatestWithLifecycle(lifecycleOwner, action = ::showQuality)
     }
 
     override fun onDetached() {
-        audioQualityManager.cancel(qualityCollector)
+        qualityCollection?.cancel()
         super.onDetached()
     }
 

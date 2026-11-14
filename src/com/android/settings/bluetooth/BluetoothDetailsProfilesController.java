@@ -23,7 +23,6 @@ import static android.content.pm.PackageManager.FEATURE_PC;
 import android.app.settings.SettingsEnums;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
-import android.bluetooth.audioquality.AudioQualityManager;
 import android.content.Context;
 import android.os.SystemProperties;
 import android.sysprop.BluetoothProperties;
@@ -53,6 +52,7 @@ import com.android.settingslib.bluetooth.MapProfile;
 import com.android.settingslib.bluetooth.PanProfile;
 import com.android.settingslib.bluetooth.PbapClientProfile;
 import com.android.settingslib.bluetooth.PbapServerProfile;
+import com.android.settingslib.bluetooth.audioquality.AudioQualityServiceClient;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.utils.ThreadUtils;
 
@@ -488,19 +488,16 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
             return;
         }
         Context context = mProfilesContainer.getContext();
-        AudioQualityManager audioQualityManager =
-                context.getSystemService(AudioQualityManager.class);
-        if (audioQualityManager == null) {
-            return;
-        }
+        AudioQualityServiceClient audioQualityClient =
+                AudioQualityClientViewModel.clientOf(mFragment);
         A2dpProfile a2dp = (A2dpProfile) profile;
         BluetoothAudioQualityPreference audioQualityPref = new BluetoothAudioQualityPreference(
-                context, audioQualityManager, mCachedDevice.getDevice());
+                context, audioQualityClient, mCachedDevice.getDevice(), mFragment);
         audioQualityPref.setOrder(getProfileOrder(a2dp) + 2);
         mProfilesContainer.addPreference(audioQualityPref);
         BluetoothA2dpHardwareOffloadPreference hardwareOffloadPref =
-                new BluetoothA2dpHardwareOffloadPreference(context, audioQualityManager,
-                        mCachedDevice.getDevice(), mFragment.getChildFragmentManager());
+                new BluetoothA2dpHardwareOffloadPreference(context, audioQualityClient,
+                        mCachedDevice.getDevice(), mFragment);
         hardwareOffloadPref.setOrder(getProfileOrder(a2dp) + 3);
         mProfilesContainer.addPreference(hardwareOffloadPref);
     }
