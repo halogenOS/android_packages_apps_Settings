@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The halogenOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:key="output_format_screen"
+    android:title="@string/output_format_title">
+
+    <com.android.settingslib.widget.TopIntroPreference
+        android:key="output_format_top_intro"
+        android:title="@string/output_format_intro"
+        settings:searchable="false"/>
+
+    <PreferenceCategory
+        android:key="output_format_available_now"
+        android:title="@string/output_format_available_now"/>
+
+    <PreferenceCategory
+        android:key="output_format_used_before"
+        android:title="@string/output_format_used_before"/>
+
+    <com.android.settingslib.widget.FooterPreference
+        android:key="output_format_footer"
+        android:title="@string/output_format_footer"
+        settings:searchable="false"/>
+</PreferenceScreen>
