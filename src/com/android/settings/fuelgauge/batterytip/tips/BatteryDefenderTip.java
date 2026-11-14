@@ -91,25 +91,28 @@ public class BatteryDefenderTip extends BatteryTip {
         }
 
         cardPreference.setSelectable(false);
-        cardPreference.setNegativeButtonText(
-                Utils.createAccessibleSequence(
-                        context.getString(R.string.learn_more),
-                        context.getString(R.string
-                                .battery_tip_limited_temporarily_sec_button_content_description)));
-        cardPreference.setNegativeButtonOnClickListener(
-                unused -> {
-                    var helpIntent =
-                            HelpUtils.getHelpIntent(
-                                    context,
-                                    context.getString(R.string.help_url_battery_defender),
-                                    /* backupContext= */ "");
-                    ActivityCompat.startActivityForResult(
-                            (Activity) preference.getContext(),
-                            helpIntent,
-                            /* requestCode= */ 0,
-                            /* options= */ null);
-                });
-        cardPreference.setNegativeButtonVisible(true);
+        // Null when the help URL is empty or nothing on the device opens it.
+        var helpIntent =
+                HelpUtils.getHelpIntent(
+                        context,
+                        context.getString(R.string.help_url_battery_defender),
+                        /* backupContext= */ "");
+        if (helpIntent != null) {
+            cardPreference.setNegativeButtonText(
+                    Utils.createAccessibleSequence(
+                            context.getString(R.string.learn_more),
+                            context.getString(
+                                    R.string
+                                            .battery_tip_limited_temporarily_sec_button_content_description)));
+            cardPreference.setNegativeButtonOnClickListener(
+                    unused ->
+                            ActivityCompat.startActivityForResult(
+                                    (Activity) preference.getContext(),
+                                    helpIntent,
+                                    /* requestCode= */ 0,
+                                    /* options= */ null));
+        }
+        cardPreference.setNegativeButtonVisible(helpIntent != null);
 
         cardPreference.setPositiveButtonText(
                 context.getString(R.string.battery_tip_charge_to_full_button));
