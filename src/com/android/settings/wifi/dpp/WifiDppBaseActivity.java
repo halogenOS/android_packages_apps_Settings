@@ -19,7 +19,6 @@ package com.android.settings.wifi.dpp;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -29,8 +28,6 @@ import com.android.settings.core.InstrumentedActivity;
 import com.google.android.setupdesign.util.ThemeHelper;
 
 public abstract class WifiDppBaseActivity extends InstrumentedActivity {
-
-    private static final String TAG = "WifiDppBaseActivity";
 
     protected FragmentManager mFragmentManager;
 
@@ -57,8 +54,7 @@ public abstract class WifiDppBaseActivity extends InstrumentedActivity {
     }
 
     private void applyTheme() {
-        if (!ThemeHelper.trySetSuwTheme(this)) {
-            Log.e(TAG, "Failed to set SUW theme!");
-        }
+        setTheme(com.google.android.setupdesign.R.style.SudThemeGlifV4_DayNight);
+        ThemeHelper.trySetDynamicColor(this);
     }
 }
