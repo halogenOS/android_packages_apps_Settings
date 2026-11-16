@@ -62,7 +62,7 @@
     <!-- Output format page: title of the group of output devices that were connected before and are not connected now [CHAR LIMIT=40] -->
     <string name="output_format_used_before">Used before</string>
     <!-- Output format page: note below the device list [CHAR LIMIT=NONE] -->
-    <string name="output_format_footer">A device connected for the first time starts with switching on.</string>
+    <string name="output_format_footer">A device connected for the first time starts with switching on. A Bluetooth device starts with it off, because each switch adds a short pause.</string>
     <!-- Output format page: kind of a device, shown below its name, for a Bluetooth headset or speaker [CHAR LIMIT=40] -->
     <string name="output_format_bluetooth">Bluetooth</string>
     <!-- Output format page: kind of a device, shown below its name, for a USB audio device [CHAR LIMIT=40] -->
