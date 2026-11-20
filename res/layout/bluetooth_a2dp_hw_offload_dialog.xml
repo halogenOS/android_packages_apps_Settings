@@ -10,18 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="?android:attr/dialogPreferredPadding">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_bg"
-            android:drawableStart="@drawable/ic_info_outline_24dp"
-            android:drawablePadding="12dp"
-            android:padding="16dp"
-            android:text="@string/bluetooth_a2dp_hw_offload_warning"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/materialColorOnSurface"/>
+        android:paddingHorizontal="?android:attr/dialogPreferredPadding"
+        android:paddingTop="16dp">
 
         <LinearLayout
             android:id="@+id/bluetooth_a2dp_hw_offload_codecs"
@@ -36,6 +26,18 @@
             android:text="@string/bluetooth_a2dp_hw_offload_all_headsets"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/materialColorOnSurfaceVariant"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_bg"
+            android:drawableStart="@drawable/ic_info_outline_24dp"
+            android:drawablePadding="12dp"
+            android:padding="16dp"
+            android:text="@string/bluetooth_a2dp_hw_offload_warning"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/materialColorOnSurface"/>
 
     </LinearLayout>
 
