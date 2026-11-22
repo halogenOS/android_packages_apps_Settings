@@ -41,6 +41,18 @@
             android:gravity="center|bottom"
             android:orientation="vertical">
 
+            <!-- Set the animation resource in code. -->
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/illustration_lottie"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:visibility="gone"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_speed=".85" />
+
             <FrameLayout
                 android:id="@+id/layout_container"
                 android:layout_width="match_parent"
@@ -49,20 +61,6 @@
                 android:clipToPadding="false"
                 android:layout_gravity="center_horizontal|bottom"
                 tools:ignore="Suspicious0dp">
-
-                <!-- Animation res MUST be set in code -->
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/illustration_lottie"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="@dimen/udfps_lottie_translate_y"
-                    android:scaleType="centerInside"
-                    android:visibility="gone"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    app:lottie_speed=".85" />
 
                 <include layout="@layout/udfps_enroll_view" />
 

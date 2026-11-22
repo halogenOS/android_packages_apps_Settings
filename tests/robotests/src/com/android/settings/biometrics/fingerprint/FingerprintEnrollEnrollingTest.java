@@ -268,7 +268,9 @@ public class FingerprintEnrollEnrollingTest {
         final GlifLayout defaultLayout = mActivity.findViewById(R.id.setup_wizard_layout);
         final TextView headerTextView = defaultLayout.getHeaderTextView();
         final TextView descriptionTextView = defaultLayout.getDescriptionTextView();
-        final FrameLayout lottieAnimationContainer = mActivity.findViewById(R.id.layout_container);
+        final LottieAnimationView lottieAnimationView =
+                mActivity.findViewById(R.id.illustration_lottie);
+        lottieAnimationView.setVisibility(View.VISIBLE);
         final UdfpsEnrollView udfpsEnrollView =
                 defaultLayout.findViewById(R.id.udfps_animation_view);
 
@@ -309,12 +311,12 @@ public class FingerprintEnrollEnrollingTest {
                     + udfpsEnrollView.getHeight()));
         });
 
-        lottieAnimationContainer.getViewTreeObserver().addOnDrawListener(() -> {
-            lottieAnimationContainer.getLocationOnScreen(lottieAnimationPosition);
+        lottieAnimationView.getViewTreeObserver().addOnDrawListener(() -> {
+            lottieAnimationView.getLocationOnScreen(lottieAnimationPosition);
             rectLottieAnimationView.set(new Rect(lottieAnimationPosition[0],
                     lottieAnimationPosition[1], lottieAnimationPosition[0]
-                    + lottieAnimationContainer.getWidth(), lottieAnimationPosition[1]
-                    + lottieAnimationContainer.getHeight()));
+                    + lottieAnimationView.getWidth(), lottieAnimationPosition[1]
+                    + lottieAnimationView.getHeight()));
         });
 
         // Check if the HeaderTextView and DescriptionTextView overlapped

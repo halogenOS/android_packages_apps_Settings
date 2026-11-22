@@ -36,6 +36,8 @@ import androidx.annotation.Nullable;
 import com.android.settings.R;
 import com.android.systemui.biometrics.shared.model.UdfpsOverlayParams;
 
+import java.util.function.IntConsumer;
+
 /**
  * View corresponding with udfps_enroll_view.xml
  */
@@ -57,6 +59,7 @@ public class UdfpsEnrollView extends FrameLayout implements UdfpsEnrollHelper.Li
     // overlayParams.sensorBounds
     private Rect mSensorRect;
     private UdfpsOverlayParams mOverlayParams;
+    private IntConsumer mRingHeightAboveParentListener = ringHeightAboveParent -> {};
 
     public UdfpsEnrollView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -133,6 +136,10 @@ public class UdfpsEnrollView extends FrameLayout implements UdfpsEnrollHelper.Li
         enrollHelper.setListener(this);
     }
 
+    void setRingHeightAboveParentListener(@NonNull IntConsumer listener) {
+        mRingHeightAboveParentListener = listener;
+    }
+
     /**
      * Adjust progress bar radius only for decreasing.
      * @param decreasePadding the decrease padding
@@ -185,6 +192,7 @@ public class UdfpsEnrollView extends FrameLayout implements UdfpsEnrollHelper.Li
             marginLayoutParams.rightMargin = rightMargin;
             marginLayoutParams.topMargin = topMargin;
             setLayoutParams(params);
+            mRingHeightAboveParentListener.accept(Math.max(0, -topMargin));
         } else {
             final int[] coords = parentView.getLocationOnScreen();
             final int parentLeft = coords[0];

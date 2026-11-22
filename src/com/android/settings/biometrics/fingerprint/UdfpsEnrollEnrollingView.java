@@ -175,7 +175,7 @@ public class UdfpsEnrollEnrollingView extends GlifLayout {
 
         final int udfpsProgressDrawableBottom = getOnScreenPositionTop(udfpsProgressView)
                 + udfpsProgressView.getDrawable().getBounds().height()
-                - udfpsProgressView.getPaddingBottom() + 2 /* reserved for more space */;
+                + 2 /* reserved for more space */;
         final int footerBarTop = getOnScreenPositionTop(allContent) + allContent.getHeight()
                 - (footerBarHeight + navigationBarHeight);
 
@@ -278,7 +278,7 @@ public class UdfpsEnrollEnrollingView extends GlifLayout {
         initUdfpsEnrollView(udfpsProps, udfpsEnrollHelper);
 
         if (!mIsLandscape) {
-            adjustPortraitPaddings();
+            hideDescriptionOverlappingSensor();
         } else if (mShouldUseReverseLandscape) {
             swapHeaderAndContent();
         }
@@ -343,31 +343,19 @@ public class UdfpsEnrollEnrollingView extends GlifLayout {
                 displayInfo.rotation,
                 udfpsProps.sensorType);
 
+        mUdfpsEnrollView.setRingHeightAboveParentListener(this::endIllustrationAtSensorRing);
         mUdfpsEnrollView.setOverlayParams(params);
         mUdfpsEnrollView.setEnrollHelper(udfpsEnrollHelper);
     }
 
-    private void adjustPortraitPaddings() {
-        // In the portrait mode, layout_container's height is 0, so it's
-        // always shown at the bottom of the screen.
-        final FrameLayout portraitLayoutContainer = findViewById(R.id.layout_container);
+    private void endIllustrationAtSensorRing(int ringHeightAboveParent) {
+        final View illustration = findViewById(R.id.illustration_lottie);
+        final MarginLayoutParams params = (MarginLayoutParams) illustration.getLayoutParams();
+        params.bottomMargin = ringHeightAboveParent;
+        illustration.setLayoutParams(params);
+    }
 
-        // In the portrait mode, the title and lottie animation view may
-        // overlap when title needs three lines, so adding some paddings
-        // between them, and adjusting the fp progress view here accordingly.
-        final int layoutLottieAnimationPadding = (int) getResources()
-                .getDimension(R.dimen.udfps_lottie_padding_top);
-        portraitLayoutContainer.setPadding(0,
-                layoutLottieAnimationPadding, 0, 0);
-        final ImageView progressView = mUdfpsEnrollView.findViewById(
-                R.id.udfps_enroll_animation_fp_progress_view);
-        progressView.setPadding(0, -(layoutLottieAnimationPadding),
-                0, layoutLottieAnimationPadding);
-        final ImageView fingerprintView = mUdfpsEnrollView.findViewById(
-                R.id.udfps_enroll_animation_fp_view);
-        fingerprintView.setPadding(0, -layoutLottieAnimationPadding,
-                0, layoutLottieAnimationPadding);
-
+    private void hideDescriptionOverlappingSensor() {
         // TODO(b/260970216) Instead of hiding the description text view, we should
         //  make the header view scrollable if the text is too long.
         // If description text view has overlap with udfps progress view, hide it.
