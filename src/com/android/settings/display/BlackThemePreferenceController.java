@@ -43,7 +43,8 @@ public class BlackThemePreferenceController extends TogglePreferenceController i
         super(context, key);
         mContext = context;
         mOverlayManager = (OverlayManager) context.getSystemService(Context.OVERLAY_SERVICE);
-        blackThemeOverlay = context.getResources().getString(R.string.config_blackThemePackage);
+        blackThemeOverlay =
+                context.getString(com.android.internal.R.string.config_dimOverlayPackage);
     }
 
     @Override
