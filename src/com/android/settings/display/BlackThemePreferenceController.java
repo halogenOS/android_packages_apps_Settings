@@ -76,6 +76,8 @@ public class BlackThemePreferenceController extends TogglePreferenceController i
 
     @Override
     public int getAvailabilityStatus() {
-        return AVAILABLE;
+        return mOverlayManager.getOverlayInfo(blackThemeOverlay, UserHandle.CURRENT) != null
+                ? AVAILABLE
+                : UNSUPPORTED_ON_DEVICE;
     }
 }
