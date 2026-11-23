@@ -21,10 +21,8 @@ import androidx.fragment.app.Fragment
 import com.android.settings.DisplaySettings
 import com.android.settings.R
 import com.android.settings.Settings.DisplaySettingsActivity
-import com.android.settings.accessibility.Flags as AccessibilityFlags
 import com.android.settings.accessibility.textreading.ui.TextReadingScreen
 import com.android.settings.core.PreferenceScreenMixin
-import com.android.settings.display.darkmode.DarkModeScreen
 import com.android.settings.dream.ScreensaverScreen
 import com.android.settings.flags.Flags
 import com.android.settings.security.LockScreenPreferenceScreen
@@ -99,7 +97,6 @@ open class DisplayScreen :
                 R.string.category_name_appearance,
             ) order -180 +=
                 {
-                    if (AccessibilityFlags.catalystDarkUiMode()) +DarkModeScreen.KEY
                     +TextReadingScreen.KEY
                 }
             +Category(

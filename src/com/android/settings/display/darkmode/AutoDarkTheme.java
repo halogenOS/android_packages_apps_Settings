@@ -77,6 +77,12 @@ class AutoDarkTheme {
                 : R.string.dark_ui_summary_off_auto_mode_never);
     }
 
+    static String getBatterySaverStatus(Context context, boolean active) {
+        return context.getString(active
+                ? R.string.dark_ui_mode_disabled_summary_dark_theme_on
+                : R.string.dark_ui_mode_disabled_summary_dark_theme_off);
+    }
+
     static List<String> getModesThatChangeDarkTheme(Context context) {
         return ZenModesBackend.getInstance(context)
                 .getModes().stream()

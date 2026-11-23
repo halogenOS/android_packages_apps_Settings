@@ -228,7 +228,6 @@ class DarkModeApiFirstScreen :
 }
 
 // LINT.ThenChange(DarkModeSettingsFragment.java,
-//                 ../DarkUIPreferenceController.java,
 //                 ForceInvertPreferenceController.java)
 
 internal enum class DarkThemeMode(override val asApiValue: Int, override val purpose: Int) :

@@ -19,13 +19,14 @@ import android.content.res.Configuration;
 import android.os.PowerManager;
 import android.util.AttributeSet;
 
+import androidx.preference.Preference;
+
 import com.android.settings.R;
-import com.android.settingslib.PrimarySwitchPreference;
 
 /**
  * component for the display settings dark ui summary
  */
-public class DarkModePreference extends PrimarySwitchPreference {
+public class DarkModePreference extends Preference {
 
     private DarkModeObserver mDarkModeObserver;
     private boolean isCatalystEnabled;
@@ -52,7 +53,6 @@ public class DarkModePreference extends PrimarySwitchPreference {
                 final boolean batterySaver = powerManager.isPowerSaveMode();
                 final boolean active = (context.getResources().getConfiguration().uiMode
                         & Configuration.UI_MODE_NIGHT_YES) != 0;
-                setSwitchEnabled(!batterySaver);
                 updateSummary(batterySaver, active);
             };
             mDarkModeObserver.subscribe(callback);
@@ -69,10 +69,7 @@ public class DarkModePreference extends PrimarySwitchPreference {
 
     private void updateSummary(boolean batterySaver, boolean active) {
         if (batterySaver) {
-            final int stringId = active
-                    ? R.string.dark_ui_mode_disabled_summary_dark_theme_on
-                    : R.string.dark_ui_mode_disabled_summary_dark_theme_off;
-            setSummary(getContext().getString(stringId));
+            setSummary(AutoDarkTheme.getBatterySaverStatus(getContext(), active));
         } else {
             setSummary(AutoDarkTheme.getStatus(getContext(), active));
         }

@@ -104,6 +104,7 @@ android_library {
         "SettingsLib",
         "AudioStateCompose",
         "SettingsLibAudioState",
+        "SettingsLibThemeMode",
         "SettingsLibActivityEmbedding",
         "SettingsLibService",
         "aconfig_settings_flags_lib",

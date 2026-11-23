@@ -93,22 +93,17 @@
         android:title="@string/category_name_appearance"
         android:order="-180">
 
+        <com.android.settings.display.darkmode.ThemeModePreference
+            android:key="theme_mode"
+            android:title="@string/theme_mode_title"
+            settings:controller="com.android.settings.display.darkmode.ThemeModePreferenceController"
+            settings:keywords="@string/keywords_theme_mode"/>
+
         <com.android.settings.display.darkmode.DarkModePreference
             android:key="dark_ui_mode"
-            android:title="@string/dark_ui_mode"
+            android:title="@string/dark_ui_schedule_title"
             android:fragment="com.android.settings.display.darkmode.DarkModeSettingsFragment"
-            android:widgetLayout="@null"
-            settings:widgetLayout="@null"
-            settings:controller="com.android.settings.display.DarkUIPreferenceController"
             settings:keywords="@string/keywords_dark_ui_mode"/>
-
-        <com.android.settingslib.PrimarySwitchPreference
-            android:key="black_ui_mode"
-            android:title="@string/black_ui_mode"
-            android:widgetLayout="@null"
-            settings:widgetLayout="@null"
-            settings:controller="com.android.settings.display.BlackThemePreferenceController"
-            settings:keywords="@string/keywords_black_ui_mode" />
 
         <Preference
             android:fragment="com.android.settings.accessibility.TextReadingPreferenceFragment"

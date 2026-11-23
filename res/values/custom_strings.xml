@@ -42,11 +42,11 @@
             Consumes more energy when HBM is active.
     </string>
 
-    <!-- [CHAR LIMIT=60] Name of setting that dims the UI further -->
-    <string name="black_ui_mode">Dimmed theme</string>
+    <!-- Display: title of the row that opens the page where the user sets when the dark theme turns on and off by itself [CHAR LIMIT=40] -->
+    <string name="dark_ui_schedule_title">Dark theme schedule</string>
 
-    <!-- Search keywords for dimmed theme settings [CHAR LIMIT=NONE] -->
-    <string name="keywords_black_ui_mode">theme, black, dark, oled, amoled, dimmed</string>
+    <!-- Search keywords for the Theme row on the Display page, where the user picks Light, Dark or Dim [CHAR LIMIT=NONE] -->
+    <string name="keywords_theme_mode">theme, light, dark, dim, dimmed, black, oled, amoled</string>
 
     <!-- Sound & vibration: title of the row and page, which set for each output device whether it switches to the format of a track playing alone [CHAR LIMIT=40] -->
     <string name="output_format_title">Output format</string>

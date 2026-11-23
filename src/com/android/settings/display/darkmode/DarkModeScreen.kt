@@ -58,7 +58,6 @@ import kotlinx.coroutines.CoroutineScope
 import com.android.settingslib.metadata.preferencesapi.preconditions.PreconditionStability
 
 
-// LINT.IfChange
 abstract class BaseDarkModeScreen(context: Context, val isUiOnly: Boolean) :
     PreferenceScreenMixin,
     PrimarySwitchPreferenceBinding,
@@ -190,8 +189,7 @@ abstract class BaseDarkModeScreen(context: Context, val isUiOnly: Boolean) :
         val active = darkModeStorage.getBoolean(key) == true
         return when {
             !context.isPowerSaveMode() -> AutoDarkTheme.getStatus(context, active)
-            active -> context.getString(R.string.dark_ui_mode_disabled_summary_dark_theme_on)
-            else -> context.getString(R.string.dark_ui_mode_disabled_summary_dark_theme_off)
+            else -> AutoDarkTheme.getBatterySaverStatus(context, active)
         }
     }
 
@@ -200,8 +198,6 @@ abstract class BaseDarkModeScreen(context: Context, val isUiOnly: Boolean) :
             getSystemService(PowerManager::class.java)?.isPowerSaveMode == true
     }
 }
-
-// LINT.ThenChange(../DarkUIPreferenceController.java)
 
 @ProvidePreferenceScreen(DarkModeScreen.KEY)
 open class DarkModeScreen(context: Context) : BaseDarkModeScreen(context, false) {
